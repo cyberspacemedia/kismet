@@ -9,8 +9,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Typography from "@mui/material/Typography";
 
 function UserRegister() {
@@ -60,7 +58,7 @@ function UserRegister() {
                                     color: "#fffff", // Font color
                                     fontSize: "1.5rem", // Font size
                                     textAlign: "center",
-                                    padding: "5px",
+                                    padding: "15px",
                                 },
                             }}
                             InputProps={{
@@ -94,7 +92,7 @@ function UserRegister() {
                                     color: "#fffff", // Font color
                                     fontSize: "1.5rem", // Font size
                                     textAlign: "center",
-                                    padding: "5px",
+                                    padding: "15px",
                                 },
                             }}
                             InputProps={{
@@ -125,7 +123,7 @@ function UserRegister() {
                                     color: "#fffff", // Font color
                                     fontSize: "1.5rem", // Font size
                                     textAlign: "center",
-                                    padding: "5px",
+                                    padding: "15px",
                                 },
                             }}
                             InputProps={{
@@ -133,105 +131,6 @@ function UserRegister() {
                                 endAdornment: (
                                     <InputAdornment position="end">
                                         <PasswordIcon
-                                            sx={{ color: "#ffffff" }}
-                                        />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <TextField
-                            id="phone"
-                            size="large"
-                            variant="filled"
-                            label="Phone Number"
-                            color="secondary"
-                            fullWidth
-                            type="number"
-                            required
-                            autoComplete="off"
-                            sx={{
-                                margin: "0 0 20px", // Add margin bottom for spacing
-                                "& .MuiFilledInput-root": {
-                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                },
-                                "& .MuiInputBase-input": {
-                                    color: "#fffff", // Font color
-                                    fontSize: "1.5rem", // Font size
-                                    textAlign: "center",
-                                    padding: "5px",
-                                },
-                            }}
-                            InputProps={{
-                                // Change position to "end"
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <PhoneAndroidIcon
-                                            sx={{ color: "#ffffff" }}
-                                        />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <TextField
-                            id="state"
-                            size="large"
-                            variant="filled"
-                            label="State"
-                            color="secondary"
-                            fullWidth
-                            type="text"
-                            required
-                            autoComplete="off"
-                            sx={{
-                                margin: "0 0 20px", // Add margin bottom for spacing
-                                "& .MuiFilledInput-root": {
-                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                },
-                                "& .MuiInputBase-input": {
-                                    color: "#fffff", // Font color
-                                    fontSize: "1.5rem", // Font size
-                                    textAlign: "center",
-                                    padding: "5px",
-                                },
-                            }}
-                            InputProps={{
-                                // Change position to "end"
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <LocationOnIcon
-                                            sx={{ color: "#ffffff" }}
-                                        />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <TextField
-                            id="refcode"
-                            size="large"
-                            variant="filled"
-                            label="Invite Code"
-                            color="secondary"
-                            fullWidth
-                            type="text"
-                            required
-                            autoComplete="off"
-                            sx={{
-                                margin: "0 0 20px", // Add margin bottom for spacing
-                                "& .MuiFilledInput-root": {
-                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                },
-                                "& .MuiInputBase-input": {
-                                    color: "#fffff", // Font color
-                                    fontSize: "1.5rem", // Font size
-                                    textAlign: "center",
-                                    padding: "5px",
-                                },
-                            }}
-                            InputProps={{
-                                // Change position to "end"
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <LocationOnIcon
                                             sx={{ color: "#ffffff" }}
                                         />
                                     </InputAdornment>
