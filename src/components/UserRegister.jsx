@@ -57,9 +57,9 @@ function UserRegister() {
                                     },
                                     "& .MuiInputBase-input": {
                                         color: "#fffff", // Font color
-                                        fontSize: "1.5rem", // Font size
+                                        fontSize: "1rem", // Font size
                                         textAlign: "center",
-                                        padding: "15px",
+                                        padding: "10px",
                                     },
                                 }}
                                 InputProps={{
@@ -92,9 +92,9 @@ function UserRegister() {
                                     },
                                     "& .MuiInputBase-input": {
                                         color: "#fffff", // Font color
-                                        fontSize: "1.5rem", // Font size
+                                        fontSize: "1rem", // Font size
                                         textAlign: "center",
-                                        padding: "15px",
+                                        padding: "10px",
                                     },
                                 }}
                                 InputProps={{
@@ -126,9 +126,9 @@ function UserRegister() {
                                     },
                                     "& .MuiInputBase-input": {
                                         color: "#fffff", // Font color
-                                        fontSize: "1.5rem", // Font size
+                                        fontSize: "1rem", // Font size
                                         textAlign: "center",
-                                        padding: "15px",
+                                        padding: "10px",
                                     },
                                 }}
                                 InputProps={{
