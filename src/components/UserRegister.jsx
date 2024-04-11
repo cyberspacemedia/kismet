@@ -59,7 +59,6 @@ function UserRegister() {
                                         color: "#fffff", // Font color
                                         fontSize: "1rem", // Font size
                                         textAlign: "center",
-                                        padding: "10px",
                                     },
                                 }}
                                 InputProps={{
@@ -73,7 +72,6 @@ function UserRegister() {
                                     ),
                                 }}
                             />
-
                             <TextField
                                 id="email"
                                 size="large"
@@ -94,7 +92,6 @@ function UserRegister() {
                                         color: "#fffff", // Font color
                                         fontSize: "1rem", // Font size
                                         textAlign: "center",
-                                        padding: "10px",
                                     },
                                 }}
                                 InputProps={{
@@ -128,7 +125,6 @@ function UserRegister() {
                                         color: "#fffff", // Font color
                                         fontSize: "1rem", // Font size
                                         textAlign: "center",
-                                        padding: "10px",
                                     },
                                 }}
                                 InputProps={{
@@ -142,7 +138,6 @@ function UserRegister() {
                                     ),
                                 }}
                             />
-
                             <Typography variant="body2">
                                 <Checkbox
                                     sx={{
@@ -152,10 +147,10 @@ function UserRegister() {
                                         },
                                     }}
                                 />
-                                I, Agree to all terms and conditions of this
-                                app.
+                                By Signing up you will agree to our{" "}
+                                <a href="/">privacy policy</a> and{" "}
+                                <a href="/">conditions</a>.
                             </Typography>
-
                             <Button
                                 variant="contained"
                                 sx={{ mt: 2, ...theme.buttons.gradient }}
@@ -163,7 +158,8 @@ function UserRegister() {
                                 type="submit"
                             >
                                 Register Now
-                            </Button>
+                            </Button>{" "}
+                            or <a href="/">Login Now</a>
                         </form>
                     </Grid>
                 </Box>
