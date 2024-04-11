@@ -4,8 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme/Theme"; // Import your custom theme
 import Approutes from "./Routes/Approutes";
-
-//import GettingStarted from "./components/GettingStarted";
+import withLoader from "./components/Loaders/withLoader"; // Import the withLoader HOC
 
 function App() {
     return (
@@ -18,4 +17,4 @@ function App() {
     );
 }
 
-export default App;
+export default withLoader(App); // Wrap the App component with withLoader HOC
