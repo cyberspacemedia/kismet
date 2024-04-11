@@ -1,17 +1,15 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import logo from "../logo.svg";
 import Button from "@mui/material/Button";
 
 function GettingStarted() {
     return (
         <Grid
             container
-            spacing={2}
             sx={{
                 height: "100vh",
-                backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
+                backgroundImage: `url('./StaticAssets/Images/Getting_Started.jpg')`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundColor: "black",
@@ -29,18 +27,10 @@ function GettingStarted() {
                 textAlign="center"
                 flexDirection="column" // Display items below each other
             >
-                <img src={logo} className="App-logo" alt="logo" />
-                <Typography variant="h3" color="red">
-                    Coming Soon
-                </Typography>
-                <Typography variant="h5" color="red">
-                    Stay Tuned
-                </Typography>
-
                 <Button
                     variant="contained"
                     color="secondary"
-                    sx={{ mt: 10, width: "70%", borderRadius: "50px" }}
+                    sx={{ mt: 80, width: "70%", borderRadius: "50px" }}
                     size="large"
                 >
                     Register Now
