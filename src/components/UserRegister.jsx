@@ -28,6 +28,7 @@ function UserRegister() {
                                 id="name"
                                 placeholder="Enter Name"
                                 sx={{
+                                    width: "70%",
                                     borderRadius: "80px", // Rounded corners
                                     borderColor: "#ffff", // White border color
                                     borderWidth: "1px", // Border width
