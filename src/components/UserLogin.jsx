@@ -1,5 +1,6 @@
 import React from "react";
 import theme from "../theme/Theme";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -133,7 +134,7 @@ function UserLogin() {
                     <Typography variant="subtitle2">
                         {" "}
                         Do not have account?{" "}
-                        <a href="/register">Register Here</a>
+                        <Link to="/register">Register Here</Link>
                     </Typography>
                 </Grid>
             </Grid>

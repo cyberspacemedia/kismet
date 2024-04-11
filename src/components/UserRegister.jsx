@@ -1,5 +1,6 @@
 import React from "react";
 import theme from "../theme/Theme";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -159,7 +160,7 @@ function UserRegister() {
                             >
                                 Register Now
                             </Button>{" "}
-                            or <a href="/login">Login Now</a>
+                            or <Link to="/login">Login Now</Link>
                         </form>
                     </Grid>
                 </Box>

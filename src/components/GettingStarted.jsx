@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "../theme/Theme";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -66,7 +66,7 @@ function GettingStarted() {
                     Register Now
                 </Button>
                 <Typography variant="body1" color="white" sx={{ mt: 2 }}>
-                    Already registered, <a href="/login">Login</a>
+                    Already registered, <Link to="/login">Login</Link>
                 </Typography>
             </Grid>
             <Box
