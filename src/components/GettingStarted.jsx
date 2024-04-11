@@ -11,8 +11,9 @@ function MyComponent() {
             spacing={2}
             sx={{
                 height: "100vh",
-                backgroundImage: `url('/staticassets/images/register_bg.jpeg')`,
-                backgroundPosition:'bottom center'
+                backgroundImage: `url('/staticassets/images/Background_bg.jpg')`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
             }}
         >
             <Grid
