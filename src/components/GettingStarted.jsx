@@ -66,8 +66,7 @@ function GettingStarted() {
                     Register Now
                 </Button>
                 <Typography variant="body1" color="white" sx={{ mt: 2 }}>
-                    Already registered,{" "}
-                    <a href="/pathtologincomponent">Login</a>
+                    Already registered, <a href="/login">Login</a>
                 </Typography>
             </Grid>
             <Box

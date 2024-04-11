@@ -4,14 +4,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Checkbox from "@mui/material/Checkbox";
 import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 import Typography from "@mui/material/Typography";
 
-function UserRegister() {
+function UserLogin() {
     return (
         <>
             <Grid
@@ -35,43 +33,14 @@ function UserRegister() {
                         />
                     </Grid>
                     <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
-                        <Typography variant="h5">Register & Play</Typography>
-                        <Typography variant="h6">Earn big in Kismet</Typography>
-                        <hr />
+                        <Typography variant="h5" sx={{ textAlign: "left" }}>
+                            Login
+                        </Typography>
+                        <Typography variant="h6" sx={{ textAlign: "left" }}>
+                            Welcom back
+                        </Typography>
+                        <hr style={{ marginBottom: "20px" }} />
                         <form>
-                            <TextField
-                                id="Name"
-                                size="large"
-                                variant="filled"
-                                label="Name"
-                                color="secondary"
-                                fullWidth
-                                required
-                                autoComplete="off"
-                                autoFocus
-                                sx={{
-                                    margin: "0 0 20px", // Add margin bottom for spacing
-                                    "& .MuiFilledInput-root": {
-                                        backgroundColor:
-                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                    },
-                                    "& .MuiInputBase-input": {
-                                        color: "#fffff", // Font color
-                                        fontSize: "1rem", // Font size
-                                        textAlign: "center",
-                                    },
-                                }}
-                                InputProps={{
-                                    // Change position to "end"
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <AccountCircle
-                                                sx={{ color: "#ffffff" }}
-                                            />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
                             <TextField
                                 id="email"
                                 size="large"
@@ -112,7 +81,7 @@ function UserRegister() {
                                 label="Password"
                                 color="secondary"
                                 fullWidth
-                                type="text"
+                                type="password"
                                 required
                                 autoComplete="off"
                                 sx={{
@@ -138,34 +107,38 @@ function UserRegister() {
                                     ),
                                 }}
                             />
-                            <Typography variant="body2">
-                                <Checkbox
-                                    sx={{
-                                        "& .MuiSvgIcon-root": {
-                                            fontSize: 28,
-                                            color: "#ffffff",
-                                        },
-                                    }}
-                                />
-                                By Signing up you will agree to our{" "}
-                                <a href="/">privacy policy</a> and{" "}
-                                <a href="/">conditions</a>.
-                            </Typography>
                             <Button
                                 variant="contained"
                                 sx={{ mt: 2, ...theme.buttons.gradient }}
                                 size="large"
                                 type="submit"
                             >
-                                Register Now
-                            </Button>{" "}
-                            or <a href="/login">Login Now</a>
+                                Login
+                            </Button>
+                            <br />
+                            or
+                            <br />
+                            <Button
+                                variant="contained"
+                                sx={{ mt: 2, ...theme.buttons.gradient }}
+                                size="large"
+                                type="submit"
+                            >
+                                Login with Phone
+                            </Button>
                         </form>
                     </Grid>
                 </Box>
+                <Grid item sx={{ mt: 5 }}>
+                    <Typography variant="subtitle2">
+                        {" "}
+                        Do not have account?{" "}
+                        <a href="/register">Register Here</a>
+                    </Typography>
+                </Grid>
             </Grid>
         </>
     );
 }
 
-export default UserRegister;
+export default UserLogin;
