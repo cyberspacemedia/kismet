@@ -4,14 +4,14 @@ import Typography from "@mui/material/Typography";
 import logo from "../logo.svg";
 import Button from "@mui/material/Button";
 
-function MyComponent() {
+function GettingStarted() {
     return (
         <Grid
             container
             spacing={2}
             sx={{
                 height: "100vh",
-                backgroundImage: `url('/staticassets/images/Background_bg.jpg')`,
+                backgroundImage: `url('./staticassets/images/Background_bg.jpg')`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
@@ -26,7 +26,7 @@ function MyComponent() {
                 justifyContent="center"
                 alignItems="center"
                 textAlign="center"
-                direction={"column"}
+                flexDirection="column" // Display items below each other
             >
                 <img src={logo} className="App-logo" alt="logo" />
                 <Typography variant="h3" color="red">
@@ -52,4 +52,4 @@ function MyComponent() {
     );
 }
 
-export default MyComponent;
+export default GettingStarted;
