@@ -12,6 +12,7 @@ const theme = createTheme({
             primary: "#fff", // Set default text color to white
         },
     },
+
     typography: {
         fontFamily: "Roboto, sans-serif",
         body1: {

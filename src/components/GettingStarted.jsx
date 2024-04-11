@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
@@ -6,6 +7,11 @@ import Box from "@mui/material/Box";
 import theme from "../theme/Theme";
 
 function GettingStarted() {
+    const navigate = useNavigate();
+
+    const handleRegister = () => {
+        navigate("/register");
+    };
     return (
         <Grid
             container
@@ -55,11 +61,13 @@ function GettingStarted() {
                     variant="contained"
                     sx={{ mt: 10, ...theme.buttons.gradient }}
                     size="large"
+                    onClick={handleRegister}
                 >
                     Register Now
                 </Button>
-                <Typography variant="body1" color="white" sx={{mt:2}}>
-                    Already registered, <a href="pathtologincomponent">Login</a>
+                <Typography variant="body1" color="white" sx={{ mt: 2 }}>
+                    Already registered,{" "}
+                    <a href="/pathtologincomponent">Login</a>
                 </Typography>
             </Grid>
             <Box
