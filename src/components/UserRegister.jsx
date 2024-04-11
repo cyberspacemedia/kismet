@@ -1,106 +1,106 @@
 import React from "react";
-import theme from "../theme/Theme";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 
 function UserRegister() {
     return (
-        <Grid
-            container
-            direction={"column"}
-            sx={{
-                backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
-            }}
-            height="100vh" // Make the container fill the entire viewport vertically
-        >
-            <Grid item textAlign="center" sx={{m:5}}>
-                <img
-                    src="./StaticAssets/Images/moblogo.png"
-                    alt="Logo"
-                    style={{ height: "80px" }} // Adjust the height as needed
-                />
-            </Grid>
-            <Grid item textAlign="center">
-                {/* Form */}
-                <form>
-                    <Grid container direction="column" spacing={2}>
-                        <Grid item>
-                            <TextField
-                                id="name"
-                                placeholder="Enter Name"
-                                sx={{
-                                    width: "70%",
-                                    borderRadius: "80px", // Rounded corners
-                                    borderColor: "#ffff", // White border color
-                                    borderWidth: "1px", // Border width
-                                    backgroundColor: "#c6bbc2",
-                                    color: "#c28f07",
-                                    "&:hover": {
-                                        borderColor: "#c28f07", // Yellow border color on hover
-                                        borderStyle: "solid", // Ensure border style is solid
-                                        borderWidth: "2px", // Increase border width on hover
-                                    },
-                                    textAlign: "center", // Centered text
-                                    fontSize: "2.5em", // Responsive font size
-                                }}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                id="name"
-                                placeholder="Email Address"
-                                sx={{
-                                    width: "70%",
-                                    borderRadius: "80px", // Rounded corners
-                                    borderColor: "#ffff", // White border color
-                                    borderWidth: "1px", // Border width
-                                    backgroundColor: "#c6bbc2",
-                                    color: "#c28f07",
-                                    "&:hover": {
-                                        borderColor: "#c28f07", // Yellow border color on hover
-                                        borderStyle: "solid", // Ensure border style is solid
-                                        borderWidth: "2px", // Increase border width on hover
-                                    },
-                                    textAlign: "center", // Centered text
-                                    fontSize: "2.5em", // Responsive font size
-                                }}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                id="name"
-                                placeholder="Password"
-                                sx={{
-                                    width: "70%",
-                                    borderRadius: "80px", // Rounded corners
-                                    borderColor: "#ffff", // White border color
-                                    borderWidth: "1px", // Border width
-                                    backgroundColor: "#c6bbc2",
-                                    color: "#c28f07",
-                                    "&:hover": {
-                                        borderColor: "#c28f07", // Yellow border color on hover
-                                        borderStyle: "solid", // Ensure border style is solid
-                                        borderWidth: "2px", // Increase border width on hover
-                                    },
-                                    textAlign: "center", // Centered text
-                                    fontSize: "2.5em", // Responsive font size
-                                }}
-                            />
-                        </Grid>
-                        <Grid item>
-                            <Button
-                                variant="contained"
-                                sx={{ mt: 10, ...theme.buttons.gradient }}
-                                size="large"
-                            >
-                                Register Now
-                            </Button>
-                        </Grid>
+        <>
+            <Grid
+                container
+                direction={"column"}
+                display="flex"
+                textAlign="center"
+                sx={{
+                    backgroundColor: "black",
+                    height: "100vh",
+                    backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                }}
+            >
+                <Box xs={12} sm={4} md={4} lg={4}>
+                    <Grid item sx={{ mt: 2 }}>
+                        <img
+                            src="./StaticAssets/Images/moblogo.png"
+                            alt="Logo"
+                            style={{ height: "100px" }}
+                        />
                     </Grid>
-                </form>
+                    <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
+                        <TextField
+                            id="Name"
+                            size="large"
+                            variant="filled"
+                            label="Name"
+                            color="secondary"
+                            fullWidth
+                            required
+                            autoComplete="off"
+                            autoFocus
+                            sx={{
+                                margin: "0 0 20px", // Add margin bottom for spacing
+                                "& .MuiFilledInput-root": {
+                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                },
+                                "& .MuiInputBase-input": {
+                                    color: "#fffff", // Font color
+                                    fontSize: "1.5rem", // Font size
+                                    textAlign: "center",
+                                    padding: "5px",
+                                },
+                            }}
+                        />
+                        <TextField
+                            id="email"
+                            size="large"
+                            variant="filled"
+                            label="Email"
+                            color="secondary"
+                            type="email"
+                            fullWidth
+                            required
+                            autoComplete="off"
+                            sx={{
+                                margin: "0 0 20px", // Add margin bottom for spacing
+                                "& .MuiFilledInput-root": {
+                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                },
+                                "& .MuiInputBase-input": {
+                                    color: "#fffff", // Font color
+                                    fontSize: "1.5rem", // Font size
+                                    textAlign: "center",
+                                    padding: "5px",
+                                },
+                            }}
+                        />
+                        <TextField
+                            id="password"
+                            size="large"
+                            variant="filled"
+                            label="Password"
+                            color="secondary"
+                            fullWidth
+                            type="password"
+                            required
+                            autoComplete="off"
+                            sx={{
+                                margin: "0 0 20px", // Add margin bottom for spacing
+                                "& .MuiFilledInput-root": {
+                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                },
+                                "& .MuiInputBase-input": {
+                                    color: "#fffff", // Font color
+                                    fontSize: "1.5rem", // Font size
+                                    textAlign: "center",
+                                    padding: "5px",
+                                },
+                            }}
+                        />
+                    </Grid>
+                </Box>
             </Grid>
-        </Grid>
+        </>
     );
 }
 
