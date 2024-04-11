@@ -47,6 +47,10 @@ function GettingStarted() {
                 <Typography variant="body1" color="white">
                     Already registered, <a href="pathtologincomponent">Login</a>
                 </Typography>
+
+                <Typography variant="body2" color="white">
+                    Version 1.0
+                </Typography>
             </Grid>
         </Grid>
     );
