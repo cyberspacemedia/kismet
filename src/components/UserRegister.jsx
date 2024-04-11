@@ -4,12 +4,14 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Checkbox from "@mui/material/Checkbox";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Typography from "@mui/material/Typography";
 
 function UserRegister() {
     return (
@@ -36,6 +38,9 @@ function UserRegister() {
                         />
                     </Grid>
                     <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
+                        <Typography variant="h5">Register & Play</Typography>
+                        <Typography variant="h6">Earn big in Kismet</Typography>
+                        <hr />
                         <TextField
                             id="Name"
                             size="large"
@@ -234,9 +239,21 @@ function UserRegister() {
                             }}
                         />
 
+                        <Typography variant="body2">
+                            <Checkbox
+                                sx={{
+                                    "& .MuiSvgIcon-root": {
+                                        fontSize: 28,
+                                        color: "#ffffff",
+                                    },
+                                }}
+                            />
+                            I, Agree to all terms and conditions of this app.
+                        </Typography>
+
                         <Button
                             variant="contained"
-                            sx={{ mt: 10, ...theme.buttons.gradient }}
+                            sx={{ mt: 2, ...theme.buttons.gradient }}
                             size="large"
                         >
                             Register Now

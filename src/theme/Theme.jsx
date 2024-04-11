@@ -18,11 +18,22 @@ const theme = createTheme({
         body1: {
             color: "#fff", // Apply default text color to the body1 variant
         },
+        body2: {
+            color: "#d7d6d7",
+        },
         h3: {
             color: "red",
         },
         h4: {
             color: "#cc008f",
+        },
+        h5: {
+            color: "#cc008f",
+            fontSize: "2rem",
+        },
+        h6: {
+            color: "#eeb741",
+            fontSize: "1rem",
         },
     },
     buttons: {
