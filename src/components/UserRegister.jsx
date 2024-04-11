@@ -1,11 +1,15 @@
 import React from "react";
+import theme from "../theme/Theme";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 function UserRegister() {
     return (
@@ -130,6 +134,113 @@ function UserRegister() {
                                 ),
                             }}
                         />
+                        <TextField
+                            id="phone"
+                            size="large"
+                            variant="filled"
+                            label="Phone Number"
+                            color="secondary"
+                            fullWidth
+                            type="number"
+                            required
+                            autoComplete="off"
+                            sx={{
+                                margin: "0 0 20px", // Add margin bottom for spacing
+                                "& .MuiFilledInput-root": {
+                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                },
+                                "& .MuiInputBase-input": {
+                                    color: "#fffff", // Font color
+                                    fontSize: "1.5rem", // Font size
+                                    textAlign: "center",
+                                    padding: "5px",
+                                },
+                            }}
+                            InputProps={{
+                                // Change position to "end"
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <PhoneAndroidIcon
+                                            sx={{ color: "#ffffff" }}
+                                        />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <TextField
+                            id="state"
+                            size="large"
+                            variant="filled"
+                            label="State"
+                            color="secondary"
+                            fullWidth
+                            type="text"
+                            required
+                            autoComplete="off"
+                            sx={{
+                                margin: "0 0 20px", // Add margin bottom for spacing
+                                "& .MuiFilledInput-root": {
+                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                },
+                                "& .MuiInputBase-input": {
+                                    color: "#fffff", // Font color
+                                    fontSize: "1.5rem", // Font size
+                                    textAlign: "center",
+                                    padding: "5px",
+                                },
+                            }}
+                            InputProps={{
+                                // Change position to "end"
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <LocationOnIcon
+                                            sx={{ color: "#ffffff" }}
+                                        />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <TextField
+                            id="refcode"
+                            size="large"
+                            variant="filled"
+                            label="Invite Code"
+                            color="secondary"
+                            fullWidth
+                            type="text"
+                            required
+                            autoComplete="off"
+                            sx={{
+                                margin: "0 0 20px", // Add margin bottom for spacing
+                                "& .MuiFilledInput-root": {
+                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                },
+                                "& .MuiInputBase-input": {
+                                    color: "#fffff", // Font color
+                                    fontSize: "1.5rem", // Font size
+                                    textAlign: "center",
+                                    padding: "5px",
+                                },
+                            }}
+                            InputProps={{
+                                // Change position to "end"
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <LocationOnIcon
+                                            sx={{ color: "#ffffff" }}
+                                        />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+
+                        <Button
+                            variant="contained"
+                            sx={{ mt: 10, ...theme.buttons.gradient }}
+                            size="large"
+                        >
+                            Register Now
+                        </Button>
                     </Grid>
                 </Box>
             </Grid>
