@@ -14,6 +14,7 @@ function GettingStarted() {
                 backgroundImage: `url('./staticassets/images/Background_bg.jpg')`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
+                backgroundColor: "black",
             }}
         >
             <Grid
