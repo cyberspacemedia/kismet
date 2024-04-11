@@ -2,6 +2,8 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import theme from "../theme/Theme";
 
 function GettingStarted() {
     return (
@@ -29,8 +31,7 @@ function GettingStarted() {
             >
                 <Button
                     variant="contained"
-                    color="secondary"
-                    sx={{ mt: 80, width: "70%", borderRadius: "50px" }}
+                    sx={{ mt: 75, ...theme.buttons.gradient }}
                     size="large"
                 >
                     Register Now
@@ -38,11 +39,20 @@ function GettingStarted() {
                 <Typography variant="body1" color="white">
                     Already registered, <a href="pathtologincomponent">Login</a>
                 </Typography>
-
-                <Typography variant="body2" color="white">
-                    Version 1.0
-                </Typography>
             </Grid>
+            <Box
+                sx={{
+                    position: "absolute",
+                    bottom: 0,
+                    right: 0,
+                    p: 1, // Add padding to create some space
+                }}
+            >
+                <Typography variant="caption" color="white">
+                    V1.0
+                </Typography>
+            </Box>
+            ;
         </Grid>
     );
 }

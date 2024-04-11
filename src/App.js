@@ -1,10 +1,14 @@
+import React from "react";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme/Theme"; // Import your custom theme
+
 import GettingStarted from "./components/GettingStarted";
 
 function App() {
     return (
-        <div className="App">
+        <ThemeProvider theme={theme}>
             <GettingStarted />
-        </div>
+        </ThemeProvider>
     );
 }
 
