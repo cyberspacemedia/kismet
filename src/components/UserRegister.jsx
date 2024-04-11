@@ -2,6 +2,10 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import EmailIcon from "@mui/icons-material/Email";
+import PasswordIcon from "@mui/icons-material/Password";
 
 function UserRegister() {
     return (
@@ -50,7 +54,18 @@ function UserRegister() {
                                     padding: "5px",
                                 },
                             }}
+                            InputProps={{
+                                // Change position to "end"
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <AccountCircle
+                                            sx={{ color: "#ffffff" }}
+                                        />
+                                    </InputAdornment>
+                                ),
+                            }}
                         />
+
                         <TextField
                             id="email"
                             size="large"
@@ -72,6 +87,14 @@ function UserRegister() {
                                     textAlign: "center",
                                     padding: "5px",
                                 },
+                            }}
+                            InputProps={{
+                                // Change position to "end"
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <EmailIcon sx={{ color: "#ffffff" }} />
+                                    </InputAdornment>
+                                ),
                             }}
                         />
                         <TextField
@@ -95,6 +118,16 @@ function UserRegister() {
                                     textAlign: "center",
                                     padding: "5px",
                                 },
+                            }}
+                            InputProps={{
+                                // Change position to "end"
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <PasswordIcon
+                                            sx={{ color: "#ffffff" }}
+                                        />
+                                    </InputAdornment>
+                                ),
                             }}
                         />
                     </Grid>
