@@ -11,7 +11,7 @@ function GettingStarted() {
             spacing={2}
             sx={{
                 height: "100vh",
-                backgroundImage: `url('./staticassets/images/Background_bg.jpg')`,
+                backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
                 backgroundColor: "black",
