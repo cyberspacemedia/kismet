@@ -39,124 +39,133 @@ function UserRegister() {
                         <Typography variant="h5">Register & Play</Typography>
                         <Typography variant="h6">Earn big in Kismet</Typography>
                         <hr />
-                        <TextField
-                            id="Name"
-                            size="large"
-                            variant="filled"
-                            label="Name"
-                            color="secondary"
-                            fullWidth
-                            required
-                            autoComplete="off"
-                            autoFocus
-                            sx={{
-                                margin: "0 0 20px", // Add margin bottom for spacing
-                                "& .MuiFilledInput-root": {
-                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                },
-                                "& .MuiInputBase-input": {
-                                    color: "#fffff", // Font color
-                                    fontSize: "1.5rem", // Font size
-                                    textAlign: "center",
-                                    padding: "15px",
-                                },
-                            }}
-                            InputProps={{
-                                // Change position to "end"
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <AccountCircle
-                                            sx={{ color: "#ffffff" }}
-                                        />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-
-                        <TextField
-                            id="email"
-                            size="large"
-                            variant="filled"
-                            label="Email"
-                            color="secondary"
-                            type="email"
-                            fullWidth
-                            required
-                            autoComplete="off"
-                            sx={{
-                                margin: "0 0 20px", // Add margin bottom for spacing
-                                "& .MuiFilledInput-root": {
-                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                },
-                                "& .MuiInputBase-input": {
-                                    color: "#fffff", // Font color
-                                    fontSize: "1.5rem", // Font size
-                                    textAlign: "center",
-                                    padding: "15px",
-                                },
-                            }}
-                            InputProps={{
-                                // Change position to "end"
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <EmailIcon sx={{ color: "#ffffff" }} />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <TextField
-                            id="password"
-                            size="large"
-                            variant="filled"
-                            label="Password"
-                            color="secondary"
-                            fullWidth
-                            type="password"
-                            required
-                            autoComplete="off"
-                            sx={{
-                                margin: "0 0 20px", // Add margin bottom for spacing
-                                "& .MuiFilledInput-root": {
-                                    backgroundColor: "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                },
-                                "& .MuiInputBase-input": {
-                                    color: "#fffff", // Font color
-                                    fontSize: "1.5rem", // Font size
-                                    textAlign: "center",
-                                    padding: "15px",
-                                },
-                            }}
-                            InputProps={{
-                                // Change position to "end"
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <PasswordIcon
-                                            sx={{ color: "#ffffff" }}
-                                        />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-
-                        <Typography variant="body2">
-                            <Checkbox
+                        <form>
+                            <TextField
+                                id="Name"
+                                size="large"
+                                variant="filled"
+                                label="Name"
+                                color="secondary"
+                                fullWidth
+                                required
+                                autoComplete="off"
+                                autoFocus
                                 sx={{
-                                    "& .MuiSvgIcon-root": {
-                                        fontSize: 28,
-                                        color: "#ffffff",
+                                    margin: "0 0 20px", // Add margin bottom for spacing
+                                    "& .MuiFilledInput-root": {
+                                        backgroundColor:
+                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                    },
+                                    "& .MuiInputBase-input": {
+                                        color: "#fffff", // Font color
+                                        fontSize: "1.5rem", // Font size
+                                        textAlign: "center",
+                                        padding: "15px",
                                     },
                                 }}
+                                InputProps={{
+                                    // Change position to "end"
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <AccountCircle
+                                                sx={{ color: "#ffffff" }}
+                                            />
+                                        </InputAdornment>
+                                    ),
+                                }}
                             />
-                            I, Agree to all terms and conditions of this app.
-                        </Typography>
 
-                        <Button
-                            variant="contained"
-                            sx={{ mt: 2, ...theme.buttons.gradient }}
-                            size="large"
-                        >
-                            Register Now
-                        </Button>
+                            <TextField
+                                id="email"
+                                size="large"
+                                variant="filled"
+                                label="Email"
+                                color="secondary"
+                                type="email"
+                                fullWidth
+                                required
+                                autoComplete="off"
+                                sx={{
+                                    margin: "0 0 20px", // Add margin bottom for spacing
+                                    "& .MuiFilledInput-root": {
+                                        backgroundColor:
+                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                    },
+                                    "& .MuiInputBase-input": {
+                                        color: "#fffff", // Font color
+                                        fontSize: "1.5rem", // Font size
+                                        textAlign: "center",
+                                        padding: "15px",
+                                    },
+                                }}
+                                InputProps={{
+                                    // Change position to "end"
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <EmailIcon
+                                                sx={{ color: "#ffffff" }}
+                                            />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                            <TextField
+                                id="password"
+                                size="large"
+                                variant="filled"
+                                label="Password"
+                                color="secondary"
+                                fullWidth
+                                type="text"
+                                required
+                                autoComplete="off"
+                                sx={{
+                                    margin: "0 0 20px", // Add margin bottom for spacing
+                                    "& .MuiFilledInput-root": {
+                                        backgroundColor:
+                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                    },
+                                    "& .MuiInputBase-input": {
+                                        color: "#fffff", // Font color
+                                        fontSize: "1.5rem", // Font size
+                                        textAlign: "center",
+                                        padding: "15px",
+                                    },
+                                }}
+                                InputProps={{
+                                    // Change position to "end"
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <PasswordIcon
+                                                sx={{ color: "#ffffff" }}
+                                            />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+
+                            <Typography variant="body2">
+                                <Checkbox
+                                    sx={{
+                                        "& .MuiSvgIcon-root": {
+                                            fontSize: 28,
+                                            color: "#ffffff",
+                                        },
+                                    }}
+                                />
+                                I, Agree to all terms and conditions of this
+                                app.
+                            </Typography>
+
+                            <Button
+                                variant="contained"
+                                sx={{ mt: 2, ...theme.buttons.gradient }}
+                                size="large"
+                                type="submit"
+                            >
+                                Register Now
+                            </Button>
+                        </form>
                     </Grid>
                 </Box>
             </Grid>
