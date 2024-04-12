@@ -28,7 +28,7 @@ function UserRegister() {
                 }}
             >
                 <Box xs={12} sm={4} md={4} lg={4}>
-                    <Grid item sx={{ mt: 2 }}>
+                    <Grid item sx={{ mt: 10 }}>
                         <img
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"

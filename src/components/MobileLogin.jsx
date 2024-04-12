@@ -1,21 +1,15 @@
 import React from "react";
 import theme from "../theme/Theme";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import EmailIcon from "@mui/icons-material/Email";
-import PasswordIcon from "@mui/icons-material/Password";
 import Typography from "@mui/material/Typography";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 
-function UserLogin() {
-    const navigate = useNavigate();
-
-    const handleMobileLogin = () => {
-        navigate("/mobilelogin");
-    };
+function MobileLogin() {
     return (
         <>
             <Grid
@@ -40,20 +34,20 @@ function UserLogin() {
                     </Grid>
                     <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
                         <Typography variant="h5" sx={{ textAlign: "left" }}>
-                            Login
+                            Login with OTP
                         </Typography>
                         <Typography variant="h6" sx={{ textAlign: "left" }}>
-                            Welcom back, Its good to see you
+                            Enter your mobile number
                         </Typography>
                         <hr style={{ marginBottom: "20px" }} />
                         <form>
                             <TextField
-                                id="email"
+                                id="phone"
                                 size="large"
                                 variant="filled"
-                                label="Email"
+                                label="Enter Phone Number"
                                 color="secondary"
-                                type="email"
+                                type="number"
                                 fullWidth
                                 required
                                 autoComplete="off"
@@ -73,64 +67,21 @@ function UserLogin() {
                                     // Change position to "end"
                                     endAdornment: (
                                         <InputAdornment position="end">
-                                            <EmailIcon
+                                            <PhoneAndroidIcon
                                                 sx={{ color: "#ffffff" }}
                                             />
                                         </InputAdornment>
                                     ),
                                 }}
                             />
-                            <TextField
-                                id="password"
-                                size="large"
-                                variant="filled"
-                                label="Password"
-                                color="secondary"
-                                fullWidth
-                                type="password"
-                                required
-                                autoComplete="off"
-                                sx={{
-                                    margin: "0 0 20px", // Add margin bottom for spacing
-                                    "& .MuiFilledInput-root": {
-                                        backgroundColor:
-                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                    },
-                                    "& .MuiInputBase-input": {
-                                        color: "#fffff", // Font color
-                                        fontSize: "1rem", // Font size
-                                        textAlign: "center",
-                                    },
-                                }}
-                                InputProps={{
-                                    // Change position to "end"
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <PasswordIcon
-                                                sx={{ color: "#ffffff" }}
-                                            />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
+
                             <Button
                                 variant="contained"
                                 sx={{ mt: 2, ...theme.buttons.gradient }}
                                 size="large"
                                 type="submit"
                             >
-                                Login
-                            </Button>
-                            <br />
-                            or
-                            <br />
-                            <Button
-                                variant="contained"
-                                sx={{ mt: 2, ...theme.buttons.gradient }}
-                                size="large"
-                                onClick={handleMobileLogin}
-                            >
-                                Login with Phone
+                                Get OTP
                             </Button>
                         </form>
                     </Grid>
@@ -147,4 +98,4 @@ function UserLogin() {
     );
 }
 
-export default UserLogin;
+export default MobileLogin;
