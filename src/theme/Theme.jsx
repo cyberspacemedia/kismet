@@ -9,14 +9,14 @@ const theme = createTheme({
             main: "#dc004e",
         },
         text: {
-            primary: "#fff", // Set default text color to white
+            primary: "#ffff", // Set default text color to white
         },
     },
 
     typography: {
         fontFamily: "Roboto, sans-serif",
         body1: {
-            color: "#fff", // Apply default text color to the body1 variant
+            color: "#ff00dd", // Apply default text color to the body1 variant
         },
         body2: {
             color: "#d7d6d7",
