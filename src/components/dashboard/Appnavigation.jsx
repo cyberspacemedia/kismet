@@ -34,7 +34,7 @@ function AppNavigation() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: "black" }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon
@@ -55,7 +55,7 @@ function AppNavigation() {
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        Kismet
                     </Typography>
 
                     <Box
@@ -114,8 +114,10 @@ function AppNavigation() {
                             {/* Primary Items for Mobile */}
                         </Menu>
                     </Box>
-                    <AdbIcon
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+                    <img
+                        src="./StaticAssets/Images/moblogo.png"
+                        alt="Logo"
+                        style={{ height: "40px", margin: "5px" }}
                     />
                     <Typography
                         variant="h5"
@@ -128,12 +130,13 @@ function AppNavigation() {
                             flexGrow: 1,
                             fontFamily: "monospace",
                             fontWeight: 700,
+                            fontSize: "1rem",
                             letterSpacing: ".3rem",
                             color: "inherit",
                             textDecoration: "none",
                         }}
                     >
-                        LOGO
+                        KISMET
                     </Typography>
                     <Box
                         sx={{
