@@ -1,0 +1,16 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slider-image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+}
