@@ -12,7 +12,8 @@ function Dashboard() {
     }
 
     return (
-        <Layout> {/* Wrap the dashboard content with the Layout component */}
+        <Layout>
+            {/* Wrap the dashboard content with the Layout component */}
             <Routes>
                 <Route
                     path="/"

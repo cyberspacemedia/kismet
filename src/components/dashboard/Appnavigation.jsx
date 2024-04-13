@@ -7,14 +7,12 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
+import SettingsIcon from "@mui/icons-material/Settings";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
-
-const pages = ["Products", "Pricing", "Blog"];
 
 function AppNavigation() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -94,11 +92,26 @@ function AppNavigation() {
                                 display: { xs: "block", md: "none" },
                             }}
                         >
+                            {/* Primary Items for Mobile */}
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Typography textAlign="center">
-                                    <Link to="/dashboard">Dashboard</Link>
+                                    <Link to="/dashboard">
+                                        Transaction History
+                                    </Link>
                                 </Typography>
                             </MenuItem>
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">
+                                    <Link to="/dashboard">Leaderboard</Link>
+                                </Typography>
+                            </MenuItem>
+
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">
+                                    <Link to="/dashboard">About App</Link>
+                                </Typography>
+                            </MenuItem>
+                            {/* Primary Items for Mobile */}
                         </Menu>
                     </Box>
                     <AdbIcon
@@ -128,26 +141,24 @@ function AppNavigation() {
                             display: { xs: "none", md: "flex" },
                         }}
                     >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                        {/* Desktop Menu */}
+                        <Button
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: "white", display: "block" }}
+                        >
+                            <Link to="/dashboard">Dashboard</Link>
+                        </Button>
+                        {/* Desktop Menu */}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
+                        <Tooltip title="Settings">
                             <IconButton
                                 onClick={handleOpenUserMenu}
                                 sx={{ p: 0 }}
                             >
-                                <Avatar
-                                    alt="Remy Sharp"
-                                    src="/static/images/avatar/2.jpg"
+                                <SettingsIcon
+                                    sx={{ fontSize: "2rem", color: "#ffffff" }}
                                 />
                             </IconButton>
                         </Tooltip>
@@ -169,7 +180,23 @@ function AppNavigation() {
                         >
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Typography textAlign="center">
-                                    <Link to="/myaccount">My Account</Link>
+                                    <Link to="/myaccount">Account</Link>
+                                </Typography>
+                            </MenuItem>
+
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">
+                                    <Link to="/myaccount">Wallet</Link>
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">
+                                    <Link to="/myaccount">Change Password</Link>
+                                </Typography>
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center">
+                                    <Link to="/myaccount">How to play</Link>
                                 </Typography>
                             </MenuItem>
                         </Menu>
