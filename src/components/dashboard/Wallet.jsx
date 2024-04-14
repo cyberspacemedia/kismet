@@ -61,8 +61,8 @@ function Wallet() {
                     </Grid>
                 </Grid>
             </Paper>
-            <Grid container spacing={2} justifyContent={"center"} mt={2}>
-                <Grid item>
+            <Grid container spacing={1} justifyContent={"center"} mt={2}>
+                <Grid item xs={4}>
                     {/* Deposit Paper */}
                     <Paper
                         sx={{
@@ -115,7 +115,7 @@ function Wallet() {
                     </Paper>
                     {/* Deposit Paper */}
                 </Grid>
-                <Grid item>
+                <Grid item xs={4}>
                     {/* Earnings */}
                     <Paper
                         sx={{
@@ -168,7 +168,7 @@ function Wallet() {
                     </Paper>
                     {/*  Earnings */}
                 </Grid>
-                <Grid item>
+                <Grid item xs={4}>
                     {/* Commission */}
                     <Paper
                         sx={{
