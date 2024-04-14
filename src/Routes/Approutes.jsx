@@ -7,6 +7,7 @@ import MobileLogin from "../components/MobileLogin";
 import Test from "../components/Test";
 import Dashboard from "../components/dashboard/Dashboard";
 import Myaccount from "../components/dashboard/Myaccount";
+import Wallet from "../components/dashboard/Wallet";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -16,6 +17,7 @@ function Approutes() {
             <Route path="/test" element={<Test />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/myaccount" element={<Myaccount />} />
+            <Route path="/wallet" element={<Wallet />} />
             <Route
                 path="/"
                 element={

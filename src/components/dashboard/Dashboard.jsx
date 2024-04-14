@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Layout"; // Import the Layout component
 import DefaultDash from "./Defaultdash";
-import MyAccount from "./Myaccount";
 
 function Dashboard() {
     const isLoggedIn = true; // Assuming initially user is logged in, you can set it based on your authentication state
@@ -24,7 +23,7 @@ function Dashboard() {
                         </div>
                     }
                 />
-                <Route path="/myaccount" element={<MyAccount />} />
+
                 {/* Add other routes for different pages */}
             </Routes>
         </Layout>

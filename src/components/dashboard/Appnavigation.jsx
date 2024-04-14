@@ -189,7 +189,7 @@ function AppNavigation() {
 
                             <MenuItem onClick={handleCloseUserMenu}>
                                 <Typography textAlign="center">
-                                    <Link to="/myaccount">Wallet</Link>
+                                    <Link to="/wallet">Wallet</Link>
                                 </Typography>
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
