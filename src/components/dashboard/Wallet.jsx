@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "./Layout";
-import { Paper, Grid, Box, Typography } from "@mui/material";
+import { Paper, Grid, Box, Typography, Chip } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 
 function Wallet() {
@@ -31,13 +31,28 @@ function Wallet() {
                         <Grid container direction="column" spacing={1}>
                             <Grid item>
                                 <Typography variant="h4">
-                                    <span>Balance</span>
+                                    Total Balance
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Typography variant="h1" color="initial">
+                                <Typography variant="h1" component="span">
+                                    <span
+                                        style={{
+                                            fontSize: "0.5em",
+                                            verticalAlign: "super",
+                                        }}
+                                    >
+                                        ₹
+                                    </span>
                                     0
                                 </Typography>
+                            </Grid>
+
+                            <Grid item>
+                                <Chip
+                                    label="100% Secure payments"
+                                    color="info"
+                                />
                             </Grid>
                         </Grid>
                     </Grid>
