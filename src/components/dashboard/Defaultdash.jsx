@@ -4,8 +4,14 @@ import Imageslider from "./slider/Imageslider";
 
 function Defaultdash() {
     return (
-        <Paper sx={{ backgroundColor: "black", display: "flex", justifyContent: "center" }}>
-            <div style={{ height: "200px", width: "100%" }}>
+        <Paper
+            sx={{
+                backgroundColor: "black",
+                display: "flex",
+                justifyContent: "center",
+            }}
+        >
+            <div style={{ width: "85%" }}>
                 <Imageslider />
             </div>
         </Paper>

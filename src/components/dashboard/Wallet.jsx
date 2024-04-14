@@ -14,6 +14,7 @@ function Wallet() {
                 sx={{
                     padding: 2,
                     borderRadius: 5,
+                    borderColor: "white",
                     backgroundColor: (theme) =>
                         alpha(theme.palette.grey[500], 0.5),
                     width: "95%", // Adjust width to 95%
@@ -30,12 +31,12 @@ function Wallet() {
                     <Grid item>
                         <Grid container direction="column" spacing={1}>
                             <Grid item>
-                                <Typography variant="h4">
+                                <Typography variant="h5" color={"white"}>
                                     Total Balance
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Typography variant="h1" component="span">
+                                <Typography variant="h2" component="span">
                                     <span
                                         style={{
                                             fontSize: "0.5em",
