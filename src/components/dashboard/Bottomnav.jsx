@@ -16,23 +16,27 @@ export default function Bottomnav() {
                 showLabels
                 value={value}
                 onChange={(event, newValue) => setValue(newValue)}
+                sx={{ backgroundColor: "rgba(0, 0, 0, 0.5)", color: "white" }}
             >
                 <BottomNavigationAction
                     label="Home"
-                    icon={<HomeIcon />}
+                    icon={<HomeIcon sx={{ color: "white" }} />}
                     component={Link}
                     to="/dashboard"
+                    sx={{ color: "inherit" }}
                 />
                 <BottomNavigationAction
                     label="History"
-                    icon={<RestoreIcon />}
+                    icon={<RestoreIcon sx={{ color: "white" }} />}
                     component={Link}
-                    to="/dashboard"
+                    to="/wallet"
+                    sx={{ color: "inherit" }}
                 />
 
                 <BottomNavigationAction
                     label="Favorites"
-                    icon={<FavoriteIcon />}
+                    icon={<FavoriteIcon sx={{ color: "white" }} />}
+                    sx={{ color: "inherit" }}
                 />
             </BottomNavigation>
         </Box>
