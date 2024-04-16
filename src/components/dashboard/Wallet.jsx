@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "./Layout";
-import { Paper, Grid, Box, Typography, Chip, Button } from "@mui/material";
+import {
+    Paper,
+    Box,
+    Grid,
+    Typography,
+    Chip,
+    Button,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    TextField,
+} from "@mui/material";
 import { alpha } from "@mui/material/styles";
+import Slide from "@mui/material/Slide";
+
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function Wallet() {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
     return (
         <Layout>
             <Box sx={{ m: 2, textAlign: "center" }}>
@@ -235,6 +264,7 @@ function Wallet() {
                                 size="large"
                                 fullWidth
                                 sx={{ borderRadius: "50px", padding: 2 }}
+                                onClick={handleOpenModal}
                             >
                                 Add Money
                             </Button>
@@ -264,6 +294,58 @@ function Wallet() {
                     </Button>
                 </Grid>
             </Grid>
+
+            {/* Add Money Dialog */}
+            <Dialog
+                open={openModal}
+                onClose={handleCloseModal}
+                TransitionComponent={Transition}
+                fullScreen
+                PaperProps={{
+                    sx: {
+                        position: "absolute",
+                        bottom: 0,
+                        maxHeight: "50vh", // Set maxHeight to 50% of the viewport height
+                        width: "100%",
+                        borderTopLeftRadius: "20px",
+                        borderTopRightRadius: "20px",
+                    },
+                }}
+            >
+                <DialogTitle
+                    sx={{
+                        backgroundColor: "black",
+                        color: "white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <CurrencyRupeeIcon sx={{ marginRight: "5px" }} />
+                    Add Money
+                </DialogTitle>
+
+                <DialogContent sx={{ mt: 5 }}>
+                    <TextField
+                        id="amount"
+                        label="Amount"
+                        variant="standard"
+                        type="number"
+                        fullWidth
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCloseModal}>Cancel</Button>
+                    <Button
+                        onClick={handleCloseModal}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Add Money
+                    </Button>
+                </DialogActions>
+            </Dialog>
+            {/* Add Money Dialog */}
         </Layout>
     );
 }
