@@ -12,6 +12,7 @@ import {
     DialogContent,
     DialogActions,
     TextField,
+    InputAdornment,
 } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 import Slide from "@mui/material/Slide";
@@ -24,6 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function Wallet() {
     const [openModal, setOpenModal] = useState(false);
+    const [amount, setAmount] = useState("0");
 
     const handleOpenModal = () => {
         setOpenModal(true);
@@ -309,12 +311,14 @@ function Wallet() {
                         width: "100%",
                         borderTopLeftRadius: "20px",
                         borderTopRightRadius: "20px",
+                        backgroundColor: (theme) =>
+                            alpha(theme.palette.grey[800], 0.8),
                     },
                 }}
             >
                 <DialogTitle
                     sx={{
-                        backgroundColor: "black",
+                        backgroundColor: "red",
                         color: "white",
                         display: "flex",
                         alignItems: "center",
@@ -328,18 +332,38 @@ function Wallet() {
                 <DialogContent sx={{ mt: 5 }}>
                     <TextField
                         id="amount"
-                        label="Amount"
+                        label="Enter Amount between 100 - 5000"
                         variant="standard"
                         type="number"
+                        color="secondary"
+                        value={amount}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <CurrencyRupeeIcon
+                                        sx={{ color: "#ffff" }}
+                                    />
+                                </InputAdornment>
+                            ),
+                        }}
+                        onChange={(e) => {
+                            setAmount(e.target.value);
+                        }}
                         fullWidth
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleCloseModal}>Cancel</Button>
+                    <Button
+                        onClick={handleCloseModal}
+                        variant="outlined"
+                        color="inherit"
+                    >
+                        Cancel
+                    </Button>
                     <Button
                         onClick={handleCloseModal}
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                     >
                         Add Money
                     </Button>
