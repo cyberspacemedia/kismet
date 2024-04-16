@@ -18,6 +18,7 @@ import { alpha } from "@mui/material/styles";
 import Slide from "@mui/material/Slide";
 
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import { useNavigate } from "react-router-dom";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -26,6 +27,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function Wallet() {
     const [openModal, setOpenModal] = useState(false);
     const [amount, setAmount] = useState("0");
+    const navigate = useNavigate();
+
+    const handletransactions = () => {
+        navigate("/history");
+    };
 
     const handleOpenModal = () => {
         setOpenModal(true);
@@ -289,6 +295,7 @@ function Wallet() {
                         variant="contained"
                         color="success"
                         size="large"
+                        onClick={handletransactions}
                         sx={{ padding: 2, borderRadius: 20 }}
                         fullWidth
                     >
@@ -355,7 +362,7 @@ function Wallet() {
                     <Chip
                         label="100% Safe and Secure"
                         color="success"
-                        sx={{ mt: 5, width:'80%' }}
+                        sx={{ mt: 5, width: "80%" }}
                         size="medium"
                     />
                 </DialogContent>

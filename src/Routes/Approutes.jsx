@@ -8,6 +8,7 @@ import Test from "../components/Test";
 import Dashboard from "../components/dashboard/Dashboard";
 import Myaccount from "../components/dashboard/Myaccount";
 import Wallet from "../components/dashboard/Wallet";
+import Accounthistory from "../components/dashboard/Accounthistory";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -18,6 +19,7 @@ function Approutes() {
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/myaccount" element={<Myaccount />} />
             <Route path="/wallet" element={<Wallet />} />
+            <Route path="/history" element={<Accounthistory />} />
             <Route
                 path="/"
                 element={
