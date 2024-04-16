@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "./Layout";
-import { Paper, Grid, Box, Typography, Chip } from "@mui/material";
+import { Paper, Grid, Box, Typography, Chip, Button } from "@mui/material";
 import { alpha } from "@mui/material/styles";
 
 function Wallet() {
@@ -220,6 +220,37 @@ function Wallet() {
                         </Grid>
                     </Paper>
                     {/* Commission */}
+                </Grid>
+                <Grid item sx={{ width: "90%" }}>
+                    <Grid
+                        container
+                        spacing={2}
+                        mt={2}
+                        justifyContent="center" // Align items horizontally in the center
+                    >
+                        <Grid item sx={{ width: "50%" }}>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                size="large"
+                                fullWidth
+                                sx={{ borderRadius: "50px", padding: 2 }}
+                            >
+                                Add Money
+                            </Button>
+                        </Grid>
+                        <Grid item sx={{ width: "50%" }}>
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                size="large"
+                                fullWidth
+                                sx={{ borderRadius: "50px", padding: 2 }}
+                            >
+                                Withdraw
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </Layout>
