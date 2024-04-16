@@ -252,6 +252,17 @@ function Wallet() {
                         </Grid>
                     </Grid>
                 </Grid>
+                <Grid item mt={5} sx={{ width: "90%" }}>
+                    <Button
+                        variant="contained"
+                        color="success"
+                        size="large"
+                        sx={{ padding: 2, borderRadius: 20 }}
+                        fullWidth
+                    >
+                        Transaction History
+                    </Button>
+                </Grid>
             </Grid>
         </Layout>
     );
