@@ -12,12 +12,19 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AppNavigation() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+    const navigate = useNavigate();
+
+    const handlelogout = () => {
+        // Delete the 'hasOpenedBefore' flag from local storage
+        localStorage.removeItem("hasOpenedBefore");
+        navigate("/login");
+    };
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -201,6 +208,16 @@ function AppNavigation() {
                                 <Typography textAlign="center">
                                     <Link to="/myaccount">How to play</Link>
                                 </Typography>
+                            </MenuItem>
+
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Button
+                                    variant="text"
+                                    color="secondary"
+                                    onClick={handlelogout}
+                                >
+                                    Logout
+                                </Button>
                             </MenuItem>
                         </Menu>
                     </Box>
