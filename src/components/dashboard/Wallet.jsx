@@ -329,7 +329,7 @@ function Wallet() {
                     Add Money
                 </DialogTitle>
 
-                <DialogContent sx={{ mt: 5 }}>
+                <DialogContent sx={{ mt: 5, textAlign: "center" }}>
                     <TextField
                         id="amount"
                         label="Enter Amount between 100 - 5000"
@@ -350,6 +350,13 @@ function Wallet() {
                             setAmount(e.target.value);
                         }}
                         fullWidth
+                    />
+
+                    <Chip
+                        label="100% Safe and Secure"
+                        color="success"
+                        sx={{ mt: 5, width:'80%' }}
+                        size="medium"
                     />
                 </DialogContent>
                 <DialogActions>
