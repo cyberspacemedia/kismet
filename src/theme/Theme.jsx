@@ -35,6 +35,9 @@ const theme = createTheme({
             color: "#eeb741",
             fontSize: "1rem",
         },
+        caption: {
+            color: "#ffff",
+        },
     },
     buttons: {
         primary: {
