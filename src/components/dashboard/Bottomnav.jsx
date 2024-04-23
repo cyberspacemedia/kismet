@@ -3,7 +3,10 @@ import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import RestoreIcon from "@mui/icons-material/Restore";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-router-dom";
 
@@ -26,16 +29,21 @@ export default function Bottomnav() {
                     sx={{ color: "inherit" }}
                 />
                 <BottomNavigationAction
-                    label="History"
-                    icon={<RestoreIcon sx={{ color: "white" }} />}
+                    label="Charts"
+                    icon={<BarChartIcon sx={{ color: "white" }} />}
                     component={Link}
                     to="/wallet"
                     sx={{ color: "inherit" }}
                 />
 
                 <BottomNavigationAction
-                    label="Favorites"
-                    icon={<FavoriteIcon sx={{ color: "white" }} />}
+                    label="My Game"
+                    icon={<EmojiEventsIcon sx={{ color: "white" }} />}
+                    sx={{ color: "inherit" }}
+                />
+                <BottomNavigationAction
+                    label="Share"
+                    icon={<ShareIcon sx={{ color: "white" }} />}
                     sx={{ color: "inherit" }}
                 />
             </BottomNavigation>

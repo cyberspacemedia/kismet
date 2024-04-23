@@ -19,6 +19,7 @@ function Layout({ children }) {
                 <AppNavigation />
                 {children}
             </Box>
+
             <Bottomnav />
         </Grid>
     );

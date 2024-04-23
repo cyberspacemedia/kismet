@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-    Paper,
     Dialog,
     DialogTitle,
     DialogContent,
@@ -35,22 +34,14 @@ function Defaultdash() {
                 spacing={2}
                 direction={"column"}
                 textAlign={"center"}
+                justifyContent="center"
+                alignItems={"center"}
             >
                 <Grid item xs={12}>
                     <Allgames />
                 </Grid>
                 <Grid item xs={12}>
-                    <Paper
-                        sx={{
-                            backgroundColor: "black",
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <div style={{ width: "85%" }}>
-                            <Imageslider />
-                        </div>
-                    </Paper>
+                    <Imageslider />
                 </Grid>
             </Grid>
 
