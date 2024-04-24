@@ -11,6 +11,7 @@ import {
     ListItemText,
     Button,
     Box,
+    Paper,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -80,9 +81,25 @@ const AppNavigation = () => {
                         onClick={() => {
                             navigate("/wallet");
                         }}
-                        sx={{ mr: "10px" }}
                     >
-                        <WalletIcon /> ₹ 0
+                        <Paper
+                            sx={{
+                                backgroundColor: "#494949",
+                                display: "flex",
+                                alignItems: "center", // Align items vertically center
+                                justifyContent: "center", // Center content horizontally
+                                padding: "3px",
+                                width: "3em",
+                                borderRadius: "20px",
+                                textAlign: "center",
+                                border: "solid 1px #878787",
+                            }}
+                        >
+                            <WalletIcon sx={{ fontSize: "20px" }} />{" "}
+                            <Typography variant="body2" color="inherit">
+                                ₹ <span style={{ fontSize: "16px" }}>0</span>
+                            </Typography>
+                        </Paper>
                     </IconButton>
                 </Toolbar>
             </AppBar>
