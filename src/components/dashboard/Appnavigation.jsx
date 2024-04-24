@@ -12,10 +12,13 @@ import {
     Button,
     Box,
     Paper,
+    Grid,
+    LinearProgress,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import WalletIcon from "@mui/icons-material/Wallet";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -120,26 +123,57 @@ const AppNavigation = () => {
                     },
                 }}
             >
+                <Grid
+                    container
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    direction={"row"}
+                    mt={5}
+                >
+                    <Grid item>
+                        <AccountBoxIcon sx={{ fontSize: "100px" }} />
+                        <Typography variant="body1" textAlign="center">
+                            Test
+                        </Typography>
+                        <Typography variant="body2" textAlign="center">
+                            Test@test.com
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <span style={{ fontSize: "10px" }}>
+                            Profile Completeness (60%)
+                        </span>
+                        <LinearProgress
+                            variant="determinate"
+                            value={60}
+                            color="warning"
+                            sx={{ height: "10px", borderRadius: "10px" }}
+                        />
+                    </Grid>
+                </Grid>
+
+                <hr style={{ borderColor: "red", width: "200px" }} />
+
                 <Box
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        height: "95%",
+                        height: "70%",
                         justifyContent: "space-between",
                     }}
                 >
                     <List>
                         {/* List items for the drawer */}
-                        <ListItem button>
+                        <ListItem>
                             <ListItemText primary={"How to Play"} />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem>
                             <ListItemText primary={"Change Password"} />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem>
                             <ListItemText primary={"Leaderboard"} />
                         </ListItem>
-                        <ListItem button>
+                        <ListItem>
                             <ListItemText primary={"Company Profile"} />
                         </ListItem>
                     </List>
