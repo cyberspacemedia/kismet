@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { Box } from "@mui/material";
 import "./slider.css"; // Import CSS file for styling
 
 const Imageslider = () => {
@@ -31,13 +32,19 @@ const Imageslider = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             nextSlide();
-        }, 3000); // 2 second delay
+        }, 3000); // 3 second delay
 
         return () => clearInterval(intervalId);
     }, [nextSlide]);
 
     return (
-        <div className="slider-container">
+        <Box
+            className="slider-container"
+            sx={{
+                width: "100%", // Set width to 100%
+                overflow: "hidden", // Hide overflow to prevent horizontal scrolling
+            }}
+        >
             <div
                 className="slider-images"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -48,10 +55,11 @@ const Imageslider = () => {
                         src={image}
                         alt={`Slide ${index + 1}`}
                         className="slider-image"
+                        style={{ width: "100%" }} // Set width to 100%
                     />
                 ))}
             </div>
-        </div>
+        </Box>
     );
 };
 

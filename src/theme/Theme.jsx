@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import "@fontsource/roboto";
 
 const theme = createTheme({
     palette: {
@@ -37,6 +38,8 @@ const theme = createTheme({
         },
         caption: {
             color: "#ffff",
+            fontSize: "12px",
+            fontFamily: "sans-serif",
         },
     },
     buttons: {

@@ -1,126 +1,51 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+    AppBar,
+    Toolbar,
+    IconButton,
+    Typography,
+    Drawer,
+    List,
+    ListItem,
+    ListItemText,
+    Button,
+    Box,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import SettingsIcon from "@mui/icons-material/Settings";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { Link, useNavigate } from "react-router-dom";
 
-function AppNavigation() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+import WalletIcon from "@mui/icons-material/Wallet";
+
+const AppNavigation = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
     const navigate = useNavigate();
 
-    const handlelogout = () => {
-        // Delete the 'hasOpenedBefore' flag from local storage
-        localStorage.removeItem("hasOpenedBefore");
-        navigate("/login");
-    };
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
+    // Function to handle opening the drawer
+    const handleDrawerOpen = () => {
+        setDrawerOpen(true);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+    // Function to handle closing the drawer
+    const handleDrawerClose = () => {
+        setDrawerOpen(false);
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: "black" }}>
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <AdbIcon
-                        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-                    />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
+        <>
+            {/* AppBar */}
+            <AppBar position="static" sx={{ backgroundColor: "black" }}>
+                <Toolbar>
+                    {/* Left side menu icon */}
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={handleDrawerOpen}
                     >
-                        Kismet
-                    </Typography>
-
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "flex", md: "none" },
-                        }}
-                    >
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "left",
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: "block", md: "none" },
-                            }}
-                        >
-                            {/* Primary Items for Mobile */}
-                            <MenuItem onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/dashboard">
-                                        Transaction History
-                                    </Link>
-                                </Typography>
-                            </MenuItem>
-                            <MenuItem onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/dashboard">Leaderboard</Link>
-                                </Typography>
-                            </MenuItem>
-
-                            <MenuItem onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/dashboard">About App</Link>
-                                </Typography>
-                            </MenuItem>
-                            {/* Primary Items for Mobile */}
-                        </Menu>
-                    </Box>
+                        <MenuIcon />
+                    </IconButton>
+                    {/* Logo in the middle */}
                     <img
                         src="./StaticAssets/Images/moblogo.png"
                         alt="Logo"
@@ -145,85 +70,66 @@ function AppNavigation() {
                     >
                         KISMET
                     </Typography>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "none", md: "flex" },
+
+                    {/* Right side settings menu */}
+
+                    <IconButton
+                        edge="end"
+                        color="inherit"
+                        aria-label="settings"
+                        onClick={() => {
+                            navigate("/wallet");
                         }}
+                        sx={{ mr: "10px" }}
                     >
-                        {/* Desktop Menu */}
-                        <Button
-                            onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            <Link to="/dashboard">Dashboard</Link>
-                        </Button>
-                        {/* Desktop Menu */}
-                    </Box>
-
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Settings">
-                            <IconButton
-                                onClick={handleOpenUserMenu}
-                                sx={{ p: 0 }}
-                            >
-                                <SettingsIcon
-                                    sx={{ fontSize: "2rem", color: "#ffffff" }}
-                                />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: "45px" }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/myaccount">Account</Link>
-                                </Typography>
-                            </MenuItem>
-
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/wallet">Wallet</Link>
-                                </Typography>
-                            </MenuItem>
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/myaccount">Change Password</Link>
-                                </Typography>
-                            </MenuItem>
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center">
-                                    <Link to="/myaccount">How to play</Link>
-                                </Typography>
-                            </MenuItem>
-
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Button
-                                    variant="text"
-                                    color="secondary"
-                                    onClick={handlelogout}
-                                >
-                                    Logout
-                                </Button>
-                            </MenuItem>
-                        </Menu>
-                    </Box>
+                        <WalletIcon /> ₹ 0
+                    </IconButton>
                 </Toolbar>
-            </Container>
-        </AppBar>
+            </AppBar>
+            {/* Drawer for left-side menu */}
+            <Drawer
+                anchor="left"
+                open={drawerOpen}
+                onClose={handleDrawerClose}
+                PaperProps={{
+                    sx: {
+                        height: "90vh",
+                        backgroundColor: "black",
+                    },
+                }}
+            >
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "80%",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <List>
+                        {/* List items for the drawer */}
+                        <ListItem button>
+                            <ListItemText primary={"How to Play"} />
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemText primary={"Change Password"} />
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemText primary={"Leaderboard"} />
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemText primary={"Company Profile"} />
+                        </ListItem>
+                    </List>
+                    <Box p={2}>
+                        <Button fullWidth variant="contained" color="secondary">
+                            Logout
+                        </Button>
+                    </Box>
+                </Box>
+            </Drawer>
+        </>
     );
-}
+};
+
 export default AppNavigation;
