@@ -21,6 +21,11 @@ const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const navigate = useNavigate();
+    const handlelogout = () => {
+        // Delete the 'hasOpenedBefore' flag from local storage
+        localStorage.removeItem("hasOpenedBefore");
+        navigate("/login");
+    };
 
     // Function to handle opening the drawer
     const handleDrawerOpen = () => {
@@ -110,8 +115,8 @@ const AppNavigation = () => {
                 onClose={handleDrawerClose}
                 PaperProps={{
                     sx: {
-                        height: "90vh",
-                        backgroundColor: "black",
+                        backgroundColor: "#2A2A2A",
+                        width: "15em",
                     },
                 }}
             >
@@ -119,7 +124,7 @@ const AppNavigation = () => {
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        height: "80%",
+                        height: "95%",
                         justifyContent: "space-between",
                     }}
                 >
@@ -139,7 +144,14 @@ const AppNavigation = () => {
                         </ListItem>
                     </List>
                     <Box p={2}>
-                        <Button fullWidth variant="contained" color="secondary">
+                        <Button
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                            onClick={handlelogout}
+                            size="small"
+                            sx={{ borderRadius: "20px" }}
+                        >
                             Logout
                         </Button>
                     </Box>
