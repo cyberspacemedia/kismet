@@ -6,6 +6,7 @@ import {
     DialogActions,
     Button,
     Grid,
+    Box,
 } from "@mui/material";
 import Imageslider from "./slider/Imageslider";
 import Allgames from "../Games/Allgames";
@@ -40,8 +41,15 @@ function Defaultdash() {
                 <Grid item xs={12}>
                     <Allgames />
                 </Grid>
-                <Grid item xs={12}>
-                    <Imageslider />
+                <Grid
+                    item
+                    xs={12}
+                    container
+                    justifyContent="center" // Center align horizontally
+                >
+                    <Box width={"90%"} textAlign="center">
+                        <Imageslider />
+                    </Box>
                 </Grid>
             </Grid>
 
