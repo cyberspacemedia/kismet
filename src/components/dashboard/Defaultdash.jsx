@@ -31,7 +31,7 @@ function Defaultdash() {
         <div>
             <Grid
                 container
-                spacing={2}
+                spacing={1}
                 direction={"column"}
                 textAlign={"center"}
                 justifyContent="center"

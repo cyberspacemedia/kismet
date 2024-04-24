@@ -6,10 +6,8 @@ function Allgames() {
     return (
         <Grid
             container
-            spacing={1}
-            justifyContent="center"
-            justifyItems={"center"}
-            sx={{ width: "90%", margin: "0 auto" }}
+            spacing={3}
+            p={2}
         >
             <Grid item xs={3}>
                 {/* Card 1 */}
@@ -17,12 +15,12 @@ function Allgames() {
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            image="./StaticAssets/Images/moblogo.png"
-                            alt="green iguana"
+                            image="./StaticAssets/Images/Icons/Gurugram.png"
+                            alt="Gurugram"
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Faridabad</Typography>
+                <Typography variant="caption">Gurugram</Typography>
                 {/* Card 1 */}
             </Grid>
             <Grid item xs={3}>
@@ -31,12 +29,12 @@ function Allgames() {
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            image="./StaticAssets/Images/moblogo.png"
-                            alt="green iguana"
+                            image="./StaticAssets/Images/Icons/alwar.png"
+                            alt="Alwar"
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Gurgaon</Typography>
+                <Typography variant="caption">Alwar</Typography>
                 {/* Card 2 */}
             </Grid>
             <Grid item xs={3}>
@@ -45,12 +43,12 @@ function Allgames() {
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            image="./StaticAssets/Images/moblogo.png"
-                            alt="green iguana"
+                            image="./StaticAssets/Images/Icons/Rewari.png"
+                            alt="Rewari"
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Gali</Typography>
+                <Typography variant="caption">Rewari</Typography>
                 {/* Card 3 */}
             </Grid>
             <Grid item xs={3}>
@@ -59,12 +57,12 @@ function Allgames() {
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            image="./StaticAssets/Images/moblogo.png"
-                            alt="green iguana"
+                            image="./StaticAssets/Images/Icons/Rohtak.png"
+                            alt="Rohtak"
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Dubai</Typography>
+                <Typography variant="caption">Rohtak</Typography>
                 {/* Card 4 */}
             </Grid>
         </Grid>
