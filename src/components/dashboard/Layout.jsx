@@ -27,9 +27,8 @@ function Layout({ children }) {
                 >
                     <Box textAlign="center">{children}</Box>
                 </Box>
+                <Bottomnav />
             </Box>
-
-            <Bottomnav />
         </Grid>
     );
 }

@@ -7,13 +7,13 @@ function Leaderboard() {
     return (
         <Layout>
             <Typography variant="caption"> Leader Board</Typography>
-            <Box sx={{ width: "350px" }}>
+            <Box sx={{ maxWidth: "767px", width: "350px" }}>
                 <Paper
                     variant="outlined"
                     sx={{
                         padding: 2,
                         borderRadius: 2,
-                       
+
                         background:
                             "linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)",
 
@@ -26,7 +26,7 @@ function Leaderboard() {
                             1
                         </Grid>
                         <Grid item xs={4}>
-                            Rahul 
+                            Rahul
                         </Grid>
                         <Grid item xs={4}>
                             1,23,984
