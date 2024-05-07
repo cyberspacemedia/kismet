@@ -147,7 +147,7 @@ const AppNavigation = () => {
                             variant="determinate"
                             value={60}
                             color="warning"
-                            sx={{ height: "10px", borderRadius: "10px" }}
+                            sx={{ height: "5px", borderRadius: "10px" }}
                         />
                     </Grid>
                 </Grid>
@@ -165,16 +165,31 @@ const AppNavigation = () => {
                     <List>
                         {/* List items for the drawer */}
                         <ListItem>
-                            <ListItemText primary={"How to Play"} />
+                            <ListItemText
+                                primary={"How to Play"}
+                                onClick={() => {
+                                    navigate("/howtoplay");
+                                }}
+                            />
                         </ListItem>
                         <ListItem>
                             <ListItemText primary={"Change Password"} />
                         </ListItem>
                         <ListItem>
-                            <ListItemText primary={"Leaderboard"} />
+                            <ListItemText
+                                primary={"Leaderboard"}
+                                onClick={() => {
+                                    navigate("/leaderboard");
+                                }}
+                            />
                         </ListItem>
                         <ListItem>
-                            <ListItemText primary={"Company Profile"} />
+                            <ListItemText
+                                primary={"Company Profile"}
+                                onClick={() => {
+                                    navigate("/companyprofile");
+                                }}
+                            />
                         </ListItem>
                     </List>
                     <Box p={2}>
