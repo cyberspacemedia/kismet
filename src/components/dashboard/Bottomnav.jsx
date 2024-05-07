@@ -30,13 +30,15 @@ export default function Bottomnav() {
                     label="Charts"
                     icon={<BarChartIcon sx={{ color: "white" }} />}
                     component={Link}
-                    to="/wallet"
+                    to="/charts"
                     sx={{ color: "inherit" }}
                 />
 
                 <BottomNavigationAction
                     label="My Game"
                     icon={<EmojiEventsIcon sx={{ color: "white" }} />}
+                    component={Link}
+                    to="/mygame"
                     sx={{ color: "inherit" }}
                 />
                 <BottomNavigationAction
