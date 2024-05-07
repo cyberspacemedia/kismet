@@ -10,10 +10,14 @@ function Howtoplay() {
             <Box sx={{ m: 2, textAlign: "center" }}>
                 <Typography variant="h6">How to Play</Typography>
             </Box>
-            <Box>
+            <Box sx={{ width: "95%", margin: "auto" }}>
                 <Typography variant="caption">
                     In this game you have 100 numbers, starting from 00 to 99.
                     You can put choose any number in jodi or crossing to play.
+                    <br />
+                    <span>Important:</span> You can play with small amount in
+                    starting, When you have complete trust on game then you
+                    choose to play big amounts.
                 </Typography>
             </Box>
             <Paper
@@ -26,7 +30,7 @@ function Howtoplay() {
                         alpha(theme.palette.grey[500], 0.1),
                     width: "95%", // Adjust width to 95%
                     textAlign: "center", // Align center horizontally
-                    margin: "2px auto 0", // Center horizontally
+                    margin: "5px auto 0", // Center horizontally
                 }}
             >
                 <Typography variant="subtitle2"> Jodi Game</Typography>
@@ -92,6 +96,11 @@ function Howtoplay() {
                     </Grid>
                 </Paper>
             </Paper>
+
+            <Box>
+                10 amount = 10x95 (950) win <br />
+                100 amount = 100x95 (9500) win
+            </Box>
         </Layout>
     );
 }
