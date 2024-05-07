@@ -9,6 +9,7 @@ import {
     List,
     ListItem,
     ListItemText,
+    ListItemIcon,
     Button,
     Box,
     Paper,
@@ -16,7 +17,10 @@ import {
     LinearProgress,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import PasswordIcon from "@mui/icons-material/Password";
+import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import BadgeIcon from "@mui/icons-material/Badge";
 import WalletIcon from "@mui/icons-material/Wallet";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
@@ -165,6 +169,12 @@ const AppNavigation = () => {
                     <List>
                         {/* List items for the drawer */}
                         <ListItem>
+                            <ListItemIcon>
+                                <HelpOutlineIcon
+                                    sx={{ color: "white" }}
+                                    fontSize="small"
+                                />
+                            </ListItemIcon>
                             <ListItemText
                                 primary={"How to Play"}
                                 onClick={() => {
@@ -173,9 +183,21 @@ const AppNavigation = () => {
                             />
                         </ListItem>
                         <ListItem>
+                            <ListItemIcon>
+                                <PasswordIcon
+                                    sx={{ color: "white" }}
+                                    fontSize="small"
+                                />
+                            </ListItemIcon>
                             <ListItemText primary={"Change Password"} />
                         </ListItem>
                         <ListItem>
+                            <ListItemIcon>
+                                <LeaderboardIcon
+                                    sx={{ color: "white" }}
+                                    fontSize="small"
+                                />
+                            </ListItemIcon>
                             <ListItemText
                                 primary={"Leaderboard"}
                                 onClick={() => {
@@ -184,6 +206,12 @@ const AppNavigation = () => {
                             />
                         </ListItem>
                         <ListItem>
+                            <ListItemIcon>
+                                <BadgeIcon
+                                    sx={{ color: "white" }}
+                                    fontSize="small"
+                                />
+                            </ListItemIcon>
                             <ListItemText
                                 primary={"Company Profile"}
                                 onClick={() => {
