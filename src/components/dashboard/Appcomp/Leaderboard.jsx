@@ -19,7 +19,7 @@ function Leaderboard() {
                         sx={{
                             padding: 1,
                             margin: 1,
-                            borderRadius: 2,
+                            borderRadius: 5,
                             background:
                                 "linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)",
                         }}
@@ -66,7 +66,7 @@ function Leaderboard() {
                         sx={{
                             padding: 1,
                             margin: 1,
-                            borderRadius: 2,
+                            borderRadius: 5,
                             background:
                                 "linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)",
                         }}
@@ -113,7 +113,7 @@ function Leaderboard() {
                         sx={{
                             padding: 1,
                             margin: 1,
-                            borderRadius: 2,
+                            borderRadius: 5,
                             background:
                                 "linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)",
                         }}
@@ -160,7 +160,7 @@ function Leaderboard() {
                         sx={{
                             padding: 1,
                             margin: 1,
-                            borderRadius: 2,
+                            borderRadius: 5,
                             background:
                                 "linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)",
                         }}
@@ -207,7 +207,7 @@ function Leaderboard() {
                         sx={{
                             padding: 1,
                             margin: 1,
-                            borderRadius: 2,
+                            borderRadius: 5,
                             background:
                                 "linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)",
                         }}
