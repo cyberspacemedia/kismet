@@ -20,8 +20,6 @@ function Layout({ children }) {
                 <AppNavigation />
                 <Box
                     sx={{
-                        display: "flex",
-                        justifyContent: "center",
                         minHeight: "calc(100vh - 64px - 56px)", // Adjust for the height of AppNavigation and Bottomnav
                     }}
                 >
