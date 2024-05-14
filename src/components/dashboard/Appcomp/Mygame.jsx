@@ -8,7 +8,7 @@ function Mygame() {
         <Layout>
             <Typography variant="caption"> My Game</Typography>
             <Grid container>
-                <Grid item>Item 1</Grid>
+                <Grid item>Item 2</Grid>
             </Grid>
         </Layout>
     );
