@@ -27,7 +27,7 @@ function Allgames() {
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            image="./StaticAssets/Images/Icons/alwar.png"
+                            image="./StaticAssets/Images/Icons/Alwar.png"
                             alt="Alwar"
                         />
                     </CardActionArea>

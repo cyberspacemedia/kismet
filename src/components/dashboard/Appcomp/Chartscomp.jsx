@@ -39,14 +39,28 @@ function Chartscomp() {
                                     sx={{ bgcolor: "orange" }}
                                     alt="Game"
                                     src={`./StaticAssets/Images/Icons/${game.name}.png`}
-                                    variant="square"
+                                    variant="rounded"
                                 />
                             </Grid>
                             <Grid item xs={4}>
-                                {game.name}
+                                <Typography variant="subtitle2">
+                                    {game.name}
+                                </Typography>
                             </Grid>
                             <Grid item xs={4}>
-                                {game.number}
+                                <span
+                                    style={{
+                                        padding: "5px",
+                                        backgroundColor: "#0000",
+                                        border: "solid 1px gray",
+                                        borderRadius: "5px",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        color: "white",
+                                    }}
+                                >
+                                    {game.number}
+                                </span>
                             </Grid>
                         </Grid>
                     ))}
