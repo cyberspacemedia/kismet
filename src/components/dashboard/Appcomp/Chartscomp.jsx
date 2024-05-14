@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../Layout";
 
-import { Avatar, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Mydatepicker from "./Mydatepicker";
 
 function Chartscomp() {
@@ -36,11 +36,10 @@ function Chartscomp() {
                             key={index}
                         >
                             <Grid item xs={4}>
-                                <Avatar
-                                    sx={{ bgcolor: "orange" }}
+                                <img
                                     alt="Game"
-                                    src={`./StaticAssets/Images/Icons/${game.name}.png`}
-                                    variant="rounded"
+                                    src={`./StaticAssets/Images/Icons/${game.name}round.png`}
+                                    style={{ height: "50px" }}
                                 />
                             </Grid>
                             <Grid item xs={4}>
