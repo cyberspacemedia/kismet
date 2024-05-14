@@ -23,7 +23,7 @@ function Chartscomp() {
                 </Grid>
                 <Grid item xs={12} md={12}>
                     {/* Container for each Game */}
-                    {gameNames.map((game) => (
+                    {gameNames.map((game, index) => (
                         <Grid
                             container
                             justifyContent="center" // Center horizontally
@@ -33,6 +33,7 @@ function Chartscomp() {
                                 width: "90%",
                                 margin: "0 auto", // Add auto margins to center the container
                             }}
+                            key={index}
                         >
                             <Grid item xs={4}>
                                 <Avatar
