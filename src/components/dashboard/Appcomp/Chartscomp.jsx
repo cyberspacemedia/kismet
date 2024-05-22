@@ -14,9 +14,11 @@ function Chartscomp() {
     return (
         <Layout>
             <Typography variant="caption">Charts</Typography>
-            <Grid container spacing={2}>
+            <Grid container justifyContent={"flex-start"} alignItems={"center"}>
                 <Grid item xs={8}>
-                    <Typography variant="subtitle2">Select the Date</Typography>
+                    <Typography variant="subtitle2" sx={{ color: "gray" }}>
+                        Select the Date and see winners
+                    </Typography>
                 </Grid>
                 <Grid item xs={4}>
                     <Mydatepicker />
@@ -28,39 +30,72 @@ function Chartscomp() {
                             container
                             justifyContent="center" // Center horizontally
                             alignItems="center" // Center vertically
-                            spacing={2}
                             sx={{
                                 width: "90%",
-                                margin: "0 auto", // Add auto margins to center the container
+                                p: "10px",
+                                mt: "5px",
+                                margin: "20px auto 0 auto",
+                                border: "solid 1px gray",
+                                borderRadius: "15px",
+                                backgroundColor: "#343433",
                             }}
                             key={index}
                         >
-                            <Grid item xs={4}>
+                            <Grid
+                                item
+                                xs={4}
+                                container
+                                justifyContent="flex-start"
+                            >
                                 <img
                                     alt="Game"
                                     src={`./StaticAssets/Images/Icons/${game.name}round.png`}
                                     style={{ height: "50px" }}
                                 />
                             </Grid>
-                            <Grid item xs={4}>
-                                <Typography variant="subtitle2">
+                            <Grid
+                                item
+                                xs={4}
+                                container
+                                direction="column"
+                                justifyContent="center"
+                                alignItems="baseline"
+                            >
+                                <Typography
+                                    variant="body1"
+                                    align="center"
+                                    sx={{ fontWeight: "bold", color: "white" }}
+                                >
                                     {game.name}
                                 </Typography>
+                                <Typography
+                                    variant="caption"
+                                    align="center"
+                                    sx={{ color: "gray" }}
+                                >
+                                    Winning Number
+                                </Typography>
                             </Grid>
-                            <Grid item xs={4}>
-                                <span
-                                    style={{
-                                        padding: "5px",
-                                        backgroundColor: "#0000",
+                            <Grid item xs={4} container justifyContent="end">
+                                <Typography
+                                    variant="h5"
+                                    color="initial"
+                                    sx={{
+                                        padding: "10px",
                                         border: "solid 1px gray",
-                                        borderRadius: "5px",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        color: "white",
+                                        borderRadius: "10px",
+                                        display: "flex", // Ensure flexbox is used
+                                        justifyContent: "center", // Center content horizontally
+                                        alignItems: "center", // Center content vertically
+                                        color: "#ff5b00",
+                                        fontWeight: "bold",
+                                        fontSize: "1.5em",
+                                        background:
+                                            "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
                                     }}
                                 >
                                     {game.number}
-                                </span>
+                                </Typography>
                             </Grid>
                         </Grid>
                     ))}
