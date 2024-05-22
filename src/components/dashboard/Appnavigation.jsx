@@ -72,7 +72,7 @@ const AppNavigation = () => {
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"
                             style={{
-                                height: "40px",
+                                height: "30px",
                                 margin: "5px",
                             }}
                         />
@@ -89,8 +89,7 @@ const AppNavigation = () => {
                                 justifyContent: "center",
                                 fontFamily: "monospace",
                                 fontWeight: 700,
-                                fontSize: "1rem",
-                                letterSpacing: ".3rem",
+                                fontSize: "0.8rem",
                                 color: "inherit",
                                 textDecoration: "none",
                                 ml: 1, // Add some margin-left if needed to separate the text from the image
