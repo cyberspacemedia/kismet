@@ -59,31 +59,46 @@ const AppNavigation = () => {
                         <MenuIcon />
                     </IconButton>
                     {/* Logo in the middle */}
-                    <img
-                        src="./StaticAssets/Images/moblogo.png"
-                        alt="Logo"
-                        style={{ height: "40px", margin: "5px" }}
-                    />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+                    <Box
                         sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            fontSize: "1rem",
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
+                            display: "flex",
+                            flexDirection: "row", // Items placed next to each other
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: "100%",
                         }}
                     >
-                        KISMET
-                    </Typography>
-
+                        <img
+                            src="./StaticAssets/Images/moblogo.png"
+                            alt="Logo"
+                            style={{
+                                height: "40px",
+                                margin: "5px",
+                            }}
+                        />
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            component="a"
+                            href="#app-bar-with-responsive-menu"
+                            onClick={() => {
+                                navigate("/dashboard");
+                            }}
+                            sx={{
+                                display: "flex",
+                                justifyContent: "center",
+                                fontFamily: "monospace",
+                                fontWeight: 700,
+                                fontSize: "1rem",
+                                letterSpacing: ".3rem",
+                                color: "inherit",
+                                textDecoration: "none",
+                                ml: 1, // Add some margin-left if needed to separate the text from the image
+                            }}
+                        >
+                            KISMET
+                        </Typography>
+                    </Box>
                     {/* Right side settings menu */}
 
                     <IconButton
