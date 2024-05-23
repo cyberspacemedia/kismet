@@ -107,7 +107,7 @@ function Livegame() {
                                         >
                                             <PlayCircleIcon
                                                 sx={{
-                                                    fontSize: "4rem",
+                                                    fontSize: "3rem",
                                                 }}
                                             />
                                             <Typography
