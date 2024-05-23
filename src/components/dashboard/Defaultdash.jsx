@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import Imageslider from "./slider/Imageslider";
 import Allgames from "../Games/Allgames";
+import Liveresults from "./Liveresults";
+import LiveGame from "./LiveGame";
 
 function Defaultdash() {
     const [open, setOpen] = useState(false);
@@ -30,14 +32,7 @@ function Defaultdash() {
 
     return (
         <div>
-            <Grid
-                container
-                spacing={1}
-                direction={"column"}
-                textAlign={"center"}
-                justifyContent="center"
-                alignItems={"center"}
-            >
+            <Grid container spacing={1} direction={"column"}>
                 <Grid item xs={12}>
                     <Allgames />
                 </Grid>
@@ -50,6 +45,12 @@ function Defaultdash() {
                     <Box width={"90%"} textAlign="center">
                         <Imageslider />
                     </Box>
+                </Grid>
+                <Grid item xs={12} md={10}>
+                    <Liveresults />
+                </Grid>
+                <Grid item xs={12} md={10}>
+                    <LiveGame />
                 </Grid>
             </Grid>
 

@@ -15,30 +15,46 @@ const theme = createTheme({
     },
 
     typography: {
-        fontFamily: "Roboto, sans-serif",
+        fontFamily: "sans-serif",
         body1: {
             color: "#ff00dd", // Apply default text color to the body1 variant
         },
         body2: {
             color: "#d7d6d7",
         },
+        h1: {
+            fontSize: "1.2rem",
+            color: "#ffffff",
+            fontWeight: "bolder",
+        },
+        h2: {
+            fontSize: "1rem",
+            color: "#ffffff",
+            fontWeight: "bold",
+        },
         h3: {
-            color: "red",
+            fontSize: "0.9rem",
+            color: "#ffffff",
+            fontWeight: "bold",
         },
         h4: {
-            color: "#cc008f",
+            fontSize: "0.8rem",
+            color: "#ffffff",
+            fontWeight: "bold",
         },
         h5: {
-            color: "#cc008f",
-            fontSize: "2rem",
+            fontSize: "0.7rem",
+            color: "#ffffff",
+            fontWeight: "bold",
         },
         h6: {
-            color: "#eeb741",
-            fontSize: "1rem",
+            fontSize: "0.6rem",
+            color: "#ffffff",
+            fontWeight: "bold",
         },
         caption: {
             color: "#ffff",
-            fontSize: "12px",
+            fontSize: "10px",
             fontFamily: "sans-serif",
         },
     },
