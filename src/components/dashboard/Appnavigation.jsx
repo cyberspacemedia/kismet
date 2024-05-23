@@ -16,13 +16,15 @@ import {
     Grid,
     LinearProgress,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import PasswordIcon from "@mui/icons-material/Password";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import BadgeIcon from "@mui/icons-material/Badge";
 import WalletIcon from "@mui/icons-material/Wallet";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -47,7 +49,7 @@ const AppNavigation = () => {
     return (
         <>
             {/* AppBar */}
-            <AppBar position="static" sx={{ backgroundColor: "black" }}>
+            <AppBar position="static" sx={{ backgroundColor: "#282828" }}>
                 <Toolbar>
                     {/* Left side menu icon */}
                     <IconButton
@@ -55,8 +57,13 @@ const AppNavigation = () => {
                         color="inherit"
                         aria-label="menu"
                         onClick={handleDrawerOpen}
+                        sx={{
+                            border: "1px solid orange", // Add a yellow outline
+                            borderRadius: "50%", // Make the border circular
+                            padding: "1px", // Add some padding to make space for the border
+                        }}
                     >
-                        <MenuIcon />
+                        <AccountCircleIcon />
                     </IconButton>
                     {/* Logo in the middle */}
                     <Box
@@ -74,6 +81,9 @@ const AppNavigation = () => {
                             style={{
                                 height: "30px",
                                 margin: "5px",
+                            }}
+                            onClick={() => {
+                                navigate("/dashboard");
                             }}
                         />
                         <Typography
@@ -110,7 +120,7 @@ const AppNavigation = () => {
                     >
                         <Paper
                             sx={{
-                                backgroundColor: "#494949",
+                                backgroundColor: "#1b1b1b",
                                 display: "flex",
                                 alignItems: "center", // Align items vertically center
                                 justifyContent: "center", // Center content horizontally
@@ -118,7 +128,7 @@ const AppNavigation = () => {
                                 width: "3em",
                                 borderRadius: "20px",
                                 textAlign: "center",
-                                border: "solid 1px #878787",
+                                border: "solid 0.5px #878787",
                             }}
                         >
                             <WalletIcon sx={{ fontSize: "20px" }} />{" "}
@@ -127,6 +137,19 @@ const AppNavigation = () => {
                             </Typography>
                         </Paper>
                     </IconButton>
+
+                    {/* Notification Icon */}
+                    <IconButton
+                        edge="end"
+                        color="inherit"
+                        aria-label="settings"
+                        onClick={() => {
+                            navigate("/wallet");
+                        }}
+                    >
+                        <NotificationsIcon sx={{ fontSize: "20px" }} />{" "}
+                    </IconButton>
+                    {/* Notification Icon */}
                 </Toolbar>
             </AppBar>
             {/* Drawer for left-side menu */}
@@ -137,7 +160,7 @@ const AppNavigation = () => {
                 PaperProps={{
                     sx: {
                         backgroundColor: "#2A2A2A",
-                        width: "15em",
+                        width: "15rem",
                     },
                 }}
             >
