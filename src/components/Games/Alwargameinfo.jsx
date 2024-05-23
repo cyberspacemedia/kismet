@@ -12,12 +12,12 @@ import {
     Typography,
 } from "@mui/material";
 
-function Gurugramgameinfo() {
+function Alwargameinfo() {
     return (
         <Layout>
             <Grid container justifyContent={"center"}>
                 <Grid item xs={12} md={10}>
-                    <Typography variant="h1">Gurugram Game</Typography>
+                    <Typography variant="h1">Alwar Game</Typography>
                 </Grid>
                 <Grid item xs={12} md={10}>
                     <Card
@@ -51,7 +51,7 @@ function Gurugramgameinfo() {
                                     color={"#bababa"}
                                     sx={{ m: 1 }}
                                 >
-                                    In Gurugram declares only one lucky number
+                                    Declares only one lucky number
                                     every 4 hours. Same followed by all country.
                                 </Typography>
                                 <Divider
@@ -131,4 +131,4 @@ function Gurugramgameinfo() {
     );
 }
 
-export default Gurugramgameinfo;
+export default Alwargameinfo;

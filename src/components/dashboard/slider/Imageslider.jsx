@@ -41,8 +41,9 @@ const Imageslider = () => {
         <Box
             className="slider-container"
             sx={{
-                width: "100%", // Set width to 100%
+                width: "90%", // Set width to 100%
                 overflow: "hidden", // Hide overflow to prevent horizontal scrolling
+                margin: "0 auto",
             }}
         >
             <div
@@ -55,7 +56,7 @@ const Imageslider = () => {
                         src={image}
                         alt={`Slide ${index + 1}`}
                         className="slider-image"
-                        style={{ width: "100%" }} // Set width to 100%
+                        style={{ objectFit: "contain" }}
                     />
                 ))}
             </div>

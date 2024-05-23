@@ -26,7 +26,7 @@ function Allgames() {
             <Grid item xs={3}>
                 {/* Card 2 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea>
+                    <CardActionArea onClick={() => navigate("/alwargameinfo")}>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Alwar.png"
@@ -40,7 +40,7 @@ function Allgames() {
             <Grid item xs={3}>
                 {/* Card 3 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea>
+                    <CardActionArea onClick={() => navigate("/rewarigameinfo")}>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Rewari.png"
@@ -54,7 +54,7 @@ function Allgames() {
             <Grid item xs={3}>
                 {/* Card 4 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea>
+                    <CardActionArea onClick={() => navigate("/rohtakgameinfo")}>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Rohtak.png"

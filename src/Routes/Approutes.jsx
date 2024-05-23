@@ -16,6 +16,9 @@ import Companyprofile from "../components/dashboard/Appcomp/Companyprofile";
 import Chartscomp from "../components/dashboard/Appcomp/Chartscomp";
 import Mygame from "../components/dashboard/Appcomp/Mygame";
 import Gurugramgameinfo from "../components/Games/Gurugramgameinfo";
+import Rohtakgameinfo from "../components/Games/Rohtakgameinfo";
+import Rewarigameinfo from "../components/Games/Rewarigameinfo";
+import Alwargameinfo from "../components/Games/Alwargameinfo";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -28,6 +31,9 @@ function Approutes() {
 
             {/* Game Info */}
             <Route path="/gurugramgameinfo/*" element={<Gurugramgameinfo />} />
+            <Route path="/alwargameinfo/*" element={<Alwargameinfo />} />
+            <Route path="/rewarigameinfo/*" element={<Rewarigameinfo />} />
+            <Route path="/rohtakgameinfo/*" element={<Rohtakgameinfo />} />
             {/* Game Info */}
 
             <Route path="/howtoplay" element={<Howtoplay />} />
