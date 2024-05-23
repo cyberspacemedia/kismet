@@ -17,10 +17,14 @@ const theme = createTheme({
     typography: {
         fontFamily: "sans-serif",
         body1: {
-            color: "#ff00dd", // Apply default text color to the body1 variant
+            color: "white",
+            fontFamily: "sans-serif",
+            fontSize: "1rem",
         },
         body2: {
-            color: "#d7d6d7",
+            color: "white",
+            fontFamily: "sans-serif",
+            fontSize: "0.8rem",
         },
         h1: {
             fontSize: "1.2rem",

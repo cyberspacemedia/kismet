@@ -15,6 +15,7 @@ import Leaderboard from "../components/dashboard/Appcomp/Leaderboard";
 import Companyprofile from "../components/dashboard/Appcomp/Companyprofile";
 import Chartscomp from "../components/dashboard/Appcomp/Chartscomp";
 import Mygame from "../components/dashboard/Appcomp/Mygame";
+import Gurugramgameinfo from "../components/Games/Gurugramgameinfo";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -24,6 +25,10 @@ function Approutes() {
             <Route path="/test" element={<Test />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/gurugramgame/*" element={<Gurugramgame />} />
+
+            {/* Game Info */}
+            <Route path="/gurugramgameinfo/*" element={<Gurugramgameinfo />} />
+            {/* Game Info */}
 
             <Route path="/howtoplay" element={<Howtoplay />} />
             <Route path="/leaderboard" element={<Leaderboard />} />

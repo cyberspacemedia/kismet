@@ -10,7 +10,9 @@ function Allgames() {
             <Grid item xs={3}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea onClick={() => navigate("/gurugramgame")}>
+                    <CardActionArea
+                        onClick={() => navigate("/gurugramgameinfo")}
+                    >
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Gurugram.png"
