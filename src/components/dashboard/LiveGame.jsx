@@ -77,7 +77,7 @@ function Livegame() {
                                                 }}
                                                 align="left"
                                             >
-                                                42819 people are playing
+                                                42819 Playing
                                             </Typography>
                                         </Grid>
                                         <Grid item>
