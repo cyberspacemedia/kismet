@@ -80,12 +80,17 @@ function Livegame() {
                                                 42819 Playing
                                             </Typography>
                                         </Grid>
-                                        <Grid item>
+                                        <Grid item >
                                             <Chip
                                                 label="open"
                                                 color="success"
                                                 size="small"
-                                                sx={{ alignSelf: "flex-start" }}
+                                                sx={{
+                                                    alignSelf: "flex-start",
+                                                    width: "80px",
+                                                    height:'15px',
+                                                    fontSize:'10px'
+                                                }}
                                             />
                                         </Grid>
                                     </Grid>
