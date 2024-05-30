@@ -88,10 +88,11 @@ const theme = createTheme({
         squarenumberbutton: {
             color: "#fff",
             borderRadius: "0px",
-            fontWeight:'bold',
-            margin: "3px",
+
+            fontSize: "1.2rem",
+            margin: "4px",
             background:
-                "linear-gradient(45deg, rgba(103,103,103,1) 0%, rgba(40,40,40,1) 100%)",
+                "linear-gradient(45deg, rgba(80,80,80,1) 0%, rgba(40,40,40,1) 100%)",
             border: "solid 0.5px #676767",
             height: "50px",
             width: "50px",
