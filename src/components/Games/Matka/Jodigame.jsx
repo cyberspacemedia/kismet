@@ -79,7 +79,7 @@ function Jodigame() {
                 overflowY: "auto",
             }}
         >
-            <Grid container spacing={2} justifyContent="center">
+            <Grid container justifyContent="center">
                 {gameNumbers.map((number) => (
                     <Grid item key={number}>
                         <Button
