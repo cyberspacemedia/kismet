@@ -88,13 +88,13 @@ const theme = createTheme({
         squarenumberbutton: {
             color: "#fff",
             borderRadius: "0px",
-            padding: "2px",
-            margin: "2px",
+            fontWeight:'bold',
+            margin: "3px",
             background:
-                "linear-gradient(0deg, rgba(103,103,103,1) 0%, rgba(40,40,40,1) 100%)",
+                "linear-gradient(45deg, rgba(103,103,103,1) 0%, rgba(40,40,40,1) 100%)",
             border: "solid 0.5px #676767",
-            height: "40px",
-            width: "40px",
+            height: "50px",
+            width: "50px",
         },
     },
 });

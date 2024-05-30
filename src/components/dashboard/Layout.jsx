@@ -18,15 +18,12 @@ function Layout({ children }) {
         >
             <Box sx={{ flexGrow: 1 }}>
                 <AppNavigation />
-                <Box
-                    sx={{
-                        minHeight: "calc(100vh - 64px - 56px)", // Adjust for the height of AppNavigation and Bottomnav
-                    }}
-                >
-                    <Box textAlign="center">{children}</Box>
+
+                <Box textAlign="center" sx={{ height: "80vh" }}>
+                    {children}
                 </Box>
-                <Bottomnav />
             </Box>
+            <Bottomnav />
         </Grid>
     );
 }

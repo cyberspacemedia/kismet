@@ -9,7 +9,7 @@ function Jodigame() {
     return (
         <Box
             sx={{
-                height: "80vh", // 80% of the viewport height
+                height: "75vh", // 80% of the viewport height
                 overflowY: "auto", // Enable vertical scrolling
             }}
         >
