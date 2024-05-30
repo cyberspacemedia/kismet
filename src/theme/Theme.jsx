@@ -19,12 +19,10 @@ const theme = createTheme({
         body1: {
             color: "white",
             fontFamily: "sans-serif",
-            fontSize: "1rem",
+            fontSize: "1.3rem",
         },
         body2: {
-            color: "white",
-            fontFamily: "sans-serif",
-            fontSize: "0.8rem",
+            color: "#d7d6d7",
         },
         h1: {
             fontSize: "1.2rem",
@@ -86,6 +84,17 @@ const theme = createTheme({
             color: "#fff",
             borderRadius: "8px",
             padding: "10px 20px",
+        },
+        squarenumberbutton: {
+            color: "#fff",
+            borderRadius: "0px",
+            padding: "2px",
+            margin: "2px",
+            background:
+                "linear-gradient(0deg, rgba(103,103,103,1) 0%, rgba(40,40,40,1) 100%)",
+            border: "solid 0.5px #676767",
+            height: "40px",
+            width: "40px",
         },
     },
 });

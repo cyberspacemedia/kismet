@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Layout from "./Layout";
 import {
     Paper,
-    Box,
     Grid,
     Typography,
     Chip,
@@ -43,9 +42,6 @@ function Wallet() {
 
     return (
         <Layout>
-            <Box sx={{ m: 2, textAlign: "center" }}>
-                <Typography variant="h6">Wallet</Typography>
-            </Box>
             <Paper
                 variant="outlined"
                 sx={{
@@ -73,10 +69,13 @@ function Wallet() {
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Typography variant="h2" component="span">
+                                <Typography
+                                    variant="caption"
+                                    sx={{ fontSize: "5rem" }}
+                                >
                                     <span
                                         style={{
-                                            fontSize: "0.5em",
+                                            fontSize: "0.5rem",
                                             verticalAlign: "super",
                                         }}
                                     >
@@ -123,8 +122,8 @@ function Wallet() {
                                 <Grid container direction="column" spacing={0}>
                                     <Grid item>
                                         <Typography
-                                            variant="h4"
-                                            component="span"
+                                            variant="caption"
+                                            sx={{ fontSize: "2rem" }}
                                         >
                                             <span
                                                 style={{
@@ -176,8 +175,8 @@ function Wallet() {
                                 <Grid container direction="column" spacing={0}>
                                     <Grid item>
                                         <Typography
-                                            variant="h4"
-                                            component="span"
+                                            variant="caption"
+                                            sx={{ fontSize: "2rem" }}
                                         >
                                             <span
                                                 style={{
@@ -229,8 +228,8 @@ function Wallet() {
                                 <Grid container direction="column" spacing={0}>
                                     <Grid item>
                                         <Typography
-                                            variant="h4"
-                                            component="span"
+                                            variant="caption"
+                                            sx={{ fontSize: "2rem" }}
                                         >
                                             <span
                                                 style={{

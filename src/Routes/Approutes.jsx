@@ -19,6 +19,7 @@ import Gurugramgameinfo from "../components/Games/Gurugramgameinfo";
 import Rohtakgameinfo from "../components/Games/Rohtakgameinfo";
 import Rewarigameinfo from "../components/Games/Rewarigameinfo";
 import Alwargameinfo from "../components/Games/Alwargameinfo";
+import MainGame from "../components/Roulette/MainGame";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -36,6 +37,9 @@ function Approutes() {
             <Route path="/rohtakgameinfo/*" element={<Rohtakgameinfo />} />
             {/* Game Info */}
 
+            {/* Roulette Test Route */}
+            <Route path="/roulette/*" element={<MainGame />} />
+            {/* Roulette Test Route */}
             <Route path="/howtoplay" element={<Howtoplay />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/companyprofile" element={<Companyprofile />} />
