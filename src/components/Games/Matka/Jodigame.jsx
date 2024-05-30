@@ -26,6 +26,7 @@ function Jodigame() {
     const [selectedNumber, setSelectedNumber] = React.useState(null);
     const [amounts, setAmounts] = React.useState(Array(100).fill(null)); // Array to store amounts for each number
     const [amount, setAmount] = React.useState("");
+    const [totalAmount, setTotalAmount] = React.useState(0);
 
     const handleOpen = (number) => {
         setSelectedNumber(number);
@@ -43,16 +44,38 @@ function Jodigame() {
     };
 
     const handleSave = () => {
-        const newAmounts = [...amounts]; // Create a copy of the amounts array
-        newAmounts[selectedNumber] = amount; // Set the amount for the selected number
-        setAmounts(newAmounts); // Update the amounts array
+        const newAmounts = [...amounts];
+        const previousAmount = parseInt(newAmounts[selectedNumber] || 0); // Get the previous amount or 0 if null
+        newAmounts[selectedNumber] = amount;
+        setAmounts(newAmounts);
+
+        // Convert empty string to 0
+        const parsedAmount = amount === "" ? 0 : parseInt(amount);
+
+        setTotalAmount(
+            (prevTotal) => prevTotal - previousAmount + parsedAmount
+        ); // Deduct previous amount and add new amount
         handleClose();
+    };
+
+    const handleSubmit = () => {
+        const selectedNumbersAndAmounts = gameNumbers.reduce((acc, number) => {
+            if (amounts[number] !== null && amounts[number] !== "") {
+                acc.push({ number, amount: amounts[number] });
+            }
+            return acc;
+        }, []);
+
+        console.log({
+            totalAmount,
+            selectedNumbersAndAmounts,
+        });
     };
 
     return (
         <Box
             sx={{
-                height: "75vh",
+                height: "70vh",
                 overflowY: "auto",
             }}
         >
@@ -65,7 +88,7 @@ function Jodigame() {
                             onClick={() => handleOpen(number)}
                         >
                             {number}{" "}
-                            <Typography variant="caption" color={'yellow'}>
+                            <Typography variant="caption" color={"yellow"}>
                                 {amounts[number] !== null &&
                                     `${amounts[number]}`}
                             </Typography>
@@ -130,6 +153,41 @@ function Jodigame() {
                     </Button>
                 </Box>
             </Modal>
+
+            <Grid
+                container
+                justifyContent={"center"}
+                alignItems={"center"}
+                sx={{
+                    position: "fixed", // Position the Grid container fixed within the viewport
+                    bottom: "8%", // Position 8% from the bottom of the viewport
+                    left: "50%", // Center horizontally
+                    transform: "translateX(-50%)", // Move back to center horizontally
+                    width: "98%", // Set width to 80% of the viewport
+                    zIndex: 1000, // Ensure it appears above other content
+                    borderRadius: "10px",
+                    border: "solid 1px #676767",
+                    backgroundColor: "#494949",
+                }}
+            >
+                <Grid item xs={6}>
+                    <Typography variant="caption">Total Amount :</Typography>
+                    <Typography variant="h1" sx={{ fontSize: "1.5rem" }}>
+                        {totalAmount}
+                    </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        onClick={handleSubmit}
+                        sx={{ ...theme.buttons.gradient }}
+                    >
+                        Submit
+                    </Button>
+                </Grid>
+            </Grid>
         </Box>
     );
 }
