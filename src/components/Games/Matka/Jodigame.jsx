@@ -15,37 +15,41 @@ const style = {
 };
 
 function Jodigame() {
-    const gameNumber = [];
-    for (let i = 0; i <= 99; i++) {
-        gameNumber.push(i);
-    }
+    const gameNumbers = Array.from({ length: 100 }, (_, i) => i);
 
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [selectedNumber, setSelectedNumber] = React.useState(null);
+
+    const handleOpen = (number) => {
+        setSelectedNumber(number);
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+        setSelectedNumber(null);
+    };
+
     return (
         <Box
             sx={{
-                height: "75vh", // 80% of the viewport height
+                height: "75vh", // 75% of the viewport height
                 overflowY: "auto", // Enable vertical scrolling
             }}
         >
-            <Grid container justifyContent={"center"}>
-                <Grid item xs={12}>
-                    {gameNumber.map((number) => (
+            <Grid container spacing={2} justifyContent="center">
+                {gameNumbers.map((number) => (
+                    <Grid item key={number}>
                         <Button
                             variant="contained"
                             sx={{ ...theme.buttons.squarenumberbutton }}
-                            key={number}
-                            onClick={handleOpen}
+                            onClick={() => handleOpen(number)}
                         >
                             {number}
                         </Button>
-                    ))}
-                </Grid>
+                    </Grid>
+                ))}
             </Grid>
 
-            {/* Modal */}
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -58,11 +62,16 @@ function Jodigame() {
                         variant="h6"
                         sx={{ color: "black" }}
                     >
-                        Coming Soon 
+                        Number Selected: {selectedNumber}
+                    </Typography>
+                    <Typography
+                        id="modal-modal-description"
+                        sx={{ mt: 2, color: "black" }}
+                    >
+                        Coming Soon
                     </Typography>
                 </Box>
             </Modal>
-            {/* Modal */}
         </Box>
     );
 }

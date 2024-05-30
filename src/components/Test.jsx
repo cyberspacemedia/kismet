@@ -19,7 +19,7 @@ function CustomTabPanel(props) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    <Typography component="div">{children}</Typography>
                 </Box>
             )}
         </div>
@@ -55,31 +55,29 @@ export default function Test() {
                     aria-label="Game Tab"
                     centered
                     sx={{
-                        backgroundColor: "black", // Background color of the Tabs component
+                        backgroundColor: "black",
                         "& .MuiTabs-indicator": {
-                            // Styling the indicator line
-                            backgroundColor: "orange", // Color of the indicator line
+                            backgroundColor: "orange",
                         },
                         "& .Mui-selected": {
-                            // Styling the active tab
-                            color: "white !important", // Text color of the active tab
+                            color: "white !important",
                         },
                     }}
                 >
                     <Tab
                         label="Jodi"
                         {...a11yProps(0)}
-                        sx={{ color: "gray" }} // Default text color of the tab
+                        sx={{ color: "gray" }}
                     />
                     <Tab
                         label="Crossing"
                         {...a11yProps(1)}
-                        sx={{ color: "gray" }} // Default text color of the tab
+                        sx={{ color: "gray" }}
                     />
                     <Tab
                         label="Haruf"
                         {...a11yProps(2)}
-                        sx={{ color: "gray" }} // Default text color of the tab
+                        sx={{ color: "gray" }}
                     />
                 </Tabs>
             </Box>
