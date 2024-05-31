@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Jodigame from "./Games/Matka/Jodigame";
+import Crossinggame from "./Games/Matka/Crossinggame";
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -85,7 +86,7 @@ export default function Test() {
                 <Jodigame />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Crossing Game Coming Soon
+                <Crossinggame />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Haruf Coming Soon

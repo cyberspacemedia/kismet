@@ -60,6 +60,11 @@ const theme = createTheme({
             fontFamily: "sans-serif",
         },
     },
+    ListItemText: {
+        primary: {
+            color: "red",
+        },
+    },
     buttons: {
         primary: {
             backgroundColor: "#1976d2",

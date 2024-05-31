@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import theme from "../../theme/Theme";
 import {
     Dialog,
     DialogTitle,
@@ -7,6 +8,7 @@ import {
     Button,
     Grid,
     Box,
+    Typography,
 } from "@mui/material";
 import Imageslider from "./slider/Imageslider";
 import Allgames from "../Games/Allgames";
@@ -55,28 +57,49 @@ function Defaultdash() {
             </Grid>
 
             {/* Opening Dialog */}
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle sx={{ backgroundColor: "red", color: "white" }}>
-                    Notice Board
+            <Dialog open={open}>
+                <DialogTitle
+                    sx={{
+                        backgroundColor: "#3c3c3c",
+                        color: "white",
+                        textAlign: "center",
+                    }}
+                >
+                    <Typography variant="h2">Welcome , User</Typography>
                 </DialogTitle>
                 <DialogContent
-                    sx={{ backgroundColor: "gray", textAlign: "center" }}
+                    sx={{ backgroundColor: "#262626", textAlign: "center" }}
                 >
-                    <div>
-                        Play and win tons of prizes. Every hour win upto 1 lac
-                    </div>
+                    <Typography variant="h2">Notice Board</Typography>
+                    <Typography variant="subtitle2">
+                        अत्यन्त जरुरी सुचना! Kismet App में आप सभी यूजर्स का
+                        स्वागत है! Kismet App में आप 24 घंटे पेमेंट ऐड कर सकते
+                        हैं! अगर आपको पेमेंट जोड़ने या निकालने में कोई भी समस्या
+                        होती है, तो आप हमारे नीचे दिए गए टेलीग्राम पर बात कर
+                        सकते हैं।
+                    </Typography>
                 </DialogContent>
                 <DialogActions
-                    sx={{ backgroundColor: "gray", textAlign: "center" }}
+                    sx={{
+                        backgroundColor: "#262626",
+                        justifyContent: "center",
+                    }}
                 >
                     <Button
                         onClick={handleClose}
                         variant="contained"
-                        color="secondary"
+                        sx={{ ...theme.buttons.gradient }}
                     >
                         Close
                     </Button>
                 </DialogActions>
+                <DialogContent
+                    sx={{ backgroundColor: "#262626", textAlign: "center" }}
+                >
+                    <Typography variant="body2" color="yellow">
+                        Telegram ID : @kismet_87
+                    </Typography>
+                </DialogContent>
             </Dialog>
             {/* Opening Dialog */}
         </div>
