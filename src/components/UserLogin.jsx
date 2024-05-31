@@ -61,7 +61,7 @@ function UserLogin() {
                 }}
             >
                 <Box xs={12} sm={4} md={4} lg={4}>
-                    <Grid item sx={{ mt: 10 }}>
+                    <Grid item sx={{ mt: 2 }}>
                         <img
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"
