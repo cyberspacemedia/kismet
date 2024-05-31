@@ -60,9 +60,14 @@ const theme = createTheme({
             fontFamily: "sans-serif",
         },
     },
-    ListItemText: {
-        primary: {
-            color: "red",
+    components: {
+        MuiListItemText: {
+            styleOverrides: {
+                primary: {
+                    color: "white",
+                    fontSize: "1rem",
+                },
+            },
         },
     },
     buttons: {

@@ -25,7 +25,7 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import WalletIcon from "@mui/icons-material/Wallet";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import theme from "../../theme/Theme";
+
 const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -214,7 +214,6 @@ const AppNavigation = () => {
                             </ListItemIcon>
                             <ListItemText
                                 primary={"How to Play"}
-                                sx={{ ...theme.ListItemText.primary }}
                                 onClick={() => {
                                     navigate("/howtoplay");
                                 }}
