@@ -55,7 +55,7 @@ function UserLogin() {
                 textAlign="center"
                 sx={{
                     backgroundColor: "black",
-                    height: "100vh",
+                    height: "120vh",
                     backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
                     backgroundPosition: "center",
                 }}
