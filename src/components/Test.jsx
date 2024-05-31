@@ -1,96 +1,84 @@
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Jodigame from "./Games/Matka/Jodigame";
-import Crossinggame from "./Games/Matka/Crossinggame";
+import React, { useState } from "react";
+import { apiClient } from "./config/Config";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
-function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
+function Test() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
 
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography component="div">{children}</Typography>
-                </Box>
-            )}
-        </div>
-    );
-}
-
-CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        "aria-controls": `simple-tabpanel-${index}`,
+    const formData = {
+        name,
+        email,
     };
-}
 
-export default function Test() {
-    const [value, setValue] = React.useState(0);
+    // const handleInputChange = (e) => {
+    //     setFormData({
+    //         ...formData,
+    //         [e.target.name]: e.target.value,
+    //     });
+    // };
+    // useEffect(() => {
+    //     const fetchdata = async () => {
+    //         try {
+    //             const response = await apiClient.get("/getusers");
+    //             console.log(response);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
+    //     fetchdata();
+    // }, []);
+
+    const handlesubmit = async () => {
+        try {
+            console.log(formData);
+            const response = await apiClient.post("insertuser", formData);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
-        <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="Game Tab"
-                    centered
-                    sx={{
-                        backgroundColor: "black",
-                        "& .MuiTabs-indicator": {
-                            backgroundColor: "orange",
-                        },
-                        "& .Mui-selected": {
-                            color: "white !important",
-                        },
+        <Grid container spacing={1}>
+            <Grid item xs={12}>
+                <TextField
+                    id="name"
+                    name="name"
+                    label="Name"
+                    value={name}
+                    sx={{ backgroundColor: "black" }}
+                    onChange={(e) => {
+                        setName(e.target.value);
                     }}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <TextField
+                    id="email"
+                    name="email"
+                    label="Email"
+                    value={email}
+                    sx={{ backgroundColor: "black" }}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                    }}
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handlesubmit}
                 >
-                    <Tab
-                        label="Jodi"
-                        {...a11yProps(0)}
-                        sx={{ color: "gray" }}
-                    />
-                    <Tab
-                        label="Crossing"
-                        {...a11yProps(1)}
-                        sx={{ color: "gray" }}
-                    />
-                    <Tab
-                        label="Haruf"
-                        {...a11yProps(2)}
-                        sx={{ color: "gray" }}
-                    />
-                </Tabs>
-            </Box>
-            <CustomTabPanel value={value} index={0}>
-                <Jodigame />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
-                <Crossinggame />
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={2}>
-                Haruf Coming Soon
-            </CustomTabPanel>
-        </Box>
+                    Submit
+                </Button>
+            </Grid>
+        </Grid>
     );
 }
+
+export default Test;
