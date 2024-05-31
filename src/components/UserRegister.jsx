@@ -124,7 +124,7 @@ function UserRegister() {
                 textAlign="center"
                 sx={{
                     backgroundColor: "black",
-                    height: "100vh",
+                    height: "120vh",
                     backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
                     backgroundPosition: "center",
                 }}
@@ -140,9 +140,7 @@ function UserRegister() {
 
                     <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
                         <Typography variant="body1">Register & Play</Typography>
-                        <Typography variant="body2">
-                            Earn big in Kismet
-                        </Typography>
+
                         <hr />
 
                         <form onSubmit={handleSubmit}>
