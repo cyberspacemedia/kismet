@@ -1,6 +1,6 @@
 import axios from "axios";
 // const apiKey = "Badmash@2015";
-const apiBaseUrl = "http://143.244.128.132/kismetapp/Api";
+const apiBaseUrl = "https://bookdeets.com/kismetapp/Api";
 
 export const apiClient = axios.create({
     baseURL: apiBaseUrl,
