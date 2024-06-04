@@ -39,6 +39,7 @@ function UserLogin() {
     const handleLogin = (e) => {
         e.preventDefault();
         console.log(email + " " + password);
+
         if (email === "test@test.com" && password === "test") {
             setOpen(false);
             navigate("/dashboard");
