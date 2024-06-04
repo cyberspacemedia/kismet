@@ -40,12 +40,14 @@ function UserLogin() {
         e.preventDefault();
         console.log(email + " " + password);
 
-        if (email === "test@test.com" && password === "test") {
-            setOpen(false);
-            navigate("/dashboard");
-        } else {
-        }
-        setOpen(true);
+        
+
+        // if (email === "test@test.com" && password === "test") {
+        //     setOpen(false);
+        //     navigate("/dashboard");
+        // } else {
+        // }
+        // setOpen(true);
     };
     return (
         <>
