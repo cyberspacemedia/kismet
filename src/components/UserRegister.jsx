@@ -23,7 +23,8 @@ function UserRegister() {
     const [checkboxChecked, setCheckboxChecked] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState("");
-    const [regStatus, setRegStatus] = useState(false);
+
+    const [success, setSuccess] = useState(false);
 
     const formData = {
         name,
@@ -59,20 +60,24 @@ function UserRegister() {
             setSnackbarOpen(true);
         } else {
             // Proceed with registration
+
             // Your registration logic goes here
             try {
-                console.log(formData);
+                // console.log(formData);
                 const response = await apiClient.post(
                     "registerUserEmail",
                     formData
                 );
-                // console.log(response.data);
+                console.log(response.data);
+                setSuccess(response.data.success);
 
-                setRegStatus(true);
-                if (response.status === 200) {
+                if (response.data.success === true) {
                     setTimeout(() => {
                         navigate("/login");
                     }, 2000);
+                } else {
+                    setSnackbarMessage(response.data.message);
+                    setSnackbarOpen(true);
                 }
             } catch (error) {
                 console.error(error);
@@ -106,7 +111,7 @@ function UserRegister() {
 
     return (
         <>
-            {regStatus && (
+            {success && (
                 <Box
                     sx={{
                         position: "absolute",
