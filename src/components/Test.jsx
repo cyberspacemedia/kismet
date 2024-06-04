@@ -1,26 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { apiClient } from "./config/Config";
+import { Grid } from "@mui/material";
+import React from "react";
+import AppLoader from "./Loaders/AppLoader";
 
 function Test() {
-    const [hasData, setHasData] = useState(false);
-
-    useEffect(() => {
-        if (!hasData) {
-            const fetchdata = async () => {
-                try {
-                    const response = await apiClient.get("/getUsers");
-                    console.log(response);
-                    setHasData(true); // Mark data fetched
-                } catch (error) {
-                    console.error(error);
-                }
-            };
-
-            fetchdata();
-        }
-    }, [hasData]); // Only re-run when hasData changes
-
-    return <div>Test</div>;
+    return (
+        <Grid container>
+            <Grid item xs={12} md={10}>
+                <AppLoader />
+            </Grid>
+        </Grid>
+    );
 }
 
 export default Test;

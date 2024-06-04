@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import theme from "../theme/Theme";
 import { Link, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
@@ -12,6 +12,9 @@ import PasswordIcon from "@mui/icons-material/Password";
 import Typography from "@mui/material/Typography";
 
 import Snackbar from "@mui/material/Snackbar";
+import { apiClient } from "./config/Config";
+import UserContext from "./UserContext"; // Import UserContext
+import AppLoader from "./Loaders/AppLoader";
 
 function UserLogin() {
     const navigate = useNavigate();
@@ -20,8 +23,11 @@ function UserLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const { setUserId } = useContext(UserContext); // Destructure setUserId from the context
+
     // error handling and messages via snackbar
     const [open, setOpen] = React.useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleClose = (event, reason) => {
         if (reason === "clickaway") {
@@ -29,6 +35,7 @@ function UserLogin() {
         }
 
         setOpen(false);
+        setLoading(false);
     };
 
     // handle email and password Login
@@ -36,21 +43,55 @@ function UserLogin() {
     const handleMobileLogin = () => {
         navigate("/mobilelogin");
     };
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log(email + " " + password);
 
-        
+        const data = {
+            email: email,
+            password: password,
+        };
 
-        // if (email === "test@test.com" && password === "test") {
-        //     setOpen(false);
-        //     navigate("/dashboard");
-        // } else {
-        // }
-        // setOpen(true);
+        setLoading(false);
+        try {
+            const response = await apiClient.post("/emailuserlogin", data);
+            setLoading(true);
+            console.log(response.data);
+
+            if (response.data.success === true) {
+                //Set UID and go to dashboard
+
+                setUserId(response.data.id);
+                setTimeout(() => {
+                    navigate("/dashboard");
+                }, 2000);
+            } else {
+                //Set up error and show them
+                setOpen(true);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
     return (
         <>
+            {loading && <AppLoader />}
+
+            <Snackbar
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }} // Set anchorOrigin to top center
+                key={`${"top"}${"center"}`} // Use backticks to create a string key
+            >
+                <Alert
+                    onClose={handleClose}
+                    severity="error"
+                    variant="filled"
+                    sx={{ width: "100%" }}
+                >
+                    Invalid email or password
+                </Alert>
+            </Snackbar>
             <Grid
                 container
                 direction={"column"}
@@ -82,6 +123,7 @@ function UserLogin() {
                         <form>
                             <TextField
                                 id="email"
+                                name="email"
                                 size="large"
                                 variant="filled"
                                 label="Email"
@@ -119,6 +161,7 @@ function UserLogin() {
                             />
                             <TextField
                                 id="password"
+                                name="password"
                                 size="large"
                                 variant="filled"
                                 label="Password"
@@ -176,23 +219,6 @@ function UserLogin() {
                             </Button>
                         </form>
                     </Grid>
-
-                    <Snackbar
-                        open={open}
-                        autoHideDuration={2000}
-                        onClose={handleClose}
-                        anchorOrigin={{ vertical: "top", horizontal: "center" }} // Set anchorOrigin to top center
-                        key={`${"top"}${"center"}`} // Use backticks to create a string key
-                    >
-                        <Alert
-                            onClose={handleClose}
-                            severity="error"
-                            variant="filled"
-                            sx={{ width: "100%" }}
-                        >
-                            Invalid email or password
-                        </Alert>
-                    </Snackbar>
                 </Box>
                 <Grid item sx={{ mt: 5 }}>
                     <Typography variant="subtitle2">
