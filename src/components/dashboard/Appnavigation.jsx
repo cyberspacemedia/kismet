@@ -31,8 +31,9 @@ const AppNavigation = () => {
 
     const navigate = useNavigate();
     const handlelogout = () => {
-        // Delete the 'hasOpenedBefore' flag from local storage
-        localStorage.removeItem("hasOpenedBefore");
+        // Delete the 'userId' flag from local storage
+
+        localStorage.removeItem("userid");
         navigate("/login");
     };
 

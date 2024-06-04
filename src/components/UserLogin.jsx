@@ -61,6 +61,9 @@ function UserLogin() {
                 //Set UID and go to dashboard
 
                 setUserId(response.data.id);
+                //Store UID to local_storage
+                localStorage.setItem("userid", response.data.id.id);
+
                 setTimeout(() => {
                     navigate("/dashboard");
                 }, 2000);
