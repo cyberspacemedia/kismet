@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     AppBar,
@@ -25,14 +25,16 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import WalletIcon from "@mui/icons-material/Wallet";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import UserContext from "../UserContext";
 
 const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const { userId } = useContext(UserContext);
 
     const navigate = useNavigate();
     const handlelogout = () => {
         // Delete the 'userId' flag from local storage
-
+        localStorage.removeItem("hasOpenedBefore");
         localStorage.removeItem("userid");
         navigate("/login");
     };
@@ -106,7 +108,7 @@ const AppNavigation = () => {
                                 ml: 1, // Add some margin-left if needed to separate the text from the image
                             }}
                         >
-                            KISMET
+                            KISMET {userId}
                         </Typography>
                     </Box>
                     {/* Right side settings menu */}

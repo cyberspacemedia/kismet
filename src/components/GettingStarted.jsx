@@ -9,21 +9,20 @@ import UserContext from "./UserContext";
 
 function GettingStarted() {
     const navigate = useNavigate();
-
     const { setUserId } = useContext(UserContext); // Access context for user state
 
-    const storedUserId = localStorage.getItem("userid");
-    console.log(storedUserId);
     useEffect(() => {
+        const storedUserId = localStorage.getItem("userid");
+        console.log(storedUserId);
+
         if (storedUserId) {
             console.log("User Id Found");
-
             setUserId(storedUserId);
             setTimeout(() => {
                 navigate("/dashboard");
             });
         }
-    }, [storedUserId, navigate, setUserId]);
+    }, [navigate, setUserId]);
 
     const handleRegister = () => {
         navigate("/register");

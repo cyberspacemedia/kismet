@@ -65,12 +65,12 @@ function Defaultdash() {
                         textAlign: "center",
                     }}
                 >
-                    <Typography variant="h2">Welcome , User</Typography>
+                    Welcome , User
                 </DialogTitle>
                 <DialogContent
                     sx={{ backgroundColor: "#262626", textAlign: "center" }}
                 >
-                    <Typography variant="h2">Notice Board</Typography>
+                    <Typography variant="subtitle1">Notice Board</Typography>
                     <Typography variant="subtitle2">
                         अत्यन्त जरुरी सुचना! Kismet App में आप सभी यूजर्स का
                         स्वागत है! Kismet App में आप 24 घंटे पेमेंट ऐड कर सकते

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import theme from "../theme/Theme";
 import { Link, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
@@ -10,20 +10,18 @@ import InputAdornment from "@mui/material/InputAdornment";
 import EmailIcon from "@mui/icons-material/Email";
 import PasswordIcon from "@mui/icons-material/Password";
 import Typography from "@mui/material/Typography";
-
 import Snackbar from "@mui/material/Snackbar";
 import { apiClient } from "./config/Config";
 import UserContext from "./UserContext"; // Import UserContext
+
 import AppLoader from "./Loaders/AppLoader";
 
 function UserLogin() {
     const navigate = useNavigate();
-
+    const { setUserId } = useContext(UserContext); // Access context for user state
     // handle email and password Login
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const { setUserId } = useContext(UserContext); // Destructure setUserId from the context
 
     // error handling and messages via snackbar
     const [open, setOpen] = React.useState(false);
@@ -60,7 +58,9 @@ function UserLogin() {
             if (response.data.success === true) {
                 //Set UID and go to dashboard
 
-                setUserId(response.data.id);
+                // Set the userId in context
+                setUserId(response.data.id.id);
+
                 //Store UID to local_storage
                 localStorage.setItem("userid", response.data.id.id);
 

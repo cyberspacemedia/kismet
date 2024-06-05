@@ -1,15 +1,9 @@
-import { Grid } from "@mui/material";
-import React from "react";
-import AppLoader from "./Loaders/AppLoader";
+import React, { useContext } from "react";
+import UserContext from "./UserContext";
 
 function Test() {
-    return (
-        <Grid container>
-            <Grid item xs={12} md={10}>
-                <AppLoader />
-            </Grid>
-        </Grid>
-    );
+    const { userId } = useContext(UserContext);
+    return <div>{userId}</div>;
 }
 
 export default Test;
