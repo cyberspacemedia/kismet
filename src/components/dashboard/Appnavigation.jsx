@@ -23,6 +23,7 @@ import PasswordIcon from "@mui/icons-material/Password";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import BadgeIcon from "@mui/icons-material/Badge";
 import WalletIcon from "@mui/icons-material/Wallet";
+import EditIcon from "@mui/icons-material/Edit";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import UserContext from "../UserContext";
@@ -130,7 +131,7 @@ const AppNavigation = () => {
                                 ml: 1, // Add some margin-left if needed to separate the text from the image
                             }}
                         >
-                            KISMET {userId}
+                            KISMET
                         </Typography>
                     </Box>
                     {/* Right side settings menu */}
@@ -193,18 +194,37 @@ const AppNavigation = () => {
                     container
                     justifyContent={"center"}
                     alignItems={"center"}
-                    mt={5}
+                    mt={2}
                 >
-                    <Grid item xs={12} md={10}>
+                    <Grid item>
                         <AccountBoxIcon sx={{ fontSize: "100px" }} />
+                        <IconButton
+                            onClick={() => {
+                                navigate("/myaccount");
+                            }}
+                            style={{
+                                position: "absolute",
+                                top: 20,
+                                right: "30%",
+                                color: "red",
+                                backgroundColor: "yellow",
+                                border: "solid 0.5px red",
+                            }}
+                        >
+                            <EditIcon />
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={10} justifyItems={"center"}>
                         <Typography variant="body1" textAlign="center">
                             {profile.name}
                         </Typography>
+                    </Grid>
+                    <Grid item xs={10} justifyItems={"center"}>
                         <Typography variant="body2" textAlign="center">
                             {profile.email}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} md={10}>
+                    <Grid item xs={10} justifyItems={"center"}>
                         <span style={{ fontSize: "10px" }}>
                             Profile Completeness (60%)
                         </span>

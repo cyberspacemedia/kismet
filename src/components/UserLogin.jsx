@@ -59,10 +59,10 @@ function UserLogin() {
                 //Set UID and go to dashboard
 
                 // Set the userId in context
-                setUserId(response.data.id.id);
+                setUserId(response.data.data.id);
 
                 //Store UID to local_storage
-                localStorage.setItem("userid", response.data.id.id);
+                localStorage.setItem("userId", response.data.data.id);
 
                 setTimeout(() => {
                     navigate("/dashboard");

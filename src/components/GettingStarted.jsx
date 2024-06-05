@@ -12,7 +12,7 @@ function GettingStarted() {
     const { setUserId } = useContext(UserContext); // Access context for user state
 
     useEffect(() => {
-        const storedUserId = localStorage.getItem("userid");
+        const storedUserId = localStorage.getItem("userId");
         console.log(storedUserId);
 
         if (storedUserId) {
