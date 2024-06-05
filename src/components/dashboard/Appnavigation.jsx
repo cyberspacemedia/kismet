@@ -58,7 +58,7 @@ const AppNavigation = () => {
     const handlelogout = () => {
         // Delete the 'userId' flag from local storage
         localStorage.removeItem("hasOpenedBefore");
-        localStorage.removeItem("userid");
+        localStorage.removeItem("userId");
         navigate("/login");
     };
 
