@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     AppBar,
@@ -26,12 +26,29 @@ import WalletIcon from "@mui/icons-material/Wallet";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import UserContext from "../UserContext";
+import { apiClient } from "../config/Config";
 
 const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const { userId } = useContext(UserContext);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const data = {
+            userId: userId,
+        };
+        const fetchdata = async () => {
+            try {
+                const response = await apiClient.post("/getuserprofile", data);
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchdata();
+    }, [userId]);
+
     const handlelogout = () => {
         // Delete the 'userId' flag from local storage
         localStorage.removeItem("hasOpenedBefore");
