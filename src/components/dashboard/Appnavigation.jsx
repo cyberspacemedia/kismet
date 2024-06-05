@@ -31,6 +31,7 @@ import { apiClient } from "../config/Config";
 const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const { userId } = useContext(UserContext);
+    const [profile, setProfile] = useState([]);
 
     const navigate = useNavigate();
 
@@ -38,14 +39,18 @@ const AppNavigation = () => {
         const data = {
             userId: userId,
         };
+
         const fetchdata = async () => {
             try {
                 const response = await apiClient.post("/getuserprofile", data);
-                console.log(response.data);
+                // Update the profile state with the response data
+                setProfile(response.data.data);
             } catch (error) {
                 console.error(error);
             }
         };
+
+        // Call fetchdata only once when the component mounts by passing an empty dependency array
         fetchdata();
     }, [userId]);
 
@@ -180,7 +185,7 @@ const AppNavigation = () => {
                 PaperProps={{
                     sx: {
                         backgroundColor: "#2A2A2A",
-                        width: "15rem",
+                        width: "17rem",
                     },
                 }}
             >
@@ -188,19 +193,18 @@ const AppNavigation = () => {
                     container
                     justifyContent={"center"}
                     alignItems={"center"}
-                    direction={"row"}
                     mt={5}
                 >
-                    <Grid item>
+                    <Grid item xs={12} md={10}>
                         <AccountBoxIcon sx={{ fontSize: "100px" }} />
                         <Typography variant="body1" textAlign="center">
-                            Test
+                            {profile.name}
                         </Typography>
                         <Typography variant="body2" textAlign="center">
-                            Test@test.com
+                            {profile.email}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} md={10}>
                         <span style={{ fontSize: "10px" }}>
                             Profile Completeness (60%)
                         </span>
