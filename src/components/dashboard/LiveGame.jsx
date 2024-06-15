@@ -8,7 +8,7 @@ import {
     Typography,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import { apiClient } from "../config/Config";
 
@@ -16,8 +16,8 @@ function Livegame() {
     const [gameName, setGameName] = useState("");
     const [gameID, setGameID] = useState("");
     const [game, setGame] = useState(false);
-    // const navigate = useNavigate();
-    const handleliveGame = async () => {
+    const navigate = useNavigate();
+    const findliveGame = async () => {
         try {
             const response = await apiClient.post("/getlivegame");
             console.log(response.data.success);
@@ -34,8 +34,12 @@ function Livegame() {
     };
 
     useEffect(() => {
-        handleliveGame();
+        findliveGame();
     }, []);
+
+    const handleliveGame = () => {
+        navigate("/gurugramgame", { state: { gameName, gameID } });
+    };
 
     return (
         <>

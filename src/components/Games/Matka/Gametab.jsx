@@ -40,7 +40,7 @@ function a11yProps(index) {
     };
 }
 
-export default function Gametab() {
+export default function Gametab({ gameName, gameID }) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -83,7 +83,7 @@ export default function Gametab() {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <Jodigame />
+                <Jodigame gameName={gameName} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
                 <Crossinggame />

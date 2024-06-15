@@ -19,7 +19,7 @@ const style = {
     justifyContent: "center",
 };
 
-function Jodigame() {
+function Jodigame({ gameName }) {
     const gameNumbers = Array.from({ length: 100 }, (_, i) => i);
 
     const [open, setOpen] = React.useState(false);
@@ -79,6 +79,7 @@ function Jodigame() {
                 overflowY: "auto",
             }}
         >
+            {gameName}
             <Grid container justifyContent="center">
                 {gameNumbers.map((number) => (
                     <Grid item key={number}>
