@@ -4,16 +4,39 @@ import {
     CardContent,
     Chip,
     Grid,
+    Skeleton,
     Typography,
 } from "@mui/material";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-
-const gameName = "Alwar";
+import { apiClient } from "../config/Config";
 
 function Livegame() {
-    const navigate = useNavigate();
+    const [gameName, setGameName] = useState("");
+    const [gameID, setGameID] = useState("");
+    const [game, setGame] = useState(false);
+    // const navigate = useNavigate();
+    const handleliveGame = async () => {
+        try {
+            const response = await apiClient.post("/getlivegame");
+            console.log(response.data.success);
+            if (response.data.success === true) {
+                setGame(true);
+                setGameName(response.data.data.gameName);
+                setGameID(response.data.data.gameID);
+            } else {
+                setGame(false);
+            }
+        } catch (error) {
+            console.error("Error fetching live game:", error);
+        }
+    };
+
+    useEffect(() => {
+        handleliveGame();
+    }, []);
+
     return (
         <>
             <Grid container spacing={1}>
@@ -23,111 +46,135 @@ function Livegame() {
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    {/* Card for Live Result */}
-                    <Card
-                        sx={{
-                            width: "95%",
-                            margin: "0 auto",
-                            border: "1px solid gray",
-                            borderRadius: "15px",
-                            backgroundColor: "#373736",
-                        }}
-                    >
-                        <CardActionArea
-                            onClick={() => navigate("/gurugramgame")}
-                        >
-                            <CardContent>
-                                <Grid container alignItems="center" spacing={1}>
-                                    <Grid item>
-                                        <img
-                                            src="./StaticAssets/Images/Icons/Rohtakround.png"
-                                            alt="Custom"
-                                            style={{
-                                                height: "50px",
-                                                objectFit: "cover",
-                                            }}
-                                        />
-                                    </Grid>
-                                    <Grid
-                                        item
-                                        container
-                                        xs
-                                        direction="column"
-                                        justifyContent="center"
-                                        alignItems="flex-start" // This ensures all items inside are aligned to the left
-                                    >
-                                        <Grid item>
-                                            <Typography
-                                                variant="subtitle2"
-                                                sx={{
-                                                    fontSize: "15px",
-                                                    fontWeight: "bold",
-                                                }}
-                                                align="left"
-                                            >
-                                                {gameName}
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography
-                                                variant="subtitle2"
-                                                sx={{
-                                                    fontSize: "12px",
-                                                    color: "#b6b6b2",
-                                                }}
-                                                align="left"
-                                            >
-                                                42819 Playing
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item >
-                                            <Chip
-                                                label="open"
-                                                color="success"
-                                                size="small"
-                                                sx={{
-                                                    alignSelf: "flex-start",
-                                                    width: "80px",
-                                                    height:'15px',
-                                                    fontSize:'10px'
-                                                }}
-                                            />
-                                        </Grid>
-                                    </Grid>
-
-                                    <Grid
-                                        item
-                                        container
-                                        xs
-                                        direction="column"
-                                        justifyContent={"flex-end"}
-                                        alignItems={"end"}
-                                    >
+                    {game ? (
+                        <>
+                            {/* Card for Live Result */}
+                            <Card
+                                sx={{
+                                    width: "95%",
+                                    margin: "0 auto",
+                                    border: "1px solid gray",
+                                    borderRadius: "15px",
+                                    backgroundColor: "#373736",
+                                }}
+                            >
+                                <CardActionArea onClick={handleliveGame}>
+                                    <CardContent>
                                         <Grid
-                                            item
                                             container
-                                            direction="column"
                                             alignItems="center"
-                                            justifyContent="center"
+                                            spacing={1}
                                         >
-                                            <PlayCircleIcon
-                                                sx={{
-                                                    fontSize: "3rem",
-                                                }}
-                                            />
-                                            <Typography
-                                                variant="caption"
-                                                align="center"
+                                            <Grid item>
+                                                <img
+                                                    src="./StaticAssets/Images/Icons/Gurugramround.png"
+                                                    alt="Custom"
+                                                    style={{
+                                                        height: "50px",
+                                                        objectFit: "cover",
+                                                    }}
+                                                />
+                                            </Grid>
+                                            <Grid
+                                                item
+                                                container
+                                                xs
+                                                direction="column"
+                                                justifyContent="center"
+                                                alignItems="flex-start" // This ensures all items inside are aligned to the left
                                             >
-                                                Play
-                                            </Typography>
+                                                <Grid item>
+                                                    <Typography
+                                                        variant="subtitle2"
+                                                        sx={{
+                                                            fontSize: "15px",
+                                                            fontWeight: "bold",
+                                                        }}
+                                                        align="left"
+                                                    >
+                                                        {gameName}
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Typography
+                                                        variant="subtitle2"
+                                                        sx={{
+                                                            fontSize: "12px",
+                                                            color: "#b6b6b2",
+                                                        }}
+                                                        align="left"
+                                                    >
+                                                        42819 Playing
+                                                    </Typography>
+                                                </Grid>
+                                                <Grid item>
+                                                    <Chip
+                                                        label="open"
+                                                        color="success"
+                                                        size="small"
+                                                        sx={{
+                                                            alignSelf:
+                                                                "flex-start",
+                                                            width: "80px",
+                                                            height: "15px",
+                                                            fontSize: "10px",
+                                                        }}
+                                                    />
+                                                </Grid>
+                                            </Grid>
+
+                                            <Grid
+                                                item
+                                                container
+                                                xs
+                                                direction="column"
+                                                justifyContent={"flex-end"}
+                                                alignItems={"end"}
+                                            >
+                                                <Grid
+                                                    item
+                                                    container
+                                                    direction="column"
+                                                    alignItems="center"
+                                                    justifyContent="center"
+                                                >
+                                                    <PlayCircleIcon
+                                                        sx={{
+                                                            fontSize: "3rem",
+                                                        }}
+                                                    />
+                                                    <Typography
+                                                        variant="caption"
+                                                        align="center"
+                                                    >
+                                                        Play
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
-                                </Grid>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                    {/* Card for Live Result */}
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                            {/* Card for Live Result */}
+                        </>
+                    ) : (
+                        <Grid
+                            container
+                            justifyContent="center"
+                            alignItems="center"
+                            style={{ width: "100%" }}
+                        >
+                            <Skeleton
+                                variant="rounded"
+                                height={80}
+                                width="95%"
+                                sx={{
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            />
+                        </Grid>
+                    )}
                 </Grid>
             </Grid>
         </>
