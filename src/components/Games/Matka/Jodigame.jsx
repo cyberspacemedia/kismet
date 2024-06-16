@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import theme from "../../../theme/Theme";
 import { Grid, Button, Box, Modal, Typography, TextField } from "@mui/material";
+import UserContext from "../../UserContext";
+import { apiClient } from "../../config/Config";
+import { useNavigate } from "react-router-dom";
 
 const style = {
     position: "absolute",
@@ -19,7 +22,8 @@ const style = {
     justifyContent: "center",
 };
 
-function Jodigame({ gameName }) {
+function Jodigame({ gameName, gameId, gameType }) {
+    const navigate = useNavigate();
     const gameNumbers = Array.from({ length: 100 }, (_, i) => i);
 
     const [open, setOpen] = React.useState(false);
@@ -27,6 +31,7 @@ function Jodigame({ gameName }) {
     const [amounts, setAmounts] = React.useState(Array(100).fill(null)); // Array to store amounts for each number
     const [amount, setAmount] = React.useState("");
     const [totalAmount, setTotalAmount] = React.useState(0);
+    const { userId } = useContext(UserContext);
 
     const handleOpen = (number) => {
         setSelectedNumber(number);
@@ -58,7 +63,7 @@ function Jodigame({ gameName }) {
         handleClose();
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const selectedNumbersAndAmounts = gameNumbers.reduce((acc, number) => {
             if (amounts[number] !== null && amounts[number] !== "") {
                 acc.push({ number, amount: amounts[number] });
@@ -66,10 +71,27 @@ function Jodigame({ gameName }) {
             return acc;
         }, []);
 
-        console.log({
-            totalAmount,
-            selectedNumbersAndAmounts,
-        });
+        const gameData = {
+            userId: userId,
+            gameName: gameName,
+            gameType: gameType,
+            gameId: gameId,
+            totalAmount: totalAmount,
+            selectedNumbersAndAmounts: selectedNumbersAndAmounts,
+        };
+
+        try {
+            const response = await apiClient.post("submitgame", gameData);
+            console.log(response.data);
+            if (response.data.success === true) {
+                console.log("Bet Placed");
+                navigate("/dashboard");
+            } else {
+                console.log("Issue Found");
+            }
+        } catch (error) {
+            console.error("Could Not Submit API Error", error);
+        }
     };
 
     return (
@@ -79,7 +101,6 @@ function Jodigame({ gameName }) {
                 overflowY: "auto",
             }}
         >
-            {gameName}
             <Grid container justifyContent="center">
                 {gameNumbers.map((number) => (
                     <Grid item key={number}>
@@ -97,7 +118,6 @@ function Jodigame({ gameName }) {
                     </Grid>
                 ))}
             </Grid>
-
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -154,7 +174,6 @@ function Jodigame({ gameName }) {
                     </Button>
                 </Box>
             </Modal>
-
             <Grid
                 container
                 justifyContent={"center"}

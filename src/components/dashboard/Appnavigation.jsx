@@ -33,8 +33,31 @@ const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const { userId } = useContext(UserContext);
     const [profile, setProfile] = useState([]);
-
+    const [balance, setBalance] = useState(0);
     const navigate = useNavigate();
+
+    // Fetch Wallet Data
+
+    useEffect(() => {
+        const data = {
+            userId: userId,
+        };
+        const fetchwalletbalance = async () => {
+            try {
+                const walletresponse = await apiClient.post(
+                    "/getbalance",
+                    data
+                );
+                console.log(walletresponse.data);
+                setBalance(walletresponse.data.data.deposit);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchwalletbalance();
+    }, [userId]);
+
+    // Fetch Wallet Data
 
     useEffect(() => {
         const data = {
@@ -159,7 +182,10 @@ const AppNavigation = () => {
                         >
                             <WalletIcon sx={{ fontSize: "20px" }} />{" "}
                             <Typography variant="body2" color="inherit">
-                                ₹ <span style={{ fontSize: "16px" }}>0</span>
+                                ₹{" "}
+                                <span style={{ fontSize: "16px" }}>
+                                    {balance}
+                                </span>
                             </Typography>
                         </Paper>
                     </IconButton>

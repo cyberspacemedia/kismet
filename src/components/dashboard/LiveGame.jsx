@@ -14,21 +14,22 @@ import { apiClient } from "../config/Config";
 
 function Livegame() {
     const [gameName, setGameName] = useState("");
-    const [gameID, setGameID] = useState("");
+    const [gameId, setGameId] = useState("");
     const [game, setGame] = useState(false);
     const navigate = useNavigate();
     const findliveGame = async () => {
         try {
             const response = await apiClient.post("/getlivegame");
-            console.log(response.data.success);
+            console.log(response.data);
             if (response.data.success === true) {
                 setGame(true);
                 setGameName(response.data.data.gameName);
-                setGameID(response.data.data.gameID);
+                setGameId(response.data.data.gameId);
             } else {
                 setGame(false);
             }
         } catch (error) {
+            setGame(false);
             console.error("Error fetching live game:", error);
         }
     };
@@ -38,7 +39,7 @@ function Livegame() {
     }, []);
 
     const handleliveGame = () => {
-        navigate("/gurugramgame", { state: { gameName, gameID } });
+        navigate("/gurugramgame", { state: { gameName, gameId } });
     };
 
     return (
