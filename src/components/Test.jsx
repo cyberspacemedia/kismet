@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
-import UserContext from "./UserContext";
+import React from "react";
 
 function Test() {
-    const { userId } = useContext(UserContext);
-    return <div>{userId}</div>;
+    return <div>Test</div>;
 }
 
 export default Test;
