@@ -65,6 +65,70 @@ function Allgames() {
                 <Typography variant="caption">Rohtak</Typography>
                 {/* Card 4 */}
             </Grid>
+            <Grid item xs={3}>
+                {/* Card 1 */}
+                <Card sx={{ backgroundColor: "transparent" }}>
+                    <CardActionArea
+                        onClick={() => navigate("/gurugramgameinfo")}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gurugram.png"
+                            alt="Gurugram"
+                        />
+                    </CardActionArea>
+                </Card>
+                <Typography variant="caption">Dishawar</Typography>
+                {/* Card 1 */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card 1 */}
+                <Card sx={{ backgroundColor: "transparent" }}>
+                    <CardActionArea
+                        onClick={() => navigate("/gurugramgameinfo")}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gurugram.png"
+                            alt="Gurugram"
+                        />
+                    </CardActionArea>
+                </Card>
+                <Typography variant="caption">Gali</Typography>
+                {/* Card 1 */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card 1 */}
+                <Card sx={{ backgroundColor: "transparent" }}>
+                    <CardActionArea
+                        onClick={() => navigate("/gurugramgameinfo")}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gurugram.png"
+                            alt="Gurugram"
+                        />
+                    </CardActionArea>
+                </Card>
+                <Typography variant="caption">Faridabad</Typography>
+                {/* Card 1 */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card 1 */}
+                <Card sx={{ backgroundColor: "transparent" }}>
+                    <CardActionArea
+                        onClick={() => navigate("/gurugramgameinfo")}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gurugram.png"
+                            alt="Gurugram"
+                        />
+                    </CardActionArea>
+                </Card>
+                <Typography variant="caption">Gaziabad</Typography>
+                {/* Card 1 */}
+            </Grid>
         </Grid>
     );
 }
