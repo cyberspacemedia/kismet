@@ -97,9 +97,10 @@ const theme = createTheme({
         },
         squarenumberbutton: {
             color: "#fff",
-            borderRadius: "10px",
-            fontSize: "1.2rem",
+            borderRadius: "5px",
+            fontSize: "1rem",
             margin: "3px",
+
             background:
                 "linear-gradient(45deg, rgba(80,80,80,1) 0%, rgba(40,40,40,1) 100%)",
             border: "solid 0.5px #676767",
