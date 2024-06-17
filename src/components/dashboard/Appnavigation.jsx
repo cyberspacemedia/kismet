@@ -48,7 +48,6 @@ const AppNavigation = () => {
                     "/getbalance",
                     data
                 );
-                console.log(walletresponse.data);
                 setBalance(walletresponse.data.data.deposit);
             } catch (error) {
                 console.log(error);

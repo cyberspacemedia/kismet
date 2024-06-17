@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Layout from "./Layout";
 import {
     Paper,
@@ -18,17 +18,39 @@ import Slide from "@mui/material/Slide";
 
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { useNavigate } from "react-router-dom";
+import { apiClient } from "../config/Config";
+import UserContext from "../UserContext";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function Wallet() {
+    const { userId } = useContext(UserContext);
     const [openModal, setOpenModal] = useState(false);
     const [amount, setAmount] = useState("0");
+    const [wallet, setWallet] = useState({
+        deposit: 0,
+        referral: 0,
+        wining: 0,
+    });
     const navigate = useNavigate();
 
-    const handletransactions = () => {
+    useEffect(() => {
+        const data = { userId: userId };
+        const walletFetch = async () => {
+            try {
+                const balance = await apiClient.post("/getbalance", data);
+                console.log(balance.data.data);
+                setWallet(balance.data.data);
+            } catch (error) {
+                console.error("Wallet Fetch API Error", error);
+            }
+        };
+        walletFetch();
+    }, [userId]);
+
+    const handleTransactions = () => {
         navigate("/history");
     };
 
@@ -40,6 +62,8 @@ function Wallet() {
         setOpenModal(false);
     };
 
+    const totalBalance = wallet.deposit + wallet.referral;
+
     return (
         <Layout>
             <Paper
@@ -50,9 +74,9 @@ function Wallet() {
                     borderColor: "white",
                     backgroundColor: (theme) =>
                         alpha(theme.palette.grey[500], 0.5),
-                    width: "95%", // Adjust width to 95%
-                    textAlign: "center", // Align center horizontally
-                    margin: "auto", // Center horizontally
+                    width: "95%",
+                    textAlign: "center",
+                    margin: "auto",
                 }}
             >
                 <Grid
@@ -81,7 +105,7 @@ function Wallet() {
                                     >
                                         ₹
                                     </span>
-                                    0
+                                    {totalBalance}
                                 </Typography>
                             </Grid>
 
@@ -107,9 +131,9 @@ function Wallet() {
                             borderColor: "white",
                             backgroundColor: (theme) =>
                                 alpha(theme.palette.grey[500], 0.5),
-                            width: "95%", // Adjust width to 95%
-                            textAlign: "center", // Align center horizontally
-                            margin: "auto", // Center horizontally
+                            width: "95%",
+                            textAlign: "center",
+                            margin: "auto",
                         }}
                     >
                         <Grid
@@ -133,7 +157,7 @@ function Wallet() {
                                             >
                                                 ₹
                                             </span>
-                                            0
+                                            {wallet.deposit}
                                         </Typography>
                                     </Grid>
 
@@ -160,9 +184,9 @@ function Wallet() {
                             borderColor: "white",
                             backgroundColor: (theme) =>
                                 alpha(theme.palette.grey[500], 0.5),
-                            width: "95%", // Adjust width to 95%
-                            textAlign: "center", // Align center horizontally
-                            margin: "auto", // Center horizontally
+                            width: "95%",
+                            textAlign: "center",
+                            margin: "auto",
                         }}
                     >
                         <Grid
@@ -186,7 +210,7 @@ function Wallet() {
                                             >
                                                 ₹
                                             </span>
-                                            0
+                                            {wallet.wining}
                                         </Typography>
                                     </Grid>
 
@@ -213,9 +237,9 @@ function Wallet() {
                             borderColor: "white",
                             backgroundColor: (theme) =>
                                 alpha(theme.palette.grey[500], 0.5),
-                            width: "95%", // Adjust width to 95%
-                            textAlign: "center", // Align center horizontally
-                            margin: "auto", // Center horizontally
+                            width: "95%",
+                            textAlign: "center",
+                            margin: "auto",
                         }}
                     >
                         <Grid
@@ -239,7 +263,7 @@ function Wallet() {
                                             >
                                                 ₹
                                             </span>
-                                            0
+                                            {wallet.referral}
                                         </Typography>
                                     </Grid>
 
@@ -258,12 +282,7 @@ function Wallet() {
                     {/* Commission */}
                 </Grid>
                 <Grid item sx={{ width: "90%" }}>
-                    <Grid
-                        container
-                        spacing={2}
-                        mt={2}
-                        justifyContent="center" // Align items horizontally in the center
-                    >
+                    <Grid container spacing={2} mt={2} justifyContent="center">
                         <Grid item sx={{ width: "50%" }}>
                             <Button
                                 variant="contained"
@@ -294,7 +313,7 @@ function Wallet() {
                         variant="contained"
                         color="success"
                         size="large"
-                        onClick={handletransactions}
+                        onClick={handleTransactions}
                         sx={{ padding: 2, borderRadius: 20 }}
                         fullWidth
                     >
@@ -313,7 +332,7 @@ function Wallet() {
                     sx: {
                         position: "absolute",
                         bottom: 0,
-                        maxHeight: "50vh", // Set maxHeight to 50% of the viewport height
+                        maxHeight: "50vh",
                         width: "100%",
                         borderTopLeftRadius: "20px",
                         borderTopRightRadius: "20px",
