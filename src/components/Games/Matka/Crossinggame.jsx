@@ -79,7 +79,7 @@ function Crossinggame() {
             )}
             <Box
                 sx={{
-                    height: "30vh",
+                    height: "35vh",
                     overflowY: "auto",
                 }}
             >
@@ -89,7 +89,6 @@ function Crossinggame() {
                             sx={{
                                 backgroundColor: "transparent",
                                 width: "80%",
-                                padding: 2,
                             }}
                         >
                             <TextField
@@ -138,7 +137,7 @@ function Crossinggame() {
             </Box>
             <Box
                 sx={{
-                    height: "40vh",
+                    height: "35vh",
                     overflowY: "auto",
                 }}
             >
