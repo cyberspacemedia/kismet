@@ -98,7 +98,8 @@ const theme = createTheme({
         squarenumberbutton: {
             color: "#fff",
             borderRadius: "5px",
-            fontSize: "1rem",
+            fontSize: "1.2rem",
+            fontWeight: "bold",
             margin: "3px",
 
             background:
