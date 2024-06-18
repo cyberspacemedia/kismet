@@ -12,6 +12,7 @@ import theme from "../../../theme/Theme";
 import UserContext from "../../UserContext";
 import { apiClient } from "../../config/Config";
 import { useNavigate } from "react-router-dom";
+import AppLoader from "../../Loaders/AppLoader";
 
 function Crossinggame({ gameName, gameId, gameType }) {
     const { userId } = useContext(UserContext);
@@ -21,7 +22,7 @@ function Crossinggame({ gameName, gameId, gameType }) {
     const [savedCrossingAmount, setSavedCrossingAmount] = useState("");
     const [severity, setSeverity] = useState("");
     const [message, setMessage] = useState("");
-
+    const [loader, setLoader] = useState(false);
     const [pairs, setPairs] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
     const generatePairs = (input) => {
@@ -69,6 +70,7 @@ function Crossinggame({ gameName, gameId, gameType }) {
     };
 
     const handleSubmit = async () => {
+        setLoader(true);
         const betData = {
             userId: userId,
             gameName: gameName,
@@ -90,9 +92,14 @@ function Crossinggame({ gameName, gameId, gameType }) {
                 if (response.data.success === true) {
                     setMessage(response.data.message);
                     setSeverity("success");
+                    setLoader(false);
                     setTimeout(() => {
                         navigate("/dashboard");
                     }, 2000);
+                } else {
+                    setMessage(response.data.message);
+                    setSeverity("error");
+                    setLoader(false);
                 }
             } catch (error) {
                 setSeverity("error");
@@ -119,6 +126,7 @@ function Crossinggame({ gameName, gameId, gameType }) {
                 overflowY: "auto",
             }}
         >
+            {loader && <AppLoader />}
             {severity && (
                 <Alert
                     severity={severity}

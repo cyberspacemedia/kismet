@@ -7,10 +7,10 @@ import {
     DialogActions,
     Button,
     Grid,
-    Box,
+    // Box,
     Typography,
 } from "@mui/material";
-import Imageslider from "./slider/Imageslider";
+// import Imageslider from "./slider/Imageslider";
 import Allgames from "../Games/Allgames";
 import Liveresults from "./Liveresults";
 import LiveGame from "./LiveGame";
@@ -38,7 +38,7 @@ function Defaultdash() {
                 <Grid item xs={12}>
                     <Allgames />
                 </Grid>
-                <Grid
+                {/* <Grid
                     item
                     xs={12}
                     container
@@ -47,7 +47,7 @@ function Defaultdash() {
                     <Box width={"90%"} textAlign="center">
                         <Imageslider />
                     </Box>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12} md={10}>
                     <Liveresults />
                 </Grid>

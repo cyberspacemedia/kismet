@@ -1,9 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import theme from "../../../theme/Theme";
-import { Grid, Button, Box, Modal, Typography, TextField } from "@mui/material";
+import {
+    Grid,
+    Button,
+    Box,
+    Modal,
+    Typography,
+    TextField,
+    Alert,
+} from "@mui/material";
 import UserContext from "../../UserContext";
 import { apiClient } from "../../config/Config";
 import { useNavigate } from "react-router-dom";
+import AppLoader from "../../Loaders/AppLoader";
 
 const style = {
     position: "absolute",
@@ -32,7 +41,9 @@ function Jodigame({ gameName, gameId, gameType }) {
     const [amount, setAmount] = React.useState("");
     const [totalAmount, setTotalAmount] = React.useState(0);
     const { userId } = useContext(UserContext);
-
+    const [severity, setSeverity] = useState("");
+    const [message, setMessage] = useState("");
+    const [loader, setLoader] = useState(false);
     const handleOpen = (number) => {
         setSelectedNumber(number);
         setOpen(true);
@@ -64,6 +75,7 @@ function Jodigame({ gameName, gameId, gameType }) {
     };
 
     const handleSubmit = async () => {
+        setLoader(true);
         const selectedNumbersAndAmounts = gameNumbers.reduce((acc, number) => {
             if (amounts[number] !== null && amounts[number] !== "") {
                 acc.push({ number, amount: amounts[number] });
@@ -79,20 +91,44 @@ function Jodigame({ gameName, gameId, gameType }) {
             totalAmount: totalAmount,
             selectedNumbersAndAmounts: selectedNumbersAndAmounts,
         };
-
-        try {
-            const response = await apiClient.post("submitgame", gameData);
-            console.log(response.data);
-            if (response.data.success === true) {
-                console.log("Bet Placed");
-                navigate("/dashboard");
-            } else {
-                console.log("Issue Found");
+        if (totalAmount > 0) {
+            try {
+                const response = await apiClient.post("submitgame", gameData);
+                console.log(response.data);
+                if (response.data.success === true) {
+                    setLoader(false);
+                    setMessage(response.data.message);
+                    setSeverity("success");
+                    setTimeout(() => {
+                        navigate("/dashboard");
+                    }, 2000);
+                } else {
+                    setMessage(response.data.message);
+                    setSeverity("error");
+                    setLoader(false);
+                }
+            } catch (error) {
+                setMessage("Something Went Wrong");
+                setSeverity("error");
+                setLoader(false);
             }
-        } catch (error) {
-            console.error("Could Not Submit API Error", error);
+        } else {
+            setMessage("Please place a bet");
+            setSeverity("error");
+            setLoader(false);
         }
     };
+
+    useEffect(() => {
+        if (severity) {
+            const timer = setTimeout(() => {
+                setMessage("");
+                setSeverity("");
+            }, 2000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [severity]);
 
     return (
         <Box
@@ -101,6 +137,24 @@ function Jodigame({ gameName, gameId, gameType }) {
                 overflowY: "auto",
             }}
         >
+            {loader && <AppLoader />}
+            {severity && (
+                <Alert
+                    severity={severity}
+                    variant="filled"
+                    onClose={() => setSeverity("")}
+                    sx={{
+                        zIndex: "9999",
+                        position: "absolute",
+                        top: "10px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "90%",
+                    }}
+                >
+                    {message}
+                </Alert>
+            )}
             <Grid container justifyContent="center">
                 {gameNumbers.map((number) => (
                     <Grid item key={number}>

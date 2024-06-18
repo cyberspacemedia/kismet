@@ -20,7 +20,7 @@ function Livegame() {
     const findliveGame = async () => {
         try {
             const response = await apiClient.post("/getlivegame");
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data.success === true) {
                 setGame(true);
                 setGameName(response.data.data.gameName);
