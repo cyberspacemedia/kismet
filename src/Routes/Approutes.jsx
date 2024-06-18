@@ -20,6 +20,7 @@ import Rohtakgameinfo from "../components/Games/Rohtakgameinfo";
 import Rewarigameinfo from "../components/Games/Rewarigameinfo";
 import Alwargameinfo from "../components/Games/Alwargameinfo";
 import MainGame from "../components/Roulette/MainGame";
+import Otp from "../components/Otp";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -61,6 +62,7 @@ function Approutes() {
             <Route path="/register" element={<UserRegister />} />
             <Route path="/login" element={<UserLogin />} />
             <Route path="/mobilelogin" element={<MobileLogin />} />
+            <Route path="/otp" element={<Otp />} />
         </Routes>
     );
 }

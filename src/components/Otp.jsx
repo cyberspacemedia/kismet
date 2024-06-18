@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import theme from "../theme/Theme";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,45 +8,73 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Typography from "@mui/material/Typography";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import { useLocation } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { apiClient } from "./config/Config";
+import UserContext from "./UserContext"; // Import UserContext
 
-function MobileLogin() {
-    const navigate = useNavigate();
-    const [phone, setPhone] = useState("");
-
+function Otp() {
+    const location = useLocation();
+    const phone = location.state?.data.phone;
+    const { setUserId } = useContext(UserContext); // Access context for user state
+    const [otp, setOtp] = useState(0);
     const [severity, setSeverity] = useState("");
     const [message, setMessage] = useState("");
 
-    const sendOtp = async () => {
-        const sanitizedPhone = phone.replace(/\D/g, "");
-        if (sanitizedPhone.length !== 10) {
-            setSeverity("error");
+    const navigate = useNavigate();
 
-            setMessage("Phone number must be exactly 10 digits.");
+    const verifyOtp = async () => {
+        // Check if OTP is empty
+        if (!otp) {
+            setSeverity("error");
+            setMessage("OTP cannot be empty.");
             return;
         }
 
-        const formattedPhone = `+91${sanitizedPhone}`;
+        // Check if OTP contains only numeric characters
+        const numericRegex = /^\d+$/;
+        if (!numericRegex.test(otp)) {
+            setSeverity("error");
+            setMessage("OTP must contain only numbers.");
+            return;
+        }
+
+        // Check if OTP is exactly 4 digits long
+        if (otp.length !== 4) {
+            setSeverity("error");
+            setMessage("OTP must be exactly 4 digits.");
+            return;
+        }
 
         const data = {
-            phone: formattedPhone,
+            phone: phone,
+            otp: otp,
         };
+        console.log(data);
         try {
-            const response = await apiClient.post("/sendotp", data);
-            console.log(response.data.success);
+            const response = await apiClient.post("/verifyOTP", data);
+            console.log(response.data);
             if (response.data.success === true) {
-                setMessage(response.data.message);
                 setSeverity("success");
+                setMessage("Mobile Verified");
+                setUserId(response.data.data.id);
+                //Store UID to local_storage
+                localStorage.setItem("userId", response.data.data.id);
                 setTimeout(() => {
-                    navigate("/otp", { state: { data } });
+                    navigate("/dashboard");
                 }, 2000);
+                setSeverity("error");
+                setMessage(response.data.message);
+            } else {
+                setSeverity("error");
+                setMessage(response.data.message);
             }
         } catch (error) {
             setSeverity("error");
             setMessage(error);
         }
     };
+
     useEffect(() => {
         if (severity) {
             const timer = setTimeout(() => {
@@ -58,6 +85,7 @@ function MobileLogin() {
             return () => clearTimeout(timer);
         }
     }, [severity]);
+
     return (
         <>
             {severity && (
@@ -99,24 +127,24 @@ function MobileLogin() {
                     </Grid>
                     <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
                         <Typography variant="h5" sx={{ textAlign: "left" }}>
-                            Login with OTP
+                            {phone && <p>OTP sent on {phone}</p>}
                         </Typography>
                         <Typography variant="h6" sx={{ textAlign: "left" }}>
-                            Enter your mobile number
+                            Enter OTP
                         </Typography>
                         <hr style={{ marginBottom: "20px" }} />
                         <form>
                             <TextField
-                                id="phone"
+                                id="otp"
                                 size="large"
                                 variant="filled"
-                                label="Enter Phone Number"
+                                label="OTP"
                                 color="secondary"
                                 type="tel"
                                 fullWidth
                                 required
                                 onChange={(e) => {
-                                    setPhone(e.target.value);
+                                    setOtp(e.target.value);
                                 }}
                                 autoComplete="off"
                                 sx={{
@@ -140,6 +168,7 @@ function MobileLogin() {
                                             />
                                         </InputAdornment>
                                     ),
+                                    inputProps: { maxLength: 4 },
                                 }}
                             />
 
@@ -147,9 +176,9 @@ function MobileLogin() {
                                 variant="contained"
                                 sx={{ mt: 2, ...theme.buttons.gradient }}
                                 size="large"
-                                onClick={sendOtp}
+                                onClick={verifyOtp}
                             >
-                                Get OTP
+                                Login
                             </Button>
                         </form>
                     </Grid>
@@ -166,4 +195,4 @@ function MobileLogin() {
     );
 }
 
-export default MobileLogin;
+export default Otp;

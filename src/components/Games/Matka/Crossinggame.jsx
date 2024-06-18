@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
     Alert,
     Box,
@@ -9,7 +9,10 @@ import {
     Typography,
 } from "@mui/material";
 import theme from "../../../theme/Theme";
+import UserContext from "../../UserContext";
+
 function Crossinggame() {
+    const { userId } = useContext(UserContext);
     const [crossingNumbers, setCrossingNumbers] = useState("");
     const [crossingAmount, setCrossingAmount] = useState("");
     const [savedCrossingAmount, setSavedCrossingAmount] = useState("");
@@ -53,13 +56,21 @@ function Crossinggame() {
         setTotalAmount(total);
     };
 
+    const handleSubmit = () => {
+        const betData = {
+            userId: userId,
+            numbers: pairs,
+            amount: crossingAmount,
+        };
+        console.log(betData);
+    };
     useEffect(() => {
         if (error) {
             const timer = setTimeout(() => {
                 setError("");
             }, 2000);
 
-            return () => clearTimeout(timer); // Clear timeout if the component unmounts
+            return () => clearTimeout(timer);
         }
     }, [error]);
     return (
@@ -187,6 +198,7 @@ function Crossinggame() {
                         variant="contained"
                         color="primary"
                         size="small"
+                        onClick={handleSubmit}
                         sx={{ ...theme.buttons.gradient }}
                     >
                         Submit
