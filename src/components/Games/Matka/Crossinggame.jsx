@@ -10,13 +10,18 @@ import {
 } from "@mui/material";
 import theme from "../../../theme/Theme";
 import UserContext from "../../UserContext";
+import { apiClient } from "../../config/Config";
+import { useNavigate } from "react-router-dom";
 
-function Crossinggame() {
+function Crossinggame({ gameName, gameId, gameType }) {
     const { userId } = useContext(UserContext);
+    const navigate = useNavigate();
     const [crossingNumbers, setCrossingNumbers] = useState("");
     const [crossingAmount, setCrossingAmount] = useState("");
     const [savedCrossingAmount, setSavedCrossingAmount] = useState("");
-    const [error, setError] = useState("");
+    const [severity, setSeverity] = useState("");
+    const [message, setMessage] = useState("");
+
     const [pairs, setPairs] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
     const generatePairs = (input) => {
@@ -34,7 +39,8 @@ function Crossinggame() {
 
     const handleSave = () => {
         if (!crossingNumbers || !crossingAmount) {
-            setError("All fields must be filled.");
+            setSeverity("error");
+            setMessage("All fields must be filled.");
             return;
         }
 
@@ -42,11 +48,17 @@ function Crossinggame() {
         const uniqueDigits = new Set(digits);
 
         if (digits.length !== uniqueDigits.size) {
-            setError("All digits must be unique.");
+            setSeverity("error");
+            setMessage("All digits must be unique.");
             return;
         }
 
-        setError(""); // Clear any previous error message
+        if (crossingNumbers.length < 2) {
+            setSeverity("error");
+            setMessage("Crossing numbers must be at least 2 digits.");
+            return;
+        }
+        setMessage(""); // Clear any previous error message
         const generatedPairs = generatePairs(crossingNumbers);
         setPairs(generatedPairs);
         setSavedCrossingAmount(crossingAmount);
@@ -56,50 +68,91 @@ function Crossinggame() {
         setTotalAmount(total);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const betData = {
             userId: userId,
+            gameName: gameName,
+            gameType: gameType,
+            gameId: gameId,
             numbers: pairs,
             amount: crossingAmount,
         };
-        console.log(betData);
+        // console.log(betData);
+        if (crossingAmount > 0) {
+            try {
+                const response = await apiClient.post(
+                    "/submitgamecrossing",
+                    betData
+                );
+
+                // console.log(response.data);
+
+                if (response.data.success === true) {
+                    setMessage(response.data.message);
+                    setSeverity("success");
+                    setTimeout(() => {
+                        navigate("/dashboard");
+                    }, 2000);
+                }
+            } catch (error) {
+                setSeverity("error");
+                setMessage(error);
+            }
+        } else {
+            setSeverity("error");
+            setMessage("Fill all fields");
+        }
     };
     useEffect(() => {
-        if (error) {
+        if (severity) {
             const timer = setTimeout(() => {
-                setError("");
+                setMessage("");
+                setSeverity("");
             }, 2000);
 
             return () => clearTimeout(timer);
         }
-    }, [error]);
+    }, [severity]);
     return (
         <Box
             sx={{
                 overflowY: "auto",
             }}
         >
-            {error && (
+            {severity && (
                 <Alert
-                    severity="error"
-                    onClose={() => setError("")}
-                    sx={{ zIndex: "9999" }}
+                    severity={severity}
+                    variant="filled"
+                    onClose={() => setSeverity("")}
+                    sx={{
+                        zIndex: "9999",
+                        position: "absolute",
+                        top: "50px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "90%",
+                    }}
                 >
-                    {error}
+                    {message}
                 </Alert>
             )}
             <Box
                 sx={{
                     height: "35vh",
                     overflowY: "auto",
+                    display: "flex",
                 }}
             >
-                <Grid container justifyContent="center" alignItems={"center"}>
+                <Grid container justifyContent="center" alignItems="center">
                     <Grid item>
                         <Paper
                             sx={{
                                 backgroundColor: "transparent",
-                                width: "80%",
+
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center", // Center items horizontally
+                                justifyContent: "center", // Center items vertically
                             }}
                         >
                             <TextField
@@ -107,13 +160,30 @@ function Crossinggame() {
                                 label="Crossing Numbers"
                                 type="number"
                                 variant="standard"
+                                placeholder="00"
                                 value={crossingNumbers}
                                 onChange={(e) => {
                                     setCrossingNumbers(e.target.value);
                                 }}
                                 size="small"
                                 fullWidth
-                                margin="normal"
+                                InputLabelProps={{
+                                    style: {
+                                        fontSize: "1rem",
+                                        color: "red",
+                                        textAlign: "center",
+                                    },
+                                }}
+                                InputProps={{
+                                    style: {
+                                        fontSize: "1rem",
+                                        color: "white",
+                                        textAlign: "center",
+                                    },
+                                }}
+                                inputProps={{
+                                    style: { textAlign: "center" }, // Center-align the input text
+                                }}
                             />
 
                             <TextField
@@ -127,7 +197,23 @@ function Crossinggame() {
                                 }}
                                 size="small"
                                 fullWidth
-                                margin="normal"
+                                InputLabelProps={{
+                                    style: {
+                                        fontSize: "1rem",
+                                        color: "red",
+                                        textAlign: "center",
+                                    },
+                                }}
+                                InputProps={{
+                                    style: {
+                                        fontSize: "1rem",
+                                        color: "white",
+                                        textAlign: "center",
+                                    },
+                                }}
+                                inputProps={{
+                                    style: { textAlign: "center" }, // Center-align the input text
+                                }}
                             />
                             <Typography variant="caption">
                                 * Amount should be below 5000
@@ -148,6 +234,7 @@ function Crossinggame() {
                     </Grid>
                 </Grid>
             </Box>
+
             <Box
                 sx={{
                     height: "35vh",
@@ -156,15 +243,19 @@ function Crossinggame() {
             >
                 <Grid container justifyContent={"center"}>
                     <Grid item xs={6}>
-                        <Typography variant="body1">Crossing Pairs</Typography>
+                        <Typography variant="subtitle1">
+                            Crossing Pairs
+                        </Typography>
                         {pairs.map((pair, index) => (
-                            <Typography key={index}>{pair}</Typography>
+                            <Typography key={index} sx={{ fontSize: "1rem" }}>
+                                {pair}
+                            </Typography>
                         ))}
                     </Grid>
                     <Grid item xs={6}>
-                        <Typography variant="body1">Amount</Typography>
+                        <Typography variant="subtitle1">Amount</Typography>
                         {pairs.map((_, index) => (
-                            <Typography key={index}>
+                            <Typography key={index} sx={{ fontSize: "1rem" }}>
                                 {savedCrossingAmount}
                             </Typography>
                         ))}

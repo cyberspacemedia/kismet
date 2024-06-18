@@ -56,15 +56,13 @@ function Otp() {
             console.log(response.data);
             if (response.data.success === true) {
                 setSeverity("success");
-                setMessage("Mobile Verified");
+                setMessage(response.data.message);
                 setUserId(response.data.data.id);
                 //Store UID to local_storage
                 localStorage.setItem("userId", response.data.data.id);
                 setTimeout(() => {
                     navigate("/dashboard");
                 }, 2000);
-                setSeverity("error");
-                setMessage(response.data.message);
             } else {
                 setSeverity("error");
                 setMessage(response.data.message);

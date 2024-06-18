@@ -86,7 +86,11 @@ export default function Gametab({ gameName, gameId }) {
                 <Jodigame gameName={gameName} gameId={gameId} gameType="Jodi" />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <Crossinggame gameName={gameName} gameId={gameId} />
+                <Crossinggame
+                    gameName={gameName}
+                    gameId={gameId}
+                    gameType="Crossing"
+                />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Haruf Coming Soon
