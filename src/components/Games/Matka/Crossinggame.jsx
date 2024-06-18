@@ -94,6 +94,7 @@ function Crossinggame() {
                             <TextField
                                 id="crossingnumbers"
                                 label="Crossing Numbers"
+                                type="number"
                                 variant="standard"
                                 value={crossingNumbers}
                                 onChange={(e) => {
@@ -108,6 +109,7 @@ function Crossinggame() {
                                 id="crossingamount"
                                 label="Crossing into Amount"
                                 variant="standard"
+                                type="number"
                                 value={crossingAmount}
                                 onChange={(e) => {
                                     setCrossingAmount(e.target.value);
