@@ -22,6 +22,10 @@ import Alwargameinfo from "../components/Games/Alwargameinfo";
 import MainGame from "../components/Roulette/MainGame";
 import Otp from "../components/Otp";
 import Gamedetails from "../components/dashboard/Appcomp/Gamedetails";
+import Dishawargameinfo from "../components/Games/Dishawargameinfo";
+import Galigameinfo from "../components/Games/Galigameinfo";
+import Faridabadgameinfo from "../components/Games/Faridabadgameinfo";
+import Gaziabadgameinfo from "../components/Games/Gaziabadgameinfo";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -33,6 +37,13 @@ function Approutes() {
             <Route path="/gurugramgame/*" element={<Gurugramgame />} />
 
             {/* Game Info */}
+            <Route path="/dishawarinfo/*" element={<Dishawargameinfo />} />
+            <Route path="/galiinfo/*" element={<Galigameinfo />} />
+            <Route
+                path="/faridabadgameinfo/*"
+                element={<Faridabadgameinfo />}
+            />
+            <Route path="/gaziabadgameinfo/*" element={<Gaziabadgameinfo />} />
             <Route path="/gurugramgameinfo/*" element={<Gurugramgameinfo />} />
             <Route path="/alwargameinfo/*" element={<Alwargameinfo />} />
             <Route path="/rewarigameinfo/*" element={<Rewarigameinfo />} />

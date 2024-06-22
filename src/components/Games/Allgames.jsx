@@ -68,9 +68,7 @@ function Allgames() {
             <Grid item xs={3}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea
-                        onClick={() => navigate("/gurugramgameinfo")}
-                    >
+                    <CardActionArea onClick={() => navigate("/dishawarinfo")}>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Gurugram.png"
@@ -78,15 +76,13 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Dishawar</Typography>
+                <Typography variant="caption">Disawar</Typography>
                 {/* Card 1 */}
             </Grid>
             <Grid item xs={3}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea
-                        onClick={() => navigate("/gurugramgameinfo")}
-                    >
+                    <CardActionArea onClick={() => navigate("/galiinfo")}>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Gurugram.png"
@@ -101,7 +97,7 @@ function Allgames() {
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
                     <CardActionArea
-                        onClick={() => navigate("/gurugramgameinfo")}
+                        onClick={() => navigate("/faridabadgameinfo")}
                     >
                         <CardMedia
                             component="img"
@@ -117,7 +113,7 @@ function Allgames() {
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
                     <CardActionArea
-                        onClick={() => navigate("/gurugramgameinfo")}
+                        onClick={() => navigate("/gaziabadgameinfo")}
                     >
                         <CardMedia
                             component="img"
