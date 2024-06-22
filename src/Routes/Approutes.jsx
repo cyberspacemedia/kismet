@@ -21,6 +21,7 @@ import Rewarigameinfo from "../components/Games/Rewarigameinfo";
 import Alwargameinfo from "../components/Games/Alwargameinfo";
 import MainGame from "../components/Roulette/MainGame";
 import Otp from "../components/Otp";
+import Gamedetails from "../components/dashboard/Appcomp/Gamedetails";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -48,6 +49,7 @@ function Approutes() {
             <Route path="/wallet" element={<Wallet />} />
             <Route path="/charts" element={<Chartscomp />} />
             <Route path="/mygame" element={<Mygame />} />
+            <Route path="/gamedetails" element={<Gamedetails />} />
             <Route path="/history" element={<Accounthistory />} />
             <Route
                 path="/"

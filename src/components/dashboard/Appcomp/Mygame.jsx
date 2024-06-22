@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import Layout from "../Layout";
+import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {
     Card,
     CardActionArea,
     CardContent,
+    Chip,
     Grid,
     Skeleton,
 } from "@mui/material";
@@ -13,9 +15,11 @@ import { apiClient } from "../../config/Config";
 import AppLoader from "../../Loaders/AppLoader";
 
 function Mygame() {
+    const navigate = useNavigate();
     const userId = useContext(UserContext);
     const [game, setGame] = useState([]);
     const [loader, setLoader] = useState(false);
+
     useEffect(() => {
         setLoader(true);
         const fetchgamedata = async () => {
@@ -37,8 +41,34 @@ function Mygame() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userId]);
 
+    const handlegameclick = async (
+        gameName,
+        gameType,
+        gameId,
+        date,
+        gameStatus
+    ) => {
+        const user = userId.userId;
+        const gameDetail = {
+            userId: user,
+            gameName: gameName,
+            gameType: gameType,
+            gameId: gameId,
+            date: date,
+            gameStatus: gameStatus,
+        };
+        // console.log(data);
+        setTimeout(() => {
+            navigate("/gamedetails", { state: { gameDetail } });
+        }, 2000);
+    };
+
     return (
         <Layout>
+            <Typography variant="caption" sx={{ m: 2 }}>
+                {" "}
+                My Game
+            </Typography>
             {loader && (
                 <>
                     <AppLoader />
@@ -99,8 +129,12 @@ function Mygame() {
                 </>
             )}
 
-            <Typography variant="caption"> My Game</Typography>
-            <Grid container justifyContent="center" spacing={1}>
+            <Grid
+                container
+                justifyContent="center"
+                spacing={1}
+                sx={{ height: "80vh", overflowY: "auto" }}
+            >
                 {game.map((gameItem, index) => (
                     <Grid item xs={12} md={10} key={index}>
                         <Card
@@ -112,7 +146,17 @@ function Mygame() {
                                 backgroundColor: "#373736",
                             }}
                         >
-                            <CardActionArea>
+                            <CardActionArea
+                                onClick={() => {
+                                    handlegameclick(
+                                        gameItem.gameName,
+                                        gameItem.gameType,
+                                        gameItem.gameId,
+                                        gameItem.date,
+                                        gameItem.status
+                                    );
+                                }}
+                            >
                                 <CardContent>
                                     <Grid
                                         container
@@ -169,7 +213,7 @@ function Mygame() {
                                                     }}
                                                     align="left"
                                                 >
-                                                    14/02/2024 - ₹
+                                                    {gameItem.date} - ₹
                                                     {gameItem.totalAmount}
                                                 </Typography>
                                             </Grid>
@@ -183,33 +227,50 @@ function Mygame() {
                                             alignItems={"end"}
                                         >
                                             <Grid item>
-                                                <Typography
-                                                    variant="body2"
-                                                    align="right"
-                                                    color={"lightgreen"}
-                                                >
-                                                    {gameItem.status === 1
-                                                        ? "on"
-                                                        : "Off"}
-                                                </Typography>
+                                                {gameItem.status === 1 ? (
+                                                    <Chip
+                                                        label="ON"
+                                                        color="success"
+                                                        size="small"
+                                                        sx={{
+                                                            mb: 1,
+                                                            width: "3rem",
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <Chip
+                                                        label="OFF"
+                                                        color="warning"
+                                                        size="small"
+                                                        variant="outlined"
+                                                        sx={{
+                                                            mb: 1,
+                                                            width: "3rem",
+                                                        }}
+                                                    />
+                                                )}
                                             </Grid>
                                             <Grid item>
                                                 <Typography
                                                     variant="body2"
                                                     align="right"
                                                     sx={{
-                                                        border: "solid 1px white",
+                                                        border: "solid 0.1px white",
                                                         borderRadius: "5px",
-                                                        padding: "10px",
+                                                        padding: "5px",
                                                         fontWeight: "bold",
                                                         color: "white",
+                                                        textAlign: "center",
+                                                        width: "7rem",
                                                         background:
                                                             "linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)",
                                                     }}
                                                 >
                                                     {gameItem.status === 1
                                                         ? "Waiting"
-                                                        : "Declare Result Here"}
+                                                        : gameItem.status === 0
+                                                        ? "No Rewards"
+                                                        : "Winner"}
                                                 </Typography>
                                             </Grid>
                                         </Grid>
