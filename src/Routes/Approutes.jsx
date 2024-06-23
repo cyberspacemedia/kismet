@@ -27,6 +27,8 @@ import Galigameinfo from "../components/Games/Galigameinfo";
 import Faridabadgameinfo from "../components/Games/Faridabadgameinfo";
 import Gaziabadgameinfo from "../components/Games/Gaziabadgameinfo";
 
+import Appnotification from "../components/dashboard/Appcomp/Notifications";
+
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
 
@@ -62,6 +64,7 @@ function Approutes() {
             <Route path="/mygame" element={<Mygame />} />
             <Route path="/gamedetails" element={<Gamedetails />} />
             <Route path="/history" element={<Accounthistory />} />
+            <Route path="/Appnotification" element={<Appnotification />} />
             <Route
                 path="/"
                 element={

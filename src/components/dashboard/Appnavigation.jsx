@@ -195,7 +195,7 @@ const AppNavigation = () => {
                         color="inherit"
                         aria-label="settings"
                         onClick={() => {
-                            navigate("/wallet");
+                            navigate("/Appnotification");
                         }}
                     >
                         <NotificationsIcon sx={{ fontSize: "20px" }} />{" "}
