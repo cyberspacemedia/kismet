@@ -33,30 +33,8 @@ const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const { userId } = useContext(UserContext);
     const [profile, setProfile] = useState([]);
-    const [balance, setBalance] = useState(0);
+
     const navigate = useNavigate();
-
-    // Fetch Wallet Data
-
-    useEffect(() => {
-        const data = {
-            userId: userId,
-        };
-        const fetchwalletbalance = async () => {
-            try {
-                const walletresponse = await apiClient.post(
-                    "/getbalance",
-                    data
-                );
-                setBalance(walletresponse.data.data.deposit);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchwalletbalance();
-    }, [userId]);
-
-    // Fetch Wallet Data
 
     useEffect(() => {
         const data = {
@@ -172,20 +150,14 @@ const AppNavigation = () => {
                                 display: "flex",
                                 alignItems: "center", // Align items vertically center
                                 justifyContent: "center", // Center content horizontally
-                                padding: "3px",
-                                width: "3em",
+                                padding: "0.4rem",
+                                width: "2em",
                                 borderRadius: "20px",
                                 textAlign: "center",
                                 border: "solid 0.5px #878787",
                             }}
                         >
                             <WalletIcon sx={{ fontSize: "20px" }} />{" "}
-                            <Typography variant="body2" color="inherit">
-                                ₹{" "}
-                                <span style={{ fontSize: "16px" }}>
-                                    {balance}
-                                </span>
-                            </Typography>
                         </Paper>
                     </IconButton>
 

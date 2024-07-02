@@ -8,11 +8,12 @@ import {
 import React, { useState, useEffect } from "react";
 import { apiClient } from "../config/Config";
 
-const gameName = "Gurugram";
-
 function Domesticliveresult() {
     const [gameStatus, setGameStatus] = useState(false);
+    const [gameName, setGameName] = useState("");
     const [winnumber, setWinnumber] = useState(0);
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
 
     useEffect(() => {
         const result = async () => {
@@ -20,6 +21,9 @@ function Domesticliveresult() {
                 const response = await apiClient.post("/last_game");
                 console.log(response.data);
                 setGameStatus(response.data.success);
+                setGameName(response.data.data.gameName);
+                setStartTime(response.data.data.startTime);
+                setEndTime(response.data.data.endTime);
                 if (response.data.success === true) {
                     setWinnumber(response.data.data.number);
                 }
@@ -83,7 +87,7 @@ function Domesticliveresult() {
                                                 }}
                                                 align="left"
                                             >
-                                                Today's Winner
+                                                Winning Number
                                             </Typography>
                                         </Grid>
                                         <Grid item>
@@ -95,7 +99,7 @@ function Domesticliveresult() {
                                                 }}
                                                 align="left"
                                             >
-                                                Number
+                                                {startTime} - {endTime}
                                             </Typography>
                                         </Grid>
                                     </Grid>
@@ -113,11 +117,14 @@ function Domesticliveresult() {
                                                 align="right"
                                                 color={"white"}
                                                 sx={{
-                                                    border: "solid orange 2px",
-                                                    borderRadius: "5px",
-                                                    padding: "5px",
-                                                    fontWeight:'bold',
-                                                    backgroundColor:'black'
+                                                    padding: "0.5rem",
+                                                    border: "solid 1px gray",
+                                                    borderRadius: "10px",
+                                                    color: "#ffff",
+                                                    fontWeight: "bold",
+                                                    fontSize: "1.8em",
+                                                    background:
+                                                        "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
                                                 }}
                                             >
                                                 {gameStatus
