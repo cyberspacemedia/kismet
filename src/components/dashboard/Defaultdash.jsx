@@ -9,6 +9,7 @@ import {
     Grid,
     // Box,
     Typography,
+    Box,
 } from "@mui/material";
 // import Imageslider from "./slider/Imageslider";
 import Allgames from "../Games/Allgames";
@@ -33,11 +34,17 @@ function Defaultdash() {
     };
 
     return (
-        <div>
-            <Grid container spacing={1} direction={"column"}>
+        <Box
+            style={{
+                height: "80vh", // Full height of the viewport
+                overflowY: "auto", // Enable vertical scrolling
+            }}
+        >
+            <Grid container direction={"column"}>
                 <Grid item xs={12}>
                     <Allgames />
                 </Grid>
+
                 {/* <Grid
                     item
                     xs={12}
@@ -54,6 +61,7 @@ function Defaultdash() {
                 <Grid item xs={12} md={10}>
                     <LiveGame />
                 </Grid>
+                
             </Grid>
 
             {/* Opening Dialog */}
@@ -102,7 +110,7 @@ function Defaultdash() {
                 </DialogContent>
             </Dialog>
             {/* Opening Dialog */}
-        </div>
+        </Box>
     );
 }
 

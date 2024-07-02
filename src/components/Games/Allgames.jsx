@@ -6,7 +6,7 @@ function Allgames() {
     const navigate = useNavigate();
 
     return (
-        <Grid container spacing={3} p={2}>
+        <Grid container spacing={1} p={1}>
             <Grid item xs={3}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
@@ -20,7 +20,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Gurugram</Typography>
+                <Typography variant="h6">Gurugram</Typography>
                 {/* Card 1 */}
             </Grid>
             <Grid item xs={3}>
@@ -34,7 +34,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Alwar</Typography>
+                <Typography variant="h6">Alwar</Typography>
                 {/* Card 2 */}
             </Grid>
             <Grid item xs={3}>
@@ -48,7 +48,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Rewari</Typography>
+                <Typography variant="h6">Rewari</Typography>
                 {/* Card 3 */}
             </Grid>
             <Grid item xs={3}>
@@ -62,7 +62,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Rohtak</Typography>
+                <Typography variant="h6">Rohtak</Typography>
                 {/* Card 4 */}
             </Grid>
             <Grid item xs={3}>
@@ -76,7 +76,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Disawar</Typography>
+                <Typography variant="h6">Disawar</Typography>
                 {/* Card 1 */}
             </Grid>
             <Grid item xs={3}>
@@ -90,7 +90,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Gali</Typography>
+                <Typography variant="h6">Gali</Typography>
                 {/* Card 1 */}
             </Grid>
             <Grid item xs={3}>
@@ -106,7 +106,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Faridabad</Typography>
+                <Typography variant="h6">Faridabad</Typography>
                 {/* Card 1 */}
             </Grid>
             <Grid item xs={3}>
@@ -122,7 +122,7 @@ function Allgames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="caption">Gaziabad</Typography>
+                <Typography variant="h6">Gaziabad</Typography>
                 {/* Card 1 */}
             </Grid>
         </Grid>
