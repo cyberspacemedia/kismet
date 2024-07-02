@@ -1,18 +1,20 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-function Domesticupcominggames() {
-    const navigate = useNavigate();
 
+function Domesticupcominggames() {
     return (
-        <Grid container spacing={1} p={2}>
+        <Grid
+            container
+            spacing={1}
+            p={1}
+            justifyContent="center"
+            alignItems="center"
+        >
             <Grid item xs={4}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea
-                        onClick={() => navigate("/gurugramgameinfo")}
-                    >
+                    <CardActionArea>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Gurugram.png"
@@ -26,7 +28,7 @@ function Domesticupcominggames() {
             <Grid item xs={4}>
                 {/* Card 2 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea onClick={() => navigate("/alwargameinfo")}>
+                    <CardActionArea>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Alwar.png"
@@ -40,7 +42,7 @@ function Domesticupcominggames() {
             <Grid item xs={4}>
                 {/* Card 3 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
-                    <CardActionArea onClick={() => navigate("/rewarigameinfo")}>
+                    <CardActionArea>
                         <CardMedia
                             component="img"
                             image="./StaticAssets/Images/Icons/Rewari.png"
