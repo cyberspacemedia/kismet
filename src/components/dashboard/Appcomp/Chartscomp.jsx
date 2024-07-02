@@ -1,24 +1,22 @@
 import React from "react";
 import Layout from "../Layout";
 
-import { Grid, Typography } from "@mui/material";
+import { Grid, Select, Typography, MenuItem } from "@mui/material";
 import Mydatepicker from "./Mydatepicker";
 
 function Chartscomp() {
     const gameNames = [
         { name: "Gurugram", number: "12" },
         { name: "Rewari", number: "23" },
-        { name: "Alwar", number: "56" },
-        { name: "Rohtak", number: "13" },
     ];
     return (
         <Layout>
             <Typography variant="caption">Charts</Typography>
             <Grid container justifyContent={"flex-start"} alignItems={"center"}>
                 <Grid item xs={8}>
-                    <Typography variant="subtitle2" sx={{ color: "gray" }}>
-                        Select the Date and see winners
-                    </Typography>
+                    <Select labelId="gameSelect" label="Game">
+                        <MenuItem value={"Gurugram"}>Gurugram</MenuItem>
+                    </Select>
                 </Grid>
                 <Grid item xs={4}>
                     <Mydatepicker />

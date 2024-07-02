@@ -15,6 +15,7 @@ import {
 import Allgames from "../Games/Allgames";
 import Liveresults from "./Liveresults";
 import LiveGame from "./LiveGame";
+import Upcominggames from "./Upcominggames/Upcominggames";
 
 function Defaultdash() {
     const [open, setOpen] = useState(false);
@@ -61,7 +62,10 @@ function Defaultdash() {
                 <Grid item xs={12} md={10}>
                     <LiveGame />
                 </Grid>
-                
+
+                <Grid item xs={12} md={10}>
+                    <Upcominggames />
+                </Grid>
             </Grid>
 
             {/* Opening Dialog */}

@@ -19,7 +19,7 @@ function Domesticliveresult() {
         const result = async () => {
             try {
                 const response = await apiClient.post("/last_game");
-                // console.log(response.data);
+                console.log(response.data);
                 setGameStatus(response.data.success);
                 setGameName(response.data.data.gameName);
                 setStartTime(response.data.data.startTime);
