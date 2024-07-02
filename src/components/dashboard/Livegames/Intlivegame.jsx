@@ -10,17 +10,17 @@ import {
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import { apiClient } from "../config/Config";
+import { apiClient } from "../../config/Config";
 
-function Domesticlivegame() {
+function Intlivegame() {
     const [gameName, setGameName] = useState("");
     const [gameId, setGameId] = useState("");
     const [game, setGame] = useState(false);
     const navigate = useNavigate();
     const findliveGame = async () => {
         try {
-            const response = await apiClient.post("/getlivegame");
-            // console.log(response.data);
+            const response = await apiClient.post("/int_live_slot");
+            //console.log(response.data);
             if (response.data.success === true) {
                 setGame(true);
                 setGameName(response.data.data.gameName);
@@ -181,4 +181,4 @@ function Domesticlivegame() {
     );
 }
 
-export default Domesticlivegame;
+export default Intlivegame;

@@ -6,7 +6,7 @@ import {
     Typography,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { apiClient } from "../config/Config";
+import { apiClient } from "../../config/Config";
 
 function Domesticliveresult() {
     const [gameStatus, setGameStatus] = useState(false);

@@ -13,8 +13,8 @@ import {
 } from "@mui/material";
 // import Imageslider from "./slider/Imageslider";
 import Allgames from "../Games/Allgames";
-import Liveresults from "./Liveresults";
-import LiveGame from "./LiveGame";
+import Liveresults from "./Liveresults/Liveresults";
+import LiveGame from "./Livegames/LiveGame";
 import Upcominggames from "./Upcominggames/Upcominggames";
 
 function Defaultdash() {
