@@ -19,7 +19,7 @@ function Domesticliveresult() {
         const result = async () => {
             try {
                 const response = await apiClient.post("/last_game");
-                console.log(response.data);
+                // console.log(response.data);
                 setGameStatus(response.data.success);
                 setGameName(response.data.data.gameName);
                 setStartTime(response.data.data.startTime);
@@ -112,25 +112,44 @@ function Domesticliveresult() {
                                         alignItems={"end"}
                                     >
                                         <Grid item>
-                                            <Typography
-                                                variant="body2"
-                                                align="right"
-                                                color={"white"}
-                                                sx={{
-                                                    padding: "0.5rem",
-                                                    border: "solid 1px gray",
-                                                    borderRadius: "10px",
-                                                    color: "#ffff",
-                                                    fontWeight: "bold",
-                                                    fontSize: "1.8em",
-                                                    background:
-                                                        "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
-                                                }}
-                                            >
-                                                {gameStatus
-                                                    ? winnumber
-                                                    : "Waiting"}
-                                            </Typography>
+                                            {gameStatus ? (
+                                                <Typography
+                                                    variant="body2"
+                                                    align="right"
+                                                    color={"white"}
+                                                    sx={{
+                                                        padding: "0.5rem",
+                                                        border: "solid 1px gray",
+                                                        borderRadius: "10px",
+                                                        color: "#ffff",
+                                                        fontWeight: "bold",
+                                                        fontSize: "1.8em",
+                                                        background:
+                                                            "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
+                                                    }}
+                                                >
+                                                    {winnumber}
+                                                </Typography>
+                                            ) : (
+                                                <>
+                                                    <span>Result</span>
+                                                    <Typography
+                                                        variant="body2"
+                                                        sx={{
+                                                            padding: "0.5rem",
+                                                            border: "solid 0.1px gray",
+                                                            borderRadius: "5px",
+                                                            color: "orange",
+                                                            fontWeight: "bold",
+                                                            fontSize: "1em",
+                                                            background:
+                                                                "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
+                                                        }}
+                                                    >
+                                                        Waiting
+                                                    </Typography>
+                                                </>
+                                            )}
                                         </Grid>
                                     </Grid>
                                 </Grid>

@@ -6,7 +6,7 @@ function Allgames() {
     const navigate = useNavigate();
 
     return (
-        <Grid container spacing={1} p={1}>
+        <Grid container spacing={1} p={2}>
             <Grid item xs={3}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
