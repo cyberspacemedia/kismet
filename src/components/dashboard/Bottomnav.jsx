@@ -44,6 +44,8 @@ export default function Bottomnav() {
                 <BottomNavigationAction
                     label="Share"
                     icon={<ShareIcon sx={{ color: "white" }} />}
+                    component={Link}
+                    to="/shareapp"
                     sx={{ color: "inherit" }}
                 />
             </BottomNavigation>

@@ -28,6 +28,7 @@ import Faridabadgameinfo from "../components/Games/Faridabadgameinfo";
 import Gaziabadgameinfo from "../components/Games/Gaziabadgameinfo";
 
 import Appnotification from "../components/dashboard/Appcomp/Notifications";
+import Shareapp from "../components/dashboard/Appcomp/Shareapp";
 
 function Approutes() {
     const isLoggedIn = false; // Set it based on your authentication state
@@ -62,6 +63,7 @@ function Approutes() {
             <Route path="/wallet" element={<Wallet />} />
             <Route path="/charts" element={<Chartscomp />} />
             <Route path="/mygame" element={<Mygame />} />
+            <Route path="/shareapp" element={<Shareapp />} />
             <Route path="/gamedetails" element={<Gamedetails />} />
             <Route path="/history" element={<Accounthistory />} />
             <Route path="/Appnotification" element={<Appnotification />} />
