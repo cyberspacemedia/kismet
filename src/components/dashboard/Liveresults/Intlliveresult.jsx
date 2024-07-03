@@ -8,7 +8,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { apiClient } from "../../config/Config";
 
-function Domesticliveresult() {
+function Intlliveresult() {
     const [gameStatus, setGameStatus] = useState(false);
     const [gameName, setGameName] = useState("");
     const [winnumber, setWinnumber] = useState(0);
@@ -18,7 +18,7 @@ function Domesticliveresult() {
     useEffect(() => {
         const result = async () => {
             try {
-                const response = await apiClient.post("/last_game");
+                const response = await apiClient.post("/int_last_game");
                 // console.log(response.data);
                 setGameStatus(response.data.success);
                 setGameName(response.data.data.gameName);
@@ -163,4 +163,4 @@ function Domesticliveresult() {
     );
 }
 
-export default Domesticliveresult;
+export default Intlliveresult;

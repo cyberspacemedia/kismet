@@ -67,7 +67,7 @@ function Allgames() {
                 <Typography variant="h6">Gaziabad</Typography>
                 {/* Card 1 */}
             </Grid>
-            
+
             <Grid item xs={3}>
                 {/* Card 1 */}
                 <Card sx={{ backgroundColor: "transparent" }}>
@@ -126,7 +126,6 @@ function Allgames() {
                 <Typography variant="h6">Rohtak</Typography>
                 {/* Card 4 */}
             </Grid>
-            
         </Grid>
     );
 }

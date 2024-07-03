@@ -2,6 +2,7 @@ import React from "react";
 
 import { Grid, Typography } from "@mui/material";
 import Domesticliveresult from "./Domesticliveresult";
+import Intlliveresult from "./Intlliveresult";
 
 function LiveGame() {
     return (
@@ -12,7 +13,9 @@ function LiveGame() {
             <Grid item xs={12} md={10}>
                 <Domesticliveresult />
             </Grid>
-            <Grid item xs={12} md={10}></Grid>
+            <Grid item xs={12} md={10}>
+                <Intlliveresult />
+            </Grid>
         </Grid>
     );
 }
