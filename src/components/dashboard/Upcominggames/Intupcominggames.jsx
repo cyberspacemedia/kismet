@@ -22,7 +22,7 @@ function Intupcominggames() {
                         />
                     </CardActionArea>
                 </Card>
-                <Typography variant="h6">Rewari</Typography>
+                <Typography variant="h6">Disawar</Typography>
                 {/* Card 3 */}
             </Grid>
         </Grid>

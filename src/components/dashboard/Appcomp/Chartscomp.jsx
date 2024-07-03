@@ -1,29 +1,219 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
-
-import { Grid, Select, Typography, MenuItem } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import {
+    Grid,
+    Select,
+    Typography,
+    MenuItem,
+    FormControl,
+    InputLabel,
+    Button,
+} from "@mui/material";
 import Mydatepicker from "./Mydatepicker";
+import { apiClient } from "../../config/Config";
 
 function Chartscomp() {
-    const gameNames = [
-        { name: "Gurugram", number: "12" },
-        { name: "Rewari", number: "23" },
-    ];
+    const [game, setGame] = useState("");
+    const [date, setDate] = useState(null);
+    const [gameData, setGameData] = useState([]);
+    const [gamestatus, setGamestatus] = useState(false);
+    const handleGameSelect = (e) => {
+        setGame(e.target.value);
+    };
+
+    const fetchdata = async (data) => {
+        try {
+            const response = await apiClient.post("charts", data);
+            // console.log(response.data);
+            if (response.data.success === true) {
+                setGameData(response.data.data);
+                setGamestatus(true);
+                // console.log(gameData);
+            } else {
+                setGamestatus(false);
+            }
+        } catch (error) {
+            console.error("API Error", error);
+        }
+    };
+    const handlechartsubmit = async () => {
+        setGamestatus(false);
+        const data = {
+            gameName: game,
+            date: date?.format("DD-MM-YYYY"),
+        };
+        fetchdata(data);
+    };
+
+    useEffect(() => {
+        const data = {
+            gameName: "",
+            date: date?.format("DD-MM-YYYY"),
+        };
+        fetchdata(data);
+    }, [date]);
+
     return (
         <Layout>
             <Typography variant="caption">Charts</Typography>
-            <Grid container justifyContent={"flex-start"} alignItems={"center"}>
-                <Grid item xs={8}>
-                    <Select labelId="gameSelect" label="Game">
-                        <MenuItem value={"Gurugram"}>Gurugram</MenuItem>
-                    </Select>
+            <Grid container justifyContent={"center"} alignItems={"center"}>
+                <Grid item xs={5}>
+                    <FormControl fullWidth variant="filled" size="small">
+                        <InputLabel
+                            id="demo-simple-select-label"
+                            sx={{ color: "white", fontSize: "0.8rem" }}
+                        >
+                            Select Game
+                        </InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={game}
+                            label="Select Game"
+                            onChange={handleGameSelect}
+                            MenuProps={{
+                                PaperProps: {
+                                    sx: {
+                                        bgcolor: "black",
+                                        color: "white",
+                                    },
+                                },
+                            }}
+                            sx={{
+                                bgcolor: "black",
+                                color: "white",
+                                fontSize: "1rem",
+                                ".MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "white",
+                                },
+                                "&.Mui-focused .MuiOutlinedInput-notchedOutline":
+                                    {
+                                        borderColor: "white",
+                                    },
+                                ".MuiSvgIcon-root": {
+                                    color: "white",
+                                },
+                                "& .MuiInputLabel-root": {
+                                    color: "white",
+                                },
+                                "& .MuiInputLabel-root.Mui-focused": {
+                                    color: "white",
+                                },
+                            }}
+                        >
+                            <MenuItem
+                                value="Disawar"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Disawar
+                            </MenuItem>
+                            <MenuItem
+                                value="Gali"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Gali
+                            </MenuItem>
+                            <MenuItem
+                                value="Faridabad"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Faridabad
+                            </MenuItem>
+                            <MenuItem
+                                value="Gaziabad"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Gaziabad
+                            </MenuItem>
+                            <MenuItem
+                                value="Gurugram"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Gurugram
+                            </MenuItem>
+                            <MenuItem
+                                value="Rewari"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Rewari
+                            </MenuItem>
+                            <MenuItem
+                                value="Alwar"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Alwar
+                            </MenuItem>
+                            <MenuItem
+                                value="Rohtak"
+                                sx={{
+                                    bgcolor: "black",
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                Rohtak
+                            </MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
-                <Grid item xs={4}>
-                    <Mydatepicker />
+                <Grid item xs={5}>
+                    <Mydatepicker date={date} setDate={setDate} />
                 </Grid>
+                <Grid item xs={2}>
+                    <Button
+                        variant="contained"
+                        size="small"
+                        onClick={handlechartsubmit}
+                        sx={{
+                            width: "2.5em",
+                            height: "2.5em",
+                            minWidth: "unset",
+                            padding: 0,
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <SearchIcon />
+                    </Button>
+                </Grid>
+            </Grid>
+
+            {/* Outout Grid */}
+            {gamestatus === true && (
                 <Grid item xs={12} md={12}>
                     {/* Container for each Game */}
-                    {gameNames.map((game, index) => (
+
+                    {gameData.map((game, index) => (
                         <Grid
                             container
                             justifyContent="center" // Center horizontally
@@ -47,7 +237,7 @@ function Chartscomp() {
                             >
                                 <img
                                     alt="Game"
-                                    src={`./StaticAssets/Images/Icons/${game.name}round.png`}
+                                    src={`./StaticAssets/Images/Icons/${game.gameName}round.png`}
                                     style={{ height: "50px" }}
                                 />
                             </Grid>
@@ -64,7 +254,7 @@ function Chartscomp() {
                                     align="center"
                                     sx={{ fontWeight: "bold", color: "white" }}
                                 >
-                                    {game.name}
+                                    {game.gameName}
                                 </Typography>
                                 <Typography
                                     variant="caption"
@@ -92,13 +282,14 @@ function Chartscomp() {
                                             "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
                                     }}
                                 >
-                                    {game.number}
+                                    {game.winNumber}
                                 </Typography>
                             </Grid>
                         </Grid>
                     ))}
                 </Grid>
-            </Grid>
+            )}
+            {/* Outout Grid */}
         </Layout>
     );
 }

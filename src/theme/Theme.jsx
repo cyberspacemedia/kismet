@@ -10,7 +10,7 @@ const theme = createTheme({
             main: "#dc004e",
         },
         text: {
-            primary: "#ffff", // Set default text color to white
+            primary: "#f00f", // Set default text color to white
         },
     },
 
