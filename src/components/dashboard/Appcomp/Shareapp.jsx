@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Layout from "../Layout";
 import { Card, CardContent, Grid, Typography, Button } from "@mui/material";
-
+import { apiClient } from "../../config/Config";
+import UserContext from "../../UserContext";
 function Shareapp() {
-    const handleInviteFriends = async () => {
-        if (navigator.share) {
+    const userId = useContext(UserContext);
+    const [referralData, setReferralData] = useState([]);
+    const [referralCode, setReferralCode] = useState("");
+    useEffect(() => {
+        const fetchdata = async () => {
             try {
-                await navigator.share({
-                    title: "Invite Friends",
-                    text: "Join us and earn rewards!",
-                    url: window.location.href,
-                });
-                console.log("Successfully shared");
+                const response = await apiClient.post(
+                    "get_referral_info",
+                    userId
+                );
+                console.log(response.data);
+                setReferralData(response.data.data);
+                setReferralCode(response.data.data.code);
             } catch (error) {
-                console.error("Error sharing:", error.message);
+                console.error("API Error", error);
             }
-        } else {
-            console.log("Web Share API not supported");
-            // Handle fallback to other sharing methods here (e.g., showing a modal with share options)
+        };
+        fetchdata();
+    }, [userId]);
+
+    const handleInviteFriends = async () => {
+        try {
+            await navigator.clipboard.writeText(referralCode);
+            console.log("Referral code copied to clipboard:", referralCode);
+            // Optionally, show a success message or perform other actions
+        } catch (error) {
+            console.error("Failed to copy referral code:", error);
+            // Handle error (e.g., show an error message)
         }
     };
 
@@ -59,7 +73,7 @@ function Shareapp() {
                                 >
                                     ₹
                                 </span>
-                                1000
+                                {referralData.commission}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -71,7 +85,7 @@ function Shareapp() {
                         p={2}
                         sx={{ border: "0.1px solid white", bgcolor: "#212121" }}
                     >
-                        Total People Added : 0
+                        Total People Added : {referralData.userCount}
                     </Typography>
                 </Grid>
                 <Grid item xs={10} mt={5}>
@@ -84,12 +98,12 @@ function Shareapp() {
                             borderRadius: "15px",
                         }}
                     >
-                        XYZ
+                        {referralData.code}
                     </Typography>
                 </Grid>
                 <Grid item xs={10}>
                     <Button variant="contained" onClick={handleInviteFriends}>
-                        Invite Friends
+                        Copy Referral Code
                     </Button>
                 </Grid>
             </Grid>
