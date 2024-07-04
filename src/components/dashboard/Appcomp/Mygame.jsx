@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Layout from "../Layout";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {
@@ -9,11 +8,11 @@ import {
     CardContent,
     Chip,
     Grid,
-    Skeleton,
 } from "@mui/material";
 import UserContext from "../../UserContext";
 import { apiClient } from "../../config/Config";
 import AppLoader from "../../Loaders/AppLoader";
+import BottomMenu from "./Bottommenu";
 
 function Mygame() {
     const navigate = useNavigate();
@@ -49,6 +48,7 @@ function Mygame() {
         date,
         gameStatus
     ) => {
+        setLoader(true);
         const user = userId.userId;
         const gameDetail = {
             userId: user,
@@ -65,70 +65,12 @@ function Mygame() {
     };
 
     return (
-        <Layout>
+        <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
             <Typography variant="caption" sx={{ m: 2 }}>
                 {" "}
                 My Game
             </Typography>
-            {loader && (
-                <>
-                    <AppLoader />
-                    <Grid
-                        container
-                        justifyContent="center"
-                        alignItems="center"
-                        mt={2}
-                    >
-                        <Grid
-                            item
-                            xs={12}
-                            sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Skeleton
-                                variant="rounded"
-                                height={80}
-                                width="95%"
-                            />
-                        </Grid>
-                        <Grid
-                            item
-                            xs={12}
-                            mt={1}
-                            sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Skeleton
-                                variant="rounded"
-                                height={80}
-                                width="95%"
-                            />
-                        </Grid>
-                        <Grid
-                            item
-                            xs={12}
-                            mt={1}
-                            sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Skeleton
-                                variant="rounded"
-                                height={80}
-                                width="95%"
-                            />
-                        </Grid>
-                    </Grid>
-                </>
-            )}
+            {loader && <AppLoader />}
 
             <Grid container justifyContent="center">
                 <Box sx={{ height: "80vh", overflowY: "auto", width: "100%" }}>
@@ -280,7 +222,8 @@ function Mygame() {
                     ))}
                 </Box>
             </Grid>
-        </Layout>
+            <BottomMenu />
+        </Box>
     );
 }
 

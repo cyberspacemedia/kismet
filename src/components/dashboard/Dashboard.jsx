@@ -23,8 +23,6 @@ function Dashboard() {
                         </div>
                     }
                 />
-
-                {/* Add other routes for different pages */}
             </Routes>
         </Layout>
     );

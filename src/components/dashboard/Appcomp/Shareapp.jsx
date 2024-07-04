@@ -1,24 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
-import Layout from "../Layout";
-import { Card, CardContent, Grid, Typography, Button } from "@mui/material";
+
+import {
+    Card,
+    CardContent,
+    Grid,
+    Typography,
+    Button,
+    Box,
+} from "@mui/material";
 import { apiClient } from "../../config/Config";
 import UserContext from "../../UserContext";
+import AppLoader from "../../Loaders/AppLoader";
+import BottomMenu from "./Bottommenu";
 function Shareapp() {
     const userId = useContext(UserContext);
     const [referralData, setReferralData] = useState([]);
     const [referralCode, setReferralCode] = useState("");
+    const [loader, setLoader] = useState(false);
     useEffect(() => {
         const fetchdata = async () => {
+            setLoader(true); // Show loader
             try {
                 const response = await apiClient.post(
                     "get_referral_info",
                     userId
                 );
-                console.log(response.data);
+                // console.log(response.data);
                 setReferralData(response.data.data);
                 setReferralCode(response.data.data.code);
             } catch (error) {
                 console.error("API Error", error);
+            } finally {
+                setLoader(false); // Hide loader
             }
         };
         fetchdata();
@@ -36,11 +49,10 @@ function Shareapp() {
     };
 
     return (
-        <Layout>
+        <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
+            <Typography variant="caption">Invite & Earn</Typography>
+            {loader && <AppLoader />}
             <Grid container justifyContent={"center"} spacing={2}>
-                <Grid item xs={12} md={10}>
-                    <Typography variant="h4">Invite & Earn</Typography>
-                </Grid>
                 <Grid item xs={10}>
                     <Card
                         variant="outlined"
@@ -107,7 +119,8 @@ function Shareapp() {
                     </Button>
                 </Grid>
             </Grid>
-        </Layout>
+            <BottomMenu />
+        </Box>
     );
 }
 

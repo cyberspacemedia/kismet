@@ -1,6 +1,5 @@
 import React from "react";
-import Layout from "../dashboard/Layout";
-import { Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
 import Gametab from "./Matka/Gametab";
@@ -9,13 +8,15 @@ function Gurugramgame() {
     const { gameName, gameId } = location.state || {};
 
     return (
-        <Layout>
+        <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
+            {/* <Button variant="contained">Back</Button> */}
+            <Typography variant="caption">{gameName}</Typography>
             <Grid container>
                 <Grid item xs={12} md={12}>
                     <Gametab gameName={gameName} gameId={gameId} />
                 </Grid>
             </Grid>
-        </Layout>
+        </Box>
     );
 }
 

@@ -133,7 +133,7 @@ function Jodigame({ gameName, gameId, gameType }) {
     return (
         <Box
             sx={{
-                height: "70vh",
+                height: "78vh",
                 overflowY: "auto",
             }}
         >
@@ -234,18 +234,18 @@ function Jodigame({ gameName, gameId, gameType }) {
                 alignItems={"center"}
                 sx={{
                     position: "fixed", // Position the Grid container fixed within the viewport
-                    bottom: "8%", // Position 8% from the bottom of the viewport
+                    bottom: "2%", // Position 8% from the bottom of the viewport
                     left: "50%", // Center horizontally
                     transform: "translateX(-50%)", // Move back to center horizontally
-                    width: "98%", // Set width to 80% of the viewport
+                    width: "95%", // Set width to 80% of the viewport
                     zIndex: 1000, // Ensure it appears above other content
                     borderRadius: "10px",
                     border: "solid 1px #676767",
                     backgroundColor: "#494949",
                 }}
             >
-                <Grid item xs={6}>
-                    <Typography variant="caption">Total Amount :</Typography>
+                <Grid item xs={6} justifyContent={"center"} p={1}>
+                    <Typography variant="h6">Total Amount :</Typography>
                     <Typography variant="h1" sx={{ fontSize: "1.5rem" }}>
                         {totalAmount}
                     </Typography>

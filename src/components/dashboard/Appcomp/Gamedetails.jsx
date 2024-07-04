@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Layout from "../Layout";
+
 import {
     Typography,
     Card,
@@ -9,11 +9,15 @@ import {
     Chip,
     CardHeader,
     Box,
+    IconButton,
 } from "@mui/material";
 import { apiClient } from "../../config/Config";
 import AppLoader from "../../Loaders/AppLoader";
-
+import BottomMenu from "./Bottommenu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import { useNavigate } from "react-router-dom";
 function Gamedetails() {
+    const navigate = useNavigate();
     const location = useLocation();
     const [gameData, setGameData] = useState(null);
     const data = location.state.gameDetail;
@@ -32,17 +36,45 @@ function Gamedetails() {
     }, [data]);
 
     return (
-        <Layout>
-            <Typography variant="caption" sx={{ m: 2 }}>
-                GAME DETAILS
-            </Typography>
-            <Grid
-                container
-                justifyContent="center"
-                style={{ minHeight: "80vh" }} // Adjust height as needed
+        <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
+            {/* Top Bar */}
+            <Box
+                sx={{
+                    backgroundColor: "gray",
+                    textAlign: "center",
+                    padding: "10px 0",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}
             >
-                <Grid item xs={10} sm={8} md={6} lg={4}>
-                    {gameData ? (
+                {/* Logo on Top Left */}
+                <img
+                    src="./StaticAssets/Images/moblogo.png"
+                    alt="Logo"
+                    style={{
+                        height: "30px",
+                        margin: "5px",
+                    }}
+                    onClick={() => {
+                        navigate("/dashboard");
+                    }}
+                />
+                {/* Typography "GAME DETAILS" in Center */}
+                <Typography variant="caption">GAME DETAILS</Typography>
+                {/* Notification Icon on Top Right */}
+                <IconButton sx={{ color: "white", marginRight: "10px" }}>
+                    <NotificationsIcon />
+                </IconButton>
+            </Box>
+            {/* End Top Bar */}
+            {gameData ? (
+                <Grid
+                    container
+                    justifyContent="center"
+                    style={{ minHeight: "80vh" }} // Adjust height as needed
+                >
+                    <Grid item xs={10} sm={8} md={6} lg={4}>
                         <Card
                             sx={{
                                 width: "100%",
@@ -198,12 +230,15 @@ function Gamedetails() {
                                 </Grid>
                             </CardContent>
                         </Card>
-                    ) : (
-                        <AppLoader />
-                    )}
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Layout>
+            ) : (
+                <>
+                    <AppLoader />
+                </>
+            )}
+            <BottomMenu />
+        </Box>
     );
 }
 

@@ -2,7 +2,8 @@ import React from "react";
 import AppNavigation from "./Appnavigation";
 
 import { Grid, Box } from "@mui/material";
-import Bottomnav from "./Bottomnav";
+
+import BottomMenu from "./Appcomp/Bottommenu";
 
 function Layout({ children }) {
     return (
@@ -23,7 +24,7 @@ function Layout({ children }) {
                     {children}
                 </Box>
             </Box>
-            <Bottomnav />
+            <BottomMenu />
         </Grid>
     );
 }

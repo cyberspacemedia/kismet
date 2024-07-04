@@ -49,13 +49,14 @@ export default function Gametab({ gameName, gameId }) {
 
     return (
         <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Box sx={{ borderBottom: 1, borderColor: "black" }}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
                     aria-label="Game Tab"
                     centered
                     sx={{
+                        width: "100%",
                         backgroundColor: "black",
                         "& .MuiTabs-indicator": {
                             backgroundColor: "orange",

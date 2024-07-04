@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../Layout";
+
 import SearchIcon from "@mui/icons-material/Search";
 import {
     Grid,
@@ -9,11 +9,16 @@ import {
     FormControl,
     InputLabel,
     Button,
+    Box,
 } from "@mui/material";
 import Mydatepicker from "./Mydatepicker";
 import { apiClient } from "../../config/Config";
+import AppLoader from "../../Loaders/AppLoader";
+
+import Bottommenu from "./Bottommenu";
 
 function Chartscomp() {
+    const [loader, setLoader] = useState(false);
     const [game, setGame] = useState("");
     const [date, setDate] = useState(null);
     const [gameData, setGameData] = useState([]);
@@ -23,20 +28,22 @@ function Chartscomp() {
     };
 
     const fetchdata = async (data) => {
+        setLoader(true); // Show loader
         try {
             const response = await apiClient.post("charts", data);
-            // console.log(response.data);
             if (response.data.success === true) {
                 setGameData(response.data.data);
                 setGamestatus(true);
-                // console.log(gameData);
             } else {
                 setGamestatus(false);
             }
         } catch (error) {
             console.error("API Error", error);
+        } finally {
+            setLoader(false); // Hide loader
         }
     };
+
     const handlechartsubmit = async () => {
         setGamestatus(false);
         const data = {
@@ -55,9 +62,15 @@ function Chartscomp() {
     }, [date]);
 
     return (
-        <Layout>
+        <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
             <Typography variant="caption">Charts</Typography>
-            <Grid container justifyContent={"center"} alignItems={"center"}>
+            {loader && <AppLoader />}
+            <Grid
+                container
+                justifyContent={"center"}
+                alignItems={"center"}
+                spacing={2}
+            >
                 <Grid item xs={5}>
                     <FormControl fullWidth variant="filled" size="small">
                         <InputLabel
@@ -208,11 +221,8 @@ function Chartscomp() {
                 </Grid>
             </Grid>
 
-            {/* Outout Grid */}
             {gamestatus === true && (
-                <Grid item xs={12} md={12}>
-                    {/* Container for each Game */}
-
+                <Grid container justifyContent="center" alignItems="center">
                     {gameData.map((game, index) => (
                         <Grid
                             container
@@ -261,7 +271,8 @@ function Chartscomp() {
                                     align="center"
                                     sx={{ color: "gray" }}
                                 >
-                                    Winning Number
+                                    Winning Number {game.startTime} -{" "}
+                                    {game.endTime}
                                 </Typography>
                             </Grid>
                             <Grid item xs={4} container justifyContent="end">
@@ -277,7 +288,7 @@ function Chartscomp() {
                                         alignItems: "center", // Center content vertically
                                         color: "#ff5b00",
                                         fontWeight: "bold",
-                                        fontSize: "1.5em",
+                                        fontSize: "1em",
                                         background:
                                             "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
                                     }}
@@ -289,8 +300,8 @@ function Chartscomp() {
                     ))}
                 </Grid>
             )}
-            {/* Outout Grid */}
-        </Layout>
+            <Bottommenu />
+        </Box>
     );
 }
 
