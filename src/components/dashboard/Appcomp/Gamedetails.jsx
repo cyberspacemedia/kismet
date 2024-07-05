@@ -41,7 +41,7 @@ function Gamedetails() {
     }, [data])
 
     return (
-        <Box sx={{ backgroundColor: '#1c1822', minHeight: '100vh' }}>
+        <Box sx={{ backgroundColor: '#110b19', minHeight: '100vh' }}>
             {/* Top Bar */}
             <Box
                 sx={{
@@ -49,7 +49,7 @@ function Gamedetails() {
                     background:
                         'linear-gradient(0deg, rgba(123,86,255,1) 0%, rgba(41,10,91,1) 100%)',
                     textAlign: 'center',
-                    padding: '5px 0',
+                    padding: '3px 0',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
