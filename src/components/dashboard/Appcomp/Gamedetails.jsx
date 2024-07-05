@@ -94,9 +94,9 @@ function Gamedetails() {
                                         }}
                                     >
                                         {data.gameName}
-                                        {data.gameStatus === 1 ? (
+                                        {data.gameStatus === 0 ? (
                                             <Chip
-                                                label="On"
+                                                label="Waiting"
                                                 color="success"
                                                 sx={{ ml: 1 }}
                                                 size="small"

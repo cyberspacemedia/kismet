@@ -25,7 +25,7 @@ function Mygame() {
         const fetchgamedata = async () => {
             try {
                 const response = await apiClient.post("mygames", userId);
-                // console.log(response.data);
+                console.log(response.data);
 
                 if (response.data.success === true) {
                     setGame(response.data.data);
@@ -58,7 +58,7 @@ function Mygame() {
             date: date,
             gameStatus: gameStatus,
         };
-        // console.log(data);
+        //  console.log(data);
         setTimeout(() => {
             navigate("/gamedetails", { state: { gameDetail } });
         }, 2000);
@@ -119,17 +119,56 @@ function Mygame() {
                                                 direction="column"
                                                 justifyContent="center"
                                             >
-                                                <Grid item>
-                                                    <Typography
-                                                        variant="subtitle2"
-                                                        sx={{
-                                                            fontSize: "1rem",
-                                                            fontWeight: "bold",
-                                                        }}
-                                                        align="left"
-                                                    >
-                                                        {gameItem.gameType}
-                                                    </Typography>
+                                                <Grid
+                                                    item
+                                                    container
+                                                    justifyContent="space-between"
+                                                    alignItems="center"
+                                                >
+                                                    <Grid item>
+                                                        <Typography
+                                                            variant="subtitle2"
+                                                            sx={{
+                                                                fontSize:
+                                                                    "1rem",
+                                                                fontWeight:
+                                                                    "bold",
+                                                            }}
+                                                            align="left"
+                                                        >
+                                                            {gameItem.gameName}
+                                                        </Typography>
+                                                    </Grid>
+                                                    <Grid item>
+                                                        <Typography
+                                                            variant="h6"
+                                                            sx={{
+                                                                border: "solid 0.1px orange",
+                                                                p: "0.5em",
+                                                                width: "2em",
+                                                                height: "2em",
+                                                                borderRadius:
+                                                                    "5px",
+                                                                bgcolor:
+                                                                    "black",
+                                                                fontSize: "1em",
+                                                                fontWeight:
+                                                                    "bold",
+                                                                display: "flex",
+                                                                alignItems:
+                                                                    "center",
+                                                                justifyContent:
+                                                                    "center",
+                                                                textAlign:
+                                                                    "center",
+                                                            }}
+                                                        >
+                                                            {gameItem.gameStatus ===
+                                                            1
+                                                                ? gameItem.winNumber
+                                                                : "NA"}
+                                                        </Typography>
+                                                    </Grid>
                                                 </Grid>
                                                 <Grid item>
                                                     <Typography
@@ -140,7 +179,7 @@ function Mygame() {
                                                         }}
                                                         align="left"
                                                     >
-                                                        {gameItem.gameName}
+                                                        {gameItem.gameType}
                                                     </Typography>
                                                 </Grid>
                                                 <Grid item>
@@ -166,14 +205,15 @@ function Mygame() {
                                                 alignItems={"end"}
                                             >
                                                 <Grid item>
-                                                    {gameItem.status === 1 ? (
+                                                    {gameItem.gameStatus ===
+                                                    0 ? (
                                                         <Chip
-                                                            label="ON"
+                                                            label="RESULT"
                                                             color="success"
                                                             size="small"
                                                             sx={{
                                                                 mb: 1,
-                                                                width: "3rem",
+                                                                width: "5rem",
                                                             }}
                                                         />
                                                     ) : (
@@ -184,7 +224,7 @@ function Mygame() {
                                                             variant="outlined"
                                                             sx={{
                                                                 mb: 1,
-                                                                width: "3rem",
+                                                                width: "5rem",
                                                             }}
                                                         />
                                                     )}
@@ -205,12 +245,13 @@ function Mygame() {
                                                                 "linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)",
                                                         }}
                                                     >
-                                                        {gameItem.status === 1
-                                                            ? "Waiting"
-                                                            : gameItem.status ===
+                                                        {gameItem.gameStatus ===
+                                                        1
+                                                            ? gameItem.winStatus ===
                                                               0
-                                                            ? "No Rewards"
-                                                            : "Winner"}
+                                                                ? "No Rewards"
+                                                                : "Winner"
+                                                            : "Waiting"}
                                                     </Typography>
                                                 </Grid>
                                             </Grid>
