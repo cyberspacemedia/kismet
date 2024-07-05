@@ -10,7 +10,7 @@ function Domesticupcominggames() {
         const fetchdata = async () => {
             try {
                 const response = await apiClient.post("int_upcomming_game");
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data.success === true) {
                     setGameStatus(true);
                     setGameData(response.data.data);
