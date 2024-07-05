@@ -131,7 +131,7 @@ const AppNavigation = () => {
                                 ml: 1, // Add some margin-left if needed to separate the text from the image
                             }}
                         >
-                            KISMET
+                            KISMET ver 2.0
                         </Typography>
                     </Box>
                     {/* Right side settings menu */}
