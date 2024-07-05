@@ -41,7 +41,7 @@ function Gamedetails() {
     }, [data])
 
     return (
-        <Box sx={{ backgroundColor: '#1a102d', minHeight: '100vh' }}>
+        <Box sx={{ backgroundColor: '#1c1822', minHeight: '100vh' }}>
             {/* Top Bar */}
             <Box
                 sx={{
