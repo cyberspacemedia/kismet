@@ -10,12 +10,16 @@ import {
     InputLabel,
     Button,
     Box,
+    IconButton,
 } from "@mui/material";
 import Mydatepicker from "./Mydatepicker";
 import { apiClient } from "../../config/Config";
 import AppLoader from "../../Loaders/AppLoader";
-
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 import Bottommenu from "./Bottommenu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
 function Chartscomp() {
     const [loader, setLoader] = useState(false);
@@ -23,8 +27,14 @@ function Chartscomp() {
     const [date, setDate] = useState(null);
     const [gameData, setGameData] = useState([]);
     const [gamestatus, setGamestatus] = useState(false);
+    const navigate = useNavigate();
+    const theme = useTheme();
     const handleGameSelect = (e) => {
         setGame(e.target.value);
+    };
+
+    const handleBackClick = () => {
+        navigate(-1); // Go back to the previous URL
     };
 
     const fetchdata = async (data) => {
@@ -63,7 +73,25 @@ function Chartscomp() {
 
     return (
         <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
-            <Typography variant="caption">Charts</Typography>
+            {/* Top Bar */}
+            <Box sx={theme.components.MuiBox.styleOverrides.root["&.topbar"]}>
+                {/* Logo on Top Left */}
+                <IconButton
+                    sx={{ color: "white", marginRight: "10px" }}
+                    onClick={handleBackClick}
+                >
+                    <ArrowCircleLeftIcon />
+                </IconButton>
+
+                {/* Typography "GAME DETAILS" in Center */}
+                <Typography variant="h6">CHARTS</Typography>
+                {/* Notification Icon on Top Right */}
+                <IconButton sx={{ color: "white", marginRight: "10px" }}>
+                    <NotificationsIcon />
+                </IconButton>
+            </Box>
+            {/* End Top Bar */}
+
             {loader && <AppLoader />}
             <Grid
                 container

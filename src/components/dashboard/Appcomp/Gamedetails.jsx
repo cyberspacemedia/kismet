@@ -15,13 +15,16 @@ import { apiClient } from "../../config/Config";
 import AppLoader from "../../Loaders/AppLoader";
 import BottomMenu from "./Bottommenu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { useNavigate } from "react-router-dom";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
+
 function Gamedetails() {
     const navigate = useNavigate();
     const location = useLocation();
     const [gameData, setGameData] = useState(null);
     const data = location.state.gameDetail;
+    const theme = useTheme();
 
     const handleBackClick = () => {
         navigate(-1); // Go back to the previous URL
@@ -43,18 +46,7 @@ function Gamedetails() {
     return (
         <Box sx={{ backgroundColor: "#110b19", minHeight: "100vh" }}>
             {/* Top Bar */}
-            <Box
-                sx={{
-                    backgroundColor: "#47188f",
-                    textAlign: "center",
-                    padding: "3px 0",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    borderBottomLeftRadius: "1em",
-                    borderBottomRightRadius: "1em",
-                }}
-            >
+            <Box sx={theme.components.MuiBox.styleOverrides.root["&.topbar"]}>
                 {/* Logo on Top Left */}
                 <IconButton
                     sx={{ color: "white", marginRight: "10px" }}
@@ -64,7 +56,7 @@ function Gamedetails() {
                 </IconButton>
 
                 {/* Typography "GAME DETAILS" in Center */}
-                <Typography variant="h6">GAME DETAILS</Typography>
+                <Typography variant="h6">MY GAME</Typography>
                 {/* Notification Icon on Top Right */}
                 <IconButton sx={{ color: "white", marginRight: "10px" }}>
                     <NotificationsIcon />

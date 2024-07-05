@@ -7,16 +7,27 @@ import {
     Typography,
     Button,
     Box,
+    IconButton,
 } from "@mui/material";
 import { apiClient } from "../../config/Config";
 import UserContext from "../../UserContext";
 import AppLoader from "../../Loaders/AppLoader";
 import BottomMenu from "./Bottommenu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 function Shareapp() {
     const userId = useContext(UserContext);
+    const navigate = useNavigate();
+    const theme = useTheme();
     const [referralData, setReferralData] = useState([]);
     const [referralCode, setReferralCode] = useState("");
     const [loader, setLoader] = useState(false);
+
+    const handleBackClick = () => {
+        navigate(-1); // Go back to the previous URL
+    };
     useEffect(() => {
         const fetchdata = async () => {
             setLoader(true); // Show loader
@@ -50,9 +61,26 @@ function Shareapp() {
 
     return (
         <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
-            <Typography variant="caption">Invite & Earn</Typography>
+            {/* Top Bar */}
+            <Box sx={theme.components.MuiBox.styleOverrides.root["&.topbar"]}>
+                {/* Logo on Top Left */}
+                <IconButton
+                    sx={{ color: "white", marginRight: "10px" }}
+                    onClick={handleBackClick}
+                >
+                    <ArrowCircleLeftIcon />
+                </IconButton>
+
+                {/* Typography "GAME DETAILS" in Center */}
+                <Typography variant="h6">INVITE & EARN</Typography>
+                {/* Notification Icon on Top Right */}
+                <IconButton sx={{ color: "white", marginRight: "10px" }}>
+                    <NotificationsIcon />
+                </IconButton>
+            </Box>
+            {/* End Top Bar */}
             {loader && <AppLoader />}
-            <Grid container justifyContent={"center"} spacing={2}>
+            <Grid container justifyContent={"center"} spacing={2} mt={2}>
                 <Grid item xs={10}>
                     <Card
                         variant="outlined"

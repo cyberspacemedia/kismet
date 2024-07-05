@@ -69,6 +69,22 @@ const theme = createTheme({
                 },
             },
         },
+        MuiBox: {
+            styleOverrides: {
+                root: {
+                    "&.topbar": {
+                        backgroundColor: "#47188f",
+                        textAlign: "center",
+                        padding: "3px 0",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        borderBottomLeftRadius: "1em",
+                        borderBottomRightRadius: "1em",
+                    },
+                },
+            },
+        },
     },
     buttons: {
         primary: {

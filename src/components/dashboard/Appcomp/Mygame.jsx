@@ -8,17 +8,26 @@ import {
     CardContent,
     Chip,
     Grid,
+    IconButton,
 } from "@mui/material";
 import UserContext from "../../UserContext";
 import { apiClient } from "../../config/Config";
 import AppLoader from "../../Loaders/AppLoader";
 import BottomMenu from "./Bottommenu";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { useTheme } from "@mui/material/styles";
 
 function Mygame() {
     const navigate = useNavigate();
     const userId = useContext(UserContext);
     const [game, setGame] = useState([]);
     const [loader, setLoader] = useState(false);
+    const theme = useTheme();
+
+    const handleBackClick = () => {
+        navigate(-1); // Go back to the previous URL
+    };
 
     useEffect(() => {
         setLoader(true);
@@ -66,10 +75,25 @@ function Mygame() {
 
     return (
         <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
-            <Typography variant="caption" sx={{ m: 2 }}>
-                {" "}
-                My Game
-            </Typography>
+            {/* Top Bar */}
+            <Box sx={theme.components.MuiBox.styleOverrides.root["&.topbar"]}>
+                {/* Logo on Top Left */}
+                <IconButton
+                    sx={{ color: "white", marginRight: "10px" }}
+                    onClick={handleBackClick}
+                >
+                    <ArrowCircleLeftIcon />
+                </IconButton>
+
+                {/* Typography "GAME DETAILS" in Center */}
+                <Typography variant="h6">GAME DETAILS</Typography>
+                {/* Notification Icon on Top Right */}
+                <IconButton sx={{ color: "white", marginRight: "10px" }}>
+                    <NotificationsIcon />
+                </IconButton>
+            </Box>
+            {/* End Top Bar */}
+
             {loader && <AppLoader />}
 
             <Grid container justifyContent="center">

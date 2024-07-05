@@ -96,7 +96,8 @@ const BottomMenu = () => {
                         <IconButton
                             sx={{
                                 color:
-                                    currentPath === "/mygame"
+                                    currentPath === "/mygame" ||
+                                    currentPath === "/gamedetails"
                                         ? "#ff00bb"
                                         : "white",
                             }}
@@ -108,7 +109,8 @@ const BottomMenu = () => {
                             variant="caption"
                             sx={{
                                 color:
-                                    currentPath === "/mygame"
+                                    currentPath === "/mygame" ||
+                                    currentPath === "/gamedetails"
                                         ? "#ff00bb"
                                         : "white",
                             }}
