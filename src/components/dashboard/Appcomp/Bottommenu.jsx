@@ -1,25 +1,26 @@
-import React from "react";
-import { Grid, IconButton, Box, Typography } from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import ShareIcon from "@mui/icons-material/Share";
-import { useNavigate, useLocation } from "react-router-dom";
+import React from 'react'
+import { Grid, IconButton, Box, Typography } from '@mui/material'
+import HomeIcon from '@mui/icons-material/Home'
+import BarChartIcon from '@mui/icons-material/BarChart'
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import ShareIcon from '@mui/icons-material/Share'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const BottomMenu = () => {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const currentPath = location.pathname;
+    const navigate = useNavigate()
+    const location = useLocation()
+    const currentPath = location.pathname
 
     return (
         <Box
             sx={{
-                position: "fixed",
+                position: 'fixed',
                 bottom: 0,
-                width: "100%",
-                backgroundColor: "black",
-                padding: "5px 0",
-                borderTop: "1px solid gray",
+                width: '100%',
+                background:
+                    'linear-gradient(180deg, rgba(123,86,255,1) 0%, rgba(86,34,198,1) 100%)',
+                padding: '5px 0',
+                borderTop: '1px solid gray',
             }}
         >
             <Grid container justifyContent="space-around">
@@ -33,15 +34,15 @@ const BottomMenu = () => {
                         <IconButton
                             sx={{
                                 color:
-                                    currentPath === "/dashboard"
-                                        ? "yellow"
-                                        : "white",
+                                    currentPath === '/dashboard'
+                                        ? 'yellow'
+                                        : 'white',
                             }}
-                            onClick={() => navigate("/dashboard")}
+                            onClick={() => navigate('/dashboard')}
                         >
                             <HomeIcon />
                         </IconButton>
-                        <Typography variant="caption" sx={{ color: "white" }}>
+                        <Typography variant="caption" sx={{ color: 'white' }}>
                             Home
                         </Typography>
                     </Box>
@@ -56,15 +57,15 @@ const BottomMenu = () => {
                         <IconButton
                             sx={{
                                 color:
-                                    currentPath === "/charts"
-                                        ? "yellow"
-                                        : "white",
+                                    currentPath === '/charts'
+                                        ? 'yellow'
+                                        : 'white',
                             }}
-                            onClick={() => navigate("/charts")}
+                            onClick={() => navigate('/charts')}
                         >
                             <BarChartIcon />
                         </IconButton>
-                        <Typography variant="caption" sx={{ color: "white" }}>
+                        <Typography variant="caption" sx={{ color: 'white' }}>
                             Charts
                         </Typography>
                     </Box>
@@ -79,15 +80,15 @@ const BottomMenu = () => {
                         <IconButton
                             sx={{
                                 color:
-                                    currentPath === "/mygame"
-                                        ? "yellow"
-                                        : "white",
+                                    currentPath === '/mygame'
+                                        ? 'yellow'
+                                        : 'white',
                             }}
-                            onClick={() => navigate("/mygame")}
+                            onClick={() => navigate('/mygame')}
                         >
                             <EmojiEventsIcon />
                         </IconButton>
-                        <Typography variant="caption" sx={{ color: "white" }}>
+                        <Typography variant="caption" sx={{ color: 'white' }}>
                             My Game
                         </Typography>
                     </Box>
@@ -102,22 +103,22 @@ const BottomMenu = () => {
                         <IconButton
                             sx={{
                                 color:
-                                    currentPath === "/shareapp"
-                                        ? "yellow"
-                                        : "white",
+                                    currentPath === '/shareapp'
+                                        ? 'yellow'
+                                        : 'white',
                             }}
-                            onClick={() => navigate("/shareapp")}
+                            onClick={() => navigate('/shareapp')}
                         >
                             <ShareIcon />
                         </IconButton>
-                        <Typography variant="caption" sx={{ color: "white" }}>
+                        <Typography variant="caption" sx={{ color: 'white' }}>
                             Share
                         </Typography>
                     </Box>
                 </Grid>
             </Grid>
         </Box>
-    );
-};
+    )
+}
 
-export default BottomMenu;
+export default BottomMenu

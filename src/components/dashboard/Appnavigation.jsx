@@ -131,7 +131,7 @@ const AppNavigation = () => {
                                 ml: 1, // Add some margin-left if needed to separate the text from the image
                             }}
                         >
-                            KISMET Deepa
+                            KISMET
                         </Typography>
                     </Box>
                     {/* Right side settings menu */}

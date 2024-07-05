@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import {
     Typography,
@@ -10,60 +10,65 @@ import {
     CardHeader,
     Box,
     IconButton,
-} from "@mui/material";
-import { apiClient } from "../../config/Config";
-import AppLoader from "../../Loaders/AppLoader";
-import BottomMenu from "./Bottommenu";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import { useNavigate } from "react-router-dom";
+} from '@mui/material'
+import { apiClient } from '../../config/Config'
+import AppLoader from '../../Loaders/AppLoader'
+import BottomMenu from './Bottommenu'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import { useNavigate } from 'react-router-dom'
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft'
 function Gamedetails() {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [gameData, setGameData] = useState(null);
-    const data = location.state.gameDetail;
+    const navigate = useNavigate()
+    const location = useLocation()
+    const [gameData, setGameData] = useState(null)
+    const data = location.state.gameDetail
+
+    const handleBackClick = () => {
+        navigate(-1) // Go back to the previous URL
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await apiClient.post("/mygames_list", data);
-                console.log(response.data.data);
-                setGameData(response.data.data);
+                const response = await apiClient.post('/mygames_list', data)
+                console.log(response.data.data)
+                setGameData(response.data.data)
             } catch (error) {
-                console.error("API Error", error);
+                console.error('API Error', error)
             }
-        };
-        fetchData();
-    }, [data]);
+        }
+        fetchData()
+    }, [data])
 
     return (
-        <Box sx={{ backgroundColor: "black", minHeight: "100vh" }}>
+        <Box sx={{ backgroundColor: '#1a102d', minHeight: '100vh' }}>
             {/* Top Bar */}
             <Box
                 sx={{
-                    backgroundColor: "gray",
-                    textAlign: "center",
-                    padding: "10px 0",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    backgroundColor: '#5a16d6',
+                    background:
+                        'linear-gradient(0deg, rgba(123,86,255,1) 0%, rgba(41,10,91,1) 100%)',
+                    textAlign: 'center',
+                    padding: '5px 0',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    borderBottomLeftRadius: '1em',
+                    borderBottomRightRadius: '1em',
                 }}
             >
                 {/* Logo on Top Left */}
-                <img
-                    src="./StaticAssets/Images/moblogo.png"
-                    alt="Logo"
-                    style={{
-                        height: "30px",
-                        margin: "5px",
-                    }}
-                    onClick={() => {
-                        navigate("/dashboard");
-                    }}
-                />
+                <IconButton
+                    sx={{ color: 'white', marginRight: '10px' }}
+                    onClick={handleBackClick}
+                >
+                    <ArrowCircleLeftIcon />
+                </IconButton>
+
                 {/* Typography "GAME DETAILS" in Center */}
                 <Typography variant="caption">GAME DETAILS</Typography>
                 {/* Notification Icon on Top Right */}
-                <IconButton sx={{ color: "white", marginRight: "10px" }}>
+                <IconButton sx={{ color: 'white', marginRight: '10px' }}>
                     <NotificationsIcon />
                 </IconButton>
             </Box>
@@ -72,14 +77,14 @@ function Gamedetails() {
                 <Grid
                     container
                     justifyContent="center"
-                    style={{ minHeight: "80vh" }} // Adjust height as needed
+                    style={{ minHeight: '80vh' }} // Adjust height as needed
                 >
                     <Grid item xs={10} sm={8} md={6} lg={4}>
                         <Card
                             sx={{
-                                width: "100%",
-                                border: "0.1px solid gray",
-                                borderRadius: "10px",
+                                width: '100%',
+                                border: '0.1px solid gray',
+                                borderRadius: '10px',
                                 mt: 5,
                             }}
                         >
@@ -88,9 +93,9 @@ function Gamedetails() {
                                     <Typography
                                         variant="h3"
                                         sx={{
-                                            color: "darkgray",
-                                            display: "flex",
-                                            alignItems: "center",
+                                            color: 'darkgray',
+                                            display: 'flex',
+                                            alignItems: 'center',
                                         }}
                                     >
                                         {data.gameName}
@@ -112,36 +117,36 @@ function Gamedetails() {
                                     </Typography>
                                 }
                                 sx={{
-                                    backgroundColor: "black",
-                                    display: "flex",
-                                    justifyContent: "space-between",
+                                    backgroundColor: 'black',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
                                 }}
                             />
-                            <CardContent sx={{ backgroundColor: "black" }}>
+                            <CardContent sx={{ backgroundColor: 'black' }}>
                                 <img
                                     src={`./StaticAssets/Images/Icons/${data.gameName}round.png`}
                                     alt="Custom"
                                     style={{
-                                        height: "50px",
-                                        objectFit: "cover",
+                                        height: '50px',
+                                        objectFit: 'cover',
                                     }}
                                 />
                                 <Typography
                                     variant="body1"
-                                    sx={{ color: "white" }}
+                                    sx={{ color: 'white' }}
                                 >
                                     {data.gameName}
                                 </Typography>
                                 <Typography
                                     variant="subtitle2"
-                                    sx={{ color: "white" }}
+                                    sx={{ color: 'white' }}
                                 >
                                     {data.date}
                                 </Typography>
 
                                 <Typography
                                     variant="subtitle2"
-                                    sx={{ color: "white", mt: 2 }}
+                                    sx={{ color: 'white', mt: 2 }}
                                 >
                                     {data.gameType} Game
                                 </Typography>
@@ -154,38 +159,38 @@ function Gamedetails() {
                                 <Grid
                                     container
                                     spacing={2}
-                                    justifyContent={"center"}
+                                    justifyContent={'center'}
                                 >
                                     {gameData.map((game, index) => (
                                         <Grid item xs={3} sm={3} key={index}>
                                             <Box
                                                 sx={{
-                                                    width: "100%",
-                                                    height: "50px",
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    justifyContent: "center",
-                                                    alignItems: "center",
-                                                    border: "1px solid gray",
-                                                    borderRadius: "10px",
+                                                    width: '100%',
+                                                    height: '50px',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    justifyContent: 'center',
+                                                    alignItems: 'center',
+                                                    border: '1px solid gray',
+                                                    borderRadius: '10px',
                                                 }}
                                             >
                                                 <Box
                                                     sx={{
-                                                        width: "100%",
-                                                        height: "50%",
-                                                        display: "flex",
+                                                        width: '100%',
+                                                        height: '50%',
+                                                        display: 'flex',
                                                         justifyContent:
-                                                            "center",
-                                                        alignItems: "center",
+                                                            'center',
+                                                        alignItems: 'center',
                                                     }}
                                                 >
                                                     <Typography
                                                         sx={{
-                                                            color: "red",
-                                                            fontSize: "1rem",
+                                                            color: 'red',
+                                                            fontSize: '1rem',
                                                             fontWeight:
-                                                                "bolder",
+                                                                'bolder',
                                                         }}
                                                     >
                                                         {game.number}
@@ -193,32 +198,32 @@ function Gamedetails() {
                                                 </Box>
                                                 <Box
                                                     sx={{
-                                                        width: "100%",
-                                                        height: "50%",
-                                                        display: "flex",
+                                                        width: '100%',
+                                                        height: '50%',
+                                                        display: 'flex',
                                                         justifyContent:
-                                                            "center",
-                                                        alignItems: "center",
+                                                            'center',
+                                                        alignItems: 'center',
                                                         borderTop:
-                                                            "solid 0.1px yellow",
+                                                            'solid 0.1px yellow',
                                                         borderTopRightRadius:
-                                                            "5px",
+                                                            '5px',
                                                         borderTopLeftRadius:
-                                                            "5px",
+                                                            '5px',
                                                         borderBottomRightRadius:
-                                                            "5px",
+                                                            '5px',
                                                         borderBottomLeftRadius:
-                                                            "5px",
+                                                            '5px',
                                                         backgroundColor:
-                                                            "orange",
+                                                            'orange',
                                                     }}
                                                 >
                                                     <Typography
                                                         sx={{
-                                                            color: "black",
-                                                            fontSize: "0.7rem",
+                                                            color: 'black',
+                                                            fontSize: '0.7rem',
                                                             fontWeight:
-                                                                "bolder",
+                                                                'bolder',
                                                         }}
                                                     >
                                                         ₹{game.amount}
@@ -239,7 +244,7 @@ function Gamedetails() {
             )}
             <BottomMenu />
         </Box>
-    );
+    )
 }
 
-export default Gamedetails;
+export default Gamedetails
