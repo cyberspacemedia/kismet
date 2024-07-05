@@ -47,7 +47,7 @@ function Gamedetails() {
                 sx={{
                     backgroundColor: '#5a16d6',
                     background:
-                        'linear-gradient(0deg, rgba(123,86,255,1) 0%, rgba(41,10,91,1) 100%)',
+                        'linear-gradient(0deg, rgba(71,43,171,1) 0%, rgba(17,11,25,1) 100%)',
                     textAlign: 'center',
                     padding: '3px 0',
                     display: 'flex',
@@ -66,7 +66,7 @@ function Gamedetails() {
                 </IconButton>
 
                 {/* Typography "GAME DETAILS" in Center */}
-                <Typography variant="caption">GAME DETAILS</Typography>
+                <Typography variant="h6">GAME DETAILS</Typography>
                 {/* Notification Icon on Top Right */}
                 <IconButton sx={{ color: 'white', marginRight: '10px' }}>
                     <NotificationsIcon />

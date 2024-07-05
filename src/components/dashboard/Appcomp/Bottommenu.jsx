@@ -18,7 +18,7 @@ const BottomMenu = () => {
                 bottom: 0,
                 width: '100%',
                 background:
-                    'linear-gradient(180deg, rgba(123,86,255,1) 0%, rgba(86,34,198,1) 100%)',
+                    'linear-gradient(180deg, rgba(71,43,171,1) 0%, rgba(17,11,25,1) 85%)',
                 padding: '5px 0',
                 borderTop: '1px solid gray',
             }}
