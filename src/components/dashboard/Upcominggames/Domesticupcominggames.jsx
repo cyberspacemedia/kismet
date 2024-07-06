@@ -34,16 +34,15 @@ function Domesticupcominggames() {
             justifyContent="center"
             alignItems="center"
         >
-            <Grid item xs={10}>
-                {/* Card Disawar */}
+            <Grid item>
                 <Card
                     sx={{
                         background:
-                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                            'linear-gradient(47deg, rgba(142,142,142,1) 0%, rgba(34,34,34,1) 24%, rgba(0,0,0,1) 42%, rgba(46,46,46,1) 72%, rgba(140,140,140,1) 100%)',
                         borderRadius: '15px', // Optional: Add border radius if needed
-                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
-                        height: isSmallScreen ? '3em' : '8em', // Responsive height
-                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        border: 'solid 0.1px gray',
+                        height: isSmallScreen ? '5em' : '10em', // Responsive height
+                        width: isSmallScreen ? '5em' : '10em', // Responsive width
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -53,8 +52,8 @@ function Domesticupcominggames() {
                     <CardActionArea sx={{ height: '100%', width: '100%' }}>
                         <CardMedia
                             component="img"
-                            image="./StaticAssets/Images/Icons/Disawar.png"
-                            alt="Disawar"
+                            image={`./StaticAssets/Images/Icons/${gameData.gameName}.png`}
+                            alt={gameData.gameName}
                             sx={{
                                 height: '50%', // Adjust the height to fit the card
                                 width: '50%', // Adjust the width to fit the card
@@ -71,24 +70,12 @@ function Domesticupcominggames() {
                                 padding: '8px 0px 0px 0px', // Padding to adjust the spacing
                             }}
                         >
-                            <Typography variant="h6" sx={{ color: 'white' }}>
-                                Disawar
+                            <Typography variant="h5" sx={{ color: 'white' }}>
+                                {gameData.gameName}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
                 </Card>
-                {/* Card 1 */}
-                <Card sx={{ backgroundColor: 'transparent' }}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            image={`./StaticAssets/Images/Icons/${gameData.gameName}.png`}
-                            alt={gameData.gameName}
-                        />
-                    </CardActionArea>
-                </Card>
-                <Typography variant="h5">{gameData.gameName}</Typography>
-                {/* Card 1 */}
             </Grid>
         </Grid>
     )
