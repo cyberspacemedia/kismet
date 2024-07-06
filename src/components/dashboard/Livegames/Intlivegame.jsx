@@ -20,7 +20,7 @@ function Intlivegame() {
     const findliveGame = async () => {
         try {
             const response = await apiClient.post('/int_live_slot')
-            console.log(response.data)
+            // console.log(response.data)
             if (response.data.success === true) {
                 setGame(true)
                 setGameName(response.data.data.gameName)

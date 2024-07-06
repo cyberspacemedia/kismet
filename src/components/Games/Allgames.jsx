@@ -9,22 +9,21 @@ import {
     useMediaQuery,
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-
 function Allgames() {
     const navigate = useNavigate()
     const isSmallScreen = useMediaQuery('(max-width:600px)')
     return (
         <Grid
             container
-            spacing={1}
-            p={2}
+            spacing={2}
+            mt={1}
             sx={{
                 backgroundColor: '#110b19',
                 justifyContent: 'center',
-                alignItems: 'center',
+                width: '90%',
             }}
         >
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Disawar */}
                 <Card
                     sx={{
@@ -72,7 +71,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Disawar */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Gali */}
                 <Card
                     sx={{
@@ -120,7 +119,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Gali */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Faridabad */}
                 <Card
                     sx={{
@@ -168,7 +167,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Faridabad */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Gaziabad */}
                 <Card
                     sx={{
@@ -216,8 +215,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Gaziabad */}
             </Grid>
-
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Gurugram */}
                 <Card
                     sx={{
@@ -265,7 +263,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Gurugram */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Alwar */}
                 <Card
                     sx={{
@@ -313,7 +311,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Alwar */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Rewari */}
                 <Card
                     sx={{
@@ -361,7 +359,7 @@ function Allgames() {
                 </Card>
                 {/* End Card Rewari */}
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} md={3}>
                 {/* Card Rohtak */}
                 <Card
                     sx={{

@@ -6,41 +6,41 @@ import {
     Grid,
     Skeleton,
     Typography,
-} from "@mui/material";
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import { apiClient } from "../../config/Config";
+} from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import { apiClient } from '../../config/Config'
 
 function Domesticlivegame() {
-    const [gameName, setGameName] = useState("");
-    const [gameId, setGameId] = useState("");
-    const [game, setGame] = useState(false);
-    const navigate = useNavigate();
+    const [gameName, setGameName] = useState('')
+    const [gameId, setGameId] = useState('')
+    const [game, setGame] = useState(false)
+    const navigate = useNavigate()
     const findliveGame = async () => {
         try {
-            const response = await apiClient.post("/getlivegame");
-            // console.log(response.data);
+            const response = await apiClient.post('/getlivegame')
+            // console.log(response.data)
             if (response.data.success === true) {
-                setGame(true);
-                setGameName(response.data.data.gameName);
-                setGameId(response.data.data.gameId);
+                setGame(true)
+                setGameName(response.data.data.gameName)
+                setGameId(response.data.data.gameId)
             } else {
-                setGame(false);
+                setGame(false)
             }
         } catch (error) {
-            setGame(false);
-            console.error("Error fetching live game:", error);
+            setGame(false)
+            console.error('Error fetching live game:', error)
         }
-    };
+    }
 
     useEffect(() => {
-        findliveGame();
-    }, []);
+        findliveGame()
+    }, [])
 
     const handleliveGame = () => {
-        navigate("/gurugramgame", { state: { gameName, gameId } });
-    };
+        navigate('/gurugramgame', { state: { gameName, gameId } })
+    }
 
     return (
         <>
@@ -51,11 +51,11 @@ function Domesticlivegame() {
                             {/* Card for Live Result */}
                             <Card
                                 sx={{
-                                    width: "95%",
-                                    margin: "0 auto",
-                                    border: "1px solid gray",
-                                    borderRadius: "15px",
-                                    backgroundColor: "#373736",
+                                    width: '95%',
+                                    margin: '0 auto',
+                                    border: '1px solid gray',
+                                    borderRadius: '15px',
+                                    backgroundColor: '#373736',
                                 }}
                             >
                                 <CardActionArea onClick={handleliveGame}>
@@ -70,8 +70,8 @@ function Domesticlivegame() {
                                                     src="./StaticAssets/Images/Icons/Gurugramround.png"
                                                     alt="Custom"
                                                     style={{
-                                                        height: "50px",
-                                                        objectFit: "cover",
+                                                        height: '50px',
+                                                        objectFit: 'cover',
                                                     }}
                                                 />
                                             </Grid>
@@ -87,8 +87,8 @@ function Domesticlivegame() {
                                                     <Typography
                                                         variant="subtitle2"
                                                         sx={{
-                                                            fontSize: "15px",
-                                                            fontWeight: "bold",
+                                                            fontSize: '15px',
+                                                            fontWeight: 'bold',
                                                         }}
                                                         align="left"
                                                     >
@@ -99,8 +99,8 @@ function Domesticlivegame() {
                                                     <Typography
                                                         variant="subtitle2"
                                                         sx={{
-                                                            fontSize: "12px",
-                                                            color: "#b6b6b2",
+                                                            fontSize: '12px',
+                                                            color: '#b6b6b2',
                                                         }}
                                                         align="left"
                                                     >
@@ -114,10 +114,10 @@ function Domesticlivegame() {
                                                         size="small"
                                                         sx={{
                                                             alignSelf:
-                                                                "flex-start",
-                                                            width: "80px",
-                                                            height: "15px",
-                                                            fontSize: "10px",
+                                                                'flex-start',
+                                                            width: '80px',
+                                                            height: '15px',
+                                                            fontSize: '10px',
                                                         }}
                                                     />
                                                 </Grid>
@@ -128,8 +128,8 @@ function Domesticlivegame() {
                                                 container
                                                 xs
                                                 direction="column"
-                                                justifyContent={"flex-end"}
-                                                alignItems={"end"}
+                                                justifyContent={'flex-end'}
+                                                alignItems={'end'}
                                             >
                                                 <Grid
                                                     item
@@ -140,7 +140,7 @@ function Domesticlivegame() {
                                                 >
                                                     <PlayCircleIcon
                                                         sx={{
-                                                            fontSize: "3rem",
+                                                            fontSize: '3rem',
                                                         }}
                                                     />
                                                     <Typography
@@ -162,15 +162,15 @@ function Domesticlivegame() {
                             container
                             justifyContent="center"
                             alignItems="center"
-                            style={{ width: "100%" }}
+                            style={{ width: '100%' }}
                         >
                             <Skeleton
                                 variant="rounded"
                                 height={80}
                                 width="95%"
                                 sx={{
-                                    justifyContent: "center",
-                                    alignItems: "center",
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
                                 }}
                             />
                         </Grid>
@@ -178,7 +178,7 @@ function Domesticlivegame() {
                 </Grid>
             </Grid>
         </>
-    );
+    )
 }
 
-export default Domesticlivegame;
+export default Domesticlivegame

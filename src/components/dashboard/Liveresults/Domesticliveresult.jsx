@@ -4,33 +4,33 @@ import {
     CardContent,
     Grid,
     Typography,
-} from "@mui/material";
-import React, { useState, useEffect } from "react";
-import { apiClient } from "../../config/Config";
+} from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { apiClient } from '../../config/Config'
 
 function Domesticliveresult() {
-    const [gameStatus, setGameStatus] = useState(false);
-    const [gameName, setGameName] = useState("");
-    const [winnumber, setWinnumber] = useState(0);
-    const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
+    const [gameStatus, setGameStatus] = useState(false)
+    const [gameName, setGameName] = useState('')
+    const [winnumber, setWinnumber] = useState(0)
+    const [startTime, setStartTime] = useState('')
+    const [endTime, setEndTime] = useState('')
 
     useEffect(() => {
         const result = async () => {
             try {
-                const response = await apiClient.post("/last_game");
-                // console.log(response.data);
-                setGameStatus(response.data.success);
-                setGameName(response.data.data.gameName);
-                setStartTime(response.data.data.startTime);
-                setEndTime(response.data.data.endTime);
+                const response = await apiClient.post('/last_game')
+                console.log(response.data)
+                setGameStatus(response.data.success)
+                setGameName(response.data.data.gameName)
+                setStartTime(response.data.data.startTime)
+                setEndTime(response.data.data.endTime)
                 if (response.data.success === true) {
-                    setWinnumber(response.data.data.number);
+                    setWinnumber(response.data.data.number)
                 }
             } catch (error) {}
-        };
-        result();
-    }, []);
+        }
+        result()
+    }, [])
 
     return (
         <>
@@ -39,11 +39,11 @@ function Domesticliveresult() {
                     {/* Card for Live Result */}
                     <Card
                         sx={{
-                            width: "95%",
-                            margin: "0 auto",
-                            border: "1px solid gray",
-                            borderRadius: "15px",
-                            backgroundColor: "#373736",
+                            width: '95%',
+                            margin: '0 auto',
+                            border: '1px solid gray',
+                            borderRadius: '15px',
+                            backgroundColor: '#373736',
                         }}
                     >
                         <CardActionArea>
@@ -54,8 +54,8 @@ function Domesticliveresult() {
                                             src="./StaticAssets/Images/Icons/Rohtakround.png"
                                             alt="Custom"
                                             style={{
-                                                height: "50px",
-                                                objectFit: "cover",
+                                                height: '50px',
+                                                objectFit: 'cover',
                                             }}
                                         />
                                     </Grid>
@@ -70,8 +70,8 @@ function Domesticliveresult() {
                                             <Typography
                                                 variant="subtitle2"
                                                 sx={{
-                                                    fontSize: "15px",
-                                                    fontWeight: "bold",
+                                                    fontSize: '15px',
+                                                    fontWeight: 'bold',
                                                 }}
                                                 align="left"
                                             >
@@ -82,8 +82,8 @@ function Domesticliveresult() {
                                             <Typography
                                                 variant="subtitle2"
                                                 sx={{
-                                                    fontSize: "12px",
-                                                    color: "#b6b6b2",
+                                                    fontSize: '12px',
+                                                    color: '#b6b6b2',
                                                 }}
                                                 align="left"
                                             >
@@ -94,8 +94,8 @@ function Domesticliveresult() {
                                             <Typography
                                                 variant="subtitle2"
                                                 sx={{
-                                                    fontSize: "12px",
-                                                    color: "#b6b6b2",
+                                                    fontSize: '12px',
+                                                    color: '#b6b6b2',
                                                 }}
                                                 align="left"
                                             >
@@ -108,24 +108,24 @@ function Domesticliveresult() {
                                         container
                                         xs
                                         direction="column"
-                                        justifyContent={"flex-end"}
-                                        alignItems={"end"}
+                                        justifyContent={'flex-end'}
+                                        alignItems={'end'}
                                     >
                                         <Grid item>
                                             {gameStatus ? (
                                                 <Typography
                                                     variant="body2"
                                                     align="right"
-                                                    color={"white"}
+                                                    color={'white'}
                                                     sx={{
-                                                        padding: "0.5rem",
-                                                        border: "solid 1px gray",
-                                                        borderRadius: "10px",
-                                                        color: "#ffff",
-                                                        fontWeight: "bold",
-                                                        fontSize: "1.8em",
+                                                        padding: '0.5rem',
+                                                        border: 'solid 1px gray',
+                                                        borderRadius: '10px',
+                                                        color: '#ffff',
+                                                        fontWeight: 'bold',
+                                                        fontSize: '1.8em',
                                                         background:
-                                                            "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
+                                                            'linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)',
                                                     }}
                                                 >
                                                     {winnumber}
@@ -136,14 +136,14 @@ function Domesticliveresult() {
                                                     <Typography
                                                         variant="body2"
                                                         sx={{
-                                                            padding: "0.5rem",
-                                                            border: "solid 0.1px gray",
-                                                            borderRadius: "5px",
-                                                            color: "orange",
-                                                            fontWeight: "bold",
-                                                            fontSize: "1em",
+                                                            padding: '0.5rem',
+                                                            border: 'solid 0.1px gray',
+                                                            borderRadius: '5px',
+                                                            color: 'orange',
+                                                            fontWeight: 'bold',
+                                                            fontSize: '1em',
                                                             background:
-                                                                "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
+                                                                'linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)',
                                                         }}
                                                     >
                                                         Waiting
@@ -160,7 +160,7 @@ function Domesticliveresult() {
                 </Grid>
             </Grid>
         </>
-    );
+    )
 }
 
-export default Domesticliveresult;
+export default Domesticliveresult

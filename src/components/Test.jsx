@@ -1,129 +1,415 @@
-import React, { useState } from "react";
-
+import React from 'react'
+import Grid from '@mui/material/Grid'
 import {
-    Grid,
-    Select,
+    Card,
+    CardActionArea,
+    CardContent,
+    CardMedia,
     Typography,
-    MenuItem,
-    FormControl,
-    InputLabel,
-} from "@mui/material";
-import Mydatepicker from "./dashboard/Appcomp/Mydatepicker";
-import Layout from "./dashboard/Layout";
+    useMediaQuery,
+} from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
-function Test() {
-    const gameNames = [
-        { name: "Gurugram", number: "12" },
-        { name: "Rewari", number: "23" },
-    ];
-    const [game, setGame] = useState("");
-
-    const handleGameSelect = (e) => {
-        setGame(e.target.value);
-    };
+function Allgames() {
+    const navigate = useNavigate()
+    const isSmallScreen = useMediaQuery('(max-width:600px)')
     return (
-        <Layout>
-            <Typography variant="caption">Charts</Typography>
-            <Grid container justifyContent={"flex-start"} alignItems={"center"}>
-                <Grid item xs={5}>
-                    <FormControl fullWidth variant="standard">
-                        <InputLabel>Select Game</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={game}
-                            label="Age"
-                            onChange={handleGameSelect}
-                        >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={5}>
-                    <Mydatepicker />
-                </Grid>
-                <Grid item xs={12} md={12}>
-                    {/* Container for each Game */}
-                    {gameNames.map((game, index) => (
-                        <Grid
-                            container
-                            justifyContent="center" // Center horizontally
-                            alignItems="center" // Center vertically
+        <Grid
+            container
+            spacing={1}
+            p={2}
+            sx={{
+                backgroundColor: '#110b19',
+                justifyContent: 'center',
+            }}
+        >
+            <Grid item xs={3} md={3}>
+                {/* Card Disawar */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/dishawarinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Disawar.png"
+                            alt="Disawar"
                             sx={{
-                                width: "90%",
-                                p: "10px",
-                                mt: "5px",
-                                margin: "20px auto 0 auto",
-                                border: "solid 1px gray",
-                                borderRadius: "15px",
-                                backgroundColor: "#343433",
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
                             }}
-                            key={index}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
                         >
-                            <Grid
-                                item
-                                xs={4}
-                                container
-                                justifyContent="flex-start"
-                            >
-                                <img
-                                    alt="Game"
-                                    src={`./StaticAssets/Images/Icons/${game.name}round.png`}
-                                    style={{ height: "50px" }}
-                                />
-                            </Grid>
-                            <Grid
-                                item
-                                xs={4}
-                                container
-                                direction="column"
-                                justifyContent="center"
-                                alignItems="baseline"
-                            >
-                                <Typography
-                                    variant="body1"
-                                    align="center"
-                                    sx={{ fontWeight: "bold", color: "white" }}
-                                >
-                                    {game.name}
-                                </Typography>
-                                <Typography
-                                    variant="caption"
-                                    align="center"
-                                    sx={{ color: "gray" }}
-                                >
-                                    Winning Number
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={4} container justifyContent="end">
-                                <Typography
-                                    variant="h5"
-                                    color="initial"
-                                    sx={{
-                                        padding: "10px",
-                                        border: "solid 1px gray",
-                                        borderRadius: "10px",
-                                        display: "flex", // Ensure flexbox is used
-                                        justifyContent: "center", // Center content horizontally
-                                        alignItems: "center", // Center content vertically
-                                        color: "#ff5b00",
-                                        fontWeight: "bold",
-                                        fontSize: "1.5em",
-                                        background:
-                                            "linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)",
-                                    }}
-                                >
-                                    {game.number}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                    ))}
-                </Grid>
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Disawar
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Disawar */}
             </Grid>
-        </Layout>
-    );
+            <Grid item xs={3}>
+                {/* Card Gali */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/galiinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gali.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Gali
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Gali */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card Faridabad */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/faridabadgameinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Faridabad.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Faridabad
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Faridabad */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card Gaziabad */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/gaziabadgameinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gaziabad.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Gaziabad
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Gaziabad */}
+            </Grid>
+
+            <Grid item xs={3}>
+                {/* Card Gurugram */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/gurugramgameinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Gurugram.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Gurugram
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Gurugram */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card Alwar */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/alwargameinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Alwar.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Alwar
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Alwar */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card Rewari */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/rewarigameinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Rewari.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Rewari
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Rewari */}
+            </Grid>
+            <Grid item xs={3}>
+                {/* Card Rohtak */}
+                <Card
+                    sx={{
+                        background:
+                            'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
+                        borderRadius: '15px', // Optional: Add border radius if needed
+                        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
+                        height: isSmallScreen ? '3em' : '8em', // Responsive height
+                        width: isSmallScreen ? '3em' : '8em', // Responsive width
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <CardActionArea
+                        onClick={() => navigate('/rohtakgameinfo')}
+                        sx={{ height: '100%', width: '100%' }}
+                    >
+                        <CardMedia
+                            component="img"
+                            image="./StaticAssets/Images/Icons/Rohtak.png"
+                            alt="Disawar"
+                            sx={{
+                                height: '50%', // Adjust the height to fit the card
+                                width: '50%', // Adjust the width to fit the card
+                                objectFit: 'cover', // Cover the card area
+                                margin: 'auto',
+                            }}
+                        />
+                        <CardContent
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '8px 0px 0px 0px', // Padding to adjust the spacing
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: 'white' }}>
+                                Rohtak
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+                {/* End Card Rohtak */}
+            </Grid>
+        </Grid>
+    )
 }
 
-export default Test;
+export default Allgames
