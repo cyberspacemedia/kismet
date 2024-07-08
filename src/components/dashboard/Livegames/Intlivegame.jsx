@@ -70,11 +70,11 @@ function Intlivegame() {
                                 sx={{
                                     width: '95%',
                                     margin: '0 auto',
-                                    border: '1px solid #525252',
+                                    border: '1px solid ##069c21',
                                     borderRadius: '5px',
                                     backgroundColor: '#373736',
                                     background:
-                                        'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                        'linear-gradient(47deg, rgba(1,31,2,1) 0%, rgba(6,156,33,1) 100%)',
                                 }}
                             >
                                 <CardActionArea onClick={handleliveGame}>
@@ -177,6 +177,7 @@ function Intlivegame() {
                                                     <PlayCircleIcon
                                                         sx={{
                                                             fontSize: '3rem',
+                                                            color: '#ffff',
                                                         }}
                                                     />
                                                     <Typography
