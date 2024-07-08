@@ -4,6 +4,8 @@ import {
     CardContent,
     Grid,
     Typography,
+    useMediaQuery,
+    useTheme,
 } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { apiClient } from '../../config/Config'
@@ -14,6 +16,20 @@ function Domesticliveresult() {
     const [winnumber, setWinnumber] = useState(0)
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
+
+    const theme = useTheme()
+    const isXs = useMediaQuery(theme.breakpoints.down('xs'))
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMd = useMediaQuery(theme.breakpoints.down('md'))
+
+    const getSize = () => {
+        if (isXs) return '50px'
+        if (isSm) return '50px'
+        if (isMd) return '100px'
+        return '120px'
+    }
+
+    const size = getSize()
 
     useEffect(() => {
         const result = async () => {
@@ -41,8 +57,8 @@ function Domesticliveresult() {
                         sx={{
                             width: '95%',
                             margin: '0 auto',
-                            border: '1px solid gray',
-                            borderRadius: '15px',
+                            border: '1px solid #525252',
+                            borderRadius: '5px',
                             backgroundColor: '#373736',
                             background:
                                 'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
@@ -52,14 +68,30 @@ function Domesticliveresult() {
                             <CardContent>
                                 <Grid container alignItems="center" spacing={1}>
                                     <Grid item>
-                                        <img
-                                            src="./StaticAssets/Images/Icons/Rohtakround.png"
-                                            alt="Custom"
+                                        <div
                                             style={{
-                                                height: '50px',
-                                                objectFit: 'cover',
+                                                width: size,
+                                                height: size,
+                                                borderRadius: '50%',
+                                                background:
+                                                    'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                overflow: 'hidden',
+                                                border: 'solid 1px gray',
                                             }}
-                                        />
+                                        >
+                                            <img
+                                                src={`./StaticAssets/Images/Icons/${gameName}.png`}
+                                                alt="Custom"
+                                                style={{
+                                                    height: '90%',
+                                                    width: '90%',
+                                                    objectFit: 'cover',
+                                                }}
+                                            />
+                                        </div>
                                     </Grid>
                                     <Grid
                                         item
