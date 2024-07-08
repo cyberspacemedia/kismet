@@ -12,14 +12,13 @@ function LiveGame() {
                     sx={{
                         color: '#ffffff', // Ensure the text color is white
                         '&::before, &::after': {
-                            borderColor: '#ffffff', // Set the color of the divider lines
+                            borderColor: '#8000ba', // Set the color of the divider lines
                         },
                     }}
                 >
                     <Typography
+                        variant="subtitle2"
                         sx={{
-                            color: '#ffffff', // Set the color of the centered text
-
                             padding: '0 0.5rem', // Add padding around the text for better visibility
                         }}
                     >

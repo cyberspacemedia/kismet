@@ -89,6 +89,22 @@ const theme = createTheme({
                 fontSize: '1.4rem',
             },
         },
+
+        subtitle2: {
+            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+            fontSize: '0.5em',
+            color: '#c84eff',
+            fontWeight: 'bold',
+            '@media (min-width:600px)': {
+                fontSize: '1.4rem',
+            },
+            '@media (min-width:960px)': {
+                fontSize: '1.4rem',
+            },
+            '@media (min-width:1280px)': {
+                fontSize: '1.4rem',
+            },
+        },
         caption: {
             color: '#ffff',
             fontSize: '10px',

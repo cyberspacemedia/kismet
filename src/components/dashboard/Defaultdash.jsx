@@ -37,7 +37,7 @@ function Defaultdash() {
     return (
         <Box
             style={{
-                height: '85vh', // Full height of the viewport
+                height: '83vh', // Full height of the viewport
                 overflowY: 'auto', // Enable vertical scrolling
             }}
         >
