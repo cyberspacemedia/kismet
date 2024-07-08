@@ -34,7 +34,7 @@ function Domesticliveresult() {
 
     return (
         <>
-            <Grid container spacing={1}>
+            <Grid container>
                 <Grid item xs={12}>
                     {/* Card for Live Result */}
                     <Card
@@ -44,6 +44,8 @@ function Domesticliveresult() {
                             border: '1px solid gray',
                             borderRadius: '15px',
                             backgroundColor: '#373736',
+                            background:
+                                'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
                         }}
                     >
                         <CardActionArea>
@@ -68,7 +70,7 @@ function Domesticliveresult() {
                                     >
                                         <Grid item>
                                             <Typography
-                                                variant="subtitle2"
+                                                variant="subtitle1"
                                                 sx={{
                                                     fontSize: '15px',
                                                     fontWeight: 'bold',

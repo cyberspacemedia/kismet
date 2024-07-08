@@ -10,12 +10,12 @@ const theme = createTheme({
             main: '#dc004e',
         },
         text: {
-            primary: '#f00f', // Set default text color to white
+            primary: '#ffff', // Set default text color to white
         },
     },
 
     typography: {
-        fontFamily: 'sans-serif',
+        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
         body1: {
             color: 'white',
             fontFamily: 'sans-serif',
@@ -68,6 +68,20 @@ const theme = createTheme({
             },
             '@media (min-width:960px)': {
                 fontSize: '1.2rem',
+            },
+            '@media (min-width:1280px)': {
+                fontSize: '1.4rem',
+            },
+        },
+        subtitle1: {
+            fontSize: '0.7em',
+            color: '#ffffff',
+            fontWeight: 'bold',
+            '@media (min-width:600px)': {
+                fontSize: '1.4rem',
+            },
+            '@media (min-width:960px)': {
+                fontSize: '1.4rem',
             },
             '@media (min-width:1280px)': {
                 fontSize: '1.4rem',
