@@ -6,6 +6,8 @@ import {
     Grid,
     Skeleton,
     Typography,
+    useMediaQuery,
+    useTheme,
 } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +19,21 @@ function Domesticlivegame() {
     const [gameId, setGameId] = useState('')
     const [game, setGame] = useState(false)
     const navigate = useNavigate()
+
+    const theme = useTheme()
+    const isXs = useMediaQuery(theme.breakpoints.down('xs'))
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMd = useMediaQuery(theme.breakpoints.down('md'))
+
+    const getSize = () => {
+        if (isXs) return '50px'
+        if (isSm) return '50px'
+        if (isMd) return '100px'
+        return '120px'
+    }
+
+    const size = getSize()
+
     const findliveGame = async () => {
         try {
             const response = await apiClient.post('/getlivegame')
@@ -53,9 +70,11 @@ function Domesticlivegame() {
                                 sx={{
                                     width: '95%',
                                     margin: '0 auto',
-                                    border: '1px solid gray',
-                                    borderRadius: '15px',
+                                    border: '1px solid #525252',
+                                    borderRadius: '5px',
                                     backgroundColor: '#373736',
+                                    background:
+                                        'linear-gradient(47deg, rgba(1,31,2,1) 0%, rgba(6,156,33,1) 100%)',
                                 }}
                             >
                                 <CardActionArea onClick={handleliveGame}>
@@ -66,14 +85,31 @@ function Domesticlivegame() {
                                             spacing={1}
                                         >
                                             <Grid item>
-                                                <img
-                                                    src="./StaticAssets/Images/Icons/Gurugramround.png"
-                                                    alt="Custom"
+                                                <div
                                                     style={{
-                                                        height: '50px',
-                                                        objectFit: 'cover',
+                                                        width: size,
+                                                        height: size,
+                                                        borderRadius: '3px',
+                                                        background:
+                                                            'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                                        display: 'flex',
+                                                        justifyContent:
+                                                            'center',
+                                                        alignItems: 'center',
+                                                        overflow: 'hidden',
+                                                        border: 'solid 1px gray',
                                                     }}
-                                                />
+                                                >
+                                                    <img
+                                                        src={`./StaticAssets/Images/Icons/${gameName}.png`}
+                                                        alt={gameName}
+                                                        style={{
+                                                            height: '90%',
+                                                            width: '90%',
+                                                            objectFit: 'cover',
+                                                        }}
+                                                    />
+                                                </div>
                                             </Grid>
                                             <Grid
                                                 item

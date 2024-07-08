@@ -171,7 +171,6 @@ function Domesticliveresult() {
                                                         variant="body2"
                                                         sx={{
                                                             padding: '0.5rem',
-
                                                             borderRadius: '5px',
                                                             color: '#ffff',
                                                             fontWeight: 'bold',
