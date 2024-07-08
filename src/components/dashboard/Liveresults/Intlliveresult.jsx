@@ -125,7 +125,7 @@ function Intlliveresult() {
                                                         fontWeight: 'bold',
                                                         fontSize: '1.8em',
                                                         background:
-                                                            'linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)',
+                                                            'linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)',
                                                     }}
                                                 >
                                                     {winnumber}
@@ -137,13 +137,13 @@ function Intlliveresult() {
                                                         variant="body2"
                                                         sx={{
                                                             padding: '0.5rem',
-                                                            border: 'solid 0.1px gray',
+
                                                             borderRadius: '5px',
-                                                            color: 'orange',
+                                                            color: '#ffff',
                                                             fontWeight: 'bold',
                                                             fontSize: '1em',
                                                             background:
-                                                                'linear-gradient(60deg, rgba(78,78,77,1) 0%, rgba(0,0,0,1) 100%)',
+                                                                'linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)',
                                                         }}
                                                     >
                                                         Waiting

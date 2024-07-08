@@ -75,6 +75,7 @@ const theme = createTheme({
             },
         },
         subtitle1: {
+            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
             fontSize: '0.7em',
             color: '#ffffff',
             fontWeight: 'bold',
