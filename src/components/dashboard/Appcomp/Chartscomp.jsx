@@ -122,7 +122,7 @@ function Chartscomp() {
                 }}
                 mt={5}
             >
-                <Grid item xs={5}>
+                <Grid item xs={4}>
                     <FormControl fullWidth variant="filled" size="small">
                         <InputLabel
                             id="demo-simple-select-label"
@@ -249,7 +249,7 @@ function Chartscomp() {
                         </Select>
                     </FormControl>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={6}>
                     <Mydatepicker date={date} setDate={setDate} />
                 </Grid>
                 <Grid item xs={2}>

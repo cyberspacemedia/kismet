@@ -58,7 +58,7 @@ export default function Mydatepicker({ date, setDate }) {
                                     color: "black",
                                 },
                                 "&:hover": {
-                                    bgcolor: "#555",
+                                    bgcolor: "#ffff",
                                 },
                             },
                             "& .MuiPickersYear-yearButton": {
@@ -66,10 +66,10 @@ export default function Mydatepicker({ date, setDate }) {
                                 bgcolor: "black",
                                 "&.Mui-selected": {
                                     bgcolor: "white",
-                                    color: "black",
+                                    color: "red",
                                 },
                                 "&:hover": {
-                                    bgcolor: "#555",
+                                    bgcolor: "#ffff",
                                 },
                             },
                         },

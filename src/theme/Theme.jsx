@@ -10,11 +10,11 @@ const theme = createTheme({
             main: "#dc004e",
         },
         text: {
-            primary: "#ffff", // Set default text color to white
+            primary: "#1b1429", // Set default text color to white
         },
         background: {
             default: "black", // Set default background color to black
-            paper: "#1b1429", // Set paper component background color to black
+            paper: "#ffff", // Set paper component background color to black
         },
     },
 
