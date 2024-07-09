@@ -118,7 +118,8 @@ function Chartscomp() {
                     width: "100%",
                     zIndex: "875",
                     backgroundColor: "black",
-                    height: "70px",
+                    height: "60px",
+                    top: "0",
                 }}
                 mt={5}
             >
@@ -255,6 +256,7 @@ function Chartscomp() {
                 <Grid item xs={2}>
                     <Button
                         variant="contained"
+                        color="secondary"
                         size="small"
                         onClick={handlechartsubmit}
                         sx={{
@@ -273,105 +275,106 @@ function Chartscomp() {
             </Grid>
 
             {gamestatus === true && (
-                <>
-                    <Grid
-                        container
-                        justifyContent="center"
-                        alignItems="center"
-                        sx={{ minHeight: "50vh" }}
-                    >
-                        {gameData.map((game, index) => (
+                <Grid
+                    container
+                    justifyContent="center"
+                    alignItems="center"
+                    mt={12}
+                    sx={{ height: "79vh", overflowY: "auto" }}
+                >
+                    {gameData.map((game, index) => (
+                        <Grid
+                            container
+                            justifyContent="center"
+                            alignItems="center"
+                            key={index}
+                            sx={{
+                                width: "95%",
+                                p: "10px",
+                                margin: "5px 0", // Added some margin between the cards
+                                border: "1px solid #525252",
+                                borderRadius: "5px",
+                                backgroundColor: "#373736",
+                                background:
+                                    "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
+                            }}
+                        >
+                            <Grid item xs={3}>
+                                <div
+                                    style={{
+                                        width: size,
+                                        height: size,
+                                        borderRadius: "3px",
+                                        background:
+                                            "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        overflow: "hidden",
+                                        border: "solid 1px gray",
+                                    }}
+                                >
+                                    <img
+                                        src={`./StaticAssets/Images/Icons/${game.gameName}.png`}
+                                        alt={game.gameName}
+                                        style={{
+                                            height: "90%",
+                                            width: "90%",
+                                            objectFit: "cover",
+                                        }}
+                                    />
+                                </div>
+                            </Grid>
                             <Grid
-                                container
-                                justifyContent="center"
-                                alignItems="center"
-                                key={index}
+                                item
+                                xs={6}
                                 sx={{
-                                    width: "95%",
-                                    p: "10px",
-                                    margin: "5px 0", // Added some margin between the cards
-                                    border: "1px solid #525252",
-                                    borderRadius: "5px",
-                                    backgroundColor: "#373736",
-                                    background:
-                                        "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start",
                                 }}
                             >
-                                <Grid item xs={3}>
-                                    <div
-                                        style={{
-                                            width: size,
-                                            height: size,
-                                            borderRadius: "3px",
-                                            background:
-                                                "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                            overflow: "hidden",
-                                            border: "solid 1px gray",
-                                        }}
-                                    >
-                                        <img
-                                            src={`./StaticAssets/Images/Icons/${game.gameName}.png`}
-                                            alt={game.gameName}
-                                            style={{
-                                                height: "90%",
-                                                width: "90%",
-                                                objectFit: "cover",
-                                            }}
-                                        />
-                                    </div>
-                                </Grid>
-                                <Grid
-                                    item
-                                    xs={6}
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: "flex-start",
-                                    }}
-                                >
-                                    <Typography variant="subtitle1">
-                                        {game.gameName}
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Winning Number
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        {game.startTime} - {game.endTime}
-                                    </Typography>
-                                </Grid>
-                                <Grid
-                                    item
-                                    xs={3}
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "flex-end",
-                                    }}
-                                >
-                                    <Typography
-                                        variant="body2"
-                                        sx={{
-                                            padding: "0.5rem",
-                                            textAlign: "center",
-                                            width: "3rem",
-                                            height: "3rem",
-                                            borderRadius: "5px",
-                                            color: "#ffff",
-                                            fontWeight: "bold",
-                                            fontSize: "1em",
-                                            background:
-                                                "linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)",
-                                        }}
-                                    >
-                                        {game.winNumber}
-                                    </Typography>
-                                </Grid>
+                                <Typography variant="subtitle1">
+                                    {game.gameName}
+                                </Typography>
+                                <Typography variant="body2">
+                                    Winning Number
+                                </Typography>
+                                <Typography variant="body2">
+                                    {game.startTime} - {game.endTime}
+                                </Typography>
                             </Grid>
-                        ))}
-                    </Grid>
-                </>
+                            <Grid
+                                item
+                                xs={3}
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                }}
+                            >
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        padding: "0.5rem",
+                                        width: "3rem",
+                                        height: "3rem",
+                                        borderRadius: "5px",
+                                        color: "#ffff",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontSize: "1rem",
+                                        fontWeight: "bold",
+                                        background:
+                                            "linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)",
+                                    }}
+                                >
+                                    {game.winNumber}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    ))}
+                </Grid>
             )}
             <Bottommenu />
         </Box>

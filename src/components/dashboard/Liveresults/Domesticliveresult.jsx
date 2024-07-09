@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { apiClient } from "../../config/Config";
-
+import BrowseGalleryIcon from "@mui/icons-material/BrowseGallery";
 function Domesticliveresult() {
     const [gameStatus, setGameStatus] = useState(false);
     const [gameName, setGameName] = useState("");
@@ -152,7 +152,6 @@ function Domesticliveresult() {
                                                     align="right"
                                                     sx={{
                                                         padding: "0.5rem",
-
                                                         borderRadius: "5px",
                                                         color: "#ffff",
                                                         fontWeight: "bold",
@@ -165,19 +164,28 @@ function Domesticliveresult() {
                                                 </Typography>
                                             ) : (
                                                 <>
-                                                    <span>Result</span>
                                                     <Typography
                                                         variant="body2"
                                                         sx={{
+                                                            display: "flex",
+                                                            alignItems:
+                                                                "center",
+                                                            justifyContent:
+                                                                "center",
                                                             padding: "0.5rem",
                                                             borderRadius: "5px",
                                                             color: "#ffff",
-                                                            fontWeight: "bold",
-                                                            fontSize: "1em",
+                                                            fontSize: "0.8rem",
                                                             background:
                                                                 "linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)",
                                                         }}
                                                     >
+                                                        <BrowseGalleryIcon
+                                                            sx={{
+                                                                marginRight:
+                                                                    "0.5rem",
+                                                            }}
+                                                        />
                                                         Waiting
                                                     </Typography>
                                                 </>
