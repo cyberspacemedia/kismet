@@ -13,7 +13,7 @@ const theme = createTheme({
             primary: "#ffff", // Set default text color to white
         },
         background: {
-            default: "#1b1429", // Set default background color to black
+            default: "black", // Set default background color to black
             paper: "#1b1429", // Set paper component background color to black
         },
     },
@@ -137,6 +137,12 @@ const theme = createTheme({
                         alignItems: "center",
                         borderBottomLeftRadius: "1em",
                         borderBottomRightRadius: "1em",
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        zIndex: "999",
+                        width: "100%",
                     },
                 },
             },

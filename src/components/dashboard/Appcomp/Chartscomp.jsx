@@ -109,7 +109,19 @@ function Chartscomp() {
             {/* End Top Bar */}
 
             {loader && <AppLoader />}
-            <Grid container justifyContent={"center"} alignItems={"center"}>
+            <Grid
+                container
+                justifyContent={"center"}
+                alignItems={"center"}
+                sx={{
+                    position: "fixed",
+                    width: "100%",
+                    zIndex: "875",
+                    backgroundColor: "black",
+                    height: "70px",
+                }}
+                mt={5}
+            >
                 <Grid item xs={5}>
                     <FormControl fullWidth variant="filled" size="small">
                         <InputLabel
@@ -320,16 +332,13 @@ function Chartscomp() {
                                         alignItems: "flex-start",
                                     }}
                                 >
-                                    <Typography
-                                        variant="subtitle1"
-                                        
-                                    >
+                                    <Typography variant="subtitle1">
                                         {game.gameName}
                                     </Typography>
-                                    <Typography variant="body2" >
+                                    <Typography variant="body2">
                                         Winning Number
                                     </Typography>
-                                    <Typography variant="body2" >
+                                    <Typography variant="body2">
                                         {game.startTime} - {game.endTime}
                                     </Typography>
                                 </Grid>

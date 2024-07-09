@@ -96,7 +96,7 @@ function Mygame() {
 
             {loader && <AppLoader />}
 
-            <Grid container justifyContent="center">
+            <Grid container justifyContent="center" marginTop={7}>
                 <Box sx={{ height: "80vh", overflowY: "auto", width: "100%" }}>
                     {game.map((gameItem, index) => (
                         <Grid item xs={12} md={10} key={index} m={1}>
