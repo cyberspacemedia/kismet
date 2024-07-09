@@ -1,34 +1,7 @@
-import * as React from "react";
+import React from "react";
+import { Box, CircularProgress } from "@mui/material";
 
-import Box from "@mui/material/Box";
-
-import CircularProgress from "@mui/material/CircularProgress";
-
-function GradientCircularProgress() {
-    return (
-        <React.Fragment>
-            <svg width={0} height={0}>
-                <defs>
-                    <linearGradient
-                        id="my_gradient"
-                        x1="0%"
-                        y1="0%"
-                        x2="0%"
-                        y2="100%"
-                    >
-                        <stop offset="0%" stopColor="#e01cd5" />
-                        <stop offset="100%" stopColor="#1CB5E0" />
-                    </linearGradient>
-                </defs>
-            </svg>
-            <CircularProgress
-                sx={{ "svg circle": { stroke: "url(#my_gradient)" } }}
-            />
-        </React.Fragment>
-    );
-}
-
-export default function AppLoader() {
+function AppLoader() {
     return (
         <Box
             sx={{
@@ -45,7 +18,9 @@ export default function AppLoader() {
                 alignItems: "center",
             }}
         >
-            <GradientCircularProgress />
+            <CircularProgress color="secondary" />
         </Box>
     );
 }
+
+export default AppLoader;
