@@ -6,47 +6,47 @@ import {
     Typography,
     useMediaQuery,
     useTheme,
-} from '@mui/material'
-import React, { useState, useEffect } from 'react'
-import { apiClient } from '../../config/Config'
+} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { apiClient } from "../../config/Config";
 
 function Domesticliveresult() {
-    const [gameStatus, setGameStatus] = useState(false)
-    const [gameName, setGameName] = useState('')
-    const [winnumber, setWinnumber] = useState(0)
-    const [startTime, setStartTime] = useState('')
-    const [endTime, setEndTime] = useState('')
+    const [gameStatus, setGameStatus] = useState(false);
+    const [gameName, setGameName] = useState("");
+    const [winnumber, setWinnumber] = useState(0);
+    const [startTime, setStartTime] = useState("");
+    const [endTime, setEndTime] = useState("");
 
-    const theme = useTheme()
-    const isXs = useMediaQuery(theme.breakpoints.down('xs'))
-    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
-    const isMd = useMediaQuery(theme.breakpoints.down('md'))
+    const theme = useTheme();
+    const isXs = useMediaQuery(theme.breakpoints.down("xs"));
+    const isSm = useMediaQuery(theme.breakpoints.down("sm"));
+    const isMd = useMediaQuery(theme.breakpoints.down("md"));
 
     const getSize = () => {
-        if (isXs) return '50px'
-        if (isSm) return '50px'
-        if (isMd) return '100px'
-        return '120px'
-    }
+        if (isXs) return "50px";
+        if (isSm) return "50px";
+        if (isMd) return "100px";
+        return "120px";
+    };
 
-    const size = getSize()
+    const size = getSize();
 
     useEffect(() => {
         const result = async () => {
             try {
-                const response = await apiClient.post('/last_game')
-                console.log(response.data)
-                setGameStatus(response.data.success)
-                setGameName(response.data.data.gameName)
-                setStartTime(response.data.data.startTime)
-                setEndTime(response.data.data.endTime)
+                const response = await apiClient.post("/last_game");
+                console.log(response.data);
+                setGameStatus(response.data.success);
+                setGameName(response.data.data.gameName);
+                setStartTime(response.data.data.startTime);
+                setEndTime(response.data.data.endTime);
                 if (response.data.success === true) {
-                    setWinnumber(response.data.data.number)
+                    setWinnumber(response.data.data.number);
                 }
             } catch (error) {}
-        }
-        result()
-    }, [])
+        };
+        result();
+    }, []);
 
     return (
         <>
@@ -55,13 +55,13 @@ function Domesticliveresult() {
                     {/* Card for Live Result */}
                     <Card
                         sx={{
-                            width: '95%',
-                            margin: '0 auto',
-                            border: '1px solid #525252',
-                            borderRadius: '5px',
-                            backgroundColor: '#373736',
+                            width: "95%",
+                            margin: "0 auto",
+                            border: "1px solid #525252",
+                            borderRadius: "5px",
+                            backgroundColor: "#373736",
                             background:
-                                'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
                         }}
                     >
                         <CardActionArea>
@@ -72,23 +72,23 @@ function Domesticliveresult() {
                                             style={{
                                                 width: size,
                                                 height: size,
-                                                borderRadius: '3px',
+                                                borderRadius: "3px",
                                                 background:
-                                                    'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                overflow: 'hidden',
-                                                border: 'solid 1px gray',
+                                                    "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                overflow: "hidden",
+                                                border: "solid 1px gray",
                                             }}
                                         >
                                             <img
                                                 src={`./StaticAssets/Images/Icons/${gameName}.png`}
                                                 alt={gameName}
                                                 style={{
-                                                    height: '90%',
-                                                    width: '90%',
-                                                    objectFit: 'cover',
+                                                    height: "90%",
+                                                    width: "90%",
+                                                    objectFit: "cover",
                                                 }}
                                             />
                                         </div>
@@ -104,8 +104,8 @@ function Domesticliveresult() {
                                             <Typography
                                                 variant="subtitle1"
                                                 sx={{
-                                                    fontSize: '15px',
-                                                    fontWeight: 'bold',
+                                                    fontSize: "15px",
+                                                    fontWeight: "bold",
                                                 }}
                                                 align="left"
                                             >
@@ -116,8 +116,8 @@ function Domesticliveresult() {
                                             <Typography
                                                 variant="subtitle2"
                                                 sx={{
-                                                    fontSize: '12px',
-                                                    color: '#b6b6b2',
+                                                    fontSize: "12px",
+                                                    color: "#b6b6b2",
                                                 }}
                                                 align="left"
                                             >
@@ -128,8 +128,8 @@ function Domesticliveresult() {
                                             <Typography
                                                 variant="subtitle2"
                                                 sx={{
-                                                    fontSize: '12px',
-                                                    color: '#b6b6b2',
+                                                    fontSize: "12px",
+                                                    color: "#b6b6b2",
                                                 }}
                                                 align="left"
                                             >
@@ -142,24 +142,23 @@ function Domesticliveresult() {
                                         container
                                         xs
                                         direction="column"
-                                        justifyContent={'flex-end'}
-                                        alignItems={'end'}
+                                        justifyContent={"flex-end"}
+                                        alignItems={"end"}
                                     >
                                         <Grid item>
                                             {gameStatus ? (
                                                 <Typography
                                                     variant="body2"
                                                     align="right"
-                                                    color={'white'}
                                                     sx={{
-                                                        padding: '0.5rem',
+                                                        padding: "0.5rem",
 
-                                                        borderRadius: '5px',
-                                                        color: '#ffff',
-                                                        fontWeight: 'bold',
-                                                        fontSize: '2em',
+                                                        borderRadius: "5px",
+                                                        color: "#ffff",
+                                                        fontWeight: "bold",
+                                                        fontSize: "2em",
                                                         background:
-                                                            'linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)',
+                                                            "linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)",
                                                     }}
                                                 >
                                                     {winnumber}
@@ -170,13 +169,13 @@ function Domesticliveresult() {
                                                     <Typography
                                                         variant="body2"
                                                         sx={{
-                                                            padding: '0.5rem',
-                                                            borderRadius: '5px',
-                                                            color: '#ffff',
-                                                            fontWeight: 'bold',
-                                                            fontSize: '1em',
+                                                            padding: "0.5rem",
+                                                            borderRadius: "5px",
+                                                            color: "#ffff",
+                                                            fontWeight: "bold",
+                                                            fontSize: "1em",
                                                             background:
-                                                                'linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)',
+                                                                "linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)",
                                                         }}
                                                     >
                                                         Waiting
@@ -193,7 +192,7 @@ function Domesticliveresult() {
                 </Grid>
             </Grid>
         </>
-    )
+    );
 }
 
-export default Domesticliveresult
+export default Domesticliveresult;

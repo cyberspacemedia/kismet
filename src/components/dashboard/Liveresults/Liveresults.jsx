@@ -17,7 +17,7 @@ function LiveGame() {
                     }}
                 >
                     <Typography
-                        variant="subtitle2"
+                        variant="body2"
                         sx={{
                             padding: '0 0.5rem', // Add padding around the text for better visibility
                         }}

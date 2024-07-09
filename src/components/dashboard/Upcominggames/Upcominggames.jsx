@@ -1,7 +1,7 @@
-import React from 'react'
-import { Divider, Grid, Typography } from '@mui/material'
-import Domesticupcominggames from './Domesticupcominggames'
-import Intupcominggames from './Intupcominggames'
+import React from "react";
+import { Divider, Grid, Typography } from "@mui/material";
+import Domesticupcominggames from "./Domesticupcominggames";
+import Intupcominggames from "./Intupcominggames";
 
 function Upcominggames() {
     return (
@@ -9,16 +9,16 @@ function Upcominggames() {
             <Grid item xs={12} textAlign="center">
                 <Divider
                     sx={{
-                        color: '#ffffff', // Ensure the text color is white
-                        '&::before, &::after': {
-                            borderColor: '#8000ba', // Set the color of the divider lines
+                        color: "#ffffff", // Ensure the text color is white
+                        "&::before, &::after": {
+                            borderColor: "#8000ba", // Set the color of the divider lines
                         },
                     }}
                 >
                     <Typography
-                        variant="subtitle2"
+                        variant="body2"
                         sx={{
-                            padding: '0 0.5rem', // Add padding around the text for better visibility
+                            padding: "0 0.5rem", // Add padding around the text for better visibility
                         }}
                     >
                         Upcoming Game
@@ -46,7 +46,7 @@ function Upcominggames() {
                 <Intupcominggames />
             </Grid>
         </Grid>
-    )
+    );
 }
 
-export default Upcominggames
+export default Upcominggames;
