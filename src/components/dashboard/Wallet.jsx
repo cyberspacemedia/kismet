@@ -21,6 +21,7 @@ import { apiClient } from '../config/Config'
 import UserContext from '../UserContext'
 import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
+import AppLoader from '../Loaders/AppLoader'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
@@ -28,6 +29,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function Wallet() {
     const { userId } = useContext(UserContext)
+    const [loading, setLoading] = useState(false)
     const [openModal, setOpenModal] = useState(false)
     const [amount, setAmount] = useState('0')
     const [wallet, setWallet] = useState({
@@ -39,13 +41,16 @@ function Wallet() {
 
     useEffect(() => {
         const data = { userId: userId }
+        setLoading(true)
         const walletFetch = async () => {
             try {
                 const balance = await apiClient.post('/getbalance', data)
-                console.log(balance.data.data)
+                // console.log(balance.data.data)
                 setWallet(balance.data.data)
+                setLoading(false)
             } catch (error) {
                 console.error('Wallet Fetch API Error', error)
+                setLoading(false)
             }
         }
         walletFetch()
@@ -71,6 +76,7 @@ function Wallet() {
                 <div className="top-menu">
                     <Topmenu menu="WALLET" />
                 </div>
+                {loading && <AppLoader />}
                 <div className="content">
                     {/* End of Total Balance */}
                     <Paper
