@@ -9,26 +9,17 @@ import {
     Chip,
     CardHeader,
     Box,
-    IconButton,
 } from '@mui/material'
 import { apiClient } from '../../config/Config'
 import AppLoader from '../../Loaders/AppLoader'
 import BottomMenu from './Bottommenu'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft'
-import { useNavigate } from 'react-router-dom'
-import { useTheme } from '@mui/material/styles'
+
+import Topmenu from './Topmenu'
 
 function Gamedetails() {
-    const navigate = useNavigate()
     const location = useLocation()
     const [gameData, setGameData] = useState(null)
     const data = location.state.gameDetail
-    const theme = useTheme()
-
-    const handleBackClick = () => {
-        navigate(-1) // Go back to the previous URL
-    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,23 +35,9 @@ function Gamedetails() {
     }, [data])
 
     return (
-        <Box sx={{ backgroundColor: '#110b19', minHeight: '100vh' }}>
-            {/* Top Bar */}
-            <Box sx={theme.components.MuiBox.styleOverrides.root['&.topbar']}>
-                {/* Logo on Top Left */}
-                <IconButton
-                    sx={{ color: 'white', marginRight: '10px' }}
-                    onClick={handleBackClick}
-                >
-                    <ArrowCircleLeftIcon />
-                </IconButton>
-
-                {/* Typography "GAME DETAILS" in Center */}
-                <Typography variant="h6">MY GAME</Typography>
-                {/* Notification Icon on Top Right */}
-                <IconButton sx={{ color: 'white', marginRight: '10px' }}>
-                    <NotificationsIcon />
-                </IconButton>
+        <>
+            <Box sx={{ backgroundColor: '#110b19' }}>
+                <Topmenu menu="GAME DETAILS" />
             </Box>
             {/* End Top Bar */}
             {gameData ? (
@@ -233,7 +210,7 @@ function Gamedetails() {
                 </>
             )}
             <BottomMenu />
-        </Box>
+        </>
     )
 }
 

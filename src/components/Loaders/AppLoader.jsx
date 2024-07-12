@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react'
 
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box'
 
-import CircularProgress from "@mui/material/CircularProgress";
+import CircularProgress from '@mui/material/CircularProgress'
 
 function GradientCircularProgress() {
     return (
@@ -22,30 +22,30 @@ function GradientCircularProgress() {
                 </defs>
             </svg>
             <CircularProgress
-                sx={{ "svg circle": { stroke: "url(#my_gradient)" } }}
+                sx={{ 'svg circle': { stroke: 'url(#my_gradient)' } }}
             />
         </React.Fragment>
-    );
+    )
 }
 
 export default function AppLoader() {
     return (
         <Box
             sx={{
-                position: "fixed",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
+                position: 'fixed',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
                 zIndex: 9999, // Ensure it's on top of other content
-                backgroundColor: "rgba(0, 0, 0, 0.5)", // Optional: semi-transparent background
-                width: "100vw",
-                height: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                backgroundColor: 'rgba(0, 0, 0, 0.5)', // Optional: semi-transparent background
+                width: '100vw',
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}
         >
             <GradientCircularProgress />
         </Box>
-    );
+    )
 }

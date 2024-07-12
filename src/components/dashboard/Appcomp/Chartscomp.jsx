@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from '@mui/icons-material/Search'
 import {
     Grid,
     Select,
@@ -9,117 +9,91 @@ import {
     FormControl,
     InputLabel,
     Button,
-    Box,
-    IconButton,
     useMediaQuery,
     useTheme,
-} from "@mui/material";
-import Mydatepicker from "./Mydatepicker";
-import { apiClient } from "../../config/Config";
-import AppLoader from "../../Loaders/AppLoader";
-import { useNavigate } from "react-router-dom";
-
-import Bottommenu from "./Bottommenu";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+} from '@mui/material'
+import Mydatepicker from './Mydatepicker'
+import { apiClient } from '../../config/Config'
+import AppLoader from '../../Loaders/AppLoader'
+import Bottommenu from './Bottommenu'
+import Topmenu from './Topmenu'
 
 function Chartscomp() {
-    const [loader, setLoader] = useState(false);
-    const [game, setGame] = useState("");
-    const [date, setDate] = useState(null);
-    const [gameData, setGameData] = useState([]);
-    const [gamestatus, setGamestatus] = useState(false);
-    const navigate = useNavigate();
-    const theme = useTheme();
+    const [loader, setLoader] = useState(false)
+    const [game, setGame] = useState('')
+    const [date, setDate] = useState(null)
+    const [gameData, setGameData] = useState([])
+    const [gamestatus, setGamestatus] = useState(false)
 
-    const isXs = useMediaQuery(theme.breakpoints.down("xs"));
-    const isSm = useMediaQuery(theme.breakpoints.down("sm"));
-    const isMd = useMediaQuery(theme.breakpoints.down("md"));
+    const theme = useTheme()
+
+    const isXs = useMediaQuery(theme.breakpoints.down('xs'))
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMd = useMediaQuery(theme.breakpoints.down('md'))
 
     const getSize = () => {
-        if (isXs) return "60px";
-        if (isSm) return "60px";
-        if (isMd) return "100px";
-        return "120px";
-    };
+        if (isXs) return '60px'
+        if (isSm) return '60px'
+        if (isMd) return '100px'
+        return '120px'
+    }
 
-    const size = getSize();
+    const size = getSize()
 
     const handleGameSelect = (e) => {
-        setGame(e.target.value);
-    };
-
-    const handleBackClick = () => {
-        navigate(-1); // Go back to the previous URL
-    };
+        setGame(e.target.value)
+    }
 
     const fetchdata = async (data) => {
-        setLoader(true); // Show loader
+        setLoader(true) // Show loader
         try {
-            const response = await apiClient.post("charts", data);
+            const response = await apiClient.post('charts', data)
             if (response.data.success === true) {
-                setGameData(response.data.data);
-                setGamestatus(true);
+                setGameData(response.data.data)
+                setGamestatus(true)
             } else {
-                setGamestatus(false);
+                setGamestatus(false)
             }
         } catch (error) {
-            console.error("API Error", error);
+            console.error('API Error', error)
         } finally {
-            setLoader(false); // Hide loader
+            setLoader(false) // Hide loader
         }
-    };
+    }
 
     const handlechartsubmit = async () => {
-        setGamestatus(false);
+        setGamestatus(false)
         const data = {
             gameName: game,
-            date: date?.format("DD-MM-YYYY"),
-        };
-        fetchdata(data);
-    };
+            date: date?.format('DD-MM-YYYY'),
+        }
+        fetchdata(data)
+    }
 
     useEffect(() => {
         const data = {
-            gameName: "",
-            date: date?.format("DD-MM-YYYY"),
-        };
-        fetchdata(data);
-    }, [date]);
+            gameName: '',
+            date: date?.format('DD-MM-YYYY'),
+        }
+        fetchdata(data)
+    }, [date])
 
     return (
-        <Box sx={{ backgroundColor: "black" }}>
-            {/* Top Bar */}
-            <Box sx={theme.components.MuiBox.styleOverrides.root["&.topbar"]}>
-                {/* Logo on Top Left */}
-                <IconButton
-                    sx={{ color: "white", marginRight: "10px" }}
-                    onClick={handleBackClick}
-                >
-                    <ArrowCircleLeftIcon />
-                </IconButton>
-
-                {/* Typography "GAME DETAILS" in Center */}
-                <Typography variant="h6">CHARTS</Typography>
-                {/* Notification Icon on Top Right */}
-                <IconButton sx={{ color: "white", marginRight: "10px" }}>
-                    <NotificationsIcon />
-                </IconButton>
-            </Box>
-            {/* End Top Bar */}
+        <>
+            <Topmenu menu="CHART" />
 
             {loader && <AppLoader />}
             <Grid
                 container
-                justifyContent={"center"}
-                alignItems={"center"}
+                justifyContent={'center'}
+                alignItems={'center'}
                 sx={{
-                    position: "fixed",
-                    width: "100%",
-                    zIndex: "875",
-                    backgroundColor: "black",
-                    height: "60px",
-                    top: "0",
+                    position: 'fixed',
+                    width: '100%',
+                    zIndex: '875',
+                    backgroundColor: 'black',
+                    height: '60px',
+                    top: '0',
                 }}
                 mt={5}
             >
@@ -127,7 +101,7 @@ function Chartscomp() {
                     <FormControl fullWidth variant="filled" size="small">
                         <InputLabel
                             id="demo-simple-select-label"
-                            sx={{ color: "white", fontSize: "0.8rem" }}
+                            sx={{ color: 'white', fontSize: '0.8rem' }}
                         >
                             Select Game
                         </InputLabel>
@@ -140,39 +114,39 @@ function Chartscomp() {
                             MenuProps={{
                                 PaperProps: {
                                     sx: {
-                                        bgcolor: "black",
-                                        color: "white",
+                                        bgcolor: 'black',
+                                        color: 'white',
                                     },
                                 },
                             }}
                             sx={{
-                                bgcolor: "black",
-                                color: "white",
-                                fontSize: "1rem",
-                                ".MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "white",
+                                bgcolor: 'black',
+                                color: 'white',
+                                fontSize: '1rem',
+                                '.MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'white',
                                 },
-                                "&.Mui-focused .MuiOutlinedInput-notchedOutline":
+                                '&.Mui-focused .MuiOutlinedInput-notchedOutline':
                                     {
-                                        borderColor: "white",
+                                        borderColor: 'white',
                                     },
-                                ".MuiSvgIcon-root": {
-                                    color: "white",
+                                '.MuiSvgIcon-root': {
+                                    color: 'white',
                                 },
-                                "& .MuiInputLabel-root": {
-                                    color: "white",
+                                '& .MuiInputLabel-root': {
+                                    color: 'white',
                                 },
-                                "& .MuiInputLabel-root.Mui-focused": {
-                                    color: "white",
+                                '& .MuiInputLabel-root.Mui-focused': {
+                                    color: 'white',
                                 },
                             }}
                         >
                             <MenuItem
                                 value="Disawar"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Disawar
@@ -180,9 +154,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Gali"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Gali
@@ -190,9 +164,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Faridabad"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Faridabad
@@ -200,9 +174,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Gaziabad"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Gaziabad
@@ -210,9 +184,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Gurugram"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Gurugram
@@ -220,9 +194,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Rewari"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Rewari
@@ -230,9 +204,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Alwar"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Alwar
@@ -240,9 +214,9 @@ function Chartscomp() {
                             <MenuItem
                                 value="Rohtak"
                                 sx={{
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "1rem",
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '1rem',
                                 }}
                             >
                                 Rohtak
@@ -260,13 +234,13 @@ function Chartscomp() {
                         size="small"
                         onClick={handlechartsubmit}
                         sx={{
-                            width: "2.5em",
-                            height: "2.5em",
-                            minWidth: "unset",
+                            width: '2.5em',
+                            height: '2.5em',
+                            minWidth: 'unset',
                             padding: 0,
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
                         }}
                     >
                         <SearchIcon />
@@ -280,7 +254,7 @@ function Chartscomp() {
                     justifyContent="center"
                     alignItems="center"
                     mt={12}
-                    sx={{ height: "79vh", overflowY: "auto" }}
+                    sx={{ height: '79vh', overflowY: 'auto' }}
                 >
                     {gameData.map((game, index) => (
                         <Grid
@@ -289,14 +263,14 @@ function Chartscomp() {
                             alignItems="center"
                             key={index}
                             sx={{
-                                width: "95%",
-                                p: "10px",
-                                margin: "5px 0", // Added some margin between the cards
-                                border: "1px solid #525252",
-                                borderRadius: "5px",
-                                backgroundColor: "#373736",
+                                width: '95%',
+                                p: '10px',
+                                margin: '5px 0', // Added some margin between the cards
+                                border: '1px solid #525252',
+                                borderRadius: '5px',
+                                backgroundColor: '#373736',
                                 background:
-                                    "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
+                                    'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
                             }}
                         >
                             <Grid item xs={3}>
@@ -304,23 +278,23 @@ function Chartscomp() {
                                     style={{
                                         width: size,
                                         height: size,
-                                        borderRadius: "3px",
+                                        borderRadius: '3px',
                                         background:
-                                            "linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        overflow: "hidden",
-                                        border: "solid 1px gray",
+                                            'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        overflow: 'hidden',
+                                        border: 'solid 1px gray',
                                     }}
                                 >
                                     <img
                                         src={`./StaticAssets/Images/Icons/${game.gameName}.png`}
                                         alt={game.gameName}
                                         style={{
-                                            height: "90%",
-                                            width: "90%",
-                                            objectFit: "cover",
+                                            height: '90%',
+                                            width: '90%',
+                                            objectFit: 'cover',
                                         }}
                                     />
                                 </div>
@@ -329,9 +303,9 @@ function Chartscomp() {
                                 item
                                 xs={6}
                                 sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "flex-start",
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
                                 }}
                             >
                                 <Typography variant="subtitle1">
@@ -348,25 +322,25 @@ function Chartscomp() {
                                 item
                                 xs={3}
                                 sx={{
-                                    display: "flex",
-                                    justifyContent: "flex-end",
+                                    display: 'flex',
+                                    justifyContent: 'flex-end',
                                 }}
                             >
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        padding: "0.5rem",
-                                        width: "3rem",
-                                        height: "3rem",
-                                        borderRadius: "5px",
-                                        color: "#ffff",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        fontSize: "1rem",
-                                        fontWeight: "bold",
+                                        padding: '0.5rem',
+                                        width: '3rem',
+                                        height: '3rem',
+                                        borderRadius: '5px',
+                                        color: '#ffff',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '1rem',
+                                        fontWeight: 'bold',
                                         background:
-                                            "linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)",
+                                            'linear-gradient(47deg, rgba(196,0,255,1) 0%, rgba(156,6,6,1) 100%)',
                                     }}
                                 >
                                     {game.winNumber}
@@ -377,8 +351,8 @@ function Chartscomp() {
                 </Grid>
             )}
             <Bottommenu />
-        </Box>
-    );
+        </>
+    )
 }
 
-export default Chartscomp;
+export default Chartscomp
