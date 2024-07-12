@@ -166,12 +166,6 @@ function Mygame() {
                                                         <Grid item>
                                                             <Typography
                                                                 variant="subtitle2"
-                                                                sx={{
-                                                                    fontSize:
-                                                                        '1rem',
-                                                                    fontWeight:
-                                                                        'bold',
-                                                                }}
                                                                 align="left"
                                                             >
                                                                 {

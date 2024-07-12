@@ -79,71 +79,58 @@ function Wallet() {
                 {loading && <AppLoader />}
                 <div className="content">
                     {/* End of Total Balance */}
-                    <Paper
-                        variant="outlined"
+                    <Grid
+                        container
+                        justifyContent="center"
+                        alignItems="center"
                         sx={{
                             padding: 2,
                             borderRadius: 5,
-                            borderColor: 'white',
-                            backgroundColor: (theme) =>
-                                alpha(theme.palette.grey[500], 0.5),
+                            borderColor: '#9a00bf',
+                            background:
+                                'linear-gradient(337deg, rgba(154,0,191,1) 0%, rgba(255,78,209,1) 100%)',
                             width: '95%',
                             textAlign: 'center',
                             margin: 'auto',
                         }}
                     >
                         <Grid
+                            item
                             container
+                            xs={12}
+                            md={10}
+                            direction="column"
                             justifyContent="center"
                             alignItems="center"
-                            style={{ height: '100%' }}
                         >
                             <Grid item>
-                                <Grid container direction="column" spacing={0}>
-                                    <Grid item>
-                                        <Typography
-                                            variant="body1"
-                                            color={'white'}
-                                        >
-                                            Total Balance
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item>
-                                        <Typography
-                                            variant="h6"
-                                            sx={{ fontSize: '2rem' }}
-                                        >
-                                            <span
-                                                style={{
-                                                    fontSize: '1rem',
-                                                }}
-                                            >
-                                                ₹
-                                            </span>
-                                            {totalBalance}
-                                        </Typography>
-                                    </Grid>
-
-                                    <Grid item>
-                                        <Chip
-                                            label="100% Secure payments"
-                                            color="success"
-                                            size="medium"
-                                            sx={{ width: '100%' }}
-                                        />
-                                    </Grid>
-                                </Grid>
+                                <Typography variant="body1" color={'white'}>
+                                    Total Balance
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Typography
+                                    variant="h6"
+                                    sx={{ fontSize: '2rem' }}
+                                >
+                                    <span style={{ fontSize: '1rem' }}>₹</span>
+                                    {totalBalance}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={8} md={8}>
+                                <Chip
+                                    label="100% Secure payments"
+                                    color="success"
+                                    size="medium"
+                                    sx={{ width: '100%' }}
+                                />
                             </Grid>
                         </Grid>
-                    </Paper>
+                    </Grid>
+
                     {/* End of Total Balance */}
 
-                    <Grid
-                        container
-                        spacing={1}
-                        justifyContent={'center'}
-                        mt={2}
-                    >
+                    <Grid container justifyContent={'center'} mt={2}>
                         <Grid item xs={4}>
                             {/* Deposit Paper */}
                             <Paper
