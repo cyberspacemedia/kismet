@@ -13,6 +13,8 @@ import {
     InputAdornment,
 } from '@mui/material'
 import { alpha } from '@mui/material/styles'
+import AddCardIcon from '@mui/icons-material/AddCard'
+import RedeemIcon from '@mui/icons-material/Redeem'
 import Slide from '@mui/material/Slide'
 
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee'
@@ -310,8 +312,9 @@ function Wallet() {
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        size="large"
+                                        size="small"
                                         fullWidth
+                                        startIcon={<AddCardIcon />}
                                         sx={{
                                             borderRadius: '50px',
                                             padding: 2,
@@ -325,8 +328,9 @@ function Wallet() {
                                     <Button
                                         variant="contained"
                                         color="secondary"
-                                        size="large"
+                                        size="small"
                                         fullWidth
+                                        startIcon={<RedeemIcon />}
                                         sx={{
                                             borderRadius: '50px',
                                             padding: 2,
