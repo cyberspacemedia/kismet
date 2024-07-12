@@ -25,7 +25,12 @@ function Topmenu({ menu }) {
 
             <Typography variant="h6">{menu}</Typography>
             {/* Notification Icon on Top Right */}
-            <IconButton sx={{ color: 'white', marginRight: '10px' }}>
+            <IconButton
+                sx={{ color: 'white', marginRight: '10px' }}
+                onClick={() => {
+                    navigate('/Appnotification')
+                }}
+            >
                 <NotificationsIcon />
             </IconButton>
         </Box>
