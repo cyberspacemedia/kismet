@@ -93,7 +93,7 @@ function Mygame() {
                 <Grid container justifyContent="center">
                     <Box sx={{ width: '100%' }}>
                         {game.map((gameItem, index) => (
-                            <Grid item xs={12} md={10} key={index}>
+                            <Grid item xs={12} md={10} key={index} mb={1}>
                                 <Card
                                     sx={{
                                         width: '95%',
@@ -112,7 +112,7 @@ function Mygame() {
                                                 gameItem.gameType,
                                                 gameItem.gameId,
                                                 gameItem.date,
-                                                gameItem.status
+                                                gameItem.gameStatus
                                             )
                                         }}
                                     >
