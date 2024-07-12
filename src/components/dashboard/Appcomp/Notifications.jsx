@@ -31,21 +31,24 @@ function Notifications() {
     return (
         <div className="layout-container">
             <div className="top-menu">
-                <Topmenu menu="NOTIFICATION" />
+                <Topmenu menu="NOTIFICATIONS" />
             </div>
-            <div
-                className="content"
-                style={{ display: 'flex', justifyContent: 'center' }}
-            >
+            <div className="content">
                 <Grid
                     container
-                    spacing={2}
-                    justifyContent={'center'}
-                    style={{ width: '100%' }} // Adjust max-width as needed
+                    justifyContent="center" // Center items horizontally
+                    style={{ width: '100%' }}
                 >
                     {notification.length > 0 ? (
                         notification.map((item, index) => (
-                            <Grid item xs={12} key={index}>
+                            <Grid
+                                item
+                                xs={12}
+                                sm={10}
+                                md={10}
+                                key={index}
+                                mt={1}
+                            >
                                 <Card
                                     sx={{
                                         width: '100%',
@@ -69,11 +72,13 @@ function Notifications() {
                                         }
                                         sx={{
                                             borderBottom: '0.1px solid #2a0071',
+                                            background:
+                                                'linear-gradient(337deg, rgba(42,0,113,1) 0%, rgba(200,78,255,1) 100%)',
                                         }}
                                     />
                                     <CardContent>
                                         <Typography
-                                            variant="body1"
+                                            variant="body2"
                                             sx={{ color: 'white' }}
                                         >
                                             {item.message}
@@ -85,7 +90,7 @@ function Notifications() {
                     ) : (
                         <Grid item xs={12}>
                             <Typography
-                                variant="body1"
+                                variant="body2"
                                 sx={{ textAlign: 'center', mt: 2 }}
                             >
                                 No notifications found.
