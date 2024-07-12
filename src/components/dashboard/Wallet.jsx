@@ -11,12 +11,12 @@ import {
     DialogActions,
     TextField,
     InputAdornment,
+    Slide,
+    Fade,
 } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import AddCardIcon from '@mui/icons-material/AddCard'
 import RedeemIcon from '@mui/icons-material/Redeem'
-import Slide from '@mui/material/Slide'
-
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee'
 import { useNavigate } from 'react-router-dom'
 import { apiClient } from '../config/Config'
@@ -47,7 +47,6 @@ function Wallet() {
         const walletFetch = async () => {
             try {
                 const balance = await apiClient.post('/getbalance', data)
-                // console.log(balance.data.data)
                 setWallet(balance.data.data)
                 setLoading(false)
             } catch (error) {
@@ -74,370 +73,327 @@ function Wallet() {
 
     return (
         <>
+            {loading && <AppLoader />}
             <div className="layout-container">
                 <div className="top-menu">
                     <Topmenu menu="WALLET" />
                 </div>
-                {loading && <AppLoader />}
-                <div className="content">
-                    {/* End of Total Balance */}
-                    <Grid
-                        container
-                        justifyContent="center"
-                        alignItems="center"
-                        sx={{
-                            padding: 2,
-                            borderRadius: 5,
-                            borderColor: '#9a00bf',
-                            background:
-                                'linear-gradient(337deg, rgba(154,0,191,1) 0%, rgba(255,78,209,1) 100%)',
-                            width: '95%',
-                            textAlign: 'center',
-                            margin: 'auto',
-                        }}
-                    >
+                <Fade in={!loading}>
+                    <div className="content">
                         <Grid
-                            item
                             container
-                            xs={12}
-                            md={10}
-                            direction="column"
                             justifyContent="center"
                             alignItems="center"
+                            sx={{
+                                padding: 2,
+                                borderRadius: 5,
+                                borderColor: '#9a00bf',
+                                background:
+                                    'linear-gradient(337deg, rgba(154,0,191,1) 0%, rgba(255,78,209,1) 100%)',
+                                width: '95%',
+                                textAlign: 'center',
+                                margin: 'auto',
+                            }}
                         >
-                            <Grid item>
-                                <Typography variant="body1" color={'white'}>
-                                    Total Balance
-                                </Typography>
-                            </Grid>
-                            <Grid item>
-                                <Typography
-                                    variant="h6"
-                                    sx={{ fontSize: '2rem' }}
-                                >
-                                    <span style={{ fontSize: '1rem' }}>₹</span>
-                                    {totalBalance}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={8} md={8}>
-                                <Chip
-                                    label="100% Secure payments"
-                                    color="success"
-                                    size="medium"
-                                    sx={{ width: '100%' }}
-                                />
-                            </Grid>
-                        </Grid>
-                    </Grid>
-
-                    {/* End of Total Balance */}
-
-                    <Grid container justifyContent={'center'} mt={2}>
-                        <Grid item xs={4}>
-                            {/* Deposit Paper */}
-                            <Paper
-                                sx={{
-                                    padding: 2,
-                                    borderRadius: 5,
-                                    borderColor: 'white',
-                                    backgroundColor: (theme) =>
-                                        alpha(theme.palette.grey[500], 0.5),
-                                    width: '95%',
-                                    textAlign: 'center',
-                                    margin: 'auto',
-                                }}
-                            >
-                                <Grid
-                                    container
-                                    justifyContent="center"
-                                    alignItems="center"
-                                    style={{ height: '100%' }}
-                                >
-                                    <Grid item>
-                                        <Grid
-                                            container
-                                            direction="column"
-                                            spacing={0}
-                                        >
-                                            <Grid item>
-                                                <Typography
-                                                    variant="caption"
-                                                    sx={{ fontSize: '1rem' }}
-                                                >
-                                                    <span
-                                                        style={{
-                                                            fontSize: '0.8em',
-                                                        }}
-                                                    >
-                                                        ₹
-                                                    </span>
-                                                    {wallet.deposit}
-                                                </Typography>
-                                            </Grid>
-
-                                            <Grid item>
-                                                <Chip
-                                                    label="Deposit"
-                                                    color="secondary"
-                                                    size="small"
-                                                    sx={{ width: '100%' }}
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Paper>
-                            {/* Deposit Paper */}
-                        </Grid>
-                        <Grid item xs={4}>
-                            {/* Earnings */}
-                            <Paper
-                                sx={{
-                                    padding: 2,
-                                    borderRadius: 5,
-                                    borderColor: 'white',
-                                    backgroundColor: (theme) =>
-                                        alpha(theme.palette.grey[500], 0.5),
-                                    width: '95%',
-                                    textAlign: 'center',
-                                    margin: 'auto',
-                                }}
-                            >
-                                <Grid
-                                    container
-                                    justifyContent="center"
-                                    alignItems="center"
-                                    style={{ height: '100%' }}
-                                >
-                                    <Grid item>
-                                        <Grid
-                                            container
-                                            direction="column"
-                                            spacing={0}
-                                        >
-                                            <Grid item>
-                                                <Typography
-                                                    variant="caption"
-                                                    sx={{ fontSize: '1rem' }}
-                                                >
-                                                    <span
-                                                        style={{
-                                                            fontSize: '0.8em',
-                                                        }}
-                                                    >
-                                                        ₹
-                                                    </span>
-                                                    {wallet.wining}
-                                                </Typography>
-                                            </Grid>
-
-                                            <Grid item>
-                                                <Chip
-                                                    label="Earnings"
-                                                    color="secondary"
-                                                    size="small"
-                                                    sx={{ width: '100%' }}
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Paper>
-                            {/*  Earnings */}
-                        </Grid>
-                        <Grid item xs={4}>
-                            {/* Commission */}
-                            <Paper
-                                sx={{
-                                    padding: 2,
-                                    borderRadius: 5,
-                                    borderColor: 'white',
-                                    backgroundColor: (theme) =>
-                                        alpha(theme.palette.grey[500], 0.5),
-                                    width: '95%',
-                                    textAlign: 'center',
-                                    margin: 'auto',
-                                }}
-                            >
-                                <Grid
-                                    container
-                                    justifyContent="center"
-                                    alignItems="center"
-                                    style={{ height: '100%' }}
-                                >
-                                    <Grid item>
-                                        <Grid
-                                            container
-                                            direction="column"
-                                            spacing={0}
-                                        >
-                                            <Grid item>
-                                                <Typography
-                                                    variant="caption"
-                                                    sx={{ fontSize: '1rem' }}
-                                                >
-                                                    <span
-                                                        style={{
-                                                            fontSize: '0.8em',
-                                                        }}
-                                                    >
-                                                        ₹
-                                                    </span>
-                                                    {wallet.referral}
-                                                </Typography>
-                                            </Grid>
-
-                                            <Grid item>
-                                                <Chip
-                                                    label="Commission"
-                                                    color="secondary"
-                                                    size="small"
-                                                    sx={{ width: '100%' }}
-                                                />
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Paper>
-                            {/* Commission */}
-                        </Grid>
-                        <Grid item sx={{ width: '90%' }}>
                             <Grid
+                                item
                                 container
-                                spacing={2}
-                                mt={2}
+                                xs={12}
+                                md={10}
+                                direction="column"
                                 justifyContent="center"
+                                alignItems="center"
                             >
-                                <Grid item sx={{ width: '50%' }}>
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        size="small"
-                                        fullWidth
-                                        startIcon={<AddCardIcon />}
-                                        sx={{
-                                            borderRadius: '50px',
-                                            padding: 2,
-                                        }}
-                                        onClick={handleOpenModal}
-                                    >
-                                        Add Money
-                                    </Button>
+                                <Grid item>
+                                    <Typography variant="body1" color={'white'}>
+                                        Total Balance
+                                    </Typography>
                                 </Grid>
-                                <Grid item sx={{ width: '50%' }}>
-                                    <Button
-                                        variant="contained"
-                                        color="secondary"
-                                        size="small"
-                                        fullWidth
-                                        startIcon={<RedeemIcon />}
-                                        sx={{
-                                            borderRadius: '50px',
-                                            padding: 2,
-                                        }}
+                                <Grid item>
+                                    <Typography
+                                        variant="h6"
+                                        sx={{ fontSize: '2rem' }}
                                     >
-                                        Withdraw
-                                    </Button>
+                                        <span style={{ fontSize: '1rem' }}>
+                                            ₹
+                                        </span>
+                                        {totalBalance}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={8} md={8}>
+                                    <Chip
+                                        label="100% Secure payments"
+                                        color="success"
+                                        size="medium"
+                                        sx={{ width: '100%' }}
+                                    />
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item mt={5} sx={{ width: '90%' }}>
-                            <Button
-                                variant="contained"
-                                color="success"
-                                size="large"
-                                onClick={handleTransactions}
-                                sx={{ padding: 2, borderRadius: 20 }}
-                                fullWidth
-                            >
-                                Transaction History
-                            </Button>
+
+                        <Grid container justifyContent={'center'} mt={2}>
+                            <Grid item xs={4}>
+                                <Paper
+                                    sx={{
+                                        padding: 2,
+                                        borderRadius: 5,
+                                        borderColor: 'white',
+                                        backgroundColor: (theme) =>
+                                            alpha(theme.palette.grey[500], 0.5),
+                                        width: '95%',
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                    }}
+                                >
+                                    <Grid
+                                        container
+                                        justifyContent="center"
+                                        alignItems="center"
+                                        style={{ height: '100%' }}
+                                    >
+                                        <Grid item>
+                                            <Grid
+                                                container
+                                                direction="column"
+                                                spacing={0}
+                                            >
+                                                <Grid item>
+                                                    <Typography
+                                                        variant="caption"
+                                                        sx={{
+                                                            fontSize: '1rem',
+                                                        }}
+                                                    >
+                                                        <span
+                                                            style={{
+                                                                fontSize:
+                                                                    '0.8em',
+                                                            }}
+                                                        >
+                                                            ₹
+                                                        </span>
+                                                        {wallet.deposit}
+                                                    </Typography>
+                                                </Grid>
+
+                                                <Grid item>
+                                                    <Chip
+                                                        label="Deposit"
+                                                        color="secondary"
+                                                        size="small"
+                                                        sx={{ width: '100%' }}
+                                                    />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Paper
+                                    sx={{
+                                        padding: 2,
+                                        borderRadius: 5,
+                                        borderColor: 'white',
+                                        backgroundColor: (theme) =>
+                                            alpha(theme.palette.grey[500], 0.5),
+                                        width: '95%',
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                    }}
+                                >
+                                    <Grid
+                                        container
+                                        justifyContent="center"
+                                        alignItems="center"
+                                        style={{ height: '100%' }}
+                                    >
+                                        <Grid item>
+                                            <Grid
+                                                container
+                                                direction="column"
+                                                spacing={0}
+                                            >
+                                                <Grid item>
+                                                    <Typography
+                                                        variant="caption"
+                                                        sx={{
+                                                            fontSize: '1rem',
+                                                        }}
+                                                    >
+                                                        <span
+                                                            style={{
+                                                                fontSize:
+                                                                    '0.8em',
+                                                            }}
+                                                        >
+                                                            ₹
+                                                        </span>
+                                                        {wallet.wining}
+                                                    </Typography>
+                                                </Grid>
+
+                                                <Grid item>
+                                                    <Chip
+                                                        label="Earnings"
+                                                        color="secondary"
+                                                        size="small"
+                                                        sx={{ width: '100%' }}
+                                                    />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Paper
+                                    sx={{
+                                        padding: 2,
+                                        borderRadius: 5,
+                                        borderColor: 'white',
+                                        backgroundColor: (theme) =>
+                                            alpha(theme.palette.grey[500], 0.5),
+                                        width: '95%',
+                                        textAlign: 'center',
+                                        margin: 'auto',
+                                    }}
+                                >
+                                    <Grid
+                                        container
+                                        justifyContent="center"
+                                        alignItems="center"
+                                        style={{ height: '100%' }}
+                                    >
+                                        <Grid item>
+                                            <Grid
+                                                container
+                                                direction="column"
+                                                spacing={0}
+                                            >
+                                                <Grid item>
+                                                    <Typography
+                                                        variant="caption"
+                                                        sx={{
+                                                            fontSize: '1rem',
+                                                        }}
+                                                    >
+                                                        <span
+                                                            style={{
+                                                                fontSize:
+                                                                    '0.8em',
+                                                            }}
+                                                        >
+                                                            ₹
+                                                        </span>
+                                                        {wallet.referral}
+                                                    </Typography>
+                                                </Grid>
+
+                                                <Grid item>
+                                                    <Chip
+                                                        label="Commission"
+                                                        color="secondary"
+                                                        size="small"
+                                                        sx={{ width: '100%' }}
+                                                    />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </Paper>
+                            </Grid>
+                            <Grid item sx={{ width: '90%' }}>
+                                <Grid
+                                    container
+                                    spacing={2}
+                                    mt={2}
+                                    justifyContent="center"
+                                >
+                                    <Grid item sx={{ width: '50%' }}>
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            size="small"
+                                            fullWidth
+                                            startIcon={<AddCardIcon />}
+                                            sx={{
+                                                borderRadius: '50px',
+                                                padding: 2,
+                                            }}
+                                            onClick={handleOpenModal}
+                                        >
+                                            Add Money
+                                        </Button>
+                                    </Grid>
+                                    <Grid item sx={{ width: '50%' }}>
+                                        <Button
+                                            variant="contained"
+                                            color="secondary"
+                                            size="small"
+                                            fullWidth
+                                            startIcon={<RedeemIcon />}
+                                            sx={{
+                                                borderRadius: '50px',
+                                                padding: 2,
+                                            }}
+                                        >
+                                            Withdraw
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item mt={5} sx={{ width: '90%' }}>
+                                <Button
+                                    variant="contained"
+                                    color="success"
+                                    size="large"
+                                    onClick={handleTransactions}
+                                    sx={{ padding: 2, borderRadius: 20 }}
+                                    fullWidth
+                                    endIcon={<CurrencyRupeeIcon />}
+                                >
+                                    All Transactions
+                                </Button>
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </div>
+                </Fade>
+                <div className="bottom-menu">
+                    <BottomMenu />
                 </div>
-                <BottomMenu />
             </div>
 
-            {/* Add Money Dialog */}
             <Dialog
                 open={openModal}
-                onClose={handleCloseModal}
                 TransitionComponent={Transition}
-                fullScreen
-                PaperProps={{
-                    sx: {
-                        position: 'absolute',
-                        bottom: 0,
-                        maxHeight: '50vh',
-                        width: '100%',
-                        borderTopLeftRadius: '20px',
-                        borderTopRightRadius: '20px',
-                        backgroundColor: (theme) =>
-                            alpha(theme.palette.grey[800], 0.8),
-                    },
-                }}
+                keepMounted
+                onClose={handleCloseModal}
+                aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle
-                    sx={{
-                        backgroundColor: 'red',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <CurrencyRupeeIcon sx={{ marginRight: '5px' }} />
-                    Add Money
-                </DialogTitle>
-
-                <DialogContent sx={{ mt: 5, textAlign: 'center' }}>
+                <DialogTitle>Add Money</DialogTitle>
+                <DialogContent>
                     <TextField
-                        id="amount"
-                        label="Enter Amount between 100 - 5000"
-                        variant="standard"
+                        variant="outlined"
                         type="number"
-                        color="secondary"
+                        fullWidth
+                        label="Amount"
                         value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
-                                    <CurrencyRupeeIcon
-                                        sx={{ color: '#ffff' }}
-                                    />
+                                    ₹
                                 </InputAdornment>
                             ),
                         }}
-                        onChange={(e) => {
-                            setAmount(e.target.value)
-                        }}
-                        fullWidth
-                    />
-
-                    <Chip
-                        label="100% Safe and Secure"
-                        color="success"
-                        sx={{ mt: 5, width: '80%' }}
-                        size="medium"
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button
-                        onClick={handleCloseModal}
-                        variant="outlined"
-                        color="inherit"
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        onClick={handleCloseModal}
-                        variant="contained"
-                        color="secondary"
-                    >
-                        Add Money
-                    </Button>
+                    <Button onClick={handleCloseModal}>Cancel</Button>
+                    <Button onClick={handleCloseModal}>Add</Button>
                 </DialogActions>
             </Dialog>
-            {/* Add Money Dialog */}
         </>
     )
 }
