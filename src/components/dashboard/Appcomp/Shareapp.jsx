@@ -57,7 +57,7 @@ function Shareapp() {
             {loading && <AppLoader />}
             <div className="layout-container">
                 <div className="top-menu">
-                    <Topmenu menu="WALLET" />
+                    <Topmenu menu="INVITE AND EARN" />
                 </div>
                 <Grow in={!loading}>
                     <div className="content">
@@ -109,7 +109,7 @@ function Shareapp() {
 
                             <Grid item xs={10} mt={5}>
                                 <Typography
-                                    variant="body2"
+                                    variant="subtitle1"
                                     p={1}
                                     sx={{
                                         border: '0.1px solid #ff4ed1',

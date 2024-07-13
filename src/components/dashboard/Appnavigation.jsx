@@ -33,6 +33,7 @@ const AppNavigation = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     const { userId } = useContext(UserContext)
     const [profile, setProfile] = useState([])
+    const [totalBalance, setTotalBalance] = useState(0)
 
     const navigate = useNavigate()
 
@@ -44,15 +45,24 @@ const AppNavigation = () => {
         const fetchdata = async () => {
             try {
                 const response = await apiClient.post('/getuserprofile', data)
-                // Update the profile state with the response data
                 setProfile(response.data.data)
             } catch (error) {
                 console.error(error)
             }
         }
 
-        // Call fetchdata only once when the component mounts by passing an empty dependency array
+        const fetchbalance = async () => {
+            try {
+                const balance = await apiClient.post('/getbalance', data)
+                console.log(balance.data.data)
+                setTotalBalance(balance.data.data.deposit)
+            } catch (error) {
+                console.error('API Error', error)
+            }
+        }
+
         fetchdata()
+        fetchbalance()
     }, [userId])
 
     const handlelogout = () => {
@@ -151,14 +161,17 @@ const AppNavigation = () => {
                                 display: 'flex',
                                 alignItems: 'center', // Align items vertically center
                                 justifyContent: 'center', // Center content horizontally
-                                padding: '0.4rem',
-                                width: '2.5em',
+                                padding: '0.3rem',
+                                width: '4em',
                                 borderRadius: '20px',
                                 textAlign: 'center',
                                 border: 'solid 0.5px #878787',
                             }}
                         >
                             <WalletIcon sx={{ fontSize: '20px' }} />{' '}
+                            <Typography variant="caption">
+                                ₹ {totalBalance}
+                            </Typography>
                         </Paper>
                     </IconButton>
 
