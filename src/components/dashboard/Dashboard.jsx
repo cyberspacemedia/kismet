@@ -1,13 +1,13 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./Layout"; // Import the Layout component
-import DefaultDash from "./Defaultdash";
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './Layout' // Import the Layout component
+import DefaultDash from './Defaultdash'
 
 function Dashboard() {
-    const isLoggedIn = true; // Assuming initially user is logged in, you can set it based on your authentication state
+    const isLoggedIn = true // Assuming initially user is logged in, you can set it based on your authentication state
 
     if (!isLoggedIn) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/" replace />
     }
 
     return (
@@ -25,7 +25,7 @@ function Dashboard() {
                 />
             </Routes>
         </Layout>
-    );
+    )
 }
 
-export default Dashboard;
+export default Dashboard

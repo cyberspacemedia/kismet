@@ -7,7 +7,7 @@ const theme = createTheme({
             main: '#1976d2',
         },
         secondary: {
-            main: '#dc004e',
+            main: '#9a00bf',
         },
         text: {
             primary: '#ffff', // Set default text color to white

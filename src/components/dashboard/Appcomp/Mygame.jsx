@@ -11,7 +11,7 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material'
-
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
 import UserContext from '../../UserContext'
 import { apiClient } from '../../config/Config'
 import BottomMenu from './Bottommenu'
@@ -269,32 +269,92 @@ function Mygame() {
                                                         )}
                                                     </Grid>
                                                     <Grid item>
-                                                        <Typography
-                                                            variant="body2"
-                                                            align="right"
-                                                            sx={{
-                                                                border: 'solid 0.1px white',
-                                                                borderRadius:
-                                                                    '5px',
-                                                                padding: '5px',
-                                                                fontWeight:
-                                                                    'bold',
-                                                                color: 'white',
-                                                                textAlign:
-                                                                    'center',
-                                                                width: '7rem',
-                                                                background:
-                                                                    'linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)',
-                                                            }}
-                                                        >
-                                                            {gameItem.gameStatus ===
-                                                            1
-                                                                ? gameItem.winStatus ===
-                                                                  0
-                                                                    ? 'No Rewards'
-                                                                    : 'Winner'
-                                                                : 'Waiting'}
-                                                        </Typography>
+                                                        {gameItem.gameStatus ===
+                                                        1 ? (
+                                                            gameItem.winStatus ===
+                                                            0 ? (
+                                                                <>
+                                                                    <Typography
+                                                                        variant="body2"
+                                                                        sx={{
+                                                                            border: 'solid 0.1px white',
+                                                                            borderRadius:
+                                                                                '5px',
+                                                                            padding:
+                                                                                '5px',
+                                                                            fontWeight:
+                                                                                'bold',
+                                                                            color: 'white',
+                                                                            textAlign:
+                                                                                'center',
+                                                                            width: '7rem',
+                                                                            background:
+                                                                                'linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)',
+                                                                        }}
+                                                                    >
+                                                                        No
+                                                                        Rewards
+                                                                    </Typography>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <Typography
+                                                                        variant="body2"
+                                                                        sx={{
+                                                                            border: 'solid 0.1px white',
+                                                                            borderRadius:
+                                                                                '5px',
+                                                                            padding:
+                                                                                '5px',
+                                                                            fontWeight:
+                                                                                'bold',
+                                                                            color: 'white',
+                                                                            textAlign:
+                                                                                'center',
+                                                                            width: '7rem',
+                                                                            backgroundColor:
+                                                                                '#ff4ed1',
+                                                                            display:
+                                                                                'flex', // Enable flexbox
+                                                                            alignItems:
+                                                                                'center', // Vertically center the content
+                                                                            justifyContent:
+                                                                                'center', // Horizontally center the content
+                                                                        }}
+                                                                    >
+                                                                        <EmojiEventsIcon
+                                                                            sx={{
+                                                                                marginRight:
+                                                                                    '5px',
+                                                                                color: 'Yellow',
+                                                                            }}
+                                                                        />{' '}
+                                                                        Winner
+                                                                    </Typography>
+                                                                </>
+                                                            )
+                                                        ) : (
+                                                            <Typography
+                                                                variant="body2"
+                                                                sx={{
+                                                                    border: 'solid 0.1px white',
+                                                                    borderRadius:
+                                                                        '5px',
+                                                                    padding:
+                                                                        '5px',
+                                                                    fontWeight:
+                                                                        'bold',
+                                                                    color: 'white',
+                                                                    textAlign:
+                                                                        'center',
+                                                                    width: '7rem',
+                                                                    background:
+                                                                        'linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)',
+                                                                }}
+                                                            >
+                                                                Waiting
+                                                            </Typography>
+                                                        )}
                                                     </Grid>
                                                 </Grid>
                                             </Grid>

@@ -13,6 +13,8 @@ import {
     InputAdornment,
     Slide,
     Fade,
+    Grow,
+    Zoom,
 } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import AddCardIcon from '@mui/icons-material/AddCard'
@@ -78,7 +80,7 @@ function Wallet() {
                 <div className="top-menu">
                     <Topmenu menu="WALLET" />
                 </div>
-                <Fade in={!loading}>
+                <Grow in={!loading}>
                     <div className="content">
                         <Grid
                             container
@@ -358,7 +360,7 @@ function Wallet() {
                             </Grid>
                         </Grid>
                     </div>
-                </Fade>
+                </Grow>
                 <div className="bottom-menu">
                     <BottomMenu />
                 </div>

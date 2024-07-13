@@ -1,7 +1,5 @@
 import * as React from 'react'
-
 import Box from '@mui/material/Box'
-
 import CircularProgress from '@mui/material/CircularProgress'
 
 function GradientCircularProgress() {
@@ -33,13 +31,12 @@ export default function AppLoader() {
         <Box
             sx={{
                 position: 'fixed',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 9999, // Ensure it's on top of other content
-                backgroundColor: 'rgba(0, 0, 0, 0.5)', // Optional: semi-transparent background
+                top: 0,
+                left: 0,
                 width: '100vw',
                 height: '100vh',
+                zIndex: 9999,
+                backgroundColor: 'rgba(30, 30, 30, 0.5)', // Light transparent background
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
