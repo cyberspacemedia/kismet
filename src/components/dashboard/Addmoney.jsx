@@ -11,7 +11,8 @@ import {
 } from '@mui/material'
 import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
-
+import theme from '../../theme/Theme'
+import AddCardIcon from '@mui/icons-material/AddCard'
 function Addmoney() {
     return (
         <div
@@ -68,15 +69,20 @@ function Addmoney() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item>
+                    <Grid item mt={2}>
                         <img
-                            src="image_url"
-                            alt="Placeholder"
+                            src={`./StaticAssets/Images/secure.png`}
+                            alt="Secure"
                             style={{ width: '100px', height: '100px' }}
                         />
                     </Grid>
                     <Grid item>
-                        <Button variant="contained" color="secondary">
+                        <Button
+                            variant="contained"
+                            sx={{ mt: 2, ...theme.buttons.gradient }}
+                            size="large"
+                            startIcon={<AddCardIcon />}
+                        >
                             Add Money
                         </Button>
                     </Grid>
