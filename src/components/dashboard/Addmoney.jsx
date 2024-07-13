@@ -8,6 +8,8 @@ import {
     Box,
     Grid,
     Button,
+    Snackbar,
+    Alert,
 } from '@mui/material'
 import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
@@ -16,15 +18,24 @@ import AddCardIcon from '@mui/icons-material/AddCard'
 
 function Addmoney() {
     const [amount, setAmount] = useState('')
+    const [snackbarOpen, setSnackbarOpen] = useState(false)
+    const [snackbarMessage, setSnackbarMessage] = useState('')
 
     const handlePayment = async () => {
         if (!amount || amount <= 0) {
-            alert('Please enter a valid amount')
+            setSnackbarMessage('Please enter a valid amount')
+            setSnackbarOpen(true)
+            return
+        }
+
+        if (amount < 300) {
+            setSnackbarMessage('Amount should be at least 300')
+            setSnackbarOpen(true)
             return
         }
 
         const options = {
-            key: 'rzp_test_U5WNvZ7P5evrkz', // Replace with your Razorpay Key ID
+            key: 'rzp_live_1zbYx7bQwEe3Qp', // Replace with your Razorpay Key ID
             amount: amount * 100, // Amount in paise
             currency: 'INR',
             name: 'KISMET',
@@ -73,31 +84,20 @@ function Addmoney() {
         rzp1.open()
     }
 
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false)
+    }
+
     return (
-        <div
-            className="layout-container"
-            style={{
-                height: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
-            }}
-        >
+        <div className="layout-container">
             <div className="top-menu">
                 <Topmenu menu="ADD MONEY" />
             </div>
-            <div className="content" style={{ flex: 1 }}>
-                <Grid
-                    container
-                    direction="column"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    spacing={2}
-                    style={{ height: '100%' }}
-                >
-                    <Grid item>
+            <div className="content">
+                <Grid container justifyContent="center" spacing={2}>
+                    <Grid item xs={10}>
                         <Card
                             sx={{
-                                width: 300,
                                 textAlign: 'center',
                                 borderRadius: '10px',
                                 background:
@@ -117,7 +117,8 @@ function Addmoney() {
                                         variant="outlined"
                                         placeholder="00"
                                         type="number"
-                                        helperText="Amount should not be more than 10,000"
+                                        size="small"
+                                        helperText="Amount should be more than 300"
                                         fullWidth
                                         value={amount}
                                         onChange={(e) =>
@@ -132,14 +133,22 @@ function Addmoney() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item mt={2}>
+                    <Grid
+                        item
+                        xs={10}
+                        sx={{
+                            padding: 2,
+                            mt: 2,
+                            textAlign: 'center',
+                        }}
+                    >
                         <img
                             src={`./StaticAssets/Images/secure.png`}
                             alt="Secure"
                             style={{ width: '100px', height: '100px' }}
                         />
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={10} sx={{ padding: 2, textAlign: 'center' }}>
                         <Button
                             variant="contained"
                             sx={{ mt: 2, ...theme.buttons.gradient }}
@@ -153,6 +162,26 @@ function Addmoney() {
                 </Grid>
             </div>
             <BottomMenu />
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={2000}
+                onClose={handleSnackbarClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+            >
+                <Alert
+                    onClose={handleSnackbarClose}
+                    severity="error"
+                    variant="filled"
+                    sx={{
+                        width: '100%',
+                        padding: '16px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                    }}
+                >
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
         </div>
     )
 }

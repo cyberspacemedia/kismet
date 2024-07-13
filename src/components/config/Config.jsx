@@ -2,7 +2,7 @@ import axios from 'axios'
 // const apiKey = "Badmash@2015";
 //const droplet = f8ab213cf38be2a5f397f78564;
 const apiBaseUrl = 'https://bookdeets.com/kismetapp/Api'
-
+export const rzpkey = 'rzp_live_1zbYx7bQwEe3Qp'
 export const apiClient = axios.create({
     baseURL: apiBaseUrl,
     headers: {
