@@ -27,7 +27,7 @@ function Addmoney() {
             key: 'rzp_test_U5WNvZ7P5evrkz', // Replace with your Razorpay Key ID
             amount: amount * 100, // Amount in paise
             currency: 'INR',
-            name: 'Your App Name',
+            name: 'KISMET',
             description: 'Add Money',
             handler: function (response) {
                 // This function will handle the success response
