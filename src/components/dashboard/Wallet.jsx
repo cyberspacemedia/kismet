@@ -96,7 +96,7 @@ function Wallet() {
                                 <Grid item xs={8} md={8}>
                                     <Chip
                                         label="100% Secure payments"
-                                        color="success"
+                                        color="secondary"
                                         size="medium"
                                         sx={{ width: '100%' }}
                                     />
