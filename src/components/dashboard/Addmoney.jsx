@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     Card,
     CardHeader,
@@ -13,7 +13,66 @@ import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
 import theme from '../../theme/Theme'
 import AddCardIcon from '@mui/icons-material/AddCard'
+
 function Addmoney() {
+    const [amount, setAmount] = useState('')
+
+    const handlePayment = async () => {
+        if (!amount || amount <= 0) {
+            alert('Please enter a valid amount')
+            return
+        }
+
+        const options = {
+            key: 'rzp_test_U5WNvZ7P5evrkz', // Replace with your Razorpay Key ID
+            amount: amount * 100, // Amount in paise
+            currency: 'INR',
+            name: 'Your App Name',
+            description: 'Add Money',
+            handler: function (response) {
+                // This function will handle the success response
+                alert(
+                    `Payment successful! Payment ID: ${response.razorpay_payment_id}`
+                )
+
+                // Send payment details to the backend
+                fetch(
+                    'http://your-backend-url/PaymentController/paymentSuccess',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            payment_id: response.razorpay_payment_id,
+                            amount: amount,
+                            uid: 'user_id', // Replace with actual user ID
+                        }),
+                    }
+                )
+                    .then((res) => res.json())
+                    .then((data) => {
+                        // Handle backend response
+                        console.log('Payment details saved:', data)
+                    })
+                    .catch((err) => {
+                        console.error('Error saving payment details:', err)
+                    })
+            },
+            prefill: {
+                name: 'User Name', // Replace with user's name
+                email: 'user@example.com', // Replace with user's email
+                contact: '9999999999', // Replace with user's contact number
+            },
+            theme: {
+                color: '#3399cc',
+            },
+        }
+
+        const rzp1 = new window.Razorpay(options)
+        rzp1.open()
+    }
+
     return (
         <div
             className="layout-container"
@@ -60,6 +119,10 @@ function Addmoney() {
                                         type="number"
                                         helperText="Amount should not be more than 10,000"
                                         fullWidth
+                                        value={amount}
+                                        onChange={(e) =>
+                                            setAmount(e.target.value)
+                                        }
                                     />
                                     <Chip
                                         label="100% secure Payment"
@@ -82,6 +145,7 @@ function Addmoney() {
                             sx={{ mt: 2, ...theme.buttons.gradient }}
                             size="large"
                             startIcon={<AddCardIcon />}
+                            onClick={handlePayment}
                         >
                             Add Money
                         </Button>
