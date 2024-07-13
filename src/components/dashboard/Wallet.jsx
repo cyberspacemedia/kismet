@@ -1,21 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import {
-    Paper,
-    Grid,
-    Typography,
-    Chip,
-    Button,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    TextField,
-    InputAdornment,
-    Slide,
-    Fade,
-    Grow,
-    Zoom,
-} from '@mui/material'
+import { Paper, Grid, Typography, Chip, Button, Grow } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import AddCardIcon from '@mui/icons-material/AddCard'
 import RedeemIcon from '@mui/icons-material/Redeem'
@@ -27,15 +11,9 @@ import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
 import AppLoader from '../Loaders/AppLoader'
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />
-})
-
 function Wallet() {
     const { userId } = useContext(UserContext)
     const [loading, setLoading] = useState(false)
-    const [openModal, setOpenModal] = useState(false)
-    const [amount, setAmount] = useState('0')
     const [wallet, setWallet] = useState({
         deposit: 0,
         referral: 0,
@@ -50,6 +28,7 @@ function Wallet() {
             try {
                 const balance = await apiClient.post('/getbalance', data)
                 setWallet(balance.data.data)
+                console.log(balance.data.data)
                 setLoading(false)
             } catch (error) {
                 console.error('Wallet Fetch API Error', error)
@@ -63,15 +42,7 @@ function Wallet() {
         navigate('/history')
     }
 
-    const handleOpenModal = () => {
-        setOpenModal(true)
-    }
-
-    const handleCloseModal = () => {
-        setOpenModal(false)
-    }
-
-    const totalBalance = wallet.deposit + wallet.referral
+    const totalBalance = wallet.deposit + wallet.referral + wallet.wining
 
     return (
         <>
@@ -323,7 +294,9 @@ function Wallet() {
                                                 borderRadius: '50px',
                                                 padding: 2,
                                             }}
-                                            onClick={handleOpenModal}
+                                            onClick={() => {
+                                                navigate('/addmoney')
+                                            }}
                                         >
                                             Add Money
                                         </Button>
@@ -365,37 +338,6 @@ function Wallet() {
                     <BottomMenu />
                 </div>
             </div>
-
-            <Dialog
-                open={openModal}
-                TransitionComponent={Transition}
-                keepMounted
-                onClose={handleCloseModal}
-                aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogTitle>Add Money</DialogTitle>
-                <DialogContent>
-                    <TextField
-                        variant="outlined"
-                        type="number"
-                        fullWidth
-                        label="Amount"
-                        value={amount}
-                        onChange={(e) => setAmount(e.target.value)}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    ₹
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseModal}>Cancel</Button>
-                    <Button onClick={handleCloseModal}>Add</Button>
-                </DialogActions>
-            </Dialog>
         </>
     )
 }
