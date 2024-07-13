@@ -11,7 +11,7 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material'
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents'
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech'
 import UserContext from '../../UserContext'
 import { apiClient } from '../../config/Config'
 import BottomMenu from './Bottommenu'
@@ -301,19 +301,18 @@ function Mygame() {
                                                                     <Typography
                                                                         variant="subtitle2"
                                                                         sx={{
-                                                                            border: 'solid 0.1px white',
+                                                                            border: 'solid 0.1px #ff4ed1',
                                                                             borderRadius:
                                                                                 '5px',
                                                                             padding:
                                                                                 '5px',
-                                                                            fontWeight:
-                                                                                'bold',
+
                                                                             color: 'white',
                                                                             textAlign:
                                                                                 'center',
                                                                             width: '6rem',
                                                                             backgroundColor:
-                                                                                '#ff4ed1',
+                                                                                '#96387d',
                                                                             display:
                                                                                 'flex', // Enable flexbox
                                                                             alignItems:
@@ -322,7 +321,7 @@ function Mygame() {
                                                                                 'center', // Horizontally center the content
                                                                         }}
                                                                     >
-                                                                        <EmojiEventsIcon
+                                                                        <MilitaryTechIcon
                                                                             sx={{
                                                                                 marginRight:
                                                                                     '5px',
