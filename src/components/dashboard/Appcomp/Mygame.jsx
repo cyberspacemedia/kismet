@@ -287,7 +287,7 @@ function Mygame() {
                                                                             color: 'white',
                                                                             textAlign:
                                                                                 'center',
-                                                                            width: '7rem',
+                                                                            width: '6rem',
                                                                             background:
                                                                                 'linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)',
                                                                         }}
@@ -299,7 +299,7 @@ function Mygame() {
                                                             ) : (
                                                                 <>
                                                                     <Typography
-                                                                        variant="body2"
+                                                                        variant="subtitle2"
                                                                         sx={{
                                                                             border: 'solid 0.1px white',
                                                                             borderRadius:
@@ -311,7 +311,7 @@ function Mygame() {
                                                                             color: 'white',
                                                                             textAlign:
                                                                                 'center',
-                                                                            width: '7rem',
+                                                                            width: '6rem',
                                                                             backgroundColor:
                                                                                 '#ff4ed1',
                                                                             display:
@@ -347,7 +347,7 @@ function Mygame() {
                                                                     color: 'white',
                                                                     textAlign:
                                                                         'center',
-                                                                    width: '7rem',
+                                                                    width: '6rem',
                                                                     background:
                                                                         'linear-gradient(45deg, rgba(218,149,4,1) 0%, rgba(255,91,0,1) 100%)',
                                                                 }}
