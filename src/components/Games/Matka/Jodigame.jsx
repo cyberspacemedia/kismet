@@ -132,7 +132,7 @@ function Jodigame({ gameName, gameId, gameType }) {
     return (
         <Box
             sx={{
-                height: '78vh',
+                height: '73vh',
                 overflowY: 'auto',
             }}
         >
@@ -154,19 +154,40 @@ function Jodigame({ gameName, gameId, gameType }) {
                     {message}
                 </Alert>
             )}
-            <Grid container justifyContent="center">
+            <Grid
+                container
+                justifyContent="center"
+                alignItems={'center'}
+                spacing={1}
+            >
                 {gameNumbers.map((number) => (
-                    <Grid item key={number}>
+                    <Grid item key={number} xs={3} md={2} sm={2} lg={3}>
                         <Button
                             variant="contained"
-                            sx={{ ...theme.buttons.squarenumberbutton }}
+                            sx={{
+                                ...theme.buttons.squarenumberbutton,
+                                flexDirection: 'column',
+                            }}
                             onClick={() => handleOpen(number)}
                         >
-                            {number}{' '}
-                            <Typography variant="caption" color={'yellow'}>
-                                {amounts[number] !== null &&
-                                    `${amounts[number]}`}
-                            </Typography>
+                            {number.toString().padStart(2, '0')}
+                            {amounts[number] !== null && (
+                                <Box
+                                    sx={{
+                                        mt: 0, // margin-top
+                                        padding: '2px',
+                                        borderRadius: '4px',
+                                        background:
+                                            'linear-gradient(318deg, rgba(168,1,179,1) 0%, rgba(182,0,0,1) 100%)',
+                                        color: 'white',
+                                        width: '60px',
+                                        textAlign: 'center', // Center the text within the box
+                                        fontSize: '0.7rem',
+                                    }}
+                                >
+                                    ₹ {amounts[number]}
+                                </Box>
+                            )}
                         </Button>
                     </Grid>
                 ))}
@@ -190,7 +211,9 @@ function Jodigame({ gameName, gameId, gameType }) {
                             fontSize: '2rem',
                         }}
                     >
-                        {selectedNumber}
+                        {selectedNumber !== null
+                            ? selectedNumber.toString().padStart(2, '0')
+                            : ''}
                     </Typography>
                     <Typography
                         variant="caption"

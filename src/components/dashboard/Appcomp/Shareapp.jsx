@@ -118,8 +118,8 @@ function Shareapp() {
                                     }}
                                 >
                                     Total People Added :{' '}
-                                    {referralData.userCount > 0
-                                        ? referralData.userCount
+                                    {referralData.user_count > 0
+                                        ? referralData.user_count
                                         : '0'}
                                 </Typography>
                             </Grid>
