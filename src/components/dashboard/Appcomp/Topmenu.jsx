@@ -28,7 +28,7 @@ function Topmenu({ menu }) {
             }
         }
         notificationCount()
-    }, [])
+    }, [userId])
 
     const handleBackClick = () => {
         navigate(-1) // Go back to the previous URL

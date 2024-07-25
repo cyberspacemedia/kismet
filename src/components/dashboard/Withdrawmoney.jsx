@@ -23,6 +23,7 @@ import theme from '../../theme/Theme'
 import AddCardIcon from '@mui/icons-material/AddCard'
 import UserContext from '../UserContext'
 import { useNavigate } from 'react-router-dom'
+import { apiPayment } from '../config/Config'
 
 function Withdrawmoney() {
     const { userId } = useContext(UserContext)
@@ -40,6 +41,54 @@ function Withdrawmoney() {
         setSnackbarOpen(false)
     }
 
+    const handleWithdraw = async () => {
+        if (!amount || amount <= 0) {
+            setSnackbarMessage('Please enter a valid amount')
+            setSnackbarOpen(true)
+            return
+        }
+
+        if (amount < 300) {
+            setSnackbarMessage('Amount should be more than 300')
+            setSnackbarOpen(true)
+            return
+        }
+
+        let data
+        if (paymentMethod === 'upi') {
+            data = {
+                amount: amount,
+                userId: userId,
+                method: '1',
+                upiId: paymentMethod === 'upi' ? upiId : null,
+            }
+        } else if (paymentMethod === 'bank') {
+            data = {
+                amount: amount,
+                userId: userId,
+                method: '2',
+                bankName: bankName,
+                ifscCode: ifscCode,
+                accountNumber: accountNumber,
+            }
+        }
+
+        console.log(data)
+        try {
+            const response = await apiPayment.post('/withdrawrequest', data)
+            console.log(response)
+            setSnackbarMessage('Withdrawal request successful')
+            setSnackbarOpen(true)
+            setTimeout(() => {
+                navigate('/wallet')
+            }, 2000)
+        } catch (error) {
+            console.error('Error making withdrawal request:', error)
+            setSnackbarMessage('Error making withdrawal request')
+            setSnackbarOpen(true)
+        }
+    }
+
     return (
         <Grow in={true}>
             <div className="layout-container">
@@ -48,7 +97,7 @@ function Withdrawmoney() {
                 </div>
                 <div className="content">
                     <Grid container justifyContent="center" spacing={2}>
-                        <Grid item xs={10}>
+                        <Grid item xs={11}>
                             <Card
                                 sx={{
                                     textAlign: 'center',
@@ -67,7 +116,7 @@ function Withdrawmoney() {
                                     >
                                         <TextField
                                             label="Amount"
-                                            variant="outlined"
+                                            variant="filled"
                                             placeholder="00"
                                             type="number"
                                             size="small"
@@ -77,6 +126,22 @@ function Withdrawmoney() {
                                             onChange={(e) =>
                                                 setAmount(e.target.value)
                                             }
+                                            sx={{
+                                                '& .MuiInputLabel-root': {
+                                                    fontSize: '0.75rem', // Adjust the label font size
+                                                },
+                                                '& .MuiOutlinedInput-root': {
+                                                    '& input': {
+                                                        fontSize: '0.75rem', // Adjust the input text size
+                                                    },
+                                                    '& fieldset': {
+                                                        borderRadius: '4px', // Adjust the border radius
+                                                    },
+                                                },
+                                                '& .MuiInputBase-input': {
+                                                    padding: '8px', // Adjust the input padding
+                                                },
+                                            }}
                                         />
                                         <FormControl component="fieldset">
                                             <FormLabel component="legend">
@@ -94,13 +159,47 @@ function Withdrawmoney() {
                                             >
                                                 <FormControlLabel
                                                     value="upi"
-                                                    control={<Radio />}
+                                                    control={
+                                                        <Radio
+                                                            sx={{
+                                                                '& .MuiSvgIcon-root':
+                                                                    {
+                                                                        fontSize: 15,
+                                                                    },
+                                                            }}
+                                                        />
+                                                    }
                                                     label="UPI/Wallet"
+                                                    sx={{
+                                                        fontSize: '0.75rem', // Adjust font size
+                                                        '& .MuiTypography-root':
+                                                            {
+                                                                fontSize:
+                                                                    '0.75rem',
+                                                            }, // Ensure the label text size matches
+                                                    }}
                                                 />
                                                 <FormControlLabel
                                                     value="bank"
-                                                    control={<Radio />}
+                                                    control={
+                                                        <Radio
+                                                            sx={{
+                                                                '& .MuiSvgIcon-root':
+                                                                    {
+                                                                        fontSize: 15,
+                                                                    },
+                                                            }}
+                                                        />
+                                                    }
                                                     label="Bank Transfer"
+                                                    sx={{
+                                                        fontSize: '0.75rem', // Adjust font size
+                                                        '& .MuiTypography-root':
+                                                            {
+                                                                fontSize:
+                                                                    '0.75rem',
+                                                            }, // Ensure the label text size matches
+                                                    }}
                                                 />
                                             </RadioGroup>
                                         </FormControl>
@@ -115,6 +214,25 @@ function Withdrawmoney() {
                                                 onChange={(e) =>
                                                     setUpiId(e.target.value)
                                                 }
+                                                sx={{
+                                                    '& .MuiInputLabel-root': {
+                                                        fontSize: '0.75rem', // Adjust the label font size
+                                                    },
+                                                    '& .MuiOutlinedInput-root':
+                                                        {
+                                                            '& input': {
+                                                                fontSize:
+                                                                    '0.75rem', // Adjust the input text size
+                                                            },
+                                                            '& fieldset': {
+                                                                borderRadius:
+                                                                    '4px', // Adjust the border radius
+                                                            },
+                                                        },
+                                                    '& .MuiInputBase-input': {
+                                                        padding: '8px', // Adjust the input padding
+                                                    },
+                                                }}
                                             />
                                         ) : (
                                             <>
@@ -130,6 +248,28 @@ function Withdrawmoney() {
                                                             e.target.value
                                                         )
                                                     }
+                                                    sx={{
+                                                        '& .MuiInputLabel-root':
+                                                            {
+                                                                fontSize:
+                                                                    '0.75rem', // Adjust the label font size
+                                                            },
+                                                        '& .MuiOutlinedInput-root':
+                                                            {
+                                                                '& input': {
+                                                                    fontSize:
+                                                                        '0.75rem', // Adjust the input text size
+                                                                },
+                                                                '& fieldset': {
+                                                                    borderRadius:
+                                                                        '4px', // Adjust the border radius
+                                                                },
+                                                            },
+                                                        '& .MuiInputBase-input':
+                                                            {
+                                                                padding: '8px', // Adjust the input padding
+                                                            },
+                                                    }}
                                                 />
                                                 <TextField
                                                     label="Account Number"
@@ -143,6 +283,28 @@ function Withdrawmoney() {
                                                             e.target.value
                                                         )
                                                     }
+                                                    sx={{
+                                                        '& .MuiInputLabel-root':
+                                                            {
+                                                                fontSize:
+                                                                    '0.75rem', // Adjust the label font size
+                                                            },
+                                                        '& .MuiOutlinedInput-root':
+                                                            {
+                                                                '& input': {
+                                                                    fontSize:
+                                                                        '0.75rem', // Adjust the input text size
+                                                                },
+                                                                '& fieldset': {
+                                                                    borderRadius:
+                                                                        '4px', // Adjust the border radius
+                                                                },
+                                                            },
+                                                        '& .MuiInputBase-input':
+                                                            {
+                                                                padding: '8px', // Adjust the input padding
+                                                            },
+                                                    }}
                                                 />
                                                 <TextField
                                                     label="IFSC Code"
@@ -156,6 +318,28 @@ function Withdrawmoney() {
                                                             e.target.value
                                                         )
                                                     }
+                                                    sx={{
+                                                        '& .MuiInputLabel-root':
+                                                            {
+                                                                fontSize:
+                                                                    '0.75rem', // Adjust the label font size
+                                                            },
+                                                        '& .MuiOutlinedInput-root':
+                                                            {
+                                                                '& input': {
+                                                                    fontSize:
+                                                                        '0.75rem', // Adjust the input text size
+                                                                },
+                                                                '& fieldset': {
+                                                                    borderRadius:
+                                                                        '4px', // Adjust the border radius
+                                                                },
+                                                            },
+                                                        '& .MuiInputBase-input':
+                                                            {
+                                                                padding: '8px', // Adjust the input padding
+                                                            },
+                                                    }}
                                                 />
                                             </>
                                         )}
@@ -177,6 +361,7 @@ function Withdrawmoney() {
                                 sx={{ mt: 2, ...theme.buttons.gradient }}
                                 size="large"
                                 startIcon={<AddCardIcon />}
+                                onClick={handleWithdraw}
                             >
                                 Withdraw Money
                             </Button>
