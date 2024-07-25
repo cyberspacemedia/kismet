@@ -30,6 +30,7 @@ import Gaziabadgameinfo from '../components/Games/Gaziabadgameinfo'
 import Appnotification from '../components/dashboard/Appcomp/Notifications'
 import Shareapp from '../components/dashboard/Appcomp/Shareapp'
 import Addmoney from '../components/dashboard/Addmoney'
+import Withdrawmoney from '../components/dashboard/Withdrawmoney'
 
 function Approutes() {
     const isLoggedIn = false // Set it based on your authentication state
@@ -63,6 +64,7 @@ function Approutes() {
             <Route path="/myaccount" element={<Myaccount />} />
             <Route path="/wallet" element={<Wallet />} />
             <Route path="/addmoney" element={<Addmoney />} />
+            <Route path="/withdrawmoney" element={<Withdrawmoney />} />
             <Route path="/charts" element={<Chartscomp />} />
             <Route path="/mygame" element={<Mygame />} />
             <Route path="/shareapp" element={<Shareapp />} />

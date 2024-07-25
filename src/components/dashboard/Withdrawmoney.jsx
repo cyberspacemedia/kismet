@@ -18,72 +18,13 @@ import theme from '../../theme/Theme'
 import AddCardIcon from '@mui/icons-material/AddCard'
 import UserContext from '../UserContext'
 import { useNavigate } from 'react-router-dom'
-import { apiPayment } from '../config/Config'
 
-function Addmoney() {
+function Withdrawmoney() {
     const { userId } = useContext(UserContext)
     const [amount, setAmount] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
     const navigate = useNavigate()
-
-    const handlePayment = async () => {
-        if (!amount || amount <= 0) {
-            setSnackbarMessage('Please enter a valid amount')
-            setSnackbarOpen(true)
-            return
-        }
-
-        if (amount < 10) {
-            setSnackbarMessage('Amount should be at least 10')
-            setSnackbarOpen(true)
-            return
-        }
-
-        const options = {
-            key: 'rzp_live_1zbYx7bQwEe3Qp', //'rzp_test_U5WNvZ7P5evrkz', Replace with your Razorpay Key ID
-            amount: amount * 100, // Amount in paise
-            currency: 'INR',
-            name: 'KISMET',
-            capture: 1,
-            description: 'Add Money',
-            handler: function (response) {
-                // This function will handle the success response
-
-                // Send payment details to the backend using axios
-                const data = {
-                    paymentId: response.razorpay_payment_id,
-                    amount: amount,
-                    userId: userId,
-                    status: 'Success',
-                }
-                apiPayment
-                    .post('/orderProccess', data)
-                    .then((res) => {
-                        // Handle backend response
-                        console.log('Payment details saved:', res.data)
-
-                        setSnackbarMessage('Payment Updated')
-                        setSnackbarOpen(true)
-
-                        // Redirect to /wallet after 2 seconds
-                        setTimeout(() => {
-                            navigate('/wallet')
-                        }, 1000)
-                    })
-                    .catch((err) => {
-                        console.error('Error saving payment details:', err)
-                    })
-            },
-
-            theme: {
-                color: '#3399cc',
-            },
-        }
-
-        const rzp1 = new window.Razorpay(options)
-        rzp1.open()
-    }
 
     const handleSnackbarClose = () => {
         setSnackbarOpen(false)
@@ -93,7 +34,7 @@ function Addmoney() {
         <Grow in={true}>
             <div className="layout-container">
                 <div className="top-menu">
-                    <Topmenu menu="ADD MONEY" />
+                    <Topmenu menu="WITHDRAW MONEY" />
                 </div>
                 <div className="content">
                     <Grid container justifyContent="center" spacing={2}>
@@ -156,9 +97,8 @@ function Addmoney() {
                                 sx={{ mt: 2, ...theme.buttons.gradient }}
                                 size="large"
                                 startIcon={<AddCardIcon />}
-                                onClick={handlePayment}
                             >
-                                Add Money
+                                Withdraw Money
                             </Button>
                         </Grid>
                     </Grid>
@@ -189,4 +129,4 @@ function Addmoney() {
     )
 }
 
-export default Addmoney
+export default Withdrawmoney

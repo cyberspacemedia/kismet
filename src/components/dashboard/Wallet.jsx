@@ -312,6 +312,9 @@ function Wallet() {
                                                 borderRadius: '50px',
                                                 padding: 2,
                                             }}
+                                            onClick={() => {
+                                                navigate('/withdrawmoney')
+                                            }}
                                         >
                                             Withdraw
                                         </Button>
