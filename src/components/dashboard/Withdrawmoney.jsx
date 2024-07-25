@@ -11,6 +11,11 @@ import {
     Snackbar,
     Alert,
     Grow,
+    RadioGroup,
+    FormControlLabel,
+    Radio,
+    FormControl,
+    FormLabel,
 } from '@mui/material'
 import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
@@ -22,6 +27,11 @@ import { useNavigate } from 'react-router-dom'
 function Withdrawmoney() {
     const { userId } = useContext(UserContext)
     const [amount, setAmount] = useState('')
+    const [paymentMethod, setPaymentMethod] = useState('upi')
+    const [upiId, setUpiId] = useState('')
+    const [bankName, setBankName] = useState('')
+    const [accountNumber, setAccountNumber] = useState('')
+    const [ifscCode, setIfscCode] = useState('')
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
     const navigate = useNavigate()
@@ -68,6 +78,87 @@ function Withdrawmoney() {
                                                 setAmount(e.target.value)
                                             }
                                         />
+                                        <FormControl component="fieldset">
+                                            <FormLabel component="legend">
+                                                Select Payment Method
+                                            </FormLabel>
+                                            <RadioGroup
+                                                aria-label="payment-method"
+                                                name="payment-method"
+                                                value={paymentMethod}
+                                                onChange={(e) =>
+                                                    setPaymentMethod(
+                                                        e.target.value
+                                                    )
+                                                }
+                                            >
+                                                <FormControlLabel
+                                                    value="upi"
+                                                    control={<Radio />}
+                                                    label="UPI/Wallet"
+                                                />
+                                                <FormControlLabel
+                                                    value="bank"
+                                                    control={<Radio />}
+                                                    label="Bank Transfer"
+                                                />
+                                            </RadioGroup>
+                                        </FormControl>
+                                        {paymentMethod === 'upi' ? (
+                                            <TextField
+                                                label="UPI ID"
+                                                variant="outlined"
+                                                placeholder="Enter your UPI ID"
+                                                size="small"
+                                                fullWidth
+                                                value={upiId}
+                                                onChange={(e) =>
+                                                    setUpiId(e.target.value)
+                                                }
+                                            />
+                                        ) : (
+                                            <>
+                                                <TextField
+                                                    label="Bank Name"
+                                                    variant="outlined"
+                                                    placeholder="Enter your Bank Name"
+                                                    size="small"
+                                                    fullWidth
+                                                    value={bankName}
+                                                    onChange={(e) =>
+                                                        setBankName(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                                <TextField
+                                                    label="Account Number"
+                                                    variant="outlined"
+                                                    placeholder="Enter your Account Number"
+                                                    size="small"
+                                                    fullWidth
+                                                    value={accountNumber}
+                                                    onChange={(e) =>
+                                                        setAccountNumber(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                                <TextField
+                                                    label="IFSC Code"
+                                                    variant="outlined"
+                                                    placeholder="Enter your IFSC Code"
+                                                    size="small"
+                                                    fullWidth
+                                                    value={ifscCode}
+                                                    onChange={(e) =>
+                                                        setIfscCode(
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                />
+                                            </>
+                                        )}
                                         <Chip
                                             label="100% secure Payment"
                                             color="secondary"
@@ -75,17 +166,6 @@ function Withdrawmoney() {
                                     </Box>
                                 </CardContent>
                             </Card>
-                        </Grid>
-                        <Grid
-                            item
-                            xs={10}
-                            sx={{ padding: 2, mt: 2, textAlign: 'center' }}
-                        >
-                            <img
-                                src={`./StaticAssets/Images/secure.png`}
-                                alt="Secure"
-                                style={{ width: '100px', height: '100px' }}
-                            />
                         </Grid>
                         <Grid
                             item
