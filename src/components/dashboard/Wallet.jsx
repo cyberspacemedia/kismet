@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Paper, Grid, Typography, Chip, Button, Grow } from '@mui/material'
+import { Paper, Grid, Typography, Chip, Button, Grow, Box } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import AddCardIcon from '@mui/icons-material/AddCard'
 import RedeemIcon from '@mui/icons-material/Redeem'
@@ -218,6 +218,24 @@ function Wallet() {
                                         </Grid>
                                     </Grid>
                                 </Paper>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        size="small"
+                                        sx={{
+                                            borderRadius: '50px',
+                                            mt: 2,
+                                        }}
+                                    >
+                                        Convert
+                                    </Button>
+                                </Box>
                             </Grid>
                             <Grid item xs={4}>
                                 <Paper
@@ -275,6 +293,24 @@ function Wallet() {
                                         </Grid>
                                     </Grid>
                                 </Paper>
+                                <Box
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                    }}
+                                >
+                                    <Button
+                                        variant="contained"
+                                        color="success"
+                                        size="small"
+                                        sx={{
+                                            borderRadius: '50px',
+                                            mt: 2,
+                                        }}
+                                    >
+                                        Convert
+                                    </Button>
+                                </Box>  
                             </Grid>
                             <Grid item sx={{ width: '90%' }}>
                                 <Grid
