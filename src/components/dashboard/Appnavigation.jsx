@@ -22,6 +22,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import PasswordIcon from '@mui/icons-material/Password'
 import LeaderboardIcon from '@mui/icons-material/Leaderboard'
 import BadgeIcon from '@mui/icons-material/Badge'
+import Badge from '@mui/material/Badge'
 import WalletIcon from '@mui/icons-material/Wallet'
 import EditIcon from '@mui/icons-material/Edit'
 import AccountBoxIcon from '@mui/icons-material/AccountBox'
@@ -34,6 +35,7 @@ const AppNavigation = () => {
     const { userId } = useContext(UserContext)
     const [profile, setProfile] = useState([])
     const [totalBalance, setTotalBalance] = useState(0)
+    const [notifcationCount, setNotifcationCount] = useState(0)
 
     const navigate = useNavigate()
 
@@ -54,15 +56,29 @@ const AppNavigation = () => {
         const fetchbalance = async () => {
             try {
                 const balance = await apiClient.post('/getbalance', data)
-                console.log(balance.data.data)
+                //  console.log(balance.data.data)
                 setTotalBalance(balance.data.data.deposit)
             } catch (error) {
                 console.error('API Error', error)
             }
         }
 
+        const fetchnotification = async () => {
+            try {
+                const notification = await apiClient.post(
+                    '/getNotificationCount',
+                    data
+                )
+                console.log(notification.data.data.count)
+                setNotifcationCount(notification.data.data.count)
+            } catch (error) {
+                console.error('API Error Fetch Notification', error)
+            }
+        }
+
         fetchdata()
         fetchbalance()
+        fetchnotification()
     }, [userId])
 
     const handlelogout = () => {
@@ -184,7 +200,9 @@ const AppNavigation = () => {
                             navigate('/Appnotification')
                         }}
                     >
-                        <NotificationsIcon sx={{ fontSize: '20px' }} />{' '}
+                        <Badge badgeContent={notifcationCount} color="error">
+                            <NotificationsIcon sx={{ fontSize: '20px' }} />
+                        </Badge>
                     </IconButton>
                     {/* Notification Icon */}
                 </Toolbar>
