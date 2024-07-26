@@ -354,16 +354,29 @@ function Withdrawmoney() {
                         <Grid
                             item
                             xs={10}
-                            sx={{ padding: 2, textAlign: 'center' }}
+                            sx={{ padding: 0, textAlign: 'center' }}
                         >
                             <Button
                                 variant="contained"
-                                sx={{ mt: 2, ...theme.buttons.gradient }}
-                                size="large"
+                                sx={{
+                                    mt: 2,
+                                    width: '130px',
+                                    ...theme.buttons.gradient,
+                                }}
+                                size="small"
                                 startIcon={<AddCardIcon />}
                                 onClick={handleWithdraw}
                             >
-                                Withdraw Money
+                                Withdraw
+                            </Button>{' '}
+                            <Button
+                                variant="contained"
+                                sx={{ mt: 2, ...theme.buttons.gradient }}
+                                size="small"
+                                startIcon={<AddCardIcon />}
+                                onClick={handleWithdraw}
+                            >
+                                HISTORY
                             </Button>
                         </Grid>
                     </Grid>

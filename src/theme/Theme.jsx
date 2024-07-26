@@ -173,6 +173,13 @@ const theme = createTheme({
             borderRadius: '8px',
             padding: '10px 20px',
         },
+        gradientS: {
+            backgroundImage:
+                'linear-gradient(79deg, rgba(161,0,84,1) 0%, rgba(166,29,219,1) 100%)',
+            color: '#fff',
+            borderRadius: '8px',
+            padding: '10px 20px',
+        },
         squarenumberbutton: {
             color: '#fff',
             fontSize: '1.2rem',

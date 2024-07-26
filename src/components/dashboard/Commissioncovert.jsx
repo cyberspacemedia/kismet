@@ -66,6 +66,15 @@ function Commissionconvert() {
                 <div className="content">
                     <Grid container justifyContent="center" spacing={2}>
                         <Grid item xs={10}>
+                            <Chip
+                                label={`Total Commission:  ₹${referral}`}
+                                color="success"
+                                sx={{
+                                    fontSize: '0.85em',
+                                    mb: 1,
+                                    width: '100%',
+                                }}
+                            />
                             <Card
                                 sx={{
                                     textAlign: 'center',
@@ -98,46 +107,31 @@ function Commissionconvert() {
                             </Card>
                         </Grid>
 
-                        <Grid
-                            item
-                            xs={10}
-                            sx={{ padding: 2, textAlign: 'center' }}
-                        >
-                            <Chip
-                                label={`Total Commission:  ₹${referral}`}
-                                color="success"
-                                sx={{
-                                    fontSize: '0.85em',
-                                    m: 1,
-                                    p: 1,
-                                    width: '100%',
-                                }}
-                            />
+                        <Grid item xs={10} sx={{ textAlign: 'center' }}>
                             <Button
                                 variant="contained"
-                                sx={{ mt: 2, ...theme.buttons.gradient }}
-                                size="large"
+                                sx={{
+                                    m: '5px',
+                                    fontWeight: 'bold',
+                                    ...theme.buttons.gradient,
+                                }}
+                                size="small"
                                 startIcon={<AddCardIcon />}
                                 onClick={convertnow}
                             >
-                                CONVERT NOW
+                                CONVERT
                             </Button>
-                        </Grid>
-                        <Grid
-                            item
-                            xs={10}
-                            sx={{ padding: 2, textAlign: 'center' }}
-                        >
+
                             <Button
                                 variant="contained"
-                                sx={{ mt: 2, ...theme.buttons.gradient }}
-                                size="large"
+                                sx={{ m: '5px', ...theme.buttons.gradient }}
+                                size="small"
                                 startIcon={<ListAltIcon />}
                                 onClick={() => {
                                     navigate('/commissionhistory')
                                 }}
                             >
-                                COMMISSION HISTORY
+                                HISTORY
                             </Button>
                         </Grid>
                     </Grid>
