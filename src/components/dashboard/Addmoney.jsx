@@ -163,7 +163,9 @@ function Addmoney() {
                         </Grid>
                     </Grid>
                 </div>
-                <BottomMenu />
+                <div className="bottom-menu">
+                    <BottomMenu />
+                </div>
                 <Snackbar
                     open={snackbarOpen}
                     autoHideDuration={2000}

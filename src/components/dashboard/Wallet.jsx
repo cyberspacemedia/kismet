@@ -218,24 +218,35 @@ function Wallet() {
                                         </Grid>
                                     </Grid>
                                 </Paper>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <Button
-                                        variant="contained"
-                                        color="success"
-                                        size="small"
+
+                                {wallet.wining > 0 ? (
+                                    <Box
                                         sx={{
-                                            borderRadius: '50px',
-                                            mt: 2,
+                                            display: 'flex',
+                                            justifyContent: 'center',
                                         }}
                                     >
-                                        Convert
-                                    </Button>
-                                </Box>
+                                        <Button
+                                            variant="contained"
+                                            color="success"
+                                            size="small"
+                                            sx={{
+                                                borderRadius: '50px',
+                                                mt: 2,
+                                            }}
+                                            onClick={() => {
+                                                navigate('/commissionconvert', {
+                                                    state: {
+                                                        referral:
+                                                            wallet.referral,
+                                                    },
+                                                })
+                                            }}
+                                        >
+                                            Convert
+                                        </Button>
+                                    </Box>
+                                ) : null}
                             </Grid>
                             <Grid item xs={4}>
                                 <Paper
@@ -293,24 +304,34 @@ function Wallet() {
                                         </Grid>
                                     </Grid>
                                 </Paper>
-                                <Box
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                    }}
-                                >
-                                    <Button
-                                        variant="contained"
-                                        color="success"
-                                        size="small"
+                                {wallet.referral > 0 ? (
+                                    <Box
                                         sx={{
-                                            borderRadius: '50px',
-                                            mt: 2,
+                                            display: 'flex',
+                                            justifyContent: 'center',
                                         }}
                                     >
-                                        Convert
-                                    </Button>
-                                </Box>  
+                                        <Button
+                                            variant="contained"
+                                            color="success"
+                                            size="small"
+                                            sx={{
+                                                borderRadius: '50px',
+                                                mt: 2,
+                                            }}
+                                            onClick={() => {
+                                                navigate('/commissionconvert', {
+                                                    state: {
+                                                        referral:
+                                                            wallet.referral,
+                                                    },
+                                                })
+                                            }}
+                                        >
+                                            Convert
+                                        </Button>
+                                    </Box>
+                                ) : null}
                             </Grid>
                             <Grid item sx={{ width: '90%' }}>
                                 <Grid

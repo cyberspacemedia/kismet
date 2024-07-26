@@ -31,6 +31,8 @@ import Appnotification from '../components/dashboard/Appcomp/Notifications'
 import Shareapp from '../components/dashboard/Appcomp/Shareapp'
 import Addmoney from '../components/dashboard/Addmoney'
 import Withdrawmoney from '../components/dashboard/Withdrawmoney'
+import Commissionconvert from '../components/dashboard/Commissioncovert'
+import Commisionhistory from '../components/Commisionhistory'
 
 function Approutes() {
     const isLoggedIn = false // Set it based on your authentication state
@@ -65,6 +67,8 @@ function Approutes() {
             <Route path="/wallet" element={<Wallet />} />
             <Route path="/addmoney" element={<Addmoney />} />
             <Route path="/withdrawmoney" element={<Withdrawmoney />} />
+            <Route path="/commissionconvert" element={<Commissionconvert />} />
+            <Route path="/commissionhistory" element={<Commisionhistory />} />
             <Route path="/charts" element={<Chartscomp />} />
             <Route path="/mygame" element={<Mygame />} />
             <Route path="/shareapp" element={<Shareapp />} />
