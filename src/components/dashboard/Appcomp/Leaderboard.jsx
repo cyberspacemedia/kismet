@@ -42,7 +42,7 @@ function Leaderboard() {
                                     margin: 1,
                                     borderRadius: 5,
                                     background:
-                                        'linear-gradient(90deg, rgba(238,208,65,1) 0%, rgba(255,147,0,1) 100%)',
+                                        'linear-gradient(318deg, rgba(151,0,161,1) 0%, rgba(106,0,186,1) 100%)',
                                 }}
                             >
                                 <Grid container spacing={1}>
@@ -52,7 +52,8 @@ function Leaderboard() {
                                                 width: 25,
                                                 height: 25,
                                                 borderRadius: '50%',
-                                                background: '#000',
+                                                background:
+                                                    'linear-gradient(184deg, rgba(151,0,161,1) 0%, rgba(106,0,186,1) 100%)',
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center',
@@ -70,7 +71,13 @@ function Leaderboard() {
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={3}>
-                                        <Typography variant="subtitle2">
+                                        <Typography
+                                            variant="subtitle2"
+                                            sx={{
+                                                fontSize: '0.9rem',
+                                                fontWeight: 'bold',
+                                            }}
+                                        >
                                             <span
                                                 style={{
                                                     fontSize: '1em',
