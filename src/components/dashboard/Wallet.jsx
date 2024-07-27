@@ -331,7 +331,34 @@ function Wallet() {
                                             Convert
                                         </Button>
                                     </Box>
-                                ) : null}
+                                ) : (
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <Button
+                                            variant="contained"
+                                            color="success"
+                                            size="small"
+                                            sx={{
+                                                borderRadius: '50px',
+                                                mt: 2,
+                                            }}
+                                            onClick={() => {
+                                                navigate('/commissionhistory', {
+                                                    state: {
+                                                        referral:
+                                                            wallet.referral,
+                                                    },
+                                                })
+                                            }}
+                                        >
+                                            History
+                                        </Button>
+                                    </Box>
+                                )}
                             </Grid>
                             <Grid item sx={{ width: '90%' }}>
                                 <Grid
