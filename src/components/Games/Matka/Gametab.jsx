@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import Jodigame from './Jodigame'
 import Crossinggame from './Crossinggame'
+import Haruf from './Haruf'
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props
@@ -94,7 +95,7 @@ export default function Gametab({ gameName, gameId }) {
                 />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                Haruf Coming Soon
+                <Haruf gameName={gameName} gameId={gameId} gameType="Haruf" />
             </CustomTabPanel>
         </Box>
     )
