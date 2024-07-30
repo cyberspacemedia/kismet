@@ -1,11 +1,22 @@
-import React from 'react'
-import Topmenu from './Appcomp/Topmenu'
-import BottomMenu from './Appcomp/Bottommenu'
-import { Box, Chip, Grid, Icon, Typography } from '@mui/material'
-function CustomGridItem({ icon, status, amount, datetime, txnId }) {
+import React, { useContext, useEffect } from "react";
+import { Box, Chip, Grid, Typography } from "@mui/material";
+import PaymentIcon from "@mui/icons-material/Payment";
+import BottomMenu from "./Appcomp/Bottommenu";
+import Topmenu from "./Appcomp/Topmenu";
+import { apiClient } from "../config/Config";
+import UserContext from "../UserContext";
+
+function CustomGridItem({ status, amount, datetime, txnId }) {
     return (
         <Box
-            sx={{ p: 2, border: '1px solid #ccc', borderRadius: '5px', mb: 2 }}
+            sx={{
+                p: 1,
+                border: "0.1px solid #ccc",
+                borderRadius: "15px",
+                mb: 1,
+                background:
+                    "linear-gradient(0deg, rgba(207,0,231,1) 0%, rgba(128,0,209,1) 100%)",
+            }}
         >
             <Grid
                 container
@@ -15,7 +26,9 @@ function CustomGridItem({ icon, status, amount, datetime, txnId }) {
             >
                 <Grid item>
                     <Box display="flex" alignItems="center">
-                        <Icon>{icon}</Icon>
+                        <PaymentIcon
+                            sx={{ color: "yellow", fontSize: 40 }} // Increased fontSize to make it more noticeable
+                        />
                     </Box>
                 </Grid>
                 <Grid item xs>
@@ -24,11 +37,14 @@ function CustomGridItem({ icon, status, amount, datetime, txnId }) {
                         flexDirection="column"
                         alignItems="center"
                     >
-                        <Typography variant="body1">{status}</Typography>
+                        <Typography variant="subtitle2">
+                            Status: {status}
+                        </Typography>
                         <Chip
-                            label={`Txn ID: ${txnId}`}
+                            label={`${txnId}`}
+                            size="small"
                             color="primary"
-                            sx={{ mt: 1 }}
+                            sx={{ mt: 1, fontSize: "0.5em" }}
                         />
                     </Box>
                 </Grid>
@@ -38,15 +54,33 @@ function CustomGridItem({ icon, status, amount, datetime, txnId }) {
                         flexDirection="column"
                         alignItems="flex-end"
                     >
-                        <Typography variant="body2">{amount}</Typography>
+                        <Typography variant="body1">{amount}</Typography>
                         <Typography variant="body2">{datetime}</Typography>
                     </Box>
                 </Grid>
             </Grid>
         </Box>
-    )
+    );
 }
+
 export default function Accounthistory() {
+    const { userId } = useContext(UserContext);
+    useEffect(() => {
+        const data = { userId };
+        const fetchtransactions = async () => {
+            try {
+                const response = await apiClient.post(
+                    "/getAllTransaction",
+                    data
+                );
+                console.log(response.data);
+            } catch (error) {
+                console.error("API Error Fetch All Transaction", error);
+            }
+        };
+        fetchtransactions();
+    }, [userId]);
+
     return (
         <div className="layout-container">
             <div className="top-menu">
@@ -69,5 +103,5 @@ export default function Accounthistory() {
                 <BottomMenu />
             </div>
         </div>
-    )
+    );
 }
