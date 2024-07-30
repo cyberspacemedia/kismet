@@ -57,7 +57,6 @@ export default function Accounthistory() {
                 <Grid container direction="column" justifyContent="center">
                     <Grid item>
                         <CustomGridItem
-                           
                             status="Completed"
                             amount="$120"
                             datetime="2024-07-25 14:35"
