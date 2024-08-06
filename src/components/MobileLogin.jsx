@@ -7,6 +7,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
+import PasswordIcon from '@mui/icons-material/Password'
 import Typography from '@mui/material/Typography'
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid'
 import { Alert } from '@mui/material'
@@ -15,7 +16,7 @@ import { apiClient } from './config/Config'
 function MobileLogin() {
     const navigate = useNavigate()
     const [phone, setPhone] = useState('')
-
+    const [referral, setReferral] = useState('')
     const [severity, setSeverity] = useState('')
     const [message, setMessage] = useState('')
 
@@ -23,7 +24,6 @@ function MobileLogin() {
         const sanitizedPhone = phone.replace(/\D/g, '')
         if (sanitizedPhone.length !== 10) {
             setSeverity('error')
-
             setMessage('Phone number must be exactly 10 digits.')
             return
         }
@@ -32,6 +32,7 @@ function MobileLogin() {
 
         const data = {
             phone: formattedPhone,
+            referralCode: referral,
         }
         try {
             const response = await apiClient.post('/sendotp', data)
@@ -94,7 +95,7 @@ function MobileLogin() {
                         <img
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"
-                            style={{ height: '100px' }}
+                            style={{ height: '80px' }}
                         />
                     </Grid>
                     <Grid item sx={{ width: '80%', margin: 'auto', mt: 5 }}>
@@ -107,10 +108,11 @@ function MobileLogin() {
                         <hr style={{ marginBottom: '20px' }} />
                         <form>
                             <TextField
+                                className="primaryTextField"
                                 id="phone"
                                 size="large"
                                 variant="filled"
-                                label="Enter Phone Number"
+                                label="Mobile Number"
                                 color="secondary"
                                 type="tel"
                                 fullWidth
@@ -119,18 +121,6 @@ function MobileLogin() {
                                     setPhone(e.target.value)
                                 }}
                                 autoComplete="off"
-                                sx={{
-                                    margin: '0 0 20px', // Add margin bottom for spacing
-                                    '& .MuiFilledInput-root': {
-                                        backgroundColor:
-                                            'rgba(211, 211, 211, 0.1)', // Light gray transparent background
-                                    },
-                                    '& .MuiInputBase-input': {
-                                        color: '#fffff', // Font color
-                                        fontSize: '1rem', // Font size
-                                        textAlign: 'center',
-                                    },
-                                }}
                                 InputProps={{
                                     // Change position to "end"
                                     endAdornment: (
@@ -142,7 +132,32 @@ function MobileLogin() {
                                     ),
                                 }}
                             />
-
+                            <TextField
+                                className="primaryTextField"
+                                id="referralCode"
+                                name="referralCode"
+                                size="large"
+                                variant="filled"
+                                label="Referral Code"
+                                color="secondary"
+                                fullWidth
+                                type="text"
+                                autoComplete="off"
+                                value={referral}
+                                onChange={(e) => {
+                                    setReferral(e.target.value)
+                                }}
+                                InputProps={{
+                                    // Change position to "end"
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <PasswordIcon
+                                                sx={{ color: '#ffffff' }}
+                                            />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
                             <Button
                                 variant="contained"
                                 sx={{ mt: 2, ...theme.buttons.gradient }}

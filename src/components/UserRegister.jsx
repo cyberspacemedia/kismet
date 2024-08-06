@@ -21,6 +21,7 @@ function UserRegister() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [referral, setReferral] = useState('')
     const [checkboxChecked, setCheckboxChecked] = useState(false)
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
@@ -32,6 +33,7 @@ function UserRegister() {
         email,
         password,
         registration_type: 1, // For Email Type Registeration
+        referralCode: referral,
     }
 
     const handleNameChange = (event) => {
@@ -44,6 +46,9 @@ function UserRegister() {
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
+    }
+    const handlereferralChange = (event) => {
+        setReferral(event.target.value)
     }
 
     const handleCheckboxChange = (event) => {
@@ -61,10 +66,8 @@ function UserRegister() {
             setSnackbarOpen(true)
         } else {
             // Proceed with registration
-
-            // Your registration logic goes here
             try {
-                // console.log(formData);
+                console.log(formData)
                 const response = await apiClient.post(
                     'registerUserEmail',
                     formData
@@ -122,7 +125,7 @@ function UserRegister() {
                 textAlign="center"
                 sx={{
                     backgroundColor: '#000000',
-                    height: '100vh',
+                    height: '110vh',
                     backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
                     backgroundPosition: 'center',
                 }}
@@ -228,8 +231,8 @@ function UserRegister() {
                                 fullWidth
                                 type="text"
                                 autoComplete="off"
-                                value={password}
-                                onChange={handlePasswordChange}
+                                value={referral}
+                                onChange={handlereferralChange}
                                 InputProps={{
                                     // Change position to "end"
                                     endAdornment: (
@@ -256,15 +259,27 @@ function UserRegister() {
                                 <a href="/">privacy policy</a> and{' '}
                                 <a href="/">conditions</a>.
                             </Typography>
-                            <Button
-                                variant="contained"
-                                sx={{ mt: 2, ...theme.buttons.gradient }}
-                                size="large"
-                                type="submit"
+
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 1,
+                                    mt: 2,
+                                }}
                             >
-                                Register Now
-                            </Button>{' '}
-                            or <Link to="/login">Login Now</Link>
+                                <Button
+                                    variant="contained"
+                                    sx={{ ...theme.buttons.gradient }}
+                                    size="small"
+                                    type="submit"
+                                >
+                                    Register Now
+                                </Button>
+                                <Typography variant="subtitle2">
+                                    or <Link to="/login">Login Now</Link>
+                                </Typography>
+                            </Box>
                         </form>
                     </Grid>
                 </Box>
