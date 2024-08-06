@@ -12,10 +12,6 @@ const theme = createTheme({
         text: {
             primary: '#ffff', // Set default text color to white
         },
-        background: {
-            default: '#0000', // Set default background color to black
-            paper: '#ffff', // Set paper component background color to black
-        },
     },
 
     typography: {
@@ -160,12 +156,10 @@ const theme = createTheme({
                     '&.topbar': {
                         backgroundColor: '#47188f',
                         textAlign: 'center',
-                        padding: '3px 0',
+                        padding: '5px 0',
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        borderBottomLeftRadius: '1em',
-                        borderBottomRightRadius: '1em',
                         position: 'fixed',
                         top: 0,
                         left: 0,

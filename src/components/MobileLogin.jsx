@@ -88,6 +88,8 @@ function MobileLogin() {
                     height: '100vh',
                     backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
                     backgroundPosition: 'center',
+                    backgroundSize: 'cover', // Ensures the background image covers the entire container
+                    backgroundRepeat: 'no-repeat', // Prevents the background image from repeating
                 }}
             >
                 <Box xs={12} sm={4} md={4} lg={4}>
