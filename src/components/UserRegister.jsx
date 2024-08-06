@@ -1,63 +1,64 @@
-import React, { useState } from "react";
-import theme from "../theme/Theme";
-import { apiClient } from "./config/Config";
-import { Link, useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Checkbox from "@mui/material/Checkbox";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import EmailIcon from "@mui/icons-material/Email";
-import PasswordIcon from "@mui/icons-material/Password";
-import Typography from "@mui/material/Typography";
-import Snackbar from "@mui/material/Snackbar";
-import { CircularProgress, SnackbarContent } from "@mui/material";
+import React, { useState } from 'react'
+import theme from '../theme/Theme'
+import { apiClient } from './config/Config'
+import { Link, useNavigate } from 'react-router-dom'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Checkbox from '@mui/material/Checkbox'
+import InputAdornment from '@mui/material/InputAdornment'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import EmailIcon from '@mui/icons-material/Email'
+import PasswordIcon from '@mui/icons-material/Password'
+import Typography from '@mui/material/Typography'
+import Snackbar from '@mui/material/Snackbar'
+import { SnackbarContent } from '@mui/material'
+import AppLoader from './Loaders/AppLoader'
 
 function UserRegister() {
-    const navigate = useNavigate();
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [checkboxChecked, setCheckboxChecked] = useState(false);
-    const [snackbarOpen, setSnackbarOpen] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState("");
+    const navigate = useNavigate()
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [checkboxChecked, setCheckboxChecked] = useState(false)
+    const [snackbarOpen, setSnackbarOpen] = useState(false)
+    const [snackbarMessage, setSnackbarMessage] = useState('')
 
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState(false)
 
     const formData = {
         name,
         email,
         password,
         registration_type: 1, // For Email Type Registeration
-    };
+    }
 
     const handleNameChange = (event) => {
-        setName(event.target.value);
-    };
+        setName(event.target.value)
+    }
 
     const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
+        setEmail(event.target.value)
+    }
 
     const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
+        setPassword(event.target.value)
+    }
 
     const handleCheckboxChange = (event) => {
-        setCheckboxChecked(event.target.checked);
-    };
+        setCheckboxChecked(event.target.checked)
+    }
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
+        event.preventDefault()
         // Validation logic
         if (!name || !email || !password || !checkboxChecked) {
-            setSnackbarMessage("All fields are required.");
-            setSnackbarOpen(true);
+            setSnackbarMessage('All fields are required.')
+            setSnackbarOpen(true)
         } else if (!validateEmail(email)) {
-            setSnackbarMessage("Invalid email address.");
-            setSnackbarOpen(true);
+            setSnackbarMessage('Invalid email address.')
+            setSnackbarOpen(true)
         } else {
             // Proceed with registration
 
@@ -65,73 +66,65 @@ function UserRegister() {
             try {
                 // console.log(formData);
                 const response = await apiClient.post(
-                    "registerUserEmail",
+                    'registerUserEmail',
                     formData
-                );
-                console.log(response.data);
-                setSuccess(response.data.success);
+                )
+                console.log(response.data)
+                setSuccess(response.data.success)
+                setSnackbarOpen(true)
+                setSnackbarMessage(response.data.message)
 
                 if (response.data.success === true) {
                     setTimeout(() => {
-                        navigate("/login");
-                    }, 2000);
+                        navigate('/login')
+                    }, 2000)
                 } else {
-                    setSnackbarMessage(response.data.message);
-                    setSnackbarOpen(true);
+                    setSnackbarMessage(response.data.message)
+                    setSnackbarOpen(true)
                 }
             } catch (error) {
-                console.error(error);
+                console.error(error)
                 if (error.response) {
                     // The request was made and the server responded with a status code
                     // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
+                    console.log(error.response.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
                 } else if (error.request) {
                     // The request was made but no response was received
-                    console.log(error.request);
+                    console.log(error.request)
                     // You can set a state variable to display a generic error message
                 } else {
                     // Something happened in setting up the request that triggered an Error
-                    console.log("Error", error.message);
+                    console.log('Error', error.message)
                 }
             }
         }
-    };
+    }
 
     const handleCloseSnackbar = () => {
-        setSnackbarOpen(false);
-    };
+        setSnackbarOpen(false)
+    }
 
     const validateEmail = (email) => {
         // Simple email validation regex
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(email);
-    };
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return regex.test(email)
+    }
 
     return (
         <>
-            {success && (
-                <Box
-                    sx={{
-                        position: "absolute",
-                        top: "2%",
-                        right: "5%",
-                    }}
-                >
-                    <CircularProgress color="info" />
-                </Box>
-            )}
+            {success && <AppLoader />}
             <Grid
                 container
-                direction={"column"}
+                direction={'column'}
                 display="flex"
                 textAlign="center"
                 sx={{
-                    backgroundColor: "black",
-                    height: "120vh",
+                    backgroundColor: '#000000',
+                    height: '100vh',
                     backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
-                    backgroundPosition: "center",
+                    backgroundPosition: 'center',
                 }}
             >
                 <Box xs={12} sm={4} md={4} lg={4}>
@@ -139,17 +132,18 @@ function UserRegister() {
                         <img
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"
-                            style={{ height: "100px" }}
+                            style={{ height: '80px' }}
                         />
                     </Grid>
 
-                    <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
-                        <Typography variant="body1">Register & Play</Typography>
+                    <Grid item sx={{ width: '80%', margin: 'auto', mt: 5 }}>
+                        <Typography variant="h5">Register & Play</Typography>
 
                         <hr />
 
                         <form onSubmit={handleSubmit}>
                             <TextField
+                                className="primaryTextField"
                                 id="Name"
                                 name="name"
                                 size="large"
@@ -162,30 +156,19 @@ function UserRegister() {
                                 autoFocus
                                 value={name}
                                 onChange={handleNameChange}
-                                sx={{
-                                    margin: "0 0 10px", // Add margin bottom for spacing
-                                    "& .MuiFilledInput-root": {
-                                        backgroundColor:
-                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                    },
-                                    "& .MuiInputBase-input": {
-                                        color: "#fffff", // Font color
-                                        fontSize: "1rem", // Font size
-                                        textAlign: "center",
-                                    },
-                                }}
                                 InputProps={{
                                     // Change position to "end"
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <AccountCircle
-                                                sx={{ color: "#ffffff" }}
+                                                sx={{ color: '#ffffff' }}
                                             />
                                         </InputAdornment>
                                     ),
                                 }}
                             />
                             <TextField
+                                className="primaryTextField"
                                 id="email"
                                 name="email"
                                 size="large"
@@ -198,30 +181,19 @@ function UserRegister() {
                                 autoComplete="off"
                                 value={email}
                                 onChange={handleEmailChange}
-                                sx={{
-                                    margin: "0 0 20px", // Add margin bottom for spacing
-                                    "& .MuiFilledInput-root": {
-                                        backgroundColor:
-                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                    },
-                                    "& .MuiInputBase-input": {
-                                        color: "#fffff", // Font color
-                                        fontSize: "1rem", // Font size
-                                        textAlign: "center",
-                                    },
-                                }}
                                 InputProps={{
                                     // Change position to "end"
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <EmailIcon
-                                                sx={{ color: "#ffffff" }}
+                                                sx={{ color: '#ffffff' }}
                                             />
                                         </InputAdornment>
                                     ),
                                 }}
                             />
                             <TextField
+                                className="primaryTextField"
                                 id="password"
                                 name="password"
                                 size="large"
@@ -234,24 +206,36 @@ function UserRegister() {
                                 autoComplete="off"
                                 value={password}
                                 onChange={handlePasswordChange}
-                                sx={{
-                                    margin: "0 0 20px", // Add margin bottom for spacing
-                                    "& .MuiFilledInput-root": {
-                                        backgroundColor:
-                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
-                                    },
-                                    "& .MuiInputBase-input": {
-                                        color: "#fffff", // Font color
-                                        fontSize: "1rem", // Font size
-                                        textAlign: "center",
-                                    },
-                                }}
                                 InputProps={{
                                     // Change position to "end"
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <PasswordIcon
-                                                sx={{ color: "#ffffff" }}
+                                                sx={{ color: '#ffffff' }}
+                                            />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                            <TextField
+                                className="primaryTextField"
+                                id="referralCode"
+                                name="referralCode"
+                                size="large"
+                                variant="filled"
+                                label="Referral Code"
+                                color="secondary"
+                                fullWidth
+                                type="text"
+                                autoComplete="off"
+                                value={password}
+                                onChange={handlePasswordChange}
+                                InputProps={{
+                                    // Change position to "end"
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <PasswordIcon
+                                                sx={{ color: '#ffffff' }}
                                             />
                                         </InputAdornment>
                                     ),
@@ -262,14 +246,14 @@ function UserRegister() {
                                     checked={checkboxChecked}
                                     onChange={handleCheckboxChange}
                                     sx={{
-                                        "& .MuiSvgIcon-root": {
+                                        '& .MuiSvgIcon-root': {
                                             fontSize: 28,
-                                            color: "#ffffff",
+                                            color: '#ffffff',
                                         },
                                     }}
                                 />
-                                By Signing up you will agree to our{" "}
-                                <a href="/">privacy policy</a> and{" "}
+                                By Signing up you will agree to our{' '}
+                                <a href="/">privacy policy</a> and{' '}
                                 <a href="/">conditions</a>.
                             </Typography>
                             <Button
@@ -279,7 +263,7 @@ function UserRegister() {
                                 type="submit"
                             >
                                 Register Now
-                            </Button>{" "}
+                            </Button>{' '}
                             or <Link to="/login">Login Now</Link>
                         </form>
                     </Grid>
@@ -289,18 +273,19 @@ function UserRegister() {
                 open={snackbarOpen}
                 autoHideDuration={2000}
                 onClose={handleCloseSnackbar}
-                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
                 <SnackbarContent
                     style={{
-                        backgroundColor: "orange",
-                        color: "white",
+                        background:
+                            'linear-gradient(79deg, rgba(161,0,84,1) 0%, rgba(155,2,168,1) 100%)',
+                        color: '#ffffff',
                     }}
                     message={snackbarMessage}
                 />
             </Snackbar>
         </>
-    );
+    )
 }
 
-export default UserRegister;
+export default UserRegister

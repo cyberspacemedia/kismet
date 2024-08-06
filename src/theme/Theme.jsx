@@ -13,7 +13,7 @@ const theme = createTheme({
             primary: '#ffff', // Set default text color to white
         },
         background: {
-            default: 'black', // Set default background color to black
+            default: '#0000', // Set default background color to black
             paper: '#ffff', // Set paper component background color to black
         },
     },
@@ -122,6 +122,35 @@ const theme = createTheme({
                 primary: {
                     color: 'white',
                     fontSize: '1rem',
+                },
+            },
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    '&.primaryTextField': {
+                        margin: '0 0 5px',
+
+                        '& .MuiFilledInput-root': {
+                            backgroundColor: 'rgba(211, 211, 211, 0.1)', // Light gray transparent background
+                            borderRadius: '5px',
+                            padding: '0', // Remove padding to control height
+                            height: 'auto', // Allow height to adjust automatically
+                        },
+                        '& .MuiInputBase-input': {
+                            color: '#ffffff', // Font color
+                            fontSize: '0.8rem', // Font size
+                            textAlign: 'center',
+                            padding: '8px', // Adjust padding to control height
+                            height: '1.5rem', // Set the height to match the font size
+                            lineHeight: '1.5rem', // Ensure the line-height matches the font size
+                        },
+                        '& .MuiInputLabel-root': {
+                            color: '#ffff',
+                            fontSize: '0.8rem',
+                            lineHeight: '1rem', // Ensure the label line-height matches the font size
+                        },
+                    },
                 },
             },
         },

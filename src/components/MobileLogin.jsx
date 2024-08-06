@@ -1,77 +1,77 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import theme from "../theme/Theme";
-import { Link } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import Typography from "@mui/material/Typography";
-import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
-import { Alert } from "@mui/material";
-import { apiClient } from "./config/Config";
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import theme from '../theme/Theme'
+import { Link } from 'react-router-dom'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment'
+import Typography from '@mui/material/Typography'
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid'
+import { Alert } from '@mui/material'
+import { apiClient } from './config/Config'
 
 function MobileLogin() {
-    const navigate = useNavigate();
-    const [phone, setPhone] = useState("");
+    const navigate = useNavigate()
+    const [phone, setPhone] = useState('')
 
-    const [severity, setSeverity] = useState("");
-    const [message, setMessage] = useState("");
+    const [severity, setSeverity] = useState('')
+    const [message, setMessage] = useState('')
 
     const sendOtp = async () => {
-        const sanitizedPhone = phone.replace(/\D/g, "");
+        const sanitizedPhone = phone.replace(/\D/g, '')
         if (sanitizedPhone.length !== 10) {
-            setSeverity("error");
+            setSeverity('error')
 
-            setMessage("Phone number must be exactly 10 digits.");
-            return;
+            setMessage('Phone number must be exactly 10 digits.')
+            return
         }
 
-        const formattedPhone = `+91${sanitizedPhone}`;
+        const formattedPhone = `+91${sanitizedPhone}`
 
         const data = {
             phone: formattedPhone,
-        };
+        }
         try {
-            const response = await apiClient.post("/sendotp", data);
-            console.log(response.data.success);
+            const response = await apiClient.post('/sendotp', data)
+            console.log(response.data.success)
             if (response.data.success === true) {
-                setMessage(response.data.message);
-                setSeverity("success");
+                setMessage(response.data.message)
+                setSeverity('success')
                 setTimeout(() => {
-                    navigate("/otp", { state: { data } });
-                }, 2000);
+                    navigate('/otp', { state: { data } })
+                }, 2000)
             }
         } catch (error) {
-            setSeverity("error");
-            setMessage(error);
+            setSeverity('error')
+            setMessage(error)
         }
-    };
+    }
     useEffect(() => {
         if (severity) {
             const timer = setTimeout(() => {
-                setMessage("");
-                setSeverity("");
-            }, 2000);
+                setMessage('')
+                setSeverity('')
+            }, 2000)
 
-            return () => clearTimeout(timer);
+            return () => clearTimeout(timer)
         }
-    }, [severity]);
+    }, [severity])
     return (
         <>
             {severity && (
                 <Alert
                     severity={severity}
                     variant="filled"
-                    onClose={() => setSeverity("")}
+                    onClose={() => setSeverity('')}
                     sx={{
-                        zIndex: "9999",
-                        position: "absolute",
-                        top: "10px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: "90%",
+                        zIndex: '9999',
+                        position: 'absolute',
+                        top: '10px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '90%',
                     }}
                 >
                     {message}
@@ -79,14 +79,14 @@ function MobileLogin() {
             )}
             <Grid
                 container
-                direction={"column"}
+                direction={'column'}
                 display="flex"
                 textAlign="center"
                 sx={{
-                    backgroundColor: "black",
-                    height: "100vh",
+                    backgroundColor: 'black',
+                    height: '100vh',
                     backgroundImage: `url('./StaticAssets/Images/Background_bg.jpg')`,
-                    backgroundPosition: "center",
+                    backgroundPosition: 'center',
                 }}
             >
                 <Box xs={12} sm={4} md={4} lg={4}>
@@ -94,17 +94,17 @@ function MobileLogin() {
                         <img
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"
-                            style={{ height: "100px" }}
+                            style={{ height: '100px' }}
                         />
                     </Grid>
-                    <Grid item sx={{ width: "80%", margin: "auto", mt: 5 }}>
-                        <Typography variant="h5" sx={{ textAlign: "left" }}>
+                    <Grid item sx={{ width: '80%', margin: 'auto', mt: 5 }}>
+                        <Typography variant="h5" sx={{ textAlign: 'left' }}>
                             Login with OTP
                         </Typography>
-                        <Typography variant="h6" sx={{ textAlign: "left" }}>
+                        <Typography variant="h6" sx={{ textAlign: 'left' }}>
                             Enter your mobile number
                         </Typography>
-                        <hr style={{ marginBottom: "20px" }} />
+                        <hr style={{ marginBottom: '20px' }} />
                         <form>
                             <TextField
                                 id="phone"
@@ -116,19 +116,19 @@ function MobileLogin() {
                                 fullWidth
                                 required
                                 onChange={(e) => {
-                                    setPhone(e.target.value);
+                                    setPhone(e.target.value)
                                 }}
                                 autoComplete="off"
                                 sx={{
-                                    margin: "0 0 20px", // Add margin bottom for spacing
-                                    "& .MuiFilledInput-root": {
+                                    margin: '0 0 20px', // Add margin bottom for spacing
+                                    '& .MuiFilledInput-root': {
                                         backgroundColor:
-                                            "rgba(211, 211, 211, 0.1)", // Light gray transparent background
+                                            'rgba(211, 211, 211, 0.1)', // Light gray transparent background
                                     },
-                                    "& .MuiInputBase-input": {
-                                        color: "#fffff", // Font color
-                                        fontSize: "1rem", // Font size
-                                        textAlign: "center",
+                                    '& .MuiInputBase-input': {
+                                        color: '#fffff', // Font color
+                                        fontSize: '1rem', // Font size
+                                        textAlign: 'center',
                                     },
                                 }}
                                 InputProps={{
@@ -136,7 +136,7 @@ function MobileLogin() {
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <PhoneAndroidIcon
-                                                sx={{ color: "#ffffff" }}
+                                                sx={{ color: '#ffffff' }}
                                             />
                                         </InputAdornment>
                                     ),
@@ -156,14 +156,14 @@ function MobileLogin() {
                 </Box>
                 <Grid item sx={{ mt: 5 }}>
                     <Typography variant="subtitle2">
-                        {" "}
-                        Do not have account?{" "}
+                        {' '}
+                        Do not have account?{' '}
                         <Link to="/register">Register Here</Link>
                     </Typography>
                 </Grid>
             </Grid>
         </>
-    );
+    )
 }
 
-export default MobileLogin;
+export default MobileLogin
