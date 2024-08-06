@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader, Grid, Typography } from '@mui/material'
+import { Box, Card, CardContent, Grid, Icon, Typography } from '@mui/material'
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive'
 import Topmenu from './Topmenu'
 import BottomMenu from './Bottommenu'
 import UserContext from '../../UserContext'
@@ -51,38 +52,91 @@ function Notifications() {
                             >
                                 <Card
                                     sx={{
-                                        width: '100%',
-                                        border: '0.1px solid gray',
-                                        borderRadius: '10px',
+                                        overflow: 'visible',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        position: 'relative',
+                                        width: '100%', // Ensure Card takes full width
+                                        maxWidth: 600, // Optional: limit maximum width if needed
+                                        margin: 'auto',
+
                                         background:
-                                            'linear-gradient(43deg, rgba(42,0,113,1) 0%, rgba(200,78,255,1) 100%)',
+                                            'linear-gradient(79deg, rgba(83,0,103,1) 0%, rgba(155,2,168,1) 100%)',
                                     }}
                                 >
-                                    <CardHeader
-                                        title={
-                                            <Typography
-                                                variant="h3"
+                                    <CardContent
+                                        sx={{
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            padding: '16px',
+                                            position: 'relative',
+                                            width: '100%', // Ensure CardContent takes full width
+                                        }}
+                                    >
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                width: '100%',
+                                                alignItems: 'center',
+                                                position: 'relative',
+                                            }}
+                                        >
+                                            {/* Date */}
+                                            <NotificationsActiveIcon
+                                                sx={{ color: 'white' }}
+                                            />
+                                            {/* Content */}
+                                            <Box
                                                 sx={{
-                                                    color: 'white',
-                                                    textAlign: 'center',
+                                                    flex: 1,
+                                                    textAlign: 'left',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    justifyContent: 'center',
+                                                    mx: 2, // Margin to space out from the date and icon
                                                 }}
                                             >
-                                                {item.headline}
+                                                <Typography
+                                                    variant="h6"
+                                                    sx={{ color: 'white' }}
+                                                >
+                                                    {item.headline}
+                                                </Typography>
+                                                <Typography
+                                                    variant="body2"
+                                                    sx={{ color: 'white' }}
+                                                >
+                                                    {item.message}
+                                                </Typography>
+                                            </Box>
+
+                                            <Typography
+                                                variant="caption"
+                                                sx={{
+                                                    flexShrink: 0, // Prevent date from expanding
+                                                    textAlign: 'left',
+                                                    fontWeight: 'bold',
+                                                    color: 'white',
+                                                    width: 'auto', // Allow width to fit content
+                                                }}
+                                            >
+                                                {item.date}
                                             </Typography>
-                                        }
-                                        sx={{
-                                            borderBottom: '0.1px solid #2a0071',
-                                            background:
-                                                'linear-gradient(337deg, rgba(42,0,113,1) 0%, rgba(200,78,255,1) 100%)',
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            variant="body2"
-                                            sx={{ color: 'white' }}
-                                        >
-                                            {item.message}
-                                        </Typography>
+
+                                            {/* Icon */}
+                                            <Box
+                                                sx={{
+                                                    position: 'absolute',
+                                                    right: 16,
+                                                    top: '50%',
+                                                    transform:
+                                                        'translateY(-50%)',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                }}
+                                            ></Box>
+                                        </Box>
                                     </CardContent>
                                 </Card>
                             </Grid>

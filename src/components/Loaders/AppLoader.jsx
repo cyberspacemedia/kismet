@@ -36,7 +36,7 @@ export default function AppLoader() {
                 width: '100vw',
                 height: '100vh',
                 zIndex: 9999,
-                backgroundColor: 'rgba(30, 30, 30, 0.5)', // Light transparent background
+                backgroundColor: 'black', // Light transparent background
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',

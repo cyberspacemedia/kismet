@@ -1,13 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import {
-    Card,
-    CardContent,
-    Grid,
-    Typography,
-    Button,
-    Grow,
-} from '@mui/material'
+import { Card, CardContent, Grid, Typography, Button } from '@mui/material'
 import { apiClient } from '../../config/Config'
 import UserContext from '../../UserContext'
 import AppLoader from '../../Loaders/AppLoader'
@@ -54,115 +47,115 @@ function Shareapp() {
 
     return (
         <>
-            {loading && <AppLoader />}
             <div className="layout-container">
                 <div className="top-menu">
                     <Topmenu menu="INVITE AND EARN" />
                 </div>
-                <Grow in={!loading}>
-                    <div className="content">
-                        <Grid container justifyContent={'center'} spacing={2}>
-                            <Grid item xs={10}>
-                                <Card
-                                    variant="outlined"
-                                    sx={{
-                                        background:
-                                            'linear-gradient(318deg, rgba(150,56,125,1) 0%, rgba(255,78,209,1) 100%)',
-                                        border: '2px solid #ff4ed1',
-                                        borderRadius: 5,
-                                    }}
-                                >
-                                    <CardContent>
-                                        <Typography
-                                            variant="body1"
-                                            component="div"
-                                            gutterBottom
-                                            sx={{
-                                                color: 'white',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            Commission
-                                        </Typography>
-                                        <Typography
-                                            variant="body2"
-                                            component="div"
-                                            sx={{
-                                                color: 'white',
-                                                fontSize: '2rem',
-                                                textAlign: 'center',
-                                            }}
-                                        >
-                                            <span
-                                                style={{
-                                                    fontSize: '1rem',
-                                                    verticalAlign: 'super',
-                                                }}
-                                            >
-                                                ₹
-                                            </span>
-                                            {referralData.commission}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
+                {loading && <AppLoader />}
 
-                            <Grid item xs={10} mt={5}>
-                                <Typography
-                                    variant="subtitle1"
-                                    p={1}
-                                    sx={{
-                                        border: '0.1px solid #ff4ed1',
-                                        bgcolor: '#a801b3',
-                                        borderRadius: 2,
-                                    }}
-                                >
-                                    Total People Added :{' '}
-                                    {referralData.user_count > 0
-                                        ? referralData.user_count
-                                        : '0'}
-                                </Typography>
-                            </Grid>
-                            <Grid item xs={10} mt={2}>
-                                <Typography
-                                    variant="h3"
-                                    sx={{ padding: 2, textAlign: 'center' }}
-                                >
-                                    Your referral Code
-                                </Typography>
-                                <Typography
-                                    variant="h1"
-                                    sx={{
-                                        border: '3px dotted #ff4ed1',
-                                        padding: 1,
-                                        borderRadius: 2,
-                                        textAlign: 'center',
-                                    }}
-                                >
-                                    {referralData.code}
-                                </Typography>
-                            </Grid>
-                            <Grid
-                                item
-                                xs={10}
+                <div className="content">
+                    <Grid container justifyContent={'center'} spacing={2}>
+                        <Grid item xs={10}>
+                            <Card
+                                variant="outlined"
                                 sx={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
+                                    background:
+                                        'linear-gradient(318deg, rgba(150,56,125,1) 0%, rgba(255,78,209,1) 100%)',
+                                    border: '2px solid #ff4ed1',
+                                    borderRadius: 5,
                                 }}
                             >
-                                <Button
-                                    variant="contained"
-                                    sx={{ mt: 2, ...theme.buttons.gradient }}
-                                    size="large"
-                                    type="submit"
-                                    onClick={handleInviteFriends}
-                                >
-                                    Copy Referral Code
-                                </Button>
-                            </Grid>
+                                <CardContent>
+                                    <Typography
+                                        variant="body1"
+                                        component="div"
+                                        gutterBottom
+                                        sx={{
+                                            color: 'white',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        Commission
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        component="div"
+                                        sx={{
+                                            color: 'white',
+                                            fontSize: '2rem',
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontSize: '1rem',
+                                                verticalAlign: 'super',
+                                            }}
+                                        >
+                                            ₹
+                                        </span>
+                                        {referralData.commission}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         </Grid>
-                    </div>
-                </Grow>
+
+                        <Grid item xs={10} mt={5}>
+                            <Typography
+                                variant="subtitle1"
+                                p={1}
+                                sx={{
+                                    border: '0.1px solid #ff4ed1',
+                                    bgcolor: '#a801b3',
+                                    borderRadius: 2,
+                                }}
+                            >
+                                Total People Added :{' '}
+                                {referralData.user_count > 0
+                                    ? referralData.user_count
+                                    : '0'}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={10} mt={2}>
+                            <Typography
+                                variant="h3"
+                                sx={{ padding: 2, textAlign: 'center' }}
+                            >
+                                Your referral Code
+                            </Typography>
+                            <Typography
+                                variant="h1"
+                                sx={{
+                                    border: '3px dotted #ff4ed1',
+                                    padding: 1,
+                                    borderRadius: 2,
+                                    textAlign: 'center',
+                                }}
+                            >
+                                {referralData.code}
+                            </Typography>
+                        </Grid>
+                        <Grid
+                            item
+                            xs={10}
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <Button
+                                variant="contained"
+                                sx={{ mt: 2, ...theme.buttons.gradient }}
+                                size="large"
+                                type="submit"
+                                onClick={handleInviteFriends}
+                            >
+                                Copy Referral Code
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </div>
+
                 <BottomMenu />
             </div>
         </>
