@@ -123,42 +123,21 @@ const AppNavigation = () => {
                             display: 'flex',
                             flexDirection: 'row', // Items placed next to each other
                             justifyContent: 'center',
-                            alignItems: 'center',
+                            ml: 5,
                             width: '100%',
+                            textAlign: 'center',
                         }}
                     >
                         <img
                             src="./StaticAssets/Images/moblogo.png"
                             alt="Logo"
                             style={{
-                                height: '30px',
-                                margin: '5px',
+                                height: '50px',
                             }}
                             onClick={() => {
                                 navigate('/dashboard')
                             }}
                         />
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            onClick={() => {
-                                navigate('/dashboard')
-                            }}
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                fontSize: '0.8rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                ml: 1, // Add some margin-left if needed to separate the text from the image
-                            }}
-                        >
-                            KISMET
-                        </Typography>
                     </Box>
                     {/* Right side settings menu */}
 
