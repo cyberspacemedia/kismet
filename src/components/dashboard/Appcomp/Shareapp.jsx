@@ -53,8 +53,18 @@ function Shareapp() {
                 </div>
                 {loading && <AppLoader />}
 
-                <div className="content">
-                    <Grid container justifyContent={'center'} spacing={2}>
+                <div
+                    className="content"
+                    style={{
+                       
+                    }}
+                >
+                    <Grid
+                        container
+                        justifyContent={'center'}
+                        spacing={2}
+                        sx={{}}
+                    >
                         <Grid item xs={10}>
                             <Card
                                 variant="outlined"

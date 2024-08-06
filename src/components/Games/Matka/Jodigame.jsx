@@ -158,7 +158,7 @@ function Jodigame({ gameName, gameId, gameType }) {
                 container
                 justifyContent="center"
                 alignItems={'center'}
-                spacing={1}
+                spacing={0.5}
             >
                 {gameNumbers.map((number) => (
                     <Grid item key={number} xs={3} md={2} sm={2} lg={3}>
