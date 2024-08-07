@@ -114,35 +114,7 @@ function Chartscomp() {
                             value={game}
                             label="Select Game"
                             onChange={handleGameSelect}
-                            MenuProps={{
-                                PaperProps: {
-                                    sx: {
-                                        bgcolor: 'black',
-                                        color: 'white',
-                                    },
-                                },
-                            }}
-                            sx={{
-                                bgcolor: 'black',
-                                color: 'white',
-                                fontSize: '1rem',
-                                '.MuiOutlinedInput-notchedOutline': {
-                                    borderColor: 'white',
-                                },
-                                '&.Mui-focused .MuiOutlinedInput-notchedOutline':
-                                    {
-                                        borderColor: 'white',
-                                    },
-                                '.MuiSvgIcon-root': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputLabel-root': {
-                                    color: 'white',
-                                },
-                                '& .MuiInputLabel-root.Mui-focused': {
-                                    color: 'white',
-                                },
-                            }}
+                            className="primarySelect"
                         >
                             <MenuItem
                                 value="Disawar"

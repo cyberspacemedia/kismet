@@ -1,8 +1,8 @@
-import * as React from "react";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TextField } from "@mui/material";
+import * as React from 'react'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { TextField } from '@mui/material'
 
 export default function Mydatepicker({ date, setDate }) {
     return (
@@ -10,7 +10,7 @@ export default function Mydatepicker({ date, setDate }) {
             <DatePicker
                 value={date}
                 onChange={(newValue) => {
-                    setDate(newValue);
+                    setDate(newValue)
                 }}
                 slots={{
                     textField: (params) => (
@@ -18,21 +18,21 @@ export default function Mydatepicker({ date, setDate }) {
                             {...params}
                             variant="standard"
                             sx={{
-                                "& .MuiInputBase-root": {
-                                    bgcolor: "black",
-                                    color: "white",
-                                    fontSize: "0.875rem", // Smaller font size
+                                '& .MuiInputBase-root': {
+                                    bgcolor: 'black',
+                                    color: 'white',
+                                    fontSize: '0.875rem', // Smaller font size
                                 },
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor: "transparent", // No border
+                                '& .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'transparent', // No border
                                 },
-                                "& .MuiInputLabel-root": {
-                                    color: "white",
-                                    fontSize: "0.875rem", // Smaller font size
+                                '& .MuiInputLabel-root': {
+                                    color: 'white',
+                                    fontSize: '0.875rem', // Smaller font size
                                 },
-                                "& .MuiIconButton-root": {
-                                    color: "white",
-                                    fontSize: "0.875rem", // Smaller font size
+                                '& .MuiIconButton-root': {
+                                    color: 'white',
+                                    fontSize: '0.875rem', // Smaller font size
                                 },
                             }}
                         />
@@ -40,36 +40,36 @@ export default function Mydatepicker({ date, setDate }) {
                 }}
                 slotProps={{
                     textField: {
-                        label: "Select Date",
+                        label: 'Select Date',
                     },
                     paperContent: {
                         sx: {
-                            bgcolor: "black",
-                            color: "white",
+                            bgcolor: 'black',
+                            color: 'white',
                         },
                     },
                     paper: {
                         sx: {
-                            "& .MuiPickersDay-dayWithMargin": {
-                                color: "white",
-                                bgcolor: "black",
-                                "&.Mui-selected": {
-                                    bgcolor: "white",
-                                    color: "black",
+                            '& .MuiPickersDay-dayWithMargin': {
+                                color: 'white',
+                                bgcolor: 'black',
+                                '&.Mui-selected': {
+                                    bgcolor: 'white',
+                                    color: 'black',
                                 },
-                                "&:hover": {
-                                    bgcolor: "#ffff",
+                                '&:hover': {
+                                    bgcolor: '#ffff',
                                 },
                             },
-                            "& .MuiPickersYear-yearButton": {
-                                color: "white",
-                                bgcolor: "black",
-                                "&.Mui-selected": {
-                                    bgcolor: "white",
-                                    color: "red",
+                            '& .MuiPickersYear-yearButton': {
+                                color: 'white',
+                                bgcolor: 'black',
+                                '&.Mui-selected': {
+                                    bgcolor: 'white',
+                                    color: 'red',
                                 },
-                                "&:hover": {
-                                    bgcolor: "#ffff",
+                                '&:hover': {
+                                    bgcolor: '#ffff',
                                 },
                             },
                         },
@@ -77,5 +77,5 @@ export default function Mydatepicker({ date, setDate }) {
                 }}
             />
         </LocalizationProvider>
-    );
+    )
 }

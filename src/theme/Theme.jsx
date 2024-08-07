@@ -13,8 +13,8 @@ const theme = createTheme({
             primary: '#ffff', // Set default text color to white
         },
         background: {
-            default: '#0000', // Set default background color to black
-            paper: '#0000', // Set paper component background color to black
+            default: '#000', // Set default background color to black
+            paper: '#9b02a8',
         },
     },
 
@@ -54,7 +54,6 @@ const theme = createTheme({
             fontSize: '0.9em',
             color: '#ffffff',
             fontWeight: 'bold',
-
             '@media (min-width:600px)': {
                 fontSize: '1rem',
             },
@@ -122,6 +121,38 @@ const theme = createTheme({
                 primary: {
                     color: 'white',
                     fontSize: '1rem',
+                },
+            },
+        },
+        MuiSelect: {
+            styleOverrides: {
+                root: {
+                    color: 'Yellow',
+                    fontSize: '0.8rem',
+                    padding: '0px',
+                    borderRadius: '10px',
+                },
+                outlined: {
+                    '&.primarySelect': {
+                        backgroundColor: 'yellow',
+                        color: 'red',
+                        fontSize: '0.8rem',
+                        '.MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'white',
+                        },
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            borderColor: 'white',
+                        },
+                        '.MuiSvgIcon-root': {
+                            color: 'white',
+                        },
+                        '& .MuiInputLabel-root': {
+                            color: 'white',
+                        },
+                        '& .MuiInputLabel-root.Mui-focused': {
+                            color: 'white',
+                        },
+                    },
                 },
             },
         },
