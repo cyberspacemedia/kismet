@@ -28,7 +28,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -76,7 +76,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -124,7 +124,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -172,7 +172,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -220,7 +220,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -268,7 +268,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -316,7 +316,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width
@@ -364,7 +364,7 @@ function Allgames() {
                     sx={{
                         background:
                             'linear-gradient(40deg, rgba(123,0,180,1) 0%, rgba(255,0,104,1) 100%)',
-                        borderRadius: '15px', // Optional: Add border radius if needed
+                        borderRadius: '5px', // Optional: Add border radius if needed
                         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)', // Optional: Add shadow for a nicer effect
                         height: isSmallScreen ? '3em' : '8em', // Responsive height
                         width: isSmallScreen ? '3em' : '8em', // Responsive width

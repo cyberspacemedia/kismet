@@ -59,11 +59,11 @@ function Intlliveresult() {
                         sx={{
                             width: '95%',
                             margin: '0 auto',
-                            border: '1px solid #525252',
+                            border: '1px solid #7d0887',
                             borderRadius: '5px',
                             backgroundColor: '#373736',
                             background:
-                                'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                'linear-gradient(279deg, rgba(83,0,103,1) 0%, rgba(125,8,135,1) 100%)',
                         }}
                     >
                         <CardActionArea>
@@ -75,8 +75,6 @@ function Intlliveresult() {
                                                 width: size,
                                                 height: size,
                                                 borderRadius: '3px',
-                                                background:
-                                                    'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
                                                 display: 'flex',
                                                 justifyContent: 'center',
                                                 alignItems: 'center',
