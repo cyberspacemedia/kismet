@@ -11,6 +11,7 @@ import {
     Grow,
     Typography,
     Divider,
+    TextField,
 } from '@mui/material'
 import Topmenu from './Appcomp/Topmenu'
 import BottomMenu from './Appcomp/Bottommenu'
@@ -18,31 +19,39 @@ import theme from '../../theme/Theme'
 import AddCardIcon from '@mui/icons-material/AddCard'
 import UserContext from '../UserContext'
 import { useNavigate } from 'react-router-dom'
-import { apiClient, apiPayment } from '../config/Config'
+import { apiClient } from '../config/Config'
 import { useLocation } from 'react-router-dom'
 
-function Commissionconvert() {
+function Earningconvert() {
+    const navigate = useNavigate()
     const { userId } = useContext(UserContext)
     const location = useLocation()
-    const { referral } = location.state || {}
+    const { winning } = location.state || {}
+    const [amount, setAmount] = useState(0)
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
-    const navigate = useNavigate()
 
     const convertnow = async () => {
-        const data = { userId }
+        const data = { userId, amount: amount }
+        console.log(data)
         try {
             const response = await apiClient.post(
-                '/convert_referral_to_wining',
+                '/convert_wining_to_deposit',
                 data
             )
             console.log(response)
             if (response.data.success === true) {
-                setSnackbarMessage('Commission Converted')
+                setSnackbarMessage('Earning Converted to Deposit')
                 setSnackbarOpen(true)
+                setTimeout(() => {
+                    navigate('/wallet')
+                }, 2000)
             } else {
                 setSnackbarMessage(response.data.message)
                 setSnackbarOpen(true)
+                setTimeout(() => {
+                    navigate('/wallet')
+                }, 2000)
             }
         } catch (error) {
             console.error('API error Covert Commision', error)
@@ -57,7 +66,7 @@ function Commissionconvert() {
         <Grow in={true}>
             <div className="layout-container">
                 <div className="top-menu">
-                    <Topmenu menu="CONVERT COMMISSION" />
+                    <Topmenu menu="EARNING CONVERT" />
                 </div>
                 <div className="content">
                     <Grid container justifyContent="center" spacing={2}>
@@ -78,29 +87,43 @@ function Commissionconvert() {
                                         gap={2}
                                     >
                                         <Typography variant="body2">
-                                            Your money will be added to
-                                            earnings. You can withdraw your
-                                            commision after than
+                                            You can convert your earnings into
+                                            deposit for playing game. For
+                                            withdrawing earning you can use
+                                            withdraw button from wallet.
                                         </Typography>
                                         <Divider />
                                         <Typography variant="body2">
-                                            आपका पैसा कमाई में जोड़ दिया जाएगा।
-                                            आप इसके बाद अपना कमीशन निकाल सकते
-                                            हैं। बदलने के लिए अब कंवर्ट बटन
-                                            दबाएं।
+                                            आप गेम खेलने के लिए अपनी कमाई को
+                                            डिपॉजिट में बदल सकते हैं। कमाई
+                                            निकालने के लिए आप वॉलेट से निकासी
+                                            बटन का उपयोग कर सकते हैं।
                                         </Typography>
                                     </Box>
                                 </CardContent>
                             </Card>
                         </Grid>
-
+                        <Grid
+                            item
+                            xs={10}
+                            sx={{ padding: 2, textAlign: 'center' }}
+                        >
+                            <TextField
+                                id="amount"
+                                label="Enter Amount"
+                                value={amount}
+                                onChange={(e) => {
+                                    setAmount(e.target.value)
+                                }}
+                            />
+                        </Grid>
                         <Grid
                             item
                             xs={10}
                             sx={{ padding: 2, textAlign: 'center' }}
                         >
                             <Chip
-                                label={`Total Commission:  ₹${referral}`}
+                                label={`Total Earning:  ₹${winning}`}
                                 color="success"
                                 sx={{
                                     fontSize: '0.85em',
@@ -149,4 +172,4 @@ function Commissionconvert() {
     )
 }
 
-export default Commissionconvert
+export default Earningconvert

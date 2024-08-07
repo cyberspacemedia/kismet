@@ -231,9 +231,9 @@ function Wallet() {
                                             mt: 2,
                                         }}
                                         onClick={() => {
-                                            navigate('/commissionconvert', {
+                                            navigate('/earningconvert', {
                                                 state: {
-                                                    referral: wallet.referral,
+                                                    winning: wallet.wining,
                                                 },
                                             })
                                         }}

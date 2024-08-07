@@ -33,6 +33,7 @@ import Addmoney from '../components/dashboard/Addmoney'
 import Withdrawmoney from '../components/dashboard/Withdrawmoney'
 import Commissionconvert from '../components/dashboard/Commissioncovert'
 import Commisionhistory from '../components/Commisionhistory'
+import Earningconvert from '../components/dashboard/Earningconvert'
 
 function Approutes() {
     const isLoggedIn = false // Set it based on your authentication state
@@ -68,6 +69,7 @@ function Approutes() {
             <Route path="/addmoney" element={<Addmoney />} />
             <Route path="/withdrawmoney" element={<Withdrawmoney />} />
             <Route path="/commissionconvert" element={<Commissionconvert />} />
+            <Route path="/earningconvert" element={<Earningconvert />} />
             <Route path="/commissionhistory" element={<Commisionhistory />} />
             <Route path="/charts" element={<Chartscomp />} />
             <Route path="/mygame" element={<Mygame />} />

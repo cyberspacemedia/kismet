@@ -56,8 +56,10 @@ const AppNavigation = () => {
         const fetchbalance = async () => {
             try {
                 const balance = await apiClient.post('/getbalance', data)
-                //  console.log(balance.data.data)
-                setTotalBalance(balance.data.data.deposit)
+                console.log(balance.data.data)
+                setTotalBalance(
+                    balance.data.data.deposit + balance.data.data.wining
+                )
             } catch (error) {
                 console.error('API Error', error)
             }
