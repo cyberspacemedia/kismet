@@ -42,6 +42,7 @@ function Jodigame({ gameName, gameId, gameType }) {
     const [totalAmount, setTotalAmount] = React.useState(0)
     const { userId } = useContext(UserContext)
     const [severity, setSeverity] = useState('')
+    const [error, setError] = useState('')
     const [message, setMessage] = useState('')
     const [loader, setLoader] = useState(false)
     const handleOpen = (number) => {
@@ -56,7 +57,26 @@ function Jodigame({ gameName, gameId, gameType }) {
     }
 
     const handleAmountChange = (event) => {
-        setAmount(event.target.value)
+        const value = event.target.value
+
+        // Regex to allow only whole numbers
+        const regex = /^[0-9]*$/
+
+        // Check if the value matches the regex
+        if (regex.test(value)) {
+            const numericValue = parseInt(value, 10)
+
+            // Validate numeric value constraints
+            if (numericValue < 5 || numericValue > 500) {
+                setError('Value must be between 5 and 500.')
+            } else {
+                setError('')
+            }
+
+            setAmount(value)
+        } else {
+            setError('Please enter a valid whole number.')
+        }
     }
 
     const handleSave = () => {
@@ -227,9 +247,13 @@ function Jodigame({ gameName, gameId, gameType }) {
                         variant="standard"
                         size="small"
                         type="number"
-                        inputProps={{ style: { textAlign: 'center' } }}
+                        inputProps={{
+                            style: { textAlign: 'center' },
+                        }}
                         value={amount}
                         onChange={handleAmountChange}
+                        error={Boolean(error)} // Set error state
+                        helperText={error} // Display error message
                     />
 
                     <Typography
@@ -266,7 +290,13 @@ function Jodigame({ gameName, gameId, gameType }) {
                     backgroundColor: '#494949',
                 }}
             >
-                <Grid item xs={6} justifyContent={'center'} p={1}>
+                <Grid
+                    item
+                    xs={6}
+                    justifyContent={'center'}
+                    p={1}
+                    sx={{ textAlign: 'center' }}
+                >
                     <Typography variant="h6">Total Amount :</Typography>
                     <Typography variant="h1" sx={{ fontSize: '1.5rem' }}>
                         {totalAmount}

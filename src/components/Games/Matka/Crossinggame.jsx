@@ -277,7 +277,7 @@ function Crossinggame({ gameName, gameId, gameType }) {
                 alignItems={'center'}
                 sx={{
                     position: 'fixed', // Position the Grid container fixed within the viewport
-                    bottom: '8%', // Position 8% from the bottom of the viewport
+                    bottom: '2%', // Position 8% from the bottom of the viewport
                     left: '50%', // Center horizontally
                     transform: 'translateX(-50%)', // Move back to center horizontally
                     width: '98%', // Set width to 80% of the viewport
@@ -287,7 +287,7 @@ function Crossinggame({ gameName, gameId, gameType }) {
                     backgroundColor: '#494949',
                 }}
             >
-                <Grid item xs={6}>
+                <Grid item xs={6} sx={{ textAlign: 'center' }}>
                     <Typography variant="caption">Total Amount :</Typography>
                     <Typography variant="h1" sx={{ fontSize: '1.5rem' }}>
                         ₹ {totalAmount}
