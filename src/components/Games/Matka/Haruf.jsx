@@ -1,10 +1,16 @@
-import React, { useContext, useState } from 'react'
-import { Box, Grid, TextField, Typography, Button } from '@mui/material'
+import React, { useContext, useState, useEffect } from 'react'
+import { Box, Grid, TextField, Typography, Button, Alert } from '@mui/material'
 import UserContext from '../../UserContext'
 import theme from '../../../theme/Theme'
 import { apiClient } from '../../config/Config'
+import { useNavigate } from 'react-router-dom'
+import AppLoader from '../../Loaders/AppLoader'
 
 function Haruf({ gameName, gameId, gameType }) {
+    const navigate = useNavigate()
+    const [loader, setLoader] = useState(false)
+    const [severity, setSeverity] = useState('')
+    const [message, setMessage] = useState('')
     const { userId } = useContext(UserContext)
     const numbers = Array.from({ length: 10 }, (_, index) =>
         index.toString().padStart(2, '0')
@@ -26,6 +32,9 @@ function Haruf({ gameName, gameId, gameType }) {
         },
     })
 
+    const [totalAmount, setTotalAmount] = useState(0)
+    const [isSaved, setIsSaved] = useState(false) // Track if data is saved
+
     const handleChange = (game, index, value) => {
         setInputValues((prevState) => {
             const updatedValues = { ...prevState }
@@ -33,6 +42,24 @@ function Haruf({ gameName, gameId, gameType }) {
             return updatedValues
         })
     }
+
+    useEffect(() => {
+        // Calculate the total amount whenever inputValues change
+        const calculateTotalAmount = () => {
+            const total = ['A', 'B'].reduce((acc, game) => {
+                return (
+                    acc +
+                    inputValues[game].reduce((sum, value) => {
+                        return sum + (parseFloat(value) || 0)
+                    }, 0)
+                )
+            }, 0)
+
+            setTotalAmount(total)
+        }
+
+        calculateTotalAmount()
+    }, [inputValues])
 
     const handleSave = () => {
         const list = {
@@ -59,13 +86,26 @@ function Haruf({ gameName, gameId, gameType }) {
             }
             setBetData(updatedBetData)
             console.log('Commision History:', updatedBetData)
+            setIsSaved(true) // Mark as saved
         }
     }
 
     const handleSubmit = async () => {
         try {
             const response = await apiClient.post('/submitgame3', betData)
-            console.log(response)
+            console.log(response.data)
+            if (response.data.success === true) {
+                setLoader(false)
+                setMessage(response.data.message)
+                setSeverity('success')
+                setTimeout(() => {
+                    navigate('/dashboard')
+                }, 2000)
+            } else {
+                setMessage(response.data.message)
+                setSeverity('error')
+                setLoader(false)
+            }
         } catch (error) {
             console.error('API error Submit Haruf Game', error)
         }
@@ -80,6 +120,24 @@ function Haruf({ gameName, gameId, gameType }) {
                     display: 'flex',
                 }}
             >
+                {loader && <AppLoader />}
+                {severity && (
+                    <Alert
+                        severity={severity}
+                        variant="filled"
+                        onClose={() => setSeverity('')}
+                        sx={{
+                            zIndex: '9999',
+                            position: 'absolute',
+                            top: '10px',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: '90%',
+                        }}
+                    >
+                        {message}
+                    </Alert>
+                )}
                 <Grid container justifyContent="center">
                     <Grid item xs={6} sx={{ textAlign: 'center' }}>
                         <Typography variant="caption">Andar Game</Typography>
@@ -202,53 +260,57 @@ function Haruf({ gameName, gameId, gameType }) {
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            onClick={handleSave}
-                        >
-                            Save
-                        </Button>
-                    </Grid>
-                    <Grid
-                        container
-                        justifyContent={'center'}
-                        alignItems={'center'}
-                        sx={{
-                            position: 'fixed',
-                            bottom: '2%',
-                            left: '50%',
-                            transform: 'translateX(-50%)',
-                            width: '98%',
-                            zIndex: 1000,
-                            borderRadius: '10px',
-                            border: 'solid 1px #676767',
-                            backgroundColor: '#494949',
-                        }}
-                    >
-                        <Grid item xs={6}>
-                            <Typography variant="caption">
-                                Total Amount :
-                            </Typography>
-                            <Typography
-                                variant="h1"
-                                sx={{ fontSize: '1.5rem' }}
-                            >
-                                ₹ 0
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={6}>
+                        {!isSaved && (
                             <Button
                                 variant="contained"
-                                color="primary"
-                                size="small"
-                                onClick={handleSubmit}
-                                sx={{ ...theme.buttons.gradient }}
+                                color="secondary"
+                                onClick={handleSave}
                             >
-                                Submit
+                                Save
                             </Button>
-                        </Grid>
+                        )}
                     </Grid>
+                    {isSaved && (
+                        <Grid
+                            container
+                            justifyContent={'center'}
+                            alignItems={'center'}
+                            sx={{
+                                position: 'fixed',
+                                bottom: '2%',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                width: '98%',
+                                zIndex: 1000,
+                                borderRadius: '10px',
+                                border: 'solid 1px #676767',
+                                backgroundColor: '#494949',
+                            }}
+                        >
+                            <Grid item xs={6} sx={{ textAlign: 'center' }}>
+                                <Typography variant="caption">
+                                    Total Amount :
+                                </Typography>
+                                <Typography
+                                    variant="h1"
+                                    sx={{ fontSize: '1.5rem' }}
+                                >
+                                    ₹ {totalAmount.toFixed(0)}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={6} sx={{ textAlign: 'center' }}>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    size="small"
+                                    onClick={handleSubmit}
+                                    sx={{ ...theme.buttons.gradient }}
+                                >
+                                    Submit Game
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    )}
                 </Grid>
             </Box>
         </>
