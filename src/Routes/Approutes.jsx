@@ -34,6 +34,7 @@ import Withdrawmoney from '../components/dashboard/Withdrawmoney'
 import Commissionconvert from '../components/dashboard/Commissioncovert'
 import Commisionhistory from '../components/Commisionhistory'
 import Earningconvert from '../components/dashboard/Earningconvert'
+import Forgot from '../components/Forgot'
 
 function Approutes() {
     const isLoggedIn = false // Set it based on your authentication state
@@ -88,6 +89,7 @@ function Approutes() {
                 }
             />
             <Route path="/register" element={<UserRegister />} />
+            <Route path="/forgot" element={<Forgot />} />
             <Route path="/login" element={<UserLogin />} />
             <Route path="/mobilelogin" element={<MobileLogin />} />
             <Route path="/otp" element={<Otp />} />

@@ -233,6 +233,10 @@ function UserLogin() {
                         Do not have account?{' '}
                         <Link to="/register">Register Here</Link>
                     </Typography>
+                    <Typography variant="subtitle2">
+                        {' '}
+                        Or <Link to="/forgot">Forgot Password</Link>
+                    </Typography>
                 </Grid>
             </Grid>
         </>
