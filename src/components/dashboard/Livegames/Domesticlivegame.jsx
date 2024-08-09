@@ -135,7 +135,13 @@ function Domesticlivegame() {
                                                         }}
                                                         align="left"
                                                     >
-                                                        42819 Playing
+                                                        {Math.floor(
+                                                            Math.random() *
+                                                                (11000 -
+                                                                    10000 +
+                                                                    1)
+                                                        ) + 1000}{' '}
+                                                        Playing
                                                     </Typography>
                                                 </Grid>
                                                 <Grid item>

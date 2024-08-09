@@ -8,56 +8,56 @@ import {
     Typography,
     useMediaQuery,
     useTheme,
-} from "@mui/material";
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import { apiClient } from "../../config/Config";
+} from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
+import { apiClient } from '../../config/Config'
 
 function Intlivegame() {
-    const [gameName, setGameName] = useState("");
-    const [gameId, setGameId] = useState("");
-    const [game, setGame] = useState(false);
-    const navigate = useNavigate();
+    const [gameName, setGameName] = useState('')
+    const [gameId, setGameId] = useState('')
+    const [game, setGame] = useState(false)
+    const navigate = useNavigate()
 
-    const theme = useTheme();
-    const isXs = useMediaQuery(theme.breakpoints.down("xs"));
-    const isSm = useMediaQuery(theme.breakpoints.down("sm"));
-    const isMd = useMediaQuery(theme.breakpoints.down("md"));
+    const theme = useTheme()
+    const isXs = useMediaQuery(theme.breakpoints.down('xs'))
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'))
+    const isMd = useMediaQuery(theme.breakpoints.down('md'))
 
     const getSize = () => {
-        if (isXs) return "50px";
-        if (isSm) return "50px";
-        if (isMd) return "100px";
-        return "120px";
-    };
+        if (isXs) return '50px'
+        if (isSm) return '50px'
+        if (isMd) return '100px'
+        return '120px'
+    }
 
-    const size = getSize();
+    const size = getSize()
 
     const findliveGame = async () => {
         try {
-            const response = await apiClient.post("/int_live_slot");
+            const response = await apiClient.post('/int_live_slot')
             // console.log(response.data)
             if (response.data.success === true) {
-                setGame(true);
-                setGameName(response.data.data.gameName);
-                setGameId(response.data.data.gameId);
+                setGame(true)
+                setGameName(response.data.data.gameName)
+                setGameId(response.data.data.gameId)
             } else {
-                setGame(false);
+                setGame(false)
             }
         } catch (error) {
-            setGame(false);
-            console.error("Error fetching live game:", error);
+            setGame(false)
+            console.error('Error fetching live game:', error)
         }
-    };
+    }
 
     useEffect(() => {
-        findliveGame();
-    }, []);
+        findliveGame()
+    }, [])
 
     const handleliveGame = () => {
-        navigate("/gurugramgame", { state: { gameName, gameId } });
-    };
+        navigate('/gurugramgame', { state: { gameName, gameId } })
+    }
 
     return (
         <>
@@ -68,13 +68,13 @@ function Intlivegame() {
                             {/* Card for Live Result */}
                             <Card
                                 sx={{
-                                    width: "95%",
-                                    margin: "0 auto",
-                                    border: "1px solid #069c21",
-                                    borderRadius: "5px",
-                                    backgroundColor: "#373736",
+                                    width: '95%',
+                                    margin: '0 auto',
+                                    border: '1px solid #069c21',
+                                    borderRadius: '5px',
+                                    backgroundColor: '#373736',
                                     background:
-                                        "linear-gradient(47deg, rgba(1,31,2,1) 0%, rgba(6,156,33,1) 100%)",
+                                        'linear-gradient(47deg, rgba(1,31,2,1) 0%, rgba(6,156,33,1) 100%)',
                                 }}
                             >
                                 <CardActionArea onClick={handleliveGame}>
@@ -89,24 +89,24 @@ function Intlivegame() {
                                                     style={{
                                                         width: size,
                                                         height: size,
-                                                        borderRadius: "3px",
+                                                        borderRadius: '3px',
                                                         background:
-                                                            "linear-gradient(47deg, rgba(1,31,2,1) 0%, rgba(6,156,33,1) 100%)",
-                                                        display: "flex",
+                                                            'linear-gradient(47deg, rgba(1,31,2,1) 0%, rgba(6,156,33,1) 100%)',
+                                                        display: 'flex',
                                                         justifyContent:
-                                                            "center",
-                                                        alignItems: "center",
-                                                        overflow: "hidden",
-                                                        border: "solid 1px gray",
+                                                            'center',
+                                                        alignItems: 'center',
+                                                        overflow: 'hidden',
+                                                        border: 'solid 1px gray',
                                                     }}
                                                 >
                                                     <img
                                                         src={`./StaticAssets/Images/Icons/${gameName}.png`}
                                                         alt={gameName}
                                                         style={{
-                                                            height: "90%",
-                                                            width: "90%",
-                                                            objectFit: "cover",
+                                                            height: '90%',
+                                                            width: '90%',
+                                                            objectFit: 'cover',
                                                         }}
                                                     />
                                                 </div>
@@ -131,11 +131,15 @@ function Intlivegame() {
                                                     <Typography
                                                         variant="caption"
                                                         sx={{
-                                                            color: "#ffff",
+                                                            color: '#ffff',
                                                         }}
                                                         align="left"
                                                     >
-                                                        42819 Playing
+                                                        {Math.floor(
+                                                            Math.random() *
+                                                                (1000 - 500 + 1)
+                                                        ) + 500}{' '}
+                                                        Playing
                                                     </Typography>
                                                 </Grid>
                                                 <Grid item>
@@ -145,10 +149,10 @@ function Intlivegame() {
                                                         size="small"
                                                         sx={{
                                                             alignSelf:
-                                                                "flex-start",
-                                                            width: "80px",
-                                                            height: "15px",
-                                                            fontSize: "10px",
+                                                                'flex-start',
+                                                            width: '80px',
+                                                            height: '15px',
+                                                            fontSize: '10px',
                                                         }}
                                                     />
                                                 </Grid>
@@ -159,8 +163,8 @@ function Intlivegame() {
                                                 container
                                                 xs
                                                 direction="column"
-                                                justifyContent={"flex-end"}
-                                                alignItems={"end"}
+                                                justifyContent={'flex-end'}
+                                                alignItems={'end'}
                                             >
                                                 <Grid
                                                     item
@@ -171,8 +175,8 @@ function Intlivegame() {
                                                 >
                                                     <PlayCircleIcon
                                                         sx={{
-                                                            fontSize: "3rem",
-                                                            color: "#ffff",
+                                                            fontSize: '3rem',
+                                                            color: '#ffff',
                                                         }}
                                                     />
                                                     <Typography
@@ -194,15 +198,15 @@ function Intlivegame() {
                             container
                             justifyContent="center"
                             alignItems="center"
-                            style={{ width: "100%" }}
+                            style={{ width: '100%' }}
                         >
                             <Skeleton
                                 variant="rounded"
                                 height={80}
                                 width="95%"
                                 sx={{
-                                    justifyContent: "center",
-                                    alignItems: "center",
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
                                 }}
                             />
                         </Grid>
@@ -210,7 +214,7 @@ function Intlivegame() {
                 </Grid>
             </Grid>
         </>
-    );
+    )
 }
 
-export default Intlivegame;
+export default Intlivegame
