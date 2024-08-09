@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from 'react'
 import {
     Card,
     CardHeader,
@@ -11,42 +11,42 @@ import {
     Snackbar,
     Alert,
     Grow,
-} from "@mui/material";
-import Topmenu from "./Appcomp/Topmenu";
-import BottomMenu from "./Appcomp/Bottommenu";
-import theme from "../../theme/Theme";
-import AddCardIcon from "@mui/icons-material/AddCard";
-import UserContext from "../UserContext";
-import { useNavigate } from "react-router-dom";
-import { apiPayment } from "../config/Config";
+} from '@mui/material'
+import Topmenu from './Appcomp/Topmenu'
+import BottomMenu from './Appcomp/Bottommenu'
+import theme from '../../theme/Theme'
+import AddCardIcon from '@mui/icons-material/AddCard'
+import UserContext from '../UserContext'
+import { useNavigate } from 'react-router-dom'
+import { apiPayment } from '../config/Config'
 
 function Addmoney() {
-    const { userId } = useContext(UserContext);
-    const [amount, setAmount] = useState("");
-    const [snackbarOpen, setSnackbarOpen] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState("");
-    const navigate = useNavigate();
+    const { userId } = useContext(UserContext)
+    const [amount, setAmount] = useState('')
+    const [snackbarOpen, setSnackbarOpen] = useState(false)
+    const [snackbarMessage, setSnackbarMessage] = useState('')
+    const navigate = useNavigate()
 
     const handlePayment = async () => {
         if (!amount || amount <= 0) {
-            setSnackbarMessage("Please enter a valid amount");
-            setSnackbarOpen(true);
-            return;
+            setSnackbarMessage('Please enter a valid amount')
+            setSnackbarOpen(true)
+            return
         }
 
         if (amount < 10) {
-            setSnackbarMessage("Amount should be at least 10");
-            setSnackbarOpen(true);
-            return;
+            setSnackbarMessage('Amount should be at least 10')
+            setSnackbarOpen(true)
+            return
         }
 
         const options = {
-            key: "rzp_live_1zbYx7bQwEe3Qp", //'rzp_test_U5WNvZ7P5evrkz', Replace with your Razorpay Key ID
+            key: 'rzp_live_1zbYx7bQwEe3Qp', //'rzp_test_U5WNvZ7P5evrkz', Replace with your Razorpay Key ID
             amount: amount * 100, // Amount in paise
-            currency: "INR",
-            name: "KISMET",
+            currency: 'INR',
+            name: 'KISMET',
             capture: 1,
-            description: "Add Money",
+            description: 'Add Money',
             handler: function (response) {
                 // This function will handle the success response
 
@@ -55,39 +55,39 @@ function Addmoney() {
                     paymentId: response.razorpay_payment_id,
                     amount: amount,
                     userId: userId,
-                    status: "Success",
-                };
+                    status: 'Success',
+                }
                 apiPayment
-                    .post("/orderProccess", data)
+                    .post('/orderProccess', data)
                     .then((res) => {
                         // Handle backend response
-                        console.log("Payment details saved:", res.data);
+                        console.log('Payment details saved:', res.data)
 
-                        setSnackbarMessage("Payment Updated");
-                        setSnackbarOpen(true);
+                        setSnackbarMessage('Payment Updated')
+                        setSnackbarOpen(true)
 
                         // Redirect to /wallet after 2 seconds
                         setTimeout(() => {
-                            navigate("/wallet");
-                        }, 1000);
+                            navigate('/wallet')
+                        }, 1000)
                     })
                     .catch((err) => {
-                        console.error("Error saving payment details:", err);
-                    });
+                        console.error('Error saving payment details:', err)
+                    })
             },
 
             theme: {
-                color: "#3399cc",
+                color: '#3399cc',
             },
-        };
+        }
 
-        const rzp1 = new window.Razorpay(options);
-        rzp1.open();
-    };
+        const rzp1 = new window.Razorpay(options)
+        rzp1.open()
+    }
 
     const handleSnackbarClose = () => {
-        setSnackbarOpen(false);
-    };
+        setSnackbarOpen(false)
+    }
 
     return (
         <Grow in={true}>
@@ -100,10 +100,10 @@ function Addmoney() {
                         <Grid item xs={10}>
                             <Card
                                 sx={{
-                                    textAlign: "center",
-                                    borderRadius: "10px",
+                                    textAlign: 'center',
+                                    borderRadius: '10px',
                                     background:
-                                        "linear-gradient(45deg, rgba(150,56,125,1) 0%, rgba(255,78,209,1) 100%)",
+                                        'linear-gradient(45deg, rgba(150,56,125,1) 0%, rgba(255,78,209,1) 100%)',
                                 }}
                             >
                                 <CardHeader title="Enter Amount" />
@@ -138,18 +138,18 @@ function Addmoney() {
                         <Grid
                             item
                             xs={10}
-                            sx={{ padding: 2, mt: 2, textAlign: "center" }}
+                            sx={{ padding: 2, mt: 2, textAlign: 'center' }}
                         >
                             <img
                                 src={`./StaticAssets/Images/secure.png`}
                                 alt="Secure"
-                                style={{ width: "100px", height: "100px" }}
+                                style={{ width: '100px', height: '100px' }}
                             />
                         </Grid>
                         <Grid
                             item
                             xs={10}
-                            sx={{ padding: 2, textAlign: "center" }}
+                            sx={{ padding: 2, textAlign: 'center' }}
                         >
                             <Button
                                 variant="contained"
@@ -170,17 +170,17 @@ function Addmoney() {
                     open={snackbarOpen}
                     autoHideDuration={2000}
                     onClose={handleSnackbarClose}
-                    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 >
                     <Alert
                         onClose={handleSnackbarClose}
                         severity="info"
                         variant="filled"
                         sx={{
-                            width: "100%",
-                            padding: "16px",
-                            fontSize: "1rem",
-                            fontWeight: "bold",
+                            width: '100%',
+                            padding: '16px',
+                            fontSize: '1rem',
+                            fontWeight: 'bold',
                         }}
                     >
                         {snackbarMessage}
@@ -188,7 +188,7 @@ function Addmoney() {
                 </Snackbar>
             </div>
         </Grow>
-    );
+    )
 }
 
-export default Addmoney;
+export default Addmoney
