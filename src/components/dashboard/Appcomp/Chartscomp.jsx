@@ -10,6 +10,7 @@ import {
     Button,
     useMediaQuery,
     useTheme,
+    Chip,
 } from '@mui/material'
 import Mydatepicker from './Mydatepicker'
 import { apiClient } from '../../config/Config'
@@ -31,8 +32,8 @@ function Chartscomp() {
     const isMd = useMediaQuery(theme.breakpoints.down('md'))
 
     const getSize = () => {
-        if (isXs) return '60px'
-        if (isSm) return '60px'
+        if (isXs) return '50px'
+        if (isSm) return '50px'
         if (isMd) return '100px'
         return '120px'
     }
@@ -239,13 +240,13 @@ function Chartscomp() {
                                 key={index}
                                 sx={{
                                     width: '95%',
-                                    p: '10px',
-                                    margin: '5px 0', // Added some margin between the cards
-                                    border: '1px solid #525252',
+                                    p: '5px',
+                                    margin: '5px', // Added some margin between the cards
+                                    border: '1px solid #64007c',
                                     borderRadius: '5px',
-                                    backgroundColor: '#373736',
+
                                     background:
-                                        'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                        'linear-gradient(279deg, rgba(100,0,124,1) 0%, rgba(135,8,30,1) 100%)',
                                 }}
                             >
                                 <Grid item xs={3}>
@@ -283,8 +284,14 @@ function Chartscomp() {
                                         alignItems: 'flex-start',
                                     }}
                                 >
-                                    <Typography variant="subtitle1">
-                                        {game.gameName}
+                                    <Typography variant="subtitle2">
+                                        {game.gameName} -{' '}
+                                        <Chip
+                                            label={game.winDate}
+                                            size="small"
+                                            variant="outlined"
+                                            sx={{ fontSize: '0.6rem' }}
+                                        />
                                     </Typography>
                                     <Typography variant="body2">
                                         Winning Number
@@ -305,8 +312,8 @@ function Chartscomp() {
                                         variant="body2"
                                         sx={{
                                             padding: '0.5rem',
-                                            width: '3rem',
-                                            height: '3rem',
+                                            width: '2.5rem',
+                                            height: '2.5rem',
                                             borderRadius: '5px',
                                             color: '#ffff',
                                             display: 'flex',

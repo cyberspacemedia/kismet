@@ -98,11 +98,10 @@ function Mygame() {
                                     sx={{
                                         width: '95%',
                                         margin: '0 auto',
-                                        border: '1px solid #525252',
-                                        borderRadius: '0px',
-                                        backgroundColor: '#373736',
+                                        border: '1px solid #64007c',
+                                        borderRadius: '5px',
                                         background:
-                                            'linear-gradient(47deg, rgba(34,34,34,1) 0%, rgba(82,82,82,1) 41%, rgba(0,0,0,1) 100%)',
+                                            'linear-gradient(279deg, rgba(100,0,124,1) 0%, rgba(135,8,30,1) 100%)',
                                     }}
                                 >
                                     <CardActionArea
