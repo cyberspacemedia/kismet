@@ -16,10 +16,9 @@ export default function Mydatepicker({ date, setDate }) {
                     textField: (params) => (
                         <TextField
                             {...params}
-                            variant="standard"
+                            variant="filled"
                             sx={{
                                 '& .MuiInputBase-root': {
-                                    bgcolor: 'black',
                                     color: 'white',
                                     fontSize: '0.875rem', // Smaller font size
                                 },
