@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
 import SearchIcon from '@mui/icons-material/Search'
+import dayjs from 'dayjs'
 import {
     Grid,
     Select,
@@ -21,7 +21,7 @@ import Topmenu from './Topmenu'
 function Chartscomp() {
     const [loader, setLoader] = useState(false)
     const [game, setGame] = useState('')
-    const [date, setDate] = useState(null)
+    const [date, setDate] = useState(dayjs())
     const [gameData, setGameData] = useState([])
     const [gamestatus, setGamestatus] = useState(false)
 
