@@ -85,22 +85,21 @@ function Shareapp() {
                             >
                                 <CardContent>
                                     <Typography
-                                        variant="body1"
+                                        variant="h1"
                                         component="div"
                                         gutterBottom
                                         sx={{
-                                            color: 'white',
+                                            
                                             textAlign: 'center',
                                         }}
                                     >
                                         Total Commission
                                     </Typography>
                                     <Typography
-                                        variant="body2"
+                                        variant="body1"
                                         component="div"
                                         sx={{
-                                            color: 'white',
-                                            fontSize: '2rem',
+                                            fontSize:'2rem',
                                             textAlign: 'center',
                                         }}
                                     >
@@ -142,7 +141,7 @@ function Shareapp() {
 
                         <Grid item xs={10} mt={5}>
                             <Typography
-                                variant="subtitle1"
+                                variant="subtitle2"
                                 p={1}
                                 sx={{
                                     border: '0.1px solid #ff4ed1',
@@ -166,7 +165,7 @@ function Shareapp() {
                             <Typography
                                 variant="h1"
                                 sx={{
-                                    border: '3px dotted #ff4ed1',
+                                    border: '2px dotted #ff4ed1',
                                     padding: 1,
                                     borderRadius: 2,
                                     textAlign: 'center',
