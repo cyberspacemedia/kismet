@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 
-import { Card, CardContent, Grid, Typography, Button } from '@mui/material'
+import { Card, CardContent, Grid, Typography, Button, Box } from '@mui/material'
 import { apiClient } from '../../config/Config'
 import UserContext from '../../UserContext'
 import AppLoader from '../../Loaders/AppLoader'
@@ -12,6 +12,7 @@ function Shareapp() {
 
     const [referralData, setReferralData] = useState([])
     const [referralCode, setReferralCode] = useState('')
+    const [pendingCommission, setPendingCommission] = useState(0)
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -31,7 +32,19 @@ function Shareapp() {
                 setLoading(false) // Hide loader
             }
         }
+
+        const fetchpending = async () => {
+            try {
+                const pending = await apiClient.post('/getbalance', userId)
+                console.log(pending)
+                setPendingCommission(pending.data.data.pending)
+            } catch (error) {
+                console.error('API Error', error)
+            }
+        }
+
         fetchdata()
+        fetchpending()
     }, [userId])
 
     const handleInviteFriends = async () => {
@@ -53,12 +66,7 @@ function Shareapp() {
                 </div>
                 {loading && <AppLoader />}
 
-                <div
-                    className="content"
-                    style={{
-                       
-                    }}
-                >
+                <div className="content" style={{}}>
                     <Grid
                         container
                         justifyContent={'center'}
@@ -85,7 +93,7 @@ function Shareapp() {
                                             textAlign: 'center',
                                         }}
                                     >
-                                        Commission
+                                        Total Commission
                                     </Typography>
                                     <Typography
                                         variant="body2"
@@ -106,6 +114,28 @@ function Shareapp() {
                                         </span>
                                         {referralData.commission}
                                     </Typography>
+                                    <Box
+                                        display="flex"
+                                        alignItems="center"
+                                        sx={{ gap: 1 }} // Optional: Adds space between elements
+                                    >
+                                        <Typography variant="subtitle2">
+                                            Pending Commission
+                                        </Typography>
+                                        <Typography
+                                            variant="body2"
+                                            sx={{
+                                                background:
+                                                    'linear-gradient(279deg, rgba(83,0,103,1) 0%, rgba(125,8,135,1) 100%)',
+                                                padding: '5px',
+                                                borderRadius: '10px',
+                                                width: '30%',
+                                                textAlign: 'center',
+                                            }}
+                                        >
+                                            ₹ {pendingCommission}
+                                        </Typography>
+                                    </Box>
                                 </CardContent>
                             </Card>
                         </Grid>
